@@ -23,12 +23,39 @@
 		086F180A287AF8B90061422F /* EmptyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1809287AF8B90061422F /* EmptyDelegate.swift */; };
 		086F180C287AF91F0061422F /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F180B287AF91F0061422F /* APIConstants.swift */; };
 		086F180E287AF99E0061422F /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F180D287AF99E0061422F /* NetworkResult.swift */; };
+		086F1826287BED350061422F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1825287BED350061422F /* ShareViewController.swift */; };
+		086F1829287BED350061422F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086F1827287BED350061422F /* MainInterface.storyboard */; };
+		086F182D287BED350061422F /* ImageShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 086F1823287BED350061422F /* ImageShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEA2875BE0900852617 /* AppDelegate.swift */; };
 		15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEC2875BE0900852617 /* SceneDelegate.swift */; };
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
 		15D1DEF42875BE0C00852617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF52875BE0C00852617 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		086F182B287BED350061422F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15D1DEDF2875BE0900852617 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 086F1822287BED350061422F;
+			remoteInfo = ImageShareExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		086F1831287BED350061422F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				086F182D287BED350061422F /* ImageShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		086F17D2287A9F620061422F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -47,6 +74,12 @@
 		086F1809287AF8B90061422F /* EmptyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDelegate.swift; sourceTree = "<group>"; };
 		086F180B287AF91F0061422F /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		086F180D287AF99E0061422F /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		086F1823287BED350061422F /* ImageShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ImageShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		086F1825287BED350061422F /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		086F1828287BED350061422F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		086F182A287BED350061422F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		086F1832287BF9420061422F /* PhotoSurfer-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PhotoSurfer-iOS.entitlements"; sourceTree = "<group>"; };
+		086F1833287BFA530061422F /* ImageShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ImageShareExtension.entitlements; sourceTree = "<group>"; };
 		15D1DEE72875BE0900852617 /* PhotoSurfer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoSurfer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1DEEA2875BE0900852617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D1DEEC2875BE0900852617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +90,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		086F1820287BED350061422F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15D1DEE42875BE0900852617 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,10 +286,22 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		086F1824287BED350061422F /* ImageShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				086F1833287BFA530061422F /* ImageShareExtension.entitlements */,
+				086F1825287BED350061422F /* ShareViewController.swift */,
+				086F1827287BED350061422F /* MainInterface.storyboard */,
+				086F182A287BED350061422F /* Info.plist */,
+			);
+			path = ImageShareExtension;
+			sourceTree = "<group>";
+		};
 		15D1DEDE2875BE0900852617 = {
 			isa = PBXGroup;
 			children = (
 				15D1DEE92875BE0900852617 /* PhotoSurfer-iOS */,
+				086F1824287BED350061422F /* ImageShareExtension */,
 				15D1DEE82875BE0900852617 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -258,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				15D1DEE72875BE0900852617 /* PhotoSurfer-iOS.app */,
+				086F1823287BED350061422F /* ImageShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,6 +318,7 @@
 		15D1DEE92875BE0900852617 /* PhotoSurfer-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				086F1832287BF9420061422F /* PhotoSurfer-iOS.entitlements */,
 				15D1DEF82875BE0C00852617 /* Info.plist */,
 				086F17CF287A9F0D0061422F /* Resource */,
 				086F17DA287AA0B40061422F /* Source */,
@@ -275,6 +329,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		086F1822287BED350061422F /* ImageShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 086F182E287BED350061422F /* Build configuration list for PBXNativeTarget "ImageShareExtension" */;
+			buildPhases = (
+				086F181F287BED350061422F /* Sources */,
+				086F1820287BED350061422F /* Frameworks */,
+				086F1821287BED350061422F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ImageShareExtension;
+			productName = ImageShareExtension;
+			productReference = 086F1823287BED350061422F /* ImageShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		15D1DEE62875BE0900852617 /* PhotoSurfer-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15D1DEFB2875BE0C00852617 /* Build configuration list for PBXNativeTarget "PhotoSurfer-iOS" */;
@@ -282,10 +353,12 @@
 				15D1DEE32875BE0900852617 /* Sources */,
 				15D1DEE42875BE0900852617 /* Frameworks */,
 				15D1DEE52875BE0900852617 /* Resources */,
+				086F1831287BED350061422F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				086F182C287BED350061422F /* PBXTargetDependency */,
 			);
 			name = "PhotoSurfer-iOS";
 			productName = "PhotoSurfer-iOS";
@@ -299,9 +372,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					086F1822287BED350061422F = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
 					15D1DEE62875BE0900852617 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -321,11 +397,20 @@
 			projectRoot = "";
 			targets = (
 				15D1DEE62875BE0900852617 /* PhotoSurfer-iOS */,
+				086F1822287BED350061422F /* ImageShareExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		086F1821287BED350061422F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				086F1829287BED350061422F /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15D1DEE52875BE0900852617 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,6 +429,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		086F181F287BED350061422F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				086F1826287BED350061422F /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		15D1DEE32875BE0900852617 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,7 +459,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		086F182C287BED350061422F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 086F1822287BED350061422F /* ImageShareExtension */;
+			targetProxy = 086F182B287BED350061422F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		086F1827287BED350061422F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				086F1828287BED350061422F /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		15D1DEF02875BE0900852617 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -386,6 +495,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		086F182F287BED350061422F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ImageShareExtension/ImageShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3WXYTFH2K7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImageShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ImageShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kimhyesu.PhotoSurfer-iOS.ImageShareExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		086F1830287BED350061422F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ImageShareExtension/ImageShareExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3WXYTFH2K7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ImageShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ImageShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kimhyesu.PhotoSurfer-iOS.ImageShareExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		15D1DEF92875BE0C00852617 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -505,10 +668,13 @@
 		15D1DEFC2875BE0C00852617 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "PhotoSurfer-iOS/PhotoSurfer-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3WXYTFH2K7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "PhotoSurfer-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -532,10 +698,13 @@
 		15D1DEFD2875BE0C00852617 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "PhotoSurfer-iOS/PhotoSurfer-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3WXYTFH2K7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "PhotoSurfer-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -559,6 +728,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		086F182E287BED350061422F /* Build configuration list for PBXNativeTarget "ImageShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				086F182F287BED350061422F /* Debug */,
+				086F1830287BED350061422F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		15D1DEE22875BE0900852617 /* Build configuration list for PBXProject "PhotoSurfer-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
