@@ -31,6 +31,7 @@
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
 		15D1DEF42875BE0C00852617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF52875BE0C00852617 /* LaunchScreen.storyboard */; };
+		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		15D1DEF32875BE0C00852617 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15D1DEF62875BE0C00852617 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15D1DEF82875BE0C00852617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				086F1807287AE1740061422F /* UIColor+.swift */,
+				DDAC9B75287C60330041566B /* UIFont+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				086F1800287ADF2E0061422F /* TagViewController.swift in Sources */,
 				15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */,
 				086F180C287AF91F0061422F /* APIConstants.swift in Sources */,
+				DDAC9B76287C60330041566B /* UIFont+.swift in Sources */,
 				086F17FA287ADE7D0061422F /* SettingViewController.swift in Sources */,
 				086F1806287AE14B0061422F /* Const.swift in Sources */,
 				086F1808287AE1740061422F /* UIColor+.swift in Sources */,
