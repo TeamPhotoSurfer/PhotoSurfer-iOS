@@ -8,22 +8,36 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-
+    
+    // MARK: - IBOutlet
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var searchButton: UIButton!
+    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUI()
+    }
 
-        // Do any additional setup after loading the view.
+    // MARK: - Function
+    private func setUI() {
+        setLabelUI()
+        setSearchButtonUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setLabelUI() {
+        if let title = titleLabel.text {
+            let attributedStr = NSMutableAttributedString(string: title)
+            attributedStr.addAttribute(.font, value: UIFont.iosTitle1M, range: (title as NSString).range(of: "어떤 사진을 향해"))
+            attributedStr.addAttribute(.font, value: UIFont.iosTitle1B, range: (title as NSString).range(of: "서핑할까요?"))
+            titleLabel.attributedText = attributedStr
+        }
     }
-    */
-
+    
+    private func setSearchButtonUI() {
+        searchButton.layer.borderColor = UIColor.pointBlue.cgColor
+        searchButton.layer.borderWidth = 2
+        searchButton.layer.cornerRadius = 22
+    }
 }
