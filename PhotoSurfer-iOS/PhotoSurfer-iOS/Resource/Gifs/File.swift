@@ -7,4 +7,4 @@
 
 import Foundation
 
-// 지울 파일
+// 이 파일 지우고 파일 추가해주세요

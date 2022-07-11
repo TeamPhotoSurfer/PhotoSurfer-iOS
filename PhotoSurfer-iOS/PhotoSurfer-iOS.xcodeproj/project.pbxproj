@@ -70,44 +70,12 @@
 		086F17CF287A9F0D0061422F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				086F17D0287A9F270061422F /* Assets */,
-				086F17D1287A9F300061422F /* Colors */,
-				086F17D7287A9FE70061422F /* Gifs */,
-				086F17D9287AA0970061422F /* Storyboards */,
+				086F181D287BE3D90061422F /* Assets */,
+				086F1819287BE0520061422F /* Colors */,
+				086F181B287BE0690061422F /* Gifs */,
+				086F181E287BE3EC0061422F /* Storyboards */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		086F17D0287A9F270061422F /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				15D1DEF32875BE0C00852617 /* Assets.xcassets */,
-			);
-			name = Assets;
-			sourceTree = "<group>";
-		};
-		086F17D1287A9F300061422F /* Colors */ = {
-			isa = PBXGroup;
-			children = (
-				086F17D2287A9F620061422F /* Colors.xcassets */,
-			);
-			name = Colors;
-			sourceTree = "<group>";
-		};
-		086F17D7287A9FE70061422F /* Gifs */ = {
-			isa = PBXGroup;
-			children = (
-				086F17EB287ADCF30061422F /* File.swift */,
-			);
-			name = Gifs;
-			sourceTree = "<group>";
-		};
-		086F17D9287AA0970061422F /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				15D1DEF52875BE0C00852617 /* LaunchScreen.storyboard */,
-			);
-			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		086F17DA287AA0B40061422F /* Source */ = {
@@ -244,6 +212,38 @@
 				086F17FF287ADF2E0061422F /* TagViewController.swift */,
 			);
 			path = Tag;
+			sourceTree = "<group>";
+		};
+		086F1819287BE0520061422F /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				086F17D2287A9F620061422F /* Colors.xcassets */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		086F181B287BE0690061422F /* Gifs */ = {
+			isa = PBXGroup;
+			children = (
+				086F17EB287ADCF30061422F /* File.swift */,
+			);
+			path = Gifs;
+			sourceTree = "<group>";
+		};
+		086F181D287BE3D90061422F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				15D1DEF32875BE0C00852617 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		086F181E287BE3EC0061422F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				15D1DEF52875BE0C00852617 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		15D1DEDE2875BE0900852617 = {
