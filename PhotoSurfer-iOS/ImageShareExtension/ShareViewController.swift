@@ -5,13 +5,10 @@
 //  Created by 김하늘 on 2022/07/11.
 //
 
-import UIKit
 import Social
+import UIKit
 
-class ShareViewController: UIViewController {
-    
-    // MARK: - Property
-    @IBOutlet weak var navigationBar: UINavigationBar!
+final class ShareViewController: UIViewController {
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -22,6 +19,5 @@ class ShareViewController: UIViewController {
     
     // MARK: - Function
     func setUI() {
-        navigationBar.shadowImage = UIImage()
     }
 }
