@@ -31,7 +31,9 @@
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
 		15D1DEF42875BE0C00852617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF52875BE0C00852617 /* LaunchScreen.storyboard */; };
+		8BD253CFC87C17C8EE4EDC06 /* Pods_PhotoSurfer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */; };
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
+		F8D50F2B92EBE73B864A66DB /* Pods_ImageShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC916B927CB096BE2F53174 /* Pods_ImageShareExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +90,13 @@
 		15D1DEF32875BE0C00852617 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15D1DEF62875BE0C00852617 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15D1DEF82875BE0C00852617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FC916B927CB096BE2F53174 /* Pods_ImageShareExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageShareExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69AE80DAAACCE71EE8AB7F58 /* Pods-PhotoSurfer-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSurfer-iOS.debug.xcconfig"; path = "Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoSurfer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74FDA0FD6F56221DEF453008 /* Pods-ImageShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.release.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.release.xcconfig"; sourceTree = "<group>"; };
+		DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSurfer-iOS.release.xcconfig"; path = "Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		FA434D01192DCB2FD9CF04E0 /* Pods-ImageShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8D50F2B92EBE73B864A66DB /* Pods_ImageShareExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BD253CFC87C17C8EE4EDC06 /* Pods_PhotoSurfer_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +316,8 @@
 				15D1DEE92875BE0900852617 /* PhotoSurfer-iOS */,
 				086F1824287BED350061422F /* ImageShareExtension */,
 				15D1DEE82875BE0900852617 /* Products */,
+				A72973B735C5EECEE350F07C /* Pods */,
+				AD9D82EF8E0B682BCFDD041C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -329,6 +341,27 @@
 			path = "PhotoSurfer-iOS";
 			sourceTree = "<group>";
 		};
+		A72973B735C5EECEE350F07C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FA434D01192DCB2FD9CF04E0 /* Pods-ImageShareExtension.debug.xcconfig */,
+				74FDA0FD6F56221DEF453008 /* Pods-ImageShareExtension.release.xcconfig */,
+				69AE80DAAACCE71EE8AB7F58 /* Pods-PhotoSurfer-iOS.debug.xcconfig */,
+				DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AD9D82EF8E0B682BCFDD041C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FC916B927CB096BE2F53174 /* Pods_ImageShareExtension.framework */,
+				6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -336,6 +369,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 086F182E287BED350061422F /* Build configuration list for PBXNativeTarget "ImageShareExtension" */;
 			buildPhases = (
+				E4F32824A26F2D27DA1347A4 /* [CP] Check Pods Manifest.lock */,
 				086F181F287BED350061422F /* Sources */,
 				086F1820287BED350061422F /* Frameworks */,
 				086F1821287BED350061422F /* Resources */,
@@ -353,10 +387,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15D1DEFB2875BE0C00852617 /* Build configuration list for PBXNativeTarget "PhotoSurfer-iOS" */;
 			buildPhases = (
+				383D61E01D192351FF5EABCC /* [CP] Check Pods Manifest.lock */,
 				15D1DEE32875BE0900852617 /* Sources */,
 				15D1DEE42875BE0900852617 /* Frameworks */,
 				15D1DEE52875BE0900852617 /* Resources */,
 				086F1831287BED350061422F /* Embed App Extensions */,
+				379152E9586FD2266DDCCFF8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -431,6 +467,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		379152E9586FD2266DDCCFF8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		383D61E01D192351FF5EABCC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhotoSurfer-iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4F32824A26F2D27DA1347A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageShareExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		086F181F287BED350061422F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -501,6 +601,7 @@
 /* Begin XCBuildConfiguration section */
 		086F182F287BED350061422F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA434D01192DCB2FD9CF04E0 /* Pods-ImageShareExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ImageShareExtension/ImageShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -528,6 +629,7 @@
 		};
 		086F1830287BED350061422F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74FDA0FD6F56221DEF453008 /* Pods-ImageShareExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ImageShareExtension/ImageShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -671,6 +773,7 @@
 		};
 		15D1DEFC2875BE0C00852617 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69AE80DAAACCE71EE8AB7F58 /* Pods-PhotoSurfer-iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -701,6 +804,7 @@
 		};
 		15D1DEFD2875BE0C00852617 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

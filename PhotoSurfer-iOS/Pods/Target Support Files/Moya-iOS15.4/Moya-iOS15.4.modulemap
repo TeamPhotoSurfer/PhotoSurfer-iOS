@@ -1,0 +1,6 @@
+framework module Moya {
+  umbrella header "Moya-iOS15.4-umbrella.h"
+
+  export *
+  module * { export * }
+}
