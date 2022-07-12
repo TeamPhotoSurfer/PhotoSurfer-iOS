@@ -9,39 +9,32 @@ import UIKit
 
 extension ShareViewController {
     
-    // MARK: - Property
-    static let sectionHeaderElementKind = "section-header-element-kind"
-    
     // MARK: - Function
     private func createLayout() -> UICollectionViewLayout {
         let estimatedValueSize: CGFloat = 12.0
         let itemMargin: CGFloat =  12.0
         let groupMargin: CGFloat =  12.0
-        let headerHeight: CGFloat =  36.0
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(estimatedValueSize),
                                               heightDimension: .estimated(estimatedValueSize))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                heightDimension: .estimated(estimatedValueSize))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitems: [item])
         group.interItemSpacing = .fixed(itemMargin)
-        
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = groupMargin
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0)
         
         /// header
         let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                     heightDimension: .estimated(44))
+                                                      heightDimension: .estimated(44))
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerFooterSize,
-            elementKind: ShareViewController.sectionHeaderElementKind, alignment: .top)
-        
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
         section.boundarySupplementaryItems = [sectionHeader]
-        
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -51,12 +44,12 @@ extension ShareViewController {
     }
     
     func setDataSource() {
-        
         dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: addedTagCollectionView) {
             (collectionView: UICollectionView,
              indexPath: IndexPath,
              identifier: String) -> UICollectionViewCell? in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.identifier, for: indexPath) as? TagCollectionViewCell else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.identifier,
+                                                                for: indexPath) as? TagCollectionViewCell else {
                 fatalError("err")
             }
             cell.setData(value: "\(identifier)")
@@ -66,7 +59,12 @@ extension ShareViewController {
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
             
             var headerTitle: String = "입력한 태그"
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: ShareViewController.sectionHeaderElementKind, withReuseIdentifier: TagsHeaderCollectionReusableView.identifier, for: indexPath) as? TagsHeaderCollectionReusableView else { fatalError() }
+            guard let header = collectionView
+                .dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                  withReuseIdentifier: TagsHeaderCollectionReusableView.identifier,
+                                                  for: indexPath) as? TagsHeaderCollectionReusableView else {
+                fatalError()
+            }
             
             switch indexPath.section {
             case 0:
@@ -93,6 +91,7 @@ extension ShareViewController {
             else {
                 header.platformDescriptionLabel.isHidden = false
             }
+            
             header.setData(value: headerTitle)
             return header
         }
@@ -129,29 +128,19 @@ extension ShareViewController {
 }
 
 extension ShareViewController: UISearchBarDelegate {
-
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        print("searchBarShouldBeginEditing")
-        
         applySearchDataSource()
-        
         return true
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        dissmissKeyboard()
-        
-        guard let inputText = searchBar.text, !inputText.isEmpty else { return }
+        guard let inputText = searchBar.text, !inputText.isEmpty else {
+            return
+        }
         changeDataSource(inputText: inputText)
-        
-        print("검색어: \(inputText)")
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("textDidChanged")
-    }
-    
-    private func dissmissKeyboard() {
-        searchBar.resignFirstResponder()
+        
     }
 }

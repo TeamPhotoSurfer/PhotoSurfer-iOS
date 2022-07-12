@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TagsHeaderCollectionReusableView: UICollectionReusableView {
+final class TagsHeaderCollectionReusableView: UICollectionReusableView {
 
     // MARK: - Property
     static let identifier = "TagsHeaderCollectionReusableView"
@@ -15,7 +15,6 @@ class TagsHeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - IBOutlet
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var underSixLabel: UILabel!
-    
     @IBOutlet weak var platformDescriptionLabel: UILabel!
     
     // MARK: - LifeCycle
@@ -33,5 +32,4 @@ class TagsHeaderCollectionReusableView: UICollectionReusableView {
     func setNotInputTagHeader() {
         self.headerLabel.font = UIFont.iosSubtitle2
     }
-    
 }

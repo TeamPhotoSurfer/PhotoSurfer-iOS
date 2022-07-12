@@ -16,8 +16,6 @@ final class ShareViewController: UIViewController {
     var oftenTags: [String] = ["좋은노래", "솝트", "전시회", "그래픽디자인", "포토서퍼", "인턴"]
     var platformTags: [String] = ["포토서퍼", "카페", "위시리스트", "휴학계획", "여행"]
     var relatedTags: [String] = ["avdsdaf", "sdfds", "fdsds", "ssss", "aaaaaafds"]
-    
-    
     var dataSource: UICollectionViewDiffableDataSource<Section, String>! = nil
     
     enum Section {
@@ -46,7 +44,7 @@ final class ShareViewController: UIViewController {
         addedTagCollectionView.register(UINib(nibName: TagCollectionViewCell.identifier, bundle: nil),
                                         forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         addedTagCollectionView.register(UINib(nibName: TagsHeaderCollectionReusableView.identifier, bundle: nil),
-                                        forSupplementaryViewOfKind: ShareViewController.sectionHeaderElementKind, withReuseIdentifier: TagsHeaderCollectionReusableView.identifier)
+                                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagsHeaderCollectionReusableView.identifier)
         addedTagCollectionView.isScrollEnabled = true
         
         searchBar.delegate = self
