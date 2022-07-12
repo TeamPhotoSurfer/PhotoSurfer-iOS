@@ -19,11 +19,16 @@ final class HomeViewController: UIViewController {
         
         setUI()
     }
-
+    
     // MARK: - Function
     private func setUI() {
+        setNavigationBarUI()
         setLabelUI()
         setSearchButtonUI()
+    }
+    
+    private func setNavigationBarUI() {
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func setLabelUI() {
@@ -39,5 +44,13 @@ final class HomeViewController: UIViewController {
         searchButton.layer.borderColor = UIColor.pointBlue.cgColor
         searchButton.layer.borderWidth = 2
         searchButton.layer.cornerRadius = 22
+    }
+    
+    // MARK: - IBAction
+    @IBAction func tagInputButtonDidTap(_ sender: Any) {
+        guard let homeSearchViewController = UIStoryboard(name: Const.Storyboard.HomeSearch, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.HomeSearchViewController) as? HomeSearchViewController else { return }
+        homeSearchViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(homeSearchViewController, animated: true)
     }
 }
