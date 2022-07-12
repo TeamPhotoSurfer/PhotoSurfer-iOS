@@ -26,6 +26,11 @@
 		086F1826287BED350061422F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1825287BED350061422F /* ShareViewController.swift */; };
 		086F1829287BED350061422F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086F1827287BED350061422F /* MainInterface.storyboard */; };
 		086F182D287BED350061422F /* ImageShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 086F1823287BED350061422F /* ImageShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		086F184A287C8A110061422F /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1848287C8A110061422F /* TagCollectionViewCell.swift */; };
+		086F184B287C8A110061422F /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086F1849287C8A110061422F /* TagCollectionViewCell.xib */; };
+		086F184D287C8EF10061422F /* ShareViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F184C287C8EF10061422F /* ShareViewController+Extension.swift */; };
+		086F1850287C917A0061422F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F184F287C917A0061422F /* UIColor+.swift */; };
+		0876FB83287D549500391B07 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB82287D549500391B07 /* UIFont+.swift */; };
 		1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1553B717287C88A700137E6C /* HomeSearch.storyboard */; };
 		1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B719287C88B400137E6C /* HomeSearchViewController.swift */; };
 		1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B71B287C8A0000137E6C /* Storyboard.swift */; };
@@ -91,6 +96,11 @@
 		086F182A287BED350061422F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		086F1832287BF9420061422F /* PhotoSurfer-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PhotoSurfer-iOS.entitlements"; sourceTree = "<group>"; };
 		086F1833287BFA530061422F /* ImageShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ImageShareExtension.entitlements; sourceTree = "<group>"; };
+		086F1848287C8A110061422F /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		086F1849287C8A110061422F /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCollectionViewCell.xib; sourceTree = "<group>"; };
+		086F184C287C8EF10061422F /* ShareViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareViewController+Extension.swift"; sourceTree = "<group>"; };
+		086F184F287C917A0061422F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		0876FB82287D549500391B07 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		1553B717287C88A700137E6C /* HomeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSearch.storyboard; sourceTree = "<group>"; };
 		1553B719287C88B400137E6C /* HomeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchViewController.swift; sourceTree = "<group>"; };
 		1553B71B287C8A0000137E6C /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -323,12 +333,57 @@
 		086F1824287BED350061422F /* ImageShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				0876FB7F287D4EB200391B07 /* Presentation */,
+				086F184E287C91520061422F /* Extensions */,
 				086F1833287BFA530061422F /* ImageShareExtension.entitlements */,
-				086F1825287BED350061422F /* ShareViewController.swift */,
-				086F1827287BED350061422F /* MainInterface.storyboard */,
 				086F182A287BED350061422F /* Info.plist */,
 			);
 			path = ImageShareExtension;
+			sourceTree = "<group>";
+		};
+		086F1845287C896B0061422F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				086F1848287C8A110061422F /* TagCollectionViewCell.swift */,
+				086F1849287C8A110061422F /* TagCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		086F184E287C91520061422F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				086F184F287C917A0061422F /* UIColor+.swift */,
+				0876FB82287D549500391B07 /* UIFont+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0876FB7F287D4EB200391B07 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0876FB81287D4ED300391B07 /* Controllers */,
+				0876FB80287D4EC800391B07 /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0876FB80287D4EC800391B07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				086F1845287C896B0061422F /* Cells */,
+				086F1827287BED350061422F /* MainInterface.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0876FB81287D4ED300391B07 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				086F1825287BED350061422F /* ShareViewController.swift */,
+				086F184C287C8EF10061422F /* ShareViewController+Extension.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		1553B716287C889600137E6C /* HomeSearch */ = {
@@ -502,6 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				086F1829287BED350061422F /* MainInterface.storyboard in Resources */,
+				086F184B287C8A110061422F /* TagCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +650,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				086F1826287BED350061422F /* ShareViewController.swift in Sources */,
+				086F1850287C917A0061422F /* UIColor+.swift in Sources */,
+				086F184A287C8A110061422F /* TagCollectionViewCell.swift in Sources */,
+				0876FB83287D549500391B07 /* UIFont+.swift in Sources */,
+				086F184D287C8EF10061422F /* ShareViewController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
