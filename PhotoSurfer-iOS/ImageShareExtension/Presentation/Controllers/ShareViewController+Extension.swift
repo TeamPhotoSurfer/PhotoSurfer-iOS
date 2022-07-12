@@ -8,7 +8,10 @@
 import UIKit
 
 extension ShareViewController {
+    
+    // MARK: - Property
     static let titleElementKind = "title-element-kind"
+    
     // MARK: - Function
     private func createLayout() -> UICollectionViewLayout {
         let estimatedValueSize: CGFloat = 12.0
@@ -18,7 +21,6 @@ extension ShareViewController {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(estimatedValueSize),
                                               heightDimension: .estimated(estimatedValueSize))
-        
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -28,9 +30,7 @@ extension ShareViewController {
         group.interItemSpacing = .fixed(itemMargin)
         
         let section = NSCollectionLayoutSection(group: group)
-        
         section.interGroupSpacing = groupMargin
-        
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
@@ -45,20 +45,19 @@ extension ShareViewController {
             (collectionView: UICollectionView,
              indexPath: IndexPath,
              identifier: String) -> UICollectionViewCell? in
-            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.identifier, for: indexPath) as? TagCollectionViewCell else {
                 fatalError("err")
             }
-            
             cell.setData(value: "\(identifier)")
-            cell.contentView.backgroundColor = .pointSub
             return cell
         }
-        
+        applyInitialDataSource()
+    }
+    
+    private func applyInitialDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
         snapshot.appendSections([.main])
         snapshot.appendItems(sampleArray)
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
 }

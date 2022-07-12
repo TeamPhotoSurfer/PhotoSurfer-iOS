@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="jhz-iw-P4t">
-                                <rect key="frame" x="0.0" y="103" width="414" height="60"/>
+                                <rect key="frame" x="20" y="103" width="374" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="aHu-oj-1F5"/>
                                 </constraints>
@@ -260,6 +260,9 @@
                                         <state key="normal" title="취소">
                                             <color key="titleColor" name="grayGray60"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cancelButtonDidTap:" destination="j1y-V4-xli" eventType="touchUpInside" id="cBe-Bv-N7E"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZE-6p-cbt">
                                         <rect key="frame" x="354" y="8" width="52" height="43"/>
@@ -272,6 +275,9 @@
                                         <state key="normal" title="저장">
                                             <color key="titleColor" name="grayGray60"/>
                                         </state>
+                                        <connections>
+                                            <action selector="saveButtonDidTap:" destination="j1y-V4-xli" eventType="touchUpInside" id="V9h-d1-ejk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -291,11 +297,11 @@
                             <constraint firstItem="1Xd-am-t49" firstAttribute="leading" secondItem="Vde-j1-zYk" secondAttribute="leading" id="EQC-sb-j1y"/>
                             <constraint firstItem="Vde-j1-zYk" firstAttribute="top" secondItem="jhz-iw-P4t" secondAttribute="bottom" constant="8" id="p2G-Lu-cSl"/>
                             <constraint firstItem="jhz-iw-P4t" firstAttribute="top" secondItem="9v1-di-q75" secondAttribute="bottom" id="r4Y-AD-kMS"/>
-                            <constraint firstItem="jhz-iw-P4t" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" id="rhT-09-f9j"/>
+                            <constraint firstItem="jhz-iw-P4t" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="20" id="rhT-09-f9j"/>
                             <constraint firstItem="9v1-di-q75" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" id="th3-1f-Tco"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="Vde-j1-zYk" secondAttribute="trailing" id="unA-CO-noz"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="top" secondItem="9v1-di-q75" secondAttribute="top" id="wvL-Pk-mHm"/>
-                            <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="jhz-iw-P4t" secondAttribute="trailing" id="zZu-kB-KcL"/>
+                            <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="jhz-iw-P4t" secondAttribute="trailing" constant="20" id="zZu-kB-KcL"/>
                         </constraints>
                     </view>
                     <connections>
@@ -303,6 +309,7 @@
                         <outlet property="oftenTagCollectionView" destination="o5m-o2-8iX" id="4DK-gY-blF"/>
                         <outlet property="platformTagCollectionView" destination="Eu1-Gk-3Ol" id="n0w-HE-gDU"/>
                         <outlet property="recentTagCollectionView" destination="NUv-Fe-LGR" id="8v2-SX-z1Q"/>
+                        <outlet property="searchBar" destination="jhz-iw-P4t" id="09L-bE-lvG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>

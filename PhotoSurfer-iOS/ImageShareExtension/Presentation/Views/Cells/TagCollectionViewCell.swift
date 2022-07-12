@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TagCollectionViewCell: UICollectionViewCell {
+final class TagCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Property
     static let identifier = "TagCollectionViewCell"
@@ -18,11 +18,16 @@ class TagCollectionViewCell: UICollectionViewCell {
     // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setUI()
     }
     
     // MARK: - Function
     func setData(value: String) {
         tagNameLabel.text = value
     }
-
+    
+    private func setUI() {
+        self.contentView.backgroundColor = .pointSub
+    }
 }
