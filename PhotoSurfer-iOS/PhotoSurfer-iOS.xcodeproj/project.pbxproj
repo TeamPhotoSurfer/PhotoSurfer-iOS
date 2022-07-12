@@ -31,6 +31,8 @@
 		086F184D287C8EF10061422F /* ShareViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F184C287C8EF10061422F /* ShareViewController+Extension.swift */; };
 		086F1850287C917A0061422F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F184F287C917A0061422F /* UIColor+.swift */; };
 		0876FB83287D549500391B07 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB82287D549500391B07 /* UIFont+.swift */; };
+		0876FB88287D69C300391B07 /* TagsHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB86287D69C300391B07 /* TagsHeaderCollectionReusableView.swift */; };
+		0876FB89287D69C300391B07 /* TagsHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */; };
 		1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1553B717287C88A700137E6C /* HomeSearch.storyboard */; };
 		1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B719287C88B400137E6C /* HomeSearchViewController.swift */; };
 		1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B71B287C8A0000137E6C /* Storyboard.swift */; };
@@ -101,6 +103,8 @@
 		086F184C287C8EF10061422F /* ShareViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareViewController+Extension.swift"; sourceTree = "<group>"; };
 		086F184F287C917A0061422F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		0876FB82287D549500391B07 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		0876FB86287D69C300391B07 /* TagsHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		1553B717287C88A700137E6C /* HomeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSearch.storyboard; sourceTree = "<group>"; };
 		1553B719287C88B400137E6C /* HomeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchViewController.swift; sourceTree = "<group>"; };
 		1553B71B287C8A0000137E6C /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -346,6 +350,8 @@
 			children = (
 				086F1848287C8A110061422F /* TagCollectionViewCell.swift */,
 				086F1849287C8A110061422F /* TagCollectionViewCell.xib */,
+				0876FB86287D69C300391B07 /* TagsHeaderCollectionReusableView.swift */,
+				0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 			files = (
 				086F1829287BED350061422F /* MainInterface.storyboard in Resources */,
 				086F184B287C8A110061422F /* TagCollectionViewCell.xib in Resources */,
+				0876FB89287D69C300391B07 /* TagsHeaderCollectionReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,6 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				086F1826287BED350061422F /* ShareViewController.swift in Sources */,
+				0876FB88287D69C300391B07 /* TagsHeaderCollectionReusableView.swift in Sources */,
 				086F1850287C917A0061422F /* UIColor+.swift in Sources */,
 				086F184A287C8A110061422F /* TagCollectionViewCell.swift in Sources */,
 				0876FB83287D549500391B07 /* UIFont+.swift in Sources */,
