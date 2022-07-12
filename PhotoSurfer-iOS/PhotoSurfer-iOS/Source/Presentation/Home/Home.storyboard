@@ -40,6 +40,9 @@
                                 <state key="normal" title="태그를 입력하세요" image="magnifyingglass" catalog="system">
                                     <color key="titleColor" name="grayGray50"/>
                                 </state>
+                                <connections>
+                                    <action selector="tagInputButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JCL-HN-w7v"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자주 검색한 태그" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQO-fh-sEP">
                                 <rect key="frame" x="28" y="511" width="79.5" height="14.5"/>
@@ -89,13 +92,14 @@
             </objects>
             <point key="canvasLocation" x="886.95652173913049" y="118.52678571428571"/>
         </scene>
-        <!--홈-->
+        <!--Item-->
         <scene sceneID="Ywp-e1-T1v">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="D28-zY-qWX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="홈" id="ZUK-ja-CTp"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="eCe-Wp-AIm"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="6xF-Ab-lr4">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6xF-Ab-lr4">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
