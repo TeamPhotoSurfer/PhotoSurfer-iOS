@@ -26,6 +26,10 @@
 		086F1826287BED350061422F /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1825287BED350061422F /* ShareViewController.swift */; };
 		086F1829287BED350061422F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086F1827287BED350061422F /* MainInterface.storyboard */; };
 		086F182D287BED350061422F /* ImageShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 086F1823287BED350061422F /* ImageShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		086F184A287C8A110061422F /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1848287C8A110061422F /* TagCollectionViewCell.swift */; };
+		086F184B287C8A110061422F /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 086F1849287C8A110061422F /* TagCollectionViewCell.xib */; };
+		086F184D287C8EF10061422F /* ShareViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F184C287C8EF10061422F /* ShareViewController+Extension.swift */; };
+		086F1850287C917A0061422F /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F184F287C917A0061422F /* UIColor+.swift */; };
 		15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEA2875BE0900852617 /* AppDelegate.swift */; };
 		15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEC2875BE0900852617 /* SceneDelegate.swift */; };
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
@@ -83,6 +87,10 @@
 		086F182A287BED350061422F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		086F1832287BF9420061422F /* PhotoSurfer-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "PhotoSurfer-iOS.entitlements"; sourceTree = "<group>"; };
 		086F1833287BFA530061422F /* ImageShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ImageShareExtension.entitlements; sourceTree = "<group>"; };
+		086F1848287C8A110061422F /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		086F1849287C8A110061422F /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCollectionViewCell.xib; sourceTree = "<group>"; };
+		086F184C287C8EF10061422F /* ShareViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareViewController+Extension.swift"; sourceTree = "<group>"; };
+		086F184F287C917A0061422F /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		15D1DEE72875BE0900852617 /* PhotoSurfer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoSurfer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1DEEA2875BE0900852617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D1DEEC2875BE0900852617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -302,12 +310,32 @@
 		086F1824287BED350061422F /* ImageShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				086F184E287C91520061422F /* Extensions */,
+				086F1845287C896B0061422F /* Cells */,
 				086F1833287BFA530061422F /* ImageShareExtension.entitlements */,
 				086F1825287BED350061422F /* ShareViewController.swift */,
+				086F184C287C8EF10061422F /* ShareViewController+Extension.swift */,
 				086F1827287BED350061422F /* MainInterface.storyboard */,
 				086F182A287BED350061422F /* Info.plist */,
 			);
 			path = ImageShareExtension;
+			sourceTree = "<group>";
+		};
+		086F1845287C896B0061422F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				086F1848287C8A110061422F /* TagCollectionViewCell.swift */,
+				086F1849287C8A110061422F /* TagCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		086F184E287C91520061422F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				086F184F287C917A0061422F /* UIColor+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		15D1DEDE2875BE0900852617 = {
@@ -349,7 +377,6 @@
 				69AE80DAAACCE71EE8AB7F58 /* Pods-PhotoSurfer-iOS.debug.xcconfig */,
 				DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -447,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				086F1829287BED350061422F /* MainInterface.storyboard in Resources */,
+				086F184B287C8A110061422F /* TagCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +565,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				086F1826287BED350061422F /* ShareViewController.swift in Sources */,
+				086F1850287C917A0061422F /* UIColor+.swift in Sources */,
+				086F184A287C8A110061422F /* TagCollectionViewCell.swift in Sources */,
+				086F184D287C8EF10061422F /* ShareViewController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
