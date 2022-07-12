@@ -21,10 +21,14 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.frame.size.height = 200
+        setUI()
     }
     
     // MARK: - Function
+    private func setUI() {
+        self.frame.size.height = 200
+    }
+    
     func setData(value: String) {
         self.headerLabel.text = value
     }

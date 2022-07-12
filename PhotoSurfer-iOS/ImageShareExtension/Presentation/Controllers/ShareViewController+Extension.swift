@@ -65,17 +65,7 @@ extension ShareViewController {
                                                   for: indexPath) as? TagsHeaderCollectionReusableView else {
                 fatalError()
             }
-            
-            switch indexPath.section {
-            case 0:
-                headerTitle = "추가한 태그"
-            case 1:
-                headerTitle = "최근 추가한 태그"
-            case 2:
-                headerTitle = "자주 추가한 태그"
-            default:
-                headerTitle = "플랫폼 유형"
-            }
+            headerTitle = self.headerTitleArray[indexPath.section]
             
             if indexPath.section != 0 {
                 header.setNotInputTagHeader()
@@ -85,13 +75,7 @@ extension ShareViewController {
                 header.underSixLabel.isHidden = false
             }
             
-            if indexPath.section != 3 {
-                header.platformDescriptionLabel.isHidden = true
-            }
-            else {
-                header.platformDescriptionLabel.isHidden = false
-            }
-            
+            header.platformDescriptionLabel.isHidden = (indexPath.section != 3)
             header.setData(value: headerTitle)
             return header
         }
@@ -105,7 +89,6 @@ extension ShareViewController {
         snapshot.appendItems(recentTags, toSection: .recentTag)
         snapshot.appendItems(oftenTags, toSection: .oftenTag)
         snapshot.appendItems(platformTags, toSection: .platformTag)
-        
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
@@ -114,7 +97,6 @@ extension ShareViewController {
         snapshot.appendSections([.addedTag, .relatedTag])
         snapshot.appendItems(addedTags, toSection: .addedTag)
         snapshot.appendItems(relatedTags, toSection: .relatedTag)
-        
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
@@ -122,7 +104,6 @@ extension ShareViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
         relatedTags = relatedTags.filter({ $0.contains(inputText) })
         snapshot.reloadItems(relatedTags)
-        
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
