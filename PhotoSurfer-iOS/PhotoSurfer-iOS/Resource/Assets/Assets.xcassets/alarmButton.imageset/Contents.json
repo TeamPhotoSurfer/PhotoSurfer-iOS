@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "topBarButton.png",
+      "scale" : "1x",
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "topBarButton@2x.png"
+    },
+    {
+      "filename" : "topBarButton@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
