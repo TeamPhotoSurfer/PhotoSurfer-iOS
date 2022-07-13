@@ -2,5 +2,6 @@ ${PODS_ROOT}/Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS-fram
 ${BUILT_PRODUCTS_DIR}/Alamofire-iOS15.0/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift-iOS15.0/IQKeyboardManagerSwift.framework
 ${BUILT_PRODUCTS_DIR}/Moya-iOS15.0/Moya.framework
+${BUILT_PRODUCTS_DIR}/Toast-Swift-iOS15.0/Toast_Swift.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework

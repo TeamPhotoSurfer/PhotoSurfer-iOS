@@ -7,6 +7,7 @@
 
 import Social
 import UIKit
+import SwiftUI
 
 final class ShareViewController: UIViewController {
     
@@ -18,6 +19,7 @@ final class ShareViewController: UIViewController {
     var relatedTags: [String] = ["avdsdaf", "sdfds", "fdsds", "ssss", "aaaaaafds"]
     var dataSource: UICollectionViewDiffableDataSource<Section, String>! = nil
     let headerTitleArray: [String] = ["추가한 태그", "최근 추가한 태그", "자주 추가한 태그", "플랫폼 유형", "연관 태그"]
+    let searchHeaderTitleArray: [String] = ["추가한 태그", "연관 태그"]
     enum Section: Int {
         case addedTag
         case recentTag
@@ -41,9 +43,11 @@ final class ShareViewController: UIViewController {
     private func setUI() {
         setSearchBarUI()
         setSearchBar()
+        setToolbar()
         registerXib()
         setHierarchy()
-        setDataSource()
+        setSupplementaryViewProvider(dataSource: setDataSource())
+        hideKeyboardWhenTappedAround()
     }
     
     private func registerXib() {
@@ -63,6 +67,21 @@ final class ShareViewController: UIViewController {
         searchBar.setImage(UIImage(), for: .search, state: .normal)
         searchBar.searchTextField.font = .iosBody2
         searchBar.placeholder = "태그를 입력하세요"
+        searchBar.inputAccessoryView = setToolbar()
+    }
+    
+    private func setToolbar() -> UIToolbar {
+        let toolBarKeyboard = UIToolbar()
+        toolBarKeyboard.sizeToFit()
+        let flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(self.doneButtonDidTap))
+        toolBarKeyboard.items = [flexibleSpaceButton, doneButton]
+        return toolBarKeyboard
+    }
+    
+    // MARK: - Objc Function
+    @objc private func doneButtonDidTap() {
+        dismissKeyboard()
     }
     
     // MARK: - IBAction

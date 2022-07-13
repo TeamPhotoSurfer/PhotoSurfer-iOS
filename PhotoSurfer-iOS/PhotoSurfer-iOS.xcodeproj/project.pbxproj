@@ -33,6 +33,7 @@
 		0876FB83287D549500391B07 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB82287D549500391B07 /* UIFont+.swift */; };
 		0876FB88287D69C300391B07 /* TagsHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB86287D69C300391B07 /* TagsHeaderCollectionReusableView.swift */; };
 		0876FB89287D69C300391B07 /* TagsHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */; };
+		0876FB8B287DE85D00391B07 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB8A287DE85D00391B07 /* UIViewController+.swift */; };
 		1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1553B717287C88A700137E6C /* HomeSearch.storyboard */; };
 		1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B719287C88B400137E6C /* HomeSearchViewController.swift */; };
 		1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B71B287C8A0000137E6C /* Storyboard.swift */; };
@@ -105,6 +106,7 @@
 		0876FB82287D549500391B07 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		0876FB86287D69C300391B07 /* TagsHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		0876FB8A287DE85D00391B07 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		1553B717287C88A700137E6C /* HomeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSearch.storyboard; sourceTree = "<group>"; };
 		1553B719287C88B400137E6C /* HomeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchViewController.swift; sourceTree = "<group>"; };
 		1553B71B287C8A0000137E6C /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			children = (
 				086F184F287C917A0061422F /* UIColor+.swift */,
 				0876FB82287D549500391B07 /* UIFont+.swift */,
+				0876FB8A287DE85D00391B07 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0876FB8B287DE85D00391B07 /* UIViewController+.swift in Sources */,
 				086F1826287BED350061422F /* ShareViewController.swift in Sources */,
 				0876FB88287D69C300391B07 /* TagsHeaderCollectionReusableView.swift in Sources */,
 				086F1850287C917A0061422F /* UIColor+.swift in Sources */,

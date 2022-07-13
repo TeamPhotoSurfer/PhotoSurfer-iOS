@@ -43,7 +43,7 @@ extension ShareViewController {
         addedTagCollectionView.setCollectionViewLayout(createLayout(), animated: true)
     }
     
-    func setDataSource() {
+    func setDataSource() -> UICollectionViewDiffableDataSource<Section, String> {
         dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: addedTagCollectionView) {
             (collectionView: UICollectionView,
              indexPath: IndexPath,
@@ -56,8 +56,11 @@ extension ShareViewController {
             return cell
         }
         
+        return dataSource
+    }
+    
+    func setSupplementaryViewProvider(dataSource: UICollectionViewDiffableDataSource<Section, String>) {
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-            
             var headerTitle: String = "입력한 태그"
             guard let header = collectionView
                 .dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
@@ -82,6 +85,34 @@ extension ShareViewController {
         applyInitialDataSource()
     }
     
+    func setSearchSupplementaryViewProvider(dataSource: UICollectionViewDiffableDataSource<Section, String>) {
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+            
+            var headerTitle: String = "입력한 태그"
+            guard let header = collectionView
+                .dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                  withReuseIdentifier: TagsHeaderCollectionReusableView.identifier,
+                                                  for: indexPath) as? TagsHeaderCollectionReusableView else {
+                fatalError()
+            }
+            if indexPath.section == 0 {
+                header.underSixLabel.isHidden = false
+                headerTitle = self.searchHeaderTitleArray[0]
+            }
+            else {
+                header.underSixLabel.isHidden = true
+                header.setNotInputTagHeader()
+                headerTitle = self.searchHeaderTitleArray[1]
+
+            }
+            header.platformDescriptionLabel.isHidden = true
+            header.setData(value: headerTitle)
+            return header
+        }
+        applyInitialDataSource()
+    }
+    
+    
     private func applyInitialDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
         snapshot.appendSections([.addedTag, .recentTag, .oftenTag, .platformTag])
@@ -92,36 +123,42 @@ extension ShareViewController {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
-    private func applySearchDataSource() {
+    private func changeDataSource(inputText: String, isEmpty: Bool) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-        snapshot.appendSections([.addedTag, .relatedTag])
+        
+        if !isEmpty {
+            relatedTags = relatedTags.filter({ $0.contains(inputText) })
+        }
+        snapshot.appendSections([.addedTag , .relatedTag])
         snapshot.appendItems(addedTags, toSection: .addedTag)
         snapshot.appendItems(relatedTags, toSection: .relatedTag)
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
-    private func changeDataSource(inputText: String) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-        relatedTags = relatedTags.filter({ $0.contains(inputText) })
-        snapshot.reloadItems(relatedTags)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 
 extension ShareViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        applySearchDataSource()
+        guard let inputText = searchBar.text, !inputText.isEmpty else {
+            applyInitialDataSource()
+            return true
+        }
+        setSearchSupplementaryViewProvider(dataSource: setDataSource())
+        changeDataSource(inputText: "", isEmpty: true)
         return true
     }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let inputText = searchBar.text, !inputText.isEmpty else {
+            setSupplementaryViewProvider(dataSource: setDataSource())
+            applyInitialDataSource()
             return
         }
-        changeDataSource(inputText: inputText)
+        setSearchSupplementaryViewProvider(dataSource: setDataSource())
+        changeDataSource(inputText: inputText, isEmpty: false)
     }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let inputText = searchBar.text, !inputText.isEmpty else {
+            applyInitialDataSource()
+            return
+        }
     }
 }
