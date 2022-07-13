@@ -68,6 +68,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Z05-Az-a76"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="albumCollectionView" destination="sGk-2j-PuJ" id="PI6-KS-4uZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
