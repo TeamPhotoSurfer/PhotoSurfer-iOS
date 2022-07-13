@@ -48,6 +48,7 @@
 		15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF52875BE0C00852617 /* LaunchScreen.storyboard */; };
 		8BD253CFC87C17C8EE4EDC06 /* Pods_PhotoSurfer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */; };
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
+		DDDA8117287E9DBA0051338D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDA8116287E9DBA0051338D /* Image.swift */; };
 		F8D50F2B92EBE73B864A66DB /* Pods_ImageShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC916B927CB096BE2F53174 /* Pods_ImageShareExtension.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +127,7 @@
 		74FDA0FD6F56221DEF453008 /* Pods-ImageShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.release.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.release.xcconfig"; sourceTree = "<group>"; };
 		DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSurfer-iOS.release.xcconfig"; path = "Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		DDDA8116287E9DBA0051338D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FA434D01192DCB2FD9CF04E0 /* Pods-ImageShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +199,7 @@
 				1553B71B287C8A0000137E6C /* Storyboard.swift */,
 				1553B71D287C8A3500137E6C /* ViewController.swift */,
 				1553B71F287C8A3A00137E6C /* Identifier.swift */,
+				DDDA8116287E9DBA0051338D /* Image.swift */,
 			);
 			path = Consts;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,
 				086F17EC287ADCF30061422F /* File.swift in Sources */,
 				086F17EE287ADD710061422F /* MainTabBarController.swift in Sources */,
+				DDDA8117287E9DBA0051338D /* Image.swift in Sources */,
 				086F180E287AF99E0061422F /* NetworkResult.swift in Sources */,
 				086F1800287ADF2E0061422F /* TagViewController.swift in Sources */,
 				1553B71E287C8A3500137E6C /* ViewController.swift in Sources */,

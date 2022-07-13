@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "scale" : "1x",
+      "filename" : "rightThreedotsIconWhiteButton.png",
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "rightThreedotsIconWhiteButton@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "rightThreedotsIconWhiteButton@3x.png",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
