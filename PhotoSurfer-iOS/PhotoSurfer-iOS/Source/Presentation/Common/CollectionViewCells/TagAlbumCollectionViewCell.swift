@@ -17,7 +17,6 @@ class TagAlbumCollectionViewCell: UICollectionViewCell {
     // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
     // MARK: - Function

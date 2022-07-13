@@ -8,6 +8,7 @@
 import UIKit
 
 struct Album: Hashable {
+    let uuid = UUID()
     let isMarked: Bool
     let name: String
 }
@@ -29,7 +30,7 @@ class TagViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        setCollectionView()
     }
     
     // MARK: - Function
@@ -38,6 +39,7 @@ class TagViewController: UIViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, Album>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
             guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as?  TagAlbumCollectionViewCell else { fatalError() }
             albumCell.setDumy(item)
+            albumCell.layer.cornerRadius = 8
             return albumCell
         })
         applyInitialDataSource()
@@ -59,12 +61,13 @@ class TagViewController: UIViewController {
     private func layout() -> UICollectionViewCompositionalLayout {
         let itemSize = NSCollectionLayoutSize( widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(110.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top:  15, leading: 20, bottom: 15, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets(top:  10, leading: 15, bottom: 15, trailing: 10)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
