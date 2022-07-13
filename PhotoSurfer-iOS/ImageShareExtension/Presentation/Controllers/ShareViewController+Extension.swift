@@ -26,6 +26,7 @@ extension ShareViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = groupMargin
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0)
+        section.orthogonalScrollingBehavior = .continuous
         
         /// header
         let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -35,9 +36,47 @@ extension ShareViewController {
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top)
         section.boundarySupplementaryItems = [sectionHeader]
+        
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
+    
+    private func createCollectionViewLayout() -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { (section, _) -> NSCollectionLayoutSection? in
+            if section == 0 {
+                // item
+                let item = NSCollectionLayoutItem(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1/5),
+                        heightDimension: .fractionalHeight(1)
+                    )
+                )
+                item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 8)
+                
+                // group
+                let group = NSCollectionLayoutGroup.horizontal(
+                    layoutSize: NSCollectionLayoutSize(
+                        widthDimension: .fractionalWidth(1),
+                        heightDimension: .absolute(140)
+                    ),
+                    subitem: item,
+                    count: 5
+                )
+                group.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+                
+                // section
+                let section = NSCollectionLayoutSection(group: group)
+                section.orthogonalScrollingBehavior = .continuous
+                section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+                
+                // return
+                return section
+                
+            }
+            return nil
+        }
+    }
+    
     
     func setHierarchy() {
         addedTagCollectionView.setCollectionViewLayout(createLayout(), animated: true)

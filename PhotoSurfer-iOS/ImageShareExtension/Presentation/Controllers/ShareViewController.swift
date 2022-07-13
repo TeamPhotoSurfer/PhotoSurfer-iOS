@@ -12,7 +12,7 @@ import SwiftUI
 final class ShareViewController: UIViewController {
     
     // MARK: - Property
-    var addedTags: [String] = ["a", "b", "c", "d", "e"]
+    var addedTags: [String] = ["a", "b", "c", "d", "e", "1", "2", "3", "4", "5"]
     var recentTags: [String] = ["k", "kk", "kkk", "kkkk", "kkkkk"]
     var oftenTags: [String] = ["좋은노래", "솝트", "전시회", "그래픽디자인", "포토서퍼", "인턴"]
     var platformTags: [String] = ["포토서퍼", "카페", "위시리스트", "휴학계획", "여행"]

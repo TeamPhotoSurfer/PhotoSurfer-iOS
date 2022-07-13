@@ -45,8 +45,9 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="Aqm-XO-7N8" secondAttribute="bottom" constant="19.5" id="1Nf-pI-zcs"/>
                 <constraint firstItem="Aqm-XO-7N8" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="5K0-fu-KYR"/>
-                <constraint firstItem="Aqm-XO-7N8" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="eq3-FP-dez"/>
+                <constraint firstAttribute="top" secondItem="Aqm-XO-7N8" secondAttribute="top" constant="-19.5" id="DW5-fZ-V36"/>
             </constraints>
             <connections>
                 <outlet property="headerLabel" destination="419-6Z-l5K" id="bhL-Ap-F1d"/>
