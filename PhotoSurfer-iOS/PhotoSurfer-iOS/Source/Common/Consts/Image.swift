@@ -17,6 +17,10 @@ extension Const {
         static let colorGray = UIImage(named: "colorGray")
         /// icon
         static let phArrowClockwise = UIImage(named: "phArrowClockwise")
+        static let icHashtagLineTagWhite = UIImage(named: "icHashtagLineTagWhite")
+        static let icHashtagLineTagMain = UIImage(named: "icHashtagLineTagMain")
+        static let icHashtagLineTagGray70 = UIImage(named: "icHashtagLineTagGray70")
+        
         
         // MARK: - Bottom Bar
         /// icon
@@ -33,6 +37,8 @@ extension Const {
         // MARK: - Search
         /// icon
         static let icXCircleFill = UIImage(named: "icXCircleFill")
+        static let icSearchLineSearchboxGray50 = UIImage(named: "icSearchLineSearchboxGray50")
+        static let icSearchLineSearchboxMain = UIImage(named: "icSearchLineSearchboxMain")
         
         // MARK: - Picture
         /// image
@@ -51,6 +57,9 @@ extension Const {
         // MARK: - Alarm
         /// icon
         static let icBellLineWhite = UIImage(named: "icBellLineWhite")
+        static let icCheckCircleFill = UIImage(named: "icCheckCircleFill")
+        static let icCircleLine = UIImage(named: "icCircleLine")
+        static let icInfoCircleFile = UIImage(named: "icInfoCircleFile")
         /// image
         static let alarmTitle = UIImage(named: "alarmTitle")
         /// button
