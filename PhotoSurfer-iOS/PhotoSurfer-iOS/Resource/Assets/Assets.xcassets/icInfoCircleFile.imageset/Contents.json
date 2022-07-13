@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icSearchLine.png",
+      "filename" : "icInfoCircleFile.png",
       "scale" : "1x"
     },
     {
-      "filename" : "icSearchLine@2x.png",
+      "scale" : "2x",
       "idiom" : "universal",
-      "scale" : "2x"
+      "filename" : "icInfoCircleFile@2x.png"
     },
     {
+      "filename" : "icInfoCircleFile@3x.png",
       "scale" : "3x",
-      "filename" : "icSearchLine@3x.png",
       "idiom" : "universal"
     }
   ],

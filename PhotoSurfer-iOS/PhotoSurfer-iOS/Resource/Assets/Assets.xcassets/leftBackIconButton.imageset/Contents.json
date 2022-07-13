@@ -1,19 +1,19 @@
 {
   "images" : [
     {
+      "filename" : "leftBackIconButton.png",
       "scale" : "1x",
-      "filename" : "share.png",
       "idiom" : "universal"
     },
     {
+      "filename" : "leftBackIconButton@2x.png",
       "scale" : "2x",
-      "filename" : "share@2x.png",
       "idiom" : "universal"
     },
     {
-      "scale" : "3x",
       "idiom" : "universal",
-      "filename" : "share@3x.png"
+      "filename" : "leftBackIconButton@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {

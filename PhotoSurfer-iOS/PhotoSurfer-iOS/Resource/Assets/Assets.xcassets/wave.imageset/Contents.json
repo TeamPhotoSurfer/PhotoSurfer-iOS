@@ -1,19 +1,19 @@
 {
   "images" : [
     {
+      "filename" : "wave.png",
       "idiom" : "universal",
-      "filename" : "icSearchLine.png",
       "scale" : "1x"
     },
     {
-      "filename" : "icSearchLine@2x.png",
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "wave@2x.png"
     },
     {
-      "scale" : "3x",
-      "filename" : "icSearchLine@3x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "wave@3x.png",
+      "scale" : "3x"
     }
   ],
   "info" : {
