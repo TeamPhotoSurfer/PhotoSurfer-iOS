@@ -20,5 +20,6 @@ final class TagCollectionViewCell: UICollectionViewCell {
     // MARK: - Function
     func setData(title: String) {
         titleLabel.text = title
+        titleLabel.sizeToFit()
     }
 }
