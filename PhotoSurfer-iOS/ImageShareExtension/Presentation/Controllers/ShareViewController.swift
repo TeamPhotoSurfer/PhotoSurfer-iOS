@@ -44,6 +44,8 @@ final class ShareViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        setKeyboard()
+        bindData()
     }
     
     // MARK: - Function
@@ -52,8 +54,6 @@ final class ShareViewController: UIViewController {
         setSearchBar()
         registerXib()
         setHierarchy()
-        setSupplementaryViewProvider(dataSource: setDataSource())
-        hideKeyboardWhenTappedAround()
     }
     
     private func registerXib() {
@@ -61,6 +61,14 @@ final class ShareViewController: UIViewController {
                                         forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         addedTagCollectionView.register(UINib(nibName: TagsHeaderCollectionReusableView.identifier, bundle: nil),
                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagsHeaderCollectionReusableView.identifier)
+    }
+    
+    private func bindData() {
+        setSupplementaryViewProvider(dataSource: setDataSource())
+    }
+    
+    private func setKeyboard() {
+        hideKeyboardWhenTappedAround()
     }
     
     private func setSearchBar() {

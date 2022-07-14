@@ -48,12 +48,7 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     
     func setRelatedTagInputView(isRelatedTag: Bool) {
         self.relatedTagInputView.isHidden = !isRelatedTag
-        if isRelatedTag {
-            self.relatedTagInputViewHeight.constant = 34
-        }
-        else {
-            self.relatedTagInputViewHeight.constant = 0
-        }
+        self.relatedTagInputViewHeight.constant = isRelatedTag ? 34 : 0
     }
     
     func setInputText(inputText: String) {

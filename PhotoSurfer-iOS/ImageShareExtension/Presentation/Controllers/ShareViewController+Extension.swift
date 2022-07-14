@@ -40,26 +40,13 @@ extension ShareViewController {
     }
     
     private func createCollectionViewLayout(createdSection: NSCollectionLayoutSection) -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { (section, _) -> NSCollectionLayoutSection? in
-            switch section {
-            case 0:
-                return self.createContinuousSectionLayout(section: createdSection)
-            default:
-                return self.createFixedSectionLayout(section: createdSection)
-            }
+        let layout = UICollectionViewCompositionalLayout { section, env in
+            createdSection.orthogonalScrollingBehavior = (section == 0) ? .continuous : .none
+            return createdSection
         }
+        return layout
     }
-    
-    private func createContinuousSectionLayout(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection {
-        section.orthogonalScrollingBehavior = .continuous
-        return section
-    }
-    
-    private func createFixedSectionLayout(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection {
-        section.orthogonalScrollingBehavior = .none
-        return section
-    }
-    
+        
     func setHierarchy() {
         addedTagCollectionView.setCollectionViewLayout(createLayout(), animated: true)
     }
