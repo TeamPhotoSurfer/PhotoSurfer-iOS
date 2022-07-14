@@ -40,15 +40,6 @@ final class TagViewController: UIViewController {
             albumCell.setDummy(item)
             return albumCell
         })
-        applyInitialDataSource()
-    }
-    
-    private func registerXib() {
-        albumCollectionView.register(UINib(nibName: Const.Identifier.TagAlbumCollectionViewCell, bundle: nil),
-                                     forCellWithReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell)
-    }
-    
-    private func applyInitialDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Album>()
         snapshot.appendSections([.tag])
         snapshot.appendItems(albumList, toSection: .tag)
@@ -56,20 +47,22 @@ final class TagViewController: UIViewController {
         albumCollectionView.collectionViewLayout = createLayout()
     }
     
+    private func registerXib() {
+        albumCollectionView.register(UINib(nibName: Const.Identifier.TagAlbumCollectionViewCell, bundle: nil),
+                                     forCellWithReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell)
+    }
+    
     private func createLayout() -> UICollectionViewCompositionalLayout {
         let itemSize = NSCollectionLayoutSize( widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-        
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(110.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-        
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top:  10, leading: 15, bottom: 15, trailing: 10)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    
 }
 
 extension Album {
