@@ -101,6 +101,7 @@ extension ShareViewController {
                                                   for: indexPath) as? TagsHeaderCollectionReusableView else {
                 fatalError()
             }
+            print("yuyuyu \(indexPath.section)")
             if indexPath.section == 0 {
                 header.setInputTagHeader()
                 header.setRelatedTagInputView(isRelatedTag: false)
@@ -132,32 +133,22 @@ extension ShareViewController {
         snapshot.appendItems(recentTags, toSection: .recentTag)
         snapshot.appendItems(oftenTags, toSection: .oftenTag)
         snapshot.appendItems(platformTags, toSection: .platformTag)
-        dataSource.apply(snapshot, animatingDifferences: false)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func applyChangedDataSource(inputText: String, isEmpty: Bool) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-        print("relatedTags \(relatedTags)")
-        print("inputText \(inputText)")
+        var snapshot2 = NSDiffableDataSourceSnapshot<Section, String>()
         relatedTags = relatedTags.filter({ $0.contains(inputText) })
-        print("relatedTags \(relatedTags)")
-        snapshot.appendSections([.addedTag , .relatedTag])
-        snapshot.appendItems(addedTags, toSection: .addedTag)
-        snapshot.appendItems(relatedTags, toSection: .relatedTag)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        snapshot2.appendSections([.addedTag , .relatedTag])
+        snapshot2.appendItems(addedTags, toSection: .addedTag)
+        snapshot2.appendItems(relatedTags, toSection: .relatedTag)
+        //여긴가 (dataSource)
+        dataSource.apply(snapshot2, animatingDifferences: true)
     }
 }
 
 extension ShareViewController: UISearchBarDelegate {
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        guard let inputText = searchBar.text, !inputText.isEmpty else {
-            setSupplementaryViewProvider(dataSource: setDataSource())
-            return true
-        }
-        setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
-        return true
-    }
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         typingText = searchText
         if typingTextCount > searchText.count {
@@ -174,7 +165,6 @@ extension ShareViewController: UISearchBarDelegate {
         }
         // 질문
         setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
-        
         if searchText.count >= 1 {
             isTyping = true
         }
