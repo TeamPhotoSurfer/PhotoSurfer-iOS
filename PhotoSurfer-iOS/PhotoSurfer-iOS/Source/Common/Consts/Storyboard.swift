@@ -12,5 +12,6 @@ extension Const {
     struct Storyboard {
         
         static let HomeSearch = "HomeSearch"
+        static let Tag = "Tag"
     }
 }

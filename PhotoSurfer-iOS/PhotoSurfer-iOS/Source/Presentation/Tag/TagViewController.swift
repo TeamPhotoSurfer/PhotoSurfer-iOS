@@ -7,23 +7,81 @@
 
 import UIKit
 
-class TagViewController: UIViewController {
+struct Album: Hashable {
+    let uuid = UUID()
+    let isMarked: Bool
+    let name: String
+}
 
+final class TagViewController: UIViewController {
+    enum Section {
+        case tag
+    }
+
+    // MARK: - Property
+    var dataSource: UICollectionViewDiffableDataSource<Section, Album>!
+    var albumList: [Album] = Album.list
+    
+    // MARK: - IBOutlet
+    @IBOutlet weak var albumCollectionView: UICollectionView!
+    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setCollectionView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Function
+    private func setCollectionView() {
+        registerXib()
+        dataSource = UICollectionViewDiffableDataSource<Section, Album>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
+            guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as? TagAlbumCollectionViewCell else { fatalError() }
+            albumCell.setDummy(item)
+            return albumCell
+        })
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Album>()
+        snapshot.appendSections([.tag])
+        snapshot.appendItems(albumList, toSection: .tag)
+        dataSource.apply(snapshot)
+        albumCollectionView.collectionViewLayout = createLayout()
     }
-    */
+    
+    private func registerXib() {
+        albumCollectionView.register(UINib(nibName: Const.Identifier.TagAlbumCollectionViewCell, bundle: nil),
+                                     forCellWithReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell)
+    }
+    
+    private func createLayout() -> UICollectionViewCompositionalLayout {
+        let itemSize = NSCollectionLayoutSize( widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(110.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top:  10, leading: 15, bottom: 15, trailing: 10)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
+}
 
+extension Album {
+    static let list = [
+        Album(isMarked: true, name: "안녕하세요안\n녕하요안녕하세"),
+        Album(isMarked: true, name: "instagram"),
+        Album(isMarked: true, name: "youtube"),
+        Album(isMarked: false, name: "cafe"),
+        Album(isMarked: false, name: "dog"),
+        Album(isMarked: false, name: "cat"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag")
+    ]
 }
