@@ -21,7 +21,6 @@ extension Const {
         static let icHashtagLineTagMain = UIImage(named: "icHashtagLineTagMain")
         static let icHashtagLineTagGray70 = UIImage(named: "icHashtagLineTagGray70")
         
-        
         // MARK: - Bottom Bar
         /// icon
         static let icSearchLine = UIImage(named: "icSearchLine")

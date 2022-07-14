@@ -13,9 +13,9 @@ struct Album: Hashable {
     let name: String
 }
 
-class TagViewController: UIViewController {
+final class TagViewController: UIViewController {
     enum Section {
-        case main
+        case tag
     }
 
     // MARK: - Property
@@ -24,7 +24,6 @@ class TagViewController: UIViewController {
     
     // MARK: - IBOutlet
     @IBOutlet weak var albumCollectionView: UICollectionView!
-    
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -37,9 +36,8 @@ class TagViewController: UIViewController {
     private func setCollectionView() {
         registerXib()
         dataSource = UICollectionViewDiffableDataSource<Section, Album>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
-            guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as?  TagAlbumCollectionViewCell else { fatalError() }
-            albumCell.setDumy(item)
-            albumCell.layer.cornerRadius = 8
+            guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as? TagAlbumCollectionViewCell else { fatalError() }
+            albumCell.setDummy(item)
             return albumCell
         })
         applyInitialDataSource()
@@ -52,13 +50,13 @@ class TagViewController: UIViewController {
     
     private func applyInitialDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Album>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(albumList, toSection: .main)
+        snapshot.appendSections([.tag])
+        snapshot.appendItems(albumList, toSection: .tag)
         dataSource.apply(snapshot)
-        albumCollectionView.collectionViewLayout = layout()
+        albumCollectionView.collectionViewLayout = createLayout()
     }
     
-    private func layout() -> UICollectionViewCompositionalLayout {
+    private func createLayout() -> UICollectionViewCompositionalLayout {
         let itemSize = NSCollectionLayoutSize( widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
@@ -76,7 +74,7 @@ class TagViewController: UIViewController {
 
 extension Album {
     static let list = [
-        Album(isMarked: true, name: "tag"),
+        Album(isMarked: true, name: "안녕하세요안녕하\n요안녕하세요안녕"),
         Album(isMarked: true, name: "instagram"),
         Album(isMarked: true, name: "youtube"),
         Album(isMarked: false, name: "cafe"),
@@ -84,10 +82,10 @@ extension Album {
         Album(isMarked: false, name: "cat"),
         Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag"),
+        Album(isMarked: true, name: "tag"),
         Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag"),
-        Album(isMarked: false, name: "tag"),
-        Album(isMarked: false, name: "tag"),
+        Album(isMarked: true, name: "tag"),
         Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag"),

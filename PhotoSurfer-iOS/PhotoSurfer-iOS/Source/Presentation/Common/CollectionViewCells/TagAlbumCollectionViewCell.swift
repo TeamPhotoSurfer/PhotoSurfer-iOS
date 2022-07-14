@@ -7,22 +7,28 @@
 
 import UIKit
 
-class TagAlbumCollectionViewCell: UICollectionViewCell {
+final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlet
-    @IBOutlet weak var tagBackgroundImage: UIImageView!
-    @IBOutlet weak var tagStarImage: UIImageView!
+    @IBOutlet weak var tagBackgroundImageView: UIImageView!
+    @IBOutlet weak var tagStarImageView: UIImageView!
     @IBOutlet weak var tagNameLabel: UILabel!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setCellUI()
     }
     
     // MARK: - Function
-    func setDumy(_ album: Album) {
+    func setCellUI() {
+        self.layer.cornerRadius = 8
+    }
+    
+    func setDummy(_ album: Album) {
         if album.isMarked {
-            tagStarImage.image = Const.Image.leftStarIconYellowButton
+            tagStarImageView.image = Const.Image.leftStarIconYellowButton
         }
         tagNameLabel.text = album.name
     }
