@@ -24,11 +24,13 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     // MARK: - Function
     func setCellUI() {
         self.layer.cornerRadius = 8
+        tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
+        tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
     }
     
     func setDummy(_ album: Album) {
         if album.isMarked {
-            tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .normal)
+            tagStarButton.isSelected = true
         }
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
