@@ -28,6 +28,5 @@ final class TagCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUI() {
-        self.contentView.backgroundColor = .pointSub
     }
 }

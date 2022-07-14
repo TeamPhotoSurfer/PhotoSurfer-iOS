@@ -33,6 +33,8 @@
 		0876FB83287D549500391B07 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB82287D549500391B07 /* UIFont+.swift */; };
 		0876FB88287D69C300391B07 /* TagsHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB86287D69C300391B07 /* TagsHeaderCollectionReusableView.swift */; };
 		0876FB89287D69C300391B07 /* TagsHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */; };
+		0876FB8B287DE85D00391B07 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB8A287DE85D00391B07 /* UIViewController+.swift */; };
+		08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1553B717287C88A700137E6C /* HomeSearch.storyboard */; };
 		1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B719287C88B400137E6C /* HomeSearchViewController.swift */; };
 		1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B71B287C8A0000137E6C /* Storyboard.swift */; };
@@ -41,6 +43,7 @@
 		1553B724287D12BA00137E6C /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B722287D12BA00137E6C /* TagCollectionViewCell.swift */; };
 		1553B725287D12BA00137E6C /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1553B723287D12BA00137E6C /* TagCollectionViewCell.xib */; };
 		1553B729287D14CA00137E6C /* HomeSearchViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B728287D14CA00137E6C /* HomeSearchViewController+Extension.swift */; };
+		1584E751288060D9000FA459 /* HomeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E750288060D9000FA459 /* HomeViewController+Extension.swift */; };
 		15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEA2875BE0900852617 /* AppDelegate.swift */; };
 		15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEC2875BE0900852617 /* SceneDelegate.swift */; };
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
@@ -108,6 +111,7 @@
 		0876FB82287D549500391B07 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		0876FB86287D69C300391B07 /* TagsHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		0876FB8A287DE85D00391B07 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		1553B717287C88A700137E6C /* HomeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSearch.storyboard; sourceTree = "<group>"; };
 		1553B719287C88B400137E6C /* HomeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchViewController.swift; sourceTree = "<group>"; };
 		1553B71B287C8A0000137E6C /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 		1553B722287D12BA00137E6C /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		1553B723287D12BA00137E6C /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCollectionViewCell.xib; sourceTree = "<group>"; };
 		1553B728287D14CA00137E6C /* HomeSearchViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeSearchViewController+Extension.swift"; sourceTree = "<group>"; };
+		1584E750288060D9000FA459 /* HomeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Extension.swift"; sourceTree = "<group>"; };
 		15D1DEE72875BE0900852617 /* PhotoSurfer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoSurfer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1DEEA2875BE0900852617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D1DEEC2875BE0900852617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -278,6 +283,7 @@
 			children = (
 				086F17F3287ADE0D0061422F /* Home.storyboard */,
 				086F17F5287ADE150061422F /* HomeViewController.swift */,
+				1584E750288060D9000FA459 /* HomeViewController+Extension.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 			children = (
 				086F184F287C917A0061422F /* UIColor+.swift */,
 				0876FB82287D549500391B07 /* UIFont+.swift */,
+				0876FB8A287DE85D00391B07 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -573,6 +580,7 @@
 			files = (
 				086F1829287BED350061422F /* MainInterface.storyboard in Resources */,
 				086F184B287C8A110061422F /* TagCollectionViewCell.xib in Resources */,
+				08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */,
 				0876FB89287D69C300391B07 /* TagsHeaderCollectionReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,6 +674,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0876FB8B287DE85D00391B07 /* UIViewController+.swift in Sources */,
 				086F1826287BED350061422F /* ShareViewController.swift in Sources */,
 				0876FB88287D69C300391B07 /* TagsHeaderCollectionReusableView.swift in Sources */,
 				086F1850287C917A0061422F /* UIColor+.swift in Sources */,
@@ -681,6 +690,7 @@
 			files = (
 				086F17F6287ADE150061422F /* HomeViewController.swift in Sources */,
 				086F180A287AF8B90061422F /* EmptyDelegate.swift in Sources */,
+				1584E751288060D9000FA459 /* HomeViewController+Extension.swift in Sources */,
 				DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */,
 				15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,

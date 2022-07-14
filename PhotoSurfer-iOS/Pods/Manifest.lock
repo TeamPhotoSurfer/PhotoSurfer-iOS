@@ -7,12 +7,14 @@ PODS:
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Kingfisher (~> 7.0)
   - lottie-ios
   - Moya (~> 15.0)
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -21,6 +23,7 @@ SPEC REPOS:
     - Kingfisher
     - lottie-ios
     - Moya
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
@@ -28,7 +31,8 @@ SPEC CHECKSUMS:
   Kingfisher: 2457be2121734e69e54a2312ecc0150eb9ae70b3
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 3b96db94258e6fa5da7b49b3eba48aaebae1d8d6
+PODFILE CHECKSUM: 8afccc64f368daeee6c1d865c8cebdae15fd06fd
 
 COCOAPODS: 1.11.2
