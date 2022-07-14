@@ -74,7 +74,7 @@ final class TagViewController: UIViewController {
 
 extension Album {
     static let list = [
-        Album(isMarked: true, name: "안녕하세요안녕하\n요안녕하세요안녕"),
+        Album(isMarked: true, name: "안녕하세요안\n녕하요안녕하세"),
         Album(isMarked: true, name: "instagram"),
         Album(isMarked: true, name: "youtube"),
         Album(isMarked: false, name: "cafe"),
@@ -82,10 +82,10 @@ extension Album {
         Album(isMarked: false, name: "cat"),
         Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag"),
-        Album(isMarked: true, name: "tag"),
         Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag"),
-        Album(isMarked: true, name: "tag"),
+        Album(isMarked: false, name: "tag"),
+        Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag"),
