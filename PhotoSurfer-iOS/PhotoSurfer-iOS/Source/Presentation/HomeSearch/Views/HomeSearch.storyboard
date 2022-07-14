@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,14 +20,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="68"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QlV-aD-TPQ">
-                                        <rect key="frame" x="16" y="22" width="24" height="24"/>
-                                        <color key="backgroundColor" name="alphaOceanA60"/>
+                                        <rect key="frame" x="4" y="12" width="44" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="cio-J5-5BU"/>
-                                            <constraint firstAttribute="width" constant="24" id="rwV-S1-g4l"/>
+                                            <constraint firstAttribute="height" constant="44" id="cio-J5-5BU"/>
+                                            <constraint firstAttribute="width" constant="44" id="rwV-S1-g4l"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="leftBackIconButton"/>
                                     </button>
                                     <searchBar contentMode="redraw" placeholder="태그를 입력하세요" translatesAutoresizingMaskIntoConstraints="NO" id="9ji-Cl-vcY">
                                         <rect key="frame" x="48" y="10" width="346" height="48"/>
@@ -41,9 +39,9 @@
                                     <constraint firstAttribute="trailing" secondItem="9ji-Cl-vcY" secondAttribute="trailing" constant="20" id="Plc-EW-OBx"/>
                                     <constraint firstItem="QlV-aD-TPQ" firstAttribute="centerY" secondItem="kvN-5W-RZV" secondAttribute="centerY" id="R1j-r4-fiq"/>
                                     <constraint firstItem="9ji-Cl-vcY" firstAttribute="top" secondItem="kvN-5W-RZV" secondAttribute="top" constant="10" id="Ws6-df-Mjz"/>
-                                    <constraint firstItem="QlV-aD-TPQ" firstAttribute="leading" secondItem="kvN-5W-RZV" secondAttribute="leading" constant="16" id="XFs-Dz-g92"/>
+                                    <constraint firstItem="QlV-aD-TPQ" firstAttribute="leading" secondItem="kvN-5W-RZV" secondAttribute="leading" constant="4" id="XFs-Dz-g92"/>
                                     <constraint firstAttribute="height" constant="68" id="c9z-g3-SSZ"/>
-                                    <constraint firstItem="9ji-Cl-vcY" firstAttribute="leading" secondItem="QlV-aD-TPQ" secondAttribute="trailing" constant="8" id="cEh-tI-62p"/>
+                                    <constraint firstItem="9ji-Cl-vcY" firstAttribute="leading" secondItem="QlV-aD-TPQ" secondAttribute="trailing" id="cEh-tI-62p"/>
                                     <constraint firstAttribute="bottom" secondItem="9ji-Cl-vcY" secondAttribute="bottom" constant="10" id="iyP-5a-fTI"/>
                                 </constraints>
                             </view>
@@ -82,9 +80,7 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="alphaOceanA60">
-            <color red="0.24699999392032623" green="0.58799999952316284" blue="0.98799997568130493" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="leftBackIconButton" width="48" height="56"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
