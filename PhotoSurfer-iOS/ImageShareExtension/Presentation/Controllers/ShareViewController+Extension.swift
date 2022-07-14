@@ -107,7 +107,6 @@ extension ShareViewController {
     
     func setSearchSupplementaryViewProvider(dataSource: UICollectionViewDiffableDataSource<Section, String>, isSearching: Bool) {
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-            print("a")
             var headerTitle: String = "입력한 태그"
             guard let header = collectionView
                 .dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
@@ -131,12 +130,9 @@ extension ShareViewController {
             }
             header.platformDescriptionLabel.isHidden = true
             header.setData(value: headerTitle)
-            print("1")
             return header
         }
-        print("2")
         applyChangedDataSource(inputText: "", isEmpty: !isSearching)
-        print("3")
     }
     
     private func applyInitialDataSource() {
@@ -165,30 +161,27 @@ extension ShareViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         guard let inputText = searchBar.text, !inputText.isEmpty else {
             setSupplementaryViewProvider(dataSource: setDataSource())
-            print("searchBarShouldBeginEditing")
             return true
         }
-        print("searchBarShouldBeginEditing")
         setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
         return true
     }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let inputText = searchBar.text, !inputText.isEmpty else {
             setSupplementaryViewProvider(dataSource: setDataSource())
             isTyping = false
-            print("searchBarShouldBeginEditing")
             return
         }
         // 질문
         setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
-        print("textDidChange")
         if searchText.count >= 1 {
             isTyping = true
             typingText = searchText
         }
     }
+    
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("searchBarShouldBeginEditing")
         guard let inputText = searchBar.text, !inputText.isEmpty else {
             setSupplementaryViewProvider(dataSource: setDataSource())
             return

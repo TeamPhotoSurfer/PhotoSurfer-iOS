@@ -40,10 +40,12 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
         self.underSixLabel.isHidden = true
         self.headerLabel.font = UIFont.iosSubtitle2
     }
+    
     func setInputTagHeader() {
         self.underSixLabel.isHidden = false
         self.headerLabel.font = UIFont.iosSubtitle1
     }
+    
     func setRelatedTagInputView(isRelatedTag: Bool) {
         self.relatedTagInputView.isHidden = !isRelatedTag
         if isRelatedTag {
@@ -53,6 +55,7 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
             self.relatedTagInputViewHeight.constant = 0
         }
     }
+    
     func setInputText(inputText: String) {
         self.typingTextButton.titleLabel?.text = inputText
     }
