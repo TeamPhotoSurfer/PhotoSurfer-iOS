@@ -41,7 +41,7 @@
                                 <state key="normal" image="rightThreedotsIconWhiteButton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-at-N3A">
-                                <rect key="frame" x="8" y="34" width="146" height="42"/>
+                                <rect key="frame" x="8" y="34" width="136" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="IWp-ez-l1f"/>
                                 </constraints>
@@ -53,9 +53,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="WGG-at-N3A" firstAttribute="centerX" secondItem="FP1-dg-bxG" secondAttribute="centerX" id="RMv-4m-7zT"/>
                             <constraint firstItem="VyK-Qi-DPD" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="Ros-i1-2ue"/>
-                            <constraint firstAttribute="trailing" secondItem="WGG-at-N3A" secondAttribute="trailing" constant="8" id="TRP-Bx-bY4"/>
+                            <constraint firstAttribute="trailing" secondItem="WGG-at-N3A" secondAttribute="trailing" constant="18" id="TRP-Bx-bY4"/>
                             <constraint firstItem="WGG-at-N3A" firstAttribute="centerY" secondItem="FP1-dg-bxG" secondAttribute="centerY" id="a1V-uC-1qY"/>
                             <constraint firstItem="9gf-oT-XMQ" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="aKu-3D-wZh"/>
                             <constraint firstItem="VyK-Qi-DPD" firstAttribute="leading" secondItem="FP1-dg-bxG" secondAttribute="leading" id="q2j-eJ-iHn"/>
