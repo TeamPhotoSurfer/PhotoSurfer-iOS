@@ -30,6 +30,12 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         if album.isMarked {
             tagStarImageView.image = Const.Image.leftStarIconYellowButton
         }
-        tagNameLabel.text = album.name
+        let attributedString = NSMutableAttributedString(string: "")
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = Const.Image.icHashtagLineTagWhite
+        imageAttachment.bounds = CGRect(x: 0, y: -3, width: 16, height: 16)
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        attributedString.append(NSAttributedString(string: album.name))
+        tagNameLabel.attributedText = attributedString
     }
 }

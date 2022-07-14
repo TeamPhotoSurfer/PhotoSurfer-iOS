@@ -24,24 +24,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CHR-sd-JJx">
-                        <rect key="frame" x="40" y="44.5" width="82.5" height="21.5"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icHashtagLineTagWhite" translatesAutoresizingMaskIntoConstraints="NO" id="ojL-BG-2o9">
-                                <rect key="frame" x="0.0" y="2.5" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="I6D-Hg-QBi"/>
-                                    <constraint firstAttribute="height" constant="16" id="b12-qC-GGv"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="태그 이름" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huz-10-jZF">
-                                <rect key="frame" x="16" y="0.0" width="66.5" height="21.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" name="grayWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="태그 이름" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huz-10-jZF">
+                        <rect key="frame" x="48" y="44.5" width="66.5" height="21.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <color key="textColor" name="grayWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftStarIconWhiteButton" translatesAutoresizingMaskIntoConstraints="NO" id="AWc-Ih-l6Q">
                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                         <constraints>
@@ -55,14 +43,13 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="huz-10-jZF" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="4T7-sF-Wgn"/>
                 <constraint firstItem="oUn-4v-pZB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7Gc-mI-Nz5"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="GpY-GS-Re9" secondAttribute="bottom" constant="70" id="Cf9-GF-rKl"/>
                 <constraint firstAttribute="trailing" secondItem="FP1-dg-bxG" secondAttribute="trailing" id="Fdt-1B-yIk"/>
                 <constraint firstItem="oUn-4v-pZB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="GSw-4t-IFr"/>
                 <constraint firstItem="GpY-GS-Re9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="J37-I2-DpN"/>
                 <constraint firstAttribute="trailing" secondItem="AWc-Ih-l6Q" secondAttribute="trailing" constant="122" id="MyY-YG-MiZ"/>
-                <constraint firstItem="CHR-sd-JJx" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Pen-W9-6s1"/>
-                <constraint firstItem="CHR-sd-JJx" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="V31-8z-96L"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="AWc-Ih-l6Q" secondAttribute="bottom" constant="70" id="W9M-Se-W8b"/>
                 <constraint firstAttribute="trailing" secondItem="GpY-GS-Re9" secondAttribute="trailing" id="WEZ-Ge-yB5"/>
                 <constraint firstAttribute="bottom" secondItem="FP1-dg-bxG" secondAttribute="bottom" id="WFy-cT-xe9"/>
@@ -73,6 +60,7 @@
                 <constraint firstItem="FP1-dg-bxG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gE7-UN-2rI"/>
                 <constraint firstItem="GpY-GS-Re9" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="122" id="igg-Fa-eGg"/>
                 <constraint firstItem="FP1-dg-bxG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="o1Z-Zp-PjG"/>
+                <constraint firstItem="huz-10-jZF" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="xm9-Nd-8hA"/>
             </constraints>
             <size key="customSize" width="162" height="110"/>
             <connections>
@@ -84,7 +72,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="icHashtagLineTagWhite" width="12" height="12"/>
         <image name="leftStarIconWhiteButton" width="40" height="40"/>
         <image name="rightThreedotsIconWhiteButton" width="40" height="40"/>
         <image name="shapeWhitelogo" width="1024" height="1024"/>
