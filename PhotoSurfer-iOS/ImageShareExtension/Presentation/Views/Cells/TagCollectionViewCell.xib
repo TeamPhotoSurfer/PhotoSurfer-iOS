@@ -11,53 +11,60 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCollectionViewCell" id="gTV-IL-0wX" customClass="TagCollectionViewCell" customModule="ImageShareExtension" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
+            <rect key="frame" x="0.0" y="0.0" width="139" height="34"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
+                <rect key="frame" x="0.0" y="0.0" width="139" height="34"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u52-cf-cGW">
-                        <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
+                        <rect key="frame" x="0.0" y="0.0" width="139" height="34"/>
                         <color key="tintColor" name="pointSub"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" backgroundImage="colorSub"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7D-28-eSI">
-                        <rect key="frame" x="11" y="0.0" width="90" height="34"/>
-                        <color key="tintColor" name="pointSub"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="34" id="Tuc-Wm-4yZ"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" name="pointMain"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="y1T-fB-pDu">
+                        <rect key="frame" x="11" y="8" width="112" height="18"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Tv-en-3Dc">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="icHashtagLineTagMain"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icXCircleFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGL-bt-Z3u">
+                                <rect key="frame" x="96" y="0.0" width="16" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="jZi-m7-6Qo"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                    </stackView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Y7D-28-eSI" secondAttribute="trailing" constant="17" id="1Lu-eK-0yt"/>
+                <constraint firstItem="y1T-fB-pDu" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="11" id="4D3-J8-ipI"/>
                 <constraint firstItem="u52-cf-cGW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5hO-hz-QOO"/>
                 <constraint firstAttribute="bottom" secondItem="u52-cf-cGW" secondAttribute="bottom" id="8W0-x5-jjQ"/>
                 <constraint firstItem="u52-cf-cGW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Cer-AN-9Jk"/>
-                <constraint firstItem="Y7D-28-eSI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="DzX-vW-HWs"/>
-                <constraint firstItem="Y7D-28-eSI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gdl-LC-zqH"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="y1T-fB-pDu" secondAttribute="trailing" constant="16" id="DE7-Oj-LYu"/>
                 <constraint firstAttribute="trailing" secondItem="u52-cf-cGW" secondAttribute="trailing" id="Z6h-7j-x8E"/>
-                <constraint firstAttribute="bottom" secondItem="Y7D-28-eSI" secondAttribute="bottom" id="nGf-Be-HRL"/>
+                <constraint firstAttribute="top" secondItem="y1T-fB-pDu" secondAttribute="top" constant="-8" id="xdu-aq-hdr"/>
+                <constraint firstAttribute="bottom" secondItem="y1T-fB-pDu" secondAttribute="bottom" constant="8" id="xlq-ma-Op6"/>
             </constraints>
-            <size key="customSize" width="191" height="149"/>
+            <size key="customSize" width="212" height="149"/>
             <connections>
-                <outlet property="tagNameLabel" destination="Y7D-28-eSI" id="gIQ-f1-iwF"/>
+                <outlet property="backgroundImageButton" destination="u52-cf-cGW" id="ppN-4v-9tk"/>
+                <outlet property="deleteImageView" destination="bGL-bt-Z3u" id="dWb-TW-5jD"/>
+                <outlet property="tagNameButton" destination="7Tv-en-3Dc" id="1XC-cG-AFB"/>
             </connections>
-            <point key="canvasLocation" x="233.33333333333334" y="132.58928571428572"/>
+            <point key="canvasLocation" x="247.10144927536234" y="132.58928571428572"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="colorSub" width="94" height="34"/>
-        <namedColor name="pointMain">
-            <color red="0.20800000429153442" green="0.4779999852180481" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="icHashtagLineTagMain" width="12" height="12"/>
+        <image name="icXCircleFill" width="16.5" height="16.5"/>
         <namedColor name="pointSub">
             <color red="0.90600001811981201" green="0.93300002813339233" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
