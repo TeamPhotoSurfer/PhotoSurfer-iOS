@@ -3,16 +3,49 @@
     {
       "filename" : "colorGray.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "left" : 7,
+          "right" : 16
+        },
+        "center" : {
+          "mode" : "tile",
+          "width" : 71
+        },
+        "mode" : "3-part-horizontal"
+      },
       "scale" : "1x"
     },
     {
       "filename" : "colorGray@2x.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "left" : 13,
+          "right" : 30
+        },
+        "center" : {
+          "mode" : "tile",
+          "width" : 145
+        },
+        "mode" : "3-part-horizontal"
+      },
       "scale" : "2x"
     },
     {
       "filename" : "colorGray@3x.png",
       "idiom" : "universal",
+      "resizing" : {
+        "cap-insets" : {
+          "left" : 20,
+          "right" : 47
+        },
+        "center" : {
+          "mode" : "tile",
+          "width" : 215
+        },
+        "mode" : "3-part-horizontal"
+      },
       "scale" : "3x"
     }
   ],
