@@ -67,7 +67,7 @@ final class TagViewController: UIViewController {
 
 extension Album {
     static let list = [
-        Album(isMarked: true, name: "일이삼사오육칠\n녕하요안녕하세"),
+        Album(isMarked: true, name: "일이삼사오육칠녕하요안녕하세"),
         Album(isMarked: true, name: "instagram"),
         Album(isMarked: true, name: "youtube"),
         Album(isMarked: false, name: "cafe"),

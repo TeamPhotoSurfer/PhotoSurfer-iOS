@@ -11,8 +11,8 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlet
     @IBOutlet weak var tagBackgroundImageView: UIImageView!
-    @IBOutlet weak var tagStarImageView: UIImageView!
-    @IBOutlet weak var tagNameLabel: UILabel!
+    @IBOutlet weak var tagNameButton: UIButton!
+    @IBOutlet weak var tagStarButton: UIButton!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -28,7 +28,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     func setDummy(_ album: Album) {
         if album.isMarked {
-            tagStarImageView.image = Const.Image.leftStarIconYellowButton
+            tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .normal)
         }
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
@@ -36,6 +36,8 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         imageAttachment.bounds = CGRect(x: 0, y: -3, width: 16, height: 16)
         attributedString.append(NSAttributedString(attachment: imageAttachment))
         attributedString.append(NSAttributedString(string: album.name))
-        tagNameLabel.attributedText = attributedString
+        tagNameButton.setAttributedTitle(attributedString, for: .normal)
+        tagNameButton.titleLabel?.textAlignment = NSTextAlignment.center
+        
     }
 }
