@@ -16,6 +16,7 @@ final class ShareViewController: UIViewController {
     var oftenTags: [String] = ["좋은노래", "솝트", "전시회", "그래픽디자인", "포토서퍼", "인턴"]
     var platformTags: [String] = ["포토서퍼", "카페", "위시리스트", "휴학계획", "여행"]
     var relatedTags: [String] = ["avdsdaf", "sdfds", "fdsds", "ssss", "aaaaaafds"]
+    var relatedTagsFetched: [String] = ["avdsdaf", "sdfds", "fdsds", "ssss", "aaaaaafds"]
     var dataSource: UICollectionViewDiffableDataSource<Section, String>! = nil
     let headerTitleArray: [String] = ["추가한 태그", "최근 추가한 태그", "자주 추가한 태그", "플랫폼 유형", "연관 태그"]
     let searchHeaderTitleArray: [String] = ["추가한 태그", "연관 태그"]
@@ -25,6 +26,7 @@ final class ShareViewController: UIViewController {
             print(newValue)
         }
     }
+    var typingTextCount: Int = 0
     enum Section: Int {
         case addedTag
         case recentTag

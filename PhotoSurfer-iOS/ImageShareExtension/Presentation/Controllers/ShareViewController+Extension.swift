@@ -11,7 +11,7 @@ extension ShareViewController {
     
     // MARK: - Function
     private func createLayout() -> UICollectionViewLayout {
-        let estimatedValueSize: CGFloat = 12.0
+        let estimatedValueSize: CGFloat = 1.0
         let itemMargin: CGFloat =  12.0
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(estimatedValueSize),
@@ -125,6 +125,9 @@ extension ShareViewController {
                 headerTitle = self.searchHeaderTitleArray[1]
                 if self.isTyping {
                     print("self.typingText \(self.typingText)")
+                    if self.typingTextCount == 0 {
+                        self.relatedTags = self.relatedTagsFetched
+                    }
                     header.setInputText(inputText: self.typingText)
                 }
             }
@@ -132,7 +135,7 @@ extension ShareViewController {
             header.setData(value: headerTitle)
             return header
         }
-        applyChangedDataSource(inputText: "", isEmpty: !isSearching)
+        applyChangedDataSource(inputText: typingText, isEmpty: !isSearching)
     }
     
     private func applyInitialDataSource() {
@@ -147,9 +150,10 @@ extension ShareViewController {
     
     private func applyChangedDataSource(inputText: String, isEmpty: Bool) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-        if !isEmpty {
-            relatedTags = relatedTags.filter({ $0.contains(inputText) })
-        }
+        print("relatedTags \(relatedTags)")
+        print("inputText \(inputText)")
+        relatedTags = relatedTags.filter({ $0.contains(inputText) })
+        print("relatedTags \(relatedTags)")
         snapshot.appendSections([.addedTag , .relatedTag])
         snapshot.appendItems(addedTags, toSection: .addedTag)
         snapshot.appendItems(relatedTags, toSection: .relatedTag)
@@ -168,16 +172,24 @@ extension ShareViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        typingText = searchText
+        if typingTextCount > searchText.count {
+            print("relatedTagsFetched\(relatedTagsFetched)")
+            relatedTags = relatedTagsFetched.filter({ $0.contains(searchText) })
+            print("relatedTagsFetched\(relatedTagsFetched)")
+        }
+        typingTextCount = searchText.count
         guard let inputText = searchBar.text, !inputText.isEmpty else {
             setSupplementaryViewProvider(dataSource: setDataSource())
+            relatedTags = relatedTagsFetched
             isTyping = false
             return
         }
         // 질문
         setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
+        
         if searchText.count >= 1 {
             isTyping = true
-            typingText = searchText
         }
     }
     
