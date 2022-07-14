@@ -13,5 +13,6 @@ extension Const {
     struct Identifier {
         
         static let TagCollectionViewCell = "TagCollectionViewCell"
+        static let TagAlbumCollectionViewCell = "TagAlbumCollectionViewCell"
     }
 }

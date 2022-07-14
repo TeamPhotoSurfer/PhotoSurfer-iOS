@@ -48,7 +48,10 @@
 		15D1DEF42875BE0C00852617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF52875BE0C00852617 /* LaunchScreen.storyboard */; };
 		8BD253CFC87C17C8EE4EDC06 /* Pods_PhotoSurfer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */; };
+		DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */; };
+		DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */; };
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
+		DDDA8117287E9DBA0051338D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDA8116287E9DBA0051338D /* Image.swift */; };
 		F8D50F2B92EBE73B864A66DB /* Pods_ImageShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC916B927CB096BE2F53174 /* Pods_ImageShareExtension.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,7 +130,10 @@
 		6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoSurfer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FDA0FD6F56221DEF453008 /* Pods-ImageShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.release.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.release.xcconfig"; sourceTree = "<group>"; };
 		DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSurfer-iOS.release.xcconfig"; path = "Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagAlbumCollectionViewCell.xib; sourceTree = "<group>"; };
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		DDDA8116287E9DBA0051338D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FA434D01192DCB2FD9CF04E0 /* Pods-ImageShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +205,7 @@
 				1553B71B287C8A0000137E6C /* Storyboard.swift */,
 				1553B71D287C8A3500137E6C /* ViewController.swift */,
 				1553B71F287C8A3A00137E6C /* Identifier.swift */,
+				DDDA8116287E9DBA0051338D /* Image.swift */,
 			);
 			path = Consts;
 			sourceTree = "<group>";
@@ -409,6 +416,8 @@
 			children = (
 				1553B722287D12BA00137E6C /* TagCollectionViewCell.swift */,
 				1553B723287D12BA00137E6C /* TagCollectionViewCell.xib */,
+				DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */,
+				DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -584,6 +593,7 @@
 				15D1DEF22875BE0900852617 /* Main.storyboard in Resources */,
 				1553B725287D12BA00137E6C /* TagCollectionViewCell.xib in Resources */,
 				1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */,
+				DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */,
 				086F17F8287ADE650061422F /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,11 +685,13 @@
 			files = (
 				086F17F6287ADE150061422F /* HomeViewController.swift in Sources */,
 				086F180A287AF8B90061422F /* EmptyDelegate.swift in Sources */,
+				DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */,
 				15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,
 				086F17EC287ADCF30061422F /* File.swift in Sources */,
 				086F17EE287ADD710061422F /* MainTabBarController.swift in Sources */,
+				DDDA8117287E9DBA0051338D /* Image.swift in Sources */,
 				086F180E287AF99E0061422F /* NetworkResult.swift in Sources */,
 				086F1800287ADF2E0061422F /* TagViewController.swift in Sources */,
 				1553B71E287C8A3500137E6C /* ViewController.swift in Sources */,
@@ -741,24 +753,24 @@
 				CODE_SIGN_ENTITLEMENTS = ImageShareExtension/ImageShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WXYTFH2K7;
+				DEVELOPMENT_TEAM = MLFF8438BY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ImageShareExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kimhyesu.PhotoSurfer-iOS.ImageShareExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = kimhyesu.PhotoSurfer.ImageShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -769,24 +781,24 @@
 				CODE_SIGN_ENTITLEMENTS = ImageShareExtension/ImageShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WXYTFH2K7;
+				DEVELOPMENT_TEAM = MLFF8438BY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageShareExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ImageShareExtension;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kimhyesu.PhotoSurfer-iOS.ImageShareExtension";
+				PRODUCT_BUNDLE_IDENTIFIER = kimhyesu.PhotoSurfer.ImageShareExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -914,11 +926,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "PhotoSurfer-iOS/PhotoSurfer-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WXYTFH2K7;
+				DEVELOPMENT_TEAM = MLFF8438BY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "PhotoSurfer-iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "포토서퍼";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -929,11 +943,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kimhyesu.PhotoSurfer-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = kimhyesu.PhotoSurfer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -945,11 +960,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "PhotoSurfer-iOS/PhotoSurfer-iOS.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WXYTFH2K7;
+				DEVELOPMENT_TEAM = MLFF8438BY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "PhotoSurfer-iOS/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "포토서퍼";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -960,11 +977,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kimhyesu.PhotoSurfer-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = kimhyesu.PhotoSurfer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
