@@ -59,7 +59,7 @@ final class TagViewController: UIViewController {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(110.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top:  10, leading: 15, bottom: 15, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets(top:  10, leading: 15, bottom: 10, trailing: 15)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
@@ -67,7 +67,7 @@ final class TagViewController: UIViewController {
 
 extension Album {
     static let list = [
-        Album(isMarked: true, name: "안녕하세요안\n녕하요안녕하세"),
+        Album(isMarked: true, name: "일이삼사오육칠녕하요안녕하세"),
         Album(isMarked: true, name: "instagram"),
         Album(isMarked: true, name: "youtube"),
         Album(isMarked: false, name: "cafe"),
