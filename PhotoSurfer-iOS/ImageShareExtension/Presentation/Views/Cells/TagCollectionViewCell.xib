@@ -11,37 +11,55 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCollectionViewCell" id="gTV-IL-0wX" customClass="TagCollectionViewCell" customModule="ImageShareExtension" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="87" height="34"/>
+            <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="87" height="34"/>
+                <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvv-ur-HiJ">
-                        <rect key="frame" x="17" y="8" width="42" height="20"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u52-cf-cGW">
+                        <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
+                        <color key="tintColor" name="pointSub"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" backgroundImage="colorSub"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7D-28-eSI">
+                        <rect key="frame" x="11" y="0.0" width="90" height="34"/>
+                        <color key="tintColor" name="pointSub"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="Tuc-Wm-4yZ"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" name="grayWhite"/>
+                        <color key="textColor" name="pointMain"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="Wvv-ur-HiJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="17" id="QfL-Z0-dXj"/>
-                <constraint firstAttribute="top" secondItem="Wvv-ur-HiJ" secondAttribute="top" constant="-8" id="aI3-j1-gva"/>
-                <constraint firstAttribute="bottom" secondItem="Wvv-ur-HiJ" secondAttribute="bottom" constant="6" id="kvS-as-djC"/>
-                <constraint firstAttribute="trailing" secondItem="Wvv-ur-HiJ" secondAttribute="trailing" constant="28" id="nBA-G6-dpe"/>
+                <constraint firstAttribute="trailing" secondItem="Y7D-28-eSI" secondAttribute="trailing" constant="17" id="1Lu-eK-0yt"/>
+                <constraint firstItem="u52-cf-cGW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5hO-hz-QOO"/>
+                <constraint firstAttribute="bottom" secondItem="u52-cf-cGW" secondAttribute="bottom" id="8W0-x5-jjQ"/>
+                <constraint firstItem="u52-cf-cGW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Cer-AN-9Jk"/>
+                <constraint firstItem="Y7D-28-eSI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="11" id="DzX-vW-HWs"/>
+                <constraint firstItem="Y7D-28-eSI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gdl-LC-zqH"/>
+                <constraint firstAttribute="trailing" secondItem="u52-cf-cGW" secondAttribute="trailing" id="Z6h-7j-x8E"/>
+                <constraint firstAttribute="bottom" secondItem="Y7D-28-eSI" secondAttribute="bottom" id="nGf-Be-HRL"/>
             </constraints>
-            <size key="customSize" width="160" height="149"/>
+            <size key="customSize" width="191" height="149"/>
             <connections>
-                <outlet property="tagNameLabel" destination="Wvv-ur-HiJ" id="HgB-0Y-SMj"/>
+                <outlet property="tagNameLabel" destination="Y7D-28-eSI" id="gIQ-f1-iwF"/>
             </connections>
-            <point key="canvasLocation" x="210.86956521739131" y="132.58928571428572"/>
+            <point key="canvasLocation" x="233.33333333333334" y="132.58928571428572"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <namedColor name="grayWhite">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="colorSub" width="94" height="34"/>
+        <namedColor name="pointMain">
+            <color red="0.20800000429153442" green="0.4779999852180481" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pointSub">
+            <color red="0.90600001811981201" green="0.93300002813339233" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

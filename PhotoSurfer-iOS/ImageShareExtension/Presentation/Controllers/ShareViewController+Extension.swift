@@ -11,9 +11,8 @@ extension ShareViewController {
     
     // MARK: - Function
     private func createLayout() -> UICollectionViewLayout {
-        let estimatedValueSize: CGFloat = 12.0
+        let estimatedValueSize: CGFloat = 1.0
         let itemMargin: CGFloat =  12.0
-        let groupMargin: CGFloat =  12.0
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(estimatedValueSize),
                                               heightDimension: .estimated(estimatedValueSize))
@@ -23,9 +22,6 @@ extension ShareViewController {
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                        subitems: [item])
         group.interItemSpacing = .fixed(itemMargin)
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = groupMargin
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0)
         
         /// header
         let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -34,16 +30,41 @@ extension ShareViewController {
             layoutSize: headerFooterSize,
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        let groupMargin: CGFloat =  12.0
+        section.interGroupSpacing = groupMargin
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0)
         section.boundarySupplementaryItems = [sectionHeader]
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
+        return createCollectionViewLayout(createdSection: section)
+    }
+    
+    private func createCollectionViewLayout(createdSection: NSCollectionLayoutSection) -> UICollectionViewCompositionalLayout {
+        return UICollectionViewCompositionalLayout { (section, _) -> NSCollectionLayoutSection? in
+            switch section {
+            case 0:
+                return self.createContinuousSectionLayout(section: createdSection)
+            default:
+                return self.createFixedSectionLayout(section: createdSection)
+            }
+        }
+    }
+    
+    private func createContinuousSectionLayout(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection {
+        section.orthogonalScrollingBehavior = .continuous
+        return section
+    }
+    
+    private func createFixedSectionLayout(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection {
+        section.orthogonalScrollingBehavior = .none
+        return section
     }
     
     func setHierarchy() {
         addedTagCollectionView.setCollectionViewLayout(createLayout(), animated: true)
     }
     
-    func setDataSource() {
+    func setDataSource() -> UICollectionViewDiffableDataSource<Section, String> {
         dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: addedTagCollectionView) {
             (collectionView: UICollectionView,
              indexPath: IndexPath,
@@ -55,9 +76,11 @@ extension ShareViewController {
             cell.setData(value: "\(identifier)")
             return cell
         }
-        
+        return dataSource
+    }
+    
+    func setSupplementaryViewProvider(dataSource: UICollectionViewDiffableDataSource<Section, String>) {
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
-            
             var headerTitle: String = "입력한 태그"
             guard let header = collectionView
                 .dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
@@ -74,12 +97,45 @@ extension ShareViewController {
             else {
                 header.underSixLabel.isHidden = false
             }
-            
+            header.setRelatedTagInputView(isRelatedTag: false)
             header.platformDescriptionLabel.isHidden = (indexPath.section != 3)
             header.setData(value: headerTitle)
             return header
         }
         applyInitialDataSource()
+    }
+    
+    func setSearchSupplementaryViewProvider(dataSource: UICollectionViewDiffableDataSource<Section, String>, isSearching: Bool) {
+        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+            var headerTitle: String = "입력한 태그"
+            guard let header = collectionView
+                .dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                  withReuseIdentifier: TagsHeaderCollectionReusableView.identifier,
+                                                  for: indexPath) as? TagsHeaderCollectionReusableView else {
+                fatalError()
+            }
+            if indexPath.section == 0 {
+                header.setInputTagHeader()
+                header.setRelatedTagInputView(isRelatedTag: false)
+                headerTitle = self.searchHeaderTitleArray[0]
+            }
+            else {
+                header.setNotInputTagHeader()
+                header.setRelatedTagInputView(isRelatedTag: true)
+                headerTitle = self.searchHeaderTitleArray[1]
+                if self.isTyping {
+                    print("self.typingText \(self.typingText)")
+                    if self.typingTextCount == 0 {
+                        self.relatedTags = self.relatedTagsFetched
+                    }
+                    header.setInputText(inputText: self.typingText)
+                }
+            }
+            header.platformDescriptionLabel.isHidden = true
+            header.setData(value: headerTitle)
+            return header
+        }
+        applyChangedDataSource(inputText: typingText, isEmpty: !isSearching)
     }
     
     private func applyInitialDataSource() {
@@ -92,36 +148,55 @@ extension ShareViewController {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
-    private func applySearchDataSource() {
+    private func applyChangedDataSource(inputText: String, isEmpty: Bool) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-        snapshot.appendSections([.addedTag, .relatedTag])
+        print("relatedTags \(relatedTags)")
+        print("inputText \(inputText)")
+        relatedTags = relatedTags.filter({ $0.contains(inputText) })
+        print("relatedTags \(relatedTags)")
+        snapshot.appendSections([.addedTag , .relatedTag])
         snapshot.appendItems(addedTags, toSection: .addedTag)
         snapshot.appendItems(relatedTags, toSection: .relatedTag)
-        dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
-    private func changeDataSource(inputText: String) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-        relatedTags = relatedTags.filter({ $0.contains(inputText) })
-        snapshot.reloadItems(relatedTags)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 
 extension ShareViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        applySearchDataSource()
+        guard let inputText = searchBar.text, !inputText.isEmpty else {
+            setSupplementaryViewProvider(dataSource: setDataSource())
+            return true
+        }
+        setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
         return true
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        typingText = searchText
+        if typingTextCount > searchText.count {
+            print("relatedTagsFetched\(relatedTagsFetched)")
+            relatedTags = relatedTagsFetched.filter({ $0.contains(searchText) })
+            print("relatedTagsFetched\(relatedTagsFetched)")
+        }
+        typingTextCount = searchText.count
         guard let inputText = searchBar.text, !inputText.isEmpty else {
+            setSupplementaryViewProvider(dataSource: setDataSource())
+            relatedTags = relatedTagsFetched
+            isTyping = false
             return
         }
-        changeDataSource(inputText: inputText)
+        // 질문
+        setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
+        
+        if searchText.count >= 1 {
+            isTyping = true
+        }
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let inputText = searchBar.text, !inputText.isEmpty else {
+            setSupplementaryViewProvider(dataSource: setDataSource())
+            return
+        }
     }
 }
