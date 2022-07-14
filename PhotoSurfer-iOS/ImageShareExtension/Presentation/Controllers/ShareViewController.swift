@@ -5,9 +5,8 @@
 //  Created by 김하늘 on 2022/07/11.
 //
 
-import Social
 import UIKit
-import SwiftUI
+import Social
 
 final class ShareViewController: UIViewController {
     
@@ -20,6 +19,12 @@ final class ShareViewController: UIViewController {
     var dataSource: UICollectionViewDiffableDataSource<Section, String>! = nil
     let headerTitleArray: [String] = ["추가한 태그", "최근 추가한 태그", "자주 추가한 태그", "플랫폼 유형", "연관 태그"]
     let searchHeaderTitleArray: [String] = ["추가한 태그", "연관 태그"]
+    var typingText: String = ""
+    var isTyping: Bool = false {
+        willSet(newValue) {
+            print(newValue)
+        }
+    }
     enum Section: Int {
         case addedTag
         case recentTag
@@ -43,7 +48,6 @@ final class ShareViewController: UIViewController {
     private func setUI() {
         setSearchBarUI()
         setSearchBar()
-        setToolbar()
         registerXib()
         setHierarchy()
         setSupplementaryViewProvider(dataSource: setDataSource())

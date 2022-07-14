@@ -16,6 +16,9 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var underSixLabel: UILabel!
     @IBOutlet weak var platformDescriptionLabel: UILabel!
+    @IBOutlet weak var relatedTagInputView: UIView!
+    @IBOutlet weak var typingTextButton: UIButton!
+    @IBOutlet weak var relatedTagInputViewHeight: NSLayoutConstraint!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -34,6 +37,23 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     func setNotInputTagHeader() {
+        self.underSixLabel.isHidden = true
         self.headerLabel.font = UIFont.iosSubtitle2
+    }
+    func setInputTagHeader() {
+        self.underSixLabel.isHidden = false
+        self.headerLabel.font = UIFont.iosSubtitle1
+    }
+    func setRelatedTagInputView(isRelatedTag: Bool) {
+        self.relatedTagInputView.isHidden = !isRelatedTag
+        if isRelatedTag {
+            self.relatedTagInputViewHeight.constant = 34
+        }
+        else {
+            self.relatedTagInputViewHeight.constant = 0
+        }
+    }
+    func setInputText(inputText: String) {
+        self.typingTextButton.titleLabel?.text = inputText
     }
 }

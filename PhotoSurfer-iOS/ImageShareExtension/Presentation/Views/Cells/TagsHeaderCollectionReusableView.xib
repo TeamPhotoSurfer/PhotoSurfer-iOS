@@ -11,11 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagsHeaderCollectionReusableView" id="U6b-Vx-4bR" customClass="TagsHeaderCollectionReusableView" customModule="ImageShareExtension" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Aqm-XO-7N8">
-                    <rect key="frame" x="0.0" y="19.5" width="224.5" height="38"/>
+                    <rect key="frame" x="0.0" y="19.5" width="224.5" height="39.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mRc-dm-ePL">
                             <rect key="frame" x="0.0" y="0.0" width="126" height="19.5"/>
@@ -35,34 +35,92 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출처를 추가하면 사진을 더 쉽게 찾을 수 있어요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaX-Nr-waf">
-                            <rect key="frame" x="0.0" y="23.5" width="224.5" height="14.5"/>
+                            <rect key="frame" x="0.0" y="23.5" width="224.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" name="grayGray40"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSH-jn-utF">
+                    <rect key="frame" x="0.0" y="59" width="320" height="34"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHI-VX-DsH">
+                            <rect key="frame" x="0.0" y="10" width="42" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" name="grayGray60"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z61-3f-ayb">
+                            <rect key="frame" x="54" y="0.0" width="67" height="34"/>
+                            <color key="backgroundColor" name="grayGray10"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="B7d-l3-Hca"/>
+                                <constraint firstAttribute="width" constant="67" id="oeN-10-igH"/>
+                            </constraints>
+                            <color key="tintColor" name="grayGray70"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="#"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtz-Mh-Chd">
+                            <rect key="frame" x="252" y="1" width="68" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="HXA-Hh-v1y"/>
+                                <constraint firstAttribute="width" constant="68" id="sAf-u5-Hdy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="플랫폼">
+                                <color key="titleColor" name="grayGray40"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="mtz-Mh-Chd" firstAttribute="centerY" secondItem="kSH-jn-utF" secondAttribute="centerY" id="8vF-RD-mIw"/>
+                        <constraint firstItem="Z61-3f-ayb" firstAttribute="leading" secondItem="EHI-VX-DsH" secondAttribute="trailing" constant="12" id="QBb-X4-a8i"/>
+                        <constraint firstItem="EHI-VX-DsH" firstAttribute="centerY" secondItem="kSH-jn-utF" secondAttribute="centerY" id="eWe-zq-Ozu"/>
+                        <constraint firstItem="EHI-VX-DsH" firstAttribute="leading" secondItem="kSH-jn-utF" secondAttribute="leading" id="fdM-HX-S1Z"/>
+                        <constraint firstItem="Z61-3f-ayb" firstAttribute="centerY" secondItem="kSH-jn-utF" secondAttribute="centerY" id="r24-zg-KXb"/>
+                        <constraint firstAttribute="height" constant="34" id="uW4-zW-a6h"/>
+                        <constraint firstAttribute="trailing" secondItem="mtz-Mh-Chd" secondAttribute="trailing" id="uth-7l-lqw"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Aqm-XO-7N8" secondAttribute="bottom" constant="19.5" id="1Nf-pI-zcs"/>
                 <constraint firstItem="Aqm-XO-7N8" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="5K0-fu-KYR"/>
                 <constraint firstAttribute="top" secondItem="Aqm-XO-7N8" secondAttribute="top" constant="-19.5" id="DW5-fZ-V36"/>
+                <constraint firstItem="kSH-jn-utF" firstAttribute="top" secondItem="Aqm-XO-7N8" secondAttribute="bottom" id="TEf-PS-M25"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="kSH-jn-utF" secondAttribute="trailing" id="hhl-Md-uLg"/>
+                <constraint firstItem="kSH-jn-utF" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="l3z-Og-TtN"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="kSH-jn-utF" secondAttribute="bottom" constant="12" id="ruk-Pj-Pfn"/>
             </constraints>
             <connections>
                 <outlet property="headerLabel" destination="419-6Z-l5K" id="bhL-Ap-F1d"/>
                 <outlet property="platformDescriptionLabel" destination="VaX-Nr-waf" id="XzW-xD-0A9"/>
+                <outlet property="relatedTagInputView" destination="kSH-jn-utF" id="viy-SH-gZb"/>
+                <outlet property="relatedTagInputViewHeight" destination="uW4-zW-a6h" id="DTT-sD-IpG"/>
+                <outlet property="typingTextButton" destination="Z61-3f-ayb" id="8MA-fj-JW0"/>
                 <outlet property="underSixLabel" destination="eLY-JB-kbL" id="YBH-Gr-fry"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="88.727678571428569"/>
+            <point key="canvasLocation" x="131.8840579710145" y="98.102678571428569"/>
         </collectionReusableView>
     </objects>
     <resources>
+        <namedColor name="grayGray10">
+            <color red="0.94900000095367432" green="0.9570000171661377" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="grayGray40">
             <color red="0.68999999761581421" green="0.72200000286102295" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="grayGray50">
             <color red="0.54500001668930054" green="0.58399999141693115" blue="0.63099998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayGray60">
+            <color red="0.41999998688697815" green="0.46299999952316284" blue="0.51800000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayGray70">
+            <color red="0.3059999942779541" green="0.34900000691413879" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
