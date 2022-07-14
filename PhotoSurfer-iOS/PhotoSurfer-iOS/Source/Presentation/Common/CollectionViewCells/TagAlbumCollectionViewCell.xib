@@ -78,6 +78,7 @@
             <size key="customSize" width="162" height="110"/>
             <connections>
                 <outlet property="tagBackgroundImageView" destination="oUn-4v-pZB" id="vV6-lq-Y6G"/>
+                <outlet property="tagMoreButton" destination="9gf-oT-XMQ" id="ztv-cY-bsk"/>
                 <outlet property="tagNameButton" destination="WGG-at-N3A" id="JyD-08-Xb4"/>
                 <outlet property="tagStarButton" destination="VyK-Qi-DPD" id="d1k-Qe-bh0"/>
             </connections>

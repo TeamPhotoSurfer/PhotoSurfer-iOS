@@ -9,16 +9,30 @@ import UIKit
 
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Property
+    var menuItems: [UIAction] {
+        return [
+            UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
+                print("태그 삭제")
+            }),
+            UIAction(title: "태그 수정", image: UIImage(systemName: "pencil"), handler: { _ in
+                print("태그 수정")
+            })
+        ]
+    }
+    
     // MARK: - IBOutlet
     @IBOutlet weak var tagBackgroundImageView: UIImageView!
     @IBOutlet weak var tagNameButton: UIButton!
     @IBOutlet weak var tagStarButton: UIButton!
+    @IBOutlet weak var tagMoreButton: UIButton!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setCellUI()
+        setMoreButton()
     }
     
     // MARK: - Function
@@ -26,6 +40,14 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 8
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
         tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
+    }
+    
+    func setMoreButton() {
+        tagMoreButton.menu = UIMenu(
+            title: "",
+            options: [],
+            children: menuItems)
+        tagMoreButton.showsMenuAsPrimaryAction = true
     }
     
     func setDummy(_ album: Album) {
