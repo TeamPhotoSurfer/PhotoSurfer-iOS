@@ -9,6 +9,9 @@ import UIKit
 
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Property
+    var cellDelegate: TagAlbumCellDelegate?
+    
     // MARK: - IBOutlet
     @IBOutlet weak var tagBackgroundImageView: UIImageView!
     @IBOutlet weak var tagDarkView: UIView!
@@ -16,6 +19,8 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tagStarButton: UIButton!
     @IBOutlet weak var tagMenuButton: UIButton!
     @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var tagDeleteButton: UIButton!
+    @IBOutlet weak var tagEditButton: UIButton!
     
     
     // MARK: - LifeCycle
@@ -24,6 +29,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         
         setCellUI()
         setMenuUI()
+        setAction()
     }
     
     // MARK: - Function
@@ -47,15 +53,26 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         if album.isMarked {
             tagStarButton.isSelected = true
         }
+        setTagName(button: tagNameButton, name: album.name)
+    }
+    
+    func setTagName(button: UIButton, name: String) {
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = Const.Image.icHashtagLineTagWhite
         imageAttachment.bounds = CGRect(x: 0, y: -3, width: 16, height: 16)
         attributedString.append(NSAttributedString(attachment: imageAttachment))
-        attributedString.append(NSAttributedString(string: album.name))
-        tagNameButton.setAttributedTitle(attributedString, for: .normal)
-        tagNameButton.titleLabel?.textAlignment = NSTextAlignment.center
-        
+        attributedString.append(NSAttributedString(string: name))
+        button.setAttributedTitle(attributedString, for: .normal)
+    }
+    
+    func setAction() {
+        self.tagDeleteButton.addTarget(self, action: #selector(deleteButtonDidTap), for: .touchUpInside)
+    }
+    
+    // MARK: - Objc Function
+    @objc func deleteButtonDidTap() {
+        cellDelegate?.deleteButtonDidTap()
     }
     
     // MARK: - IBAction
@@ -66,8 +83,9 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBAction func starButtonDidTap(_ sender: Any) {
         tagStarButton.isSelected.toggle()
     }
-    
 }
 
-    
-
+protocol TagAlbumCellDelegate: AnyObject {
+    // 위임해줄 기능
+    func deleteButtonDidTap()
+}

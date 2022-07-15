@@ -37,6 +37,7 @@ final class TagViewController: UIViewController {
         registerXib()
         dataSource = UICollectionViewDiffableDataSource<Section, Album>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
             guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as? TagAlbumCollectionViewCell else { fatalError() }
+            albumCell.cellDelegate = self
             albumCell.setDummy(item)
             return albumCell
         })
@@ -63,9 +64,22 @@ final class TagViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
+    
+    
+}
+
+extension TagViewController: TagAlbumCellDelegate {
+    func deleteButtonDidTap() {
+        print("태그 삭제")
+    }
 }
 
 extension Album {
+    static let markList = [
+        Album(isMarked: true, name: "일이삼사오육칠녕하요안녕하세"),
+        Album(isMarked: true, name: "instagram"),
+        Album(isMarked: true, name: "youtube"),
+    ]
     static let list = [
         Album(isMarked: true, name: "일이삼사오육칠녕하요안녕하세"),
         Album(isMarked: true, name: "instagram"),
@@ -84,4 +98,5 @@ extension Album {
         Album(isMarked: false, name: "tag"),
         Album(isMarked: false, name: "tag")
     ]
+    static let totalList = markList + list
 }
