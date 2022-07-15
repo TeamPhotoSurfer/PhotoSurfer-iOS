@@ -9,30 +9,20 @@ import UIKit
 
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
-    // MARK: - Property
-    var menuItems: [UIAction] {
-        return [
-            UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
-                print("태그 삭제")
-            }),
-            UIAction(title: "태그 수정", image: UIImage(systemName: "pencil"), handler: { _ in
-                print("태그 수정")
-            })
-        ]
-    }
-    
     // MARK: - IBOutlet
     @IBOutlet weak var tagBackgroundImageView: UIImageView!
     @IBOutlet weak var tagNameButton: UIButton!
     @IBOutlet weak var tagStarButton: UIButton!
-    @IBOutlet weak var tagMoreButton: UIButton!
+    @IBOutlet weak var tagMenuButton: UIButton!
+    @IBOutlet weak var menuView: UIView!
+    
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setCellUI()
-        setMoreButton()
+        setMenuUI()
     }
     
     // MARK: - Function
@@ -41,13 +31,14 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
         tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
     }
-    
-    func setMoreButton() {
-        tagMoreButton.menu = UIMenu(
-            title: "",
-            options: [],
-            children: menuItems)
-        tagMoreButton.showsMenuAsPrimaryAction = true
+    func setMenuUI() {
+        menuView.layer.cornerRadius = 4
+        menuView.layer.shadowColor = UIColor.black.cgColor
+        menuView.layer.shadowOpacity = 0.12
+        menuView.layer.shadowRadius = 10
+        menuView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        menuView.layer.shadowPath = nil
+        menuView.isHidden = true
     }
     
     func setDummy(_ album: Album) {
@@ -64,4 +55,12 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         tagNameButton.titleLabel?.textAlignment = NSTextAlignment.center
         
     }
+    
+    // MARK: - IBAction
+    @IBAction func menuButtonDidTap(_ sender: Any) {
+        menuView.isHidden.toggle()
+    }
 }
+
+    
+
