@@ -16,6 +16,8 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tagStarButton: UIButton!
     @IBOutlet weak var tagMenuButton: UIButton!
     @IBOutlet weak var menuView: UIView!
+    @IBOutlet weak var tagDeleteButton: UIButton!
+    @IBOutlet weak var tagEditButton: UIButton!
     
     
     // MARK: - LifeCycle
