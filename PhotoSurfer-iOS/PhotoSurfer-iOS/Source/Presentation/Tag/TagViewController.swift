@@ -44,12 +44,8 @@ final class TagViewController: UIViewController {
         registerXib()
         dataSource = UICollectionViewDiffableDataSource<Section, Album>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
             guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as? TagAlbumCollectionViewCell else { fatalError() }
-            albumCell.cellDelegate = self
             albumCell.setDummy(item)
             albumCell.tag = indexPath.row
-            albumCell.tagDeleteButton.tag = indexPath.row
-            albumCell.tagEditButton.tag = indexPath.row
-            albumCell.tagStarButton.tag = indexPath.row
             albumCell.tagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
             return albumCell
         })
@@ -88,15 +84,8 @@ final class TagViewController: UIViewController {
             }
             superview = superview?.superview
         }
-        print("태그 삭제, ", sender.tag)
-//        Album.list.remove(at: sender.tag)
-//        applySnapshot()
-    }
-}
-
-extension TagViewController: TagAlbumCellDelegate {
-    func deleteButtonDidTap() {
-        print("태그 삭제")
+        guard let cellID = superview?.tag else { return }
+        print("태그 삭제, ", cellID)
     }
 }
 
@@ -119,5 +108,4 @@ extension Album {
         Album(isMarked: false, name: "tag14"),
         Album(isMarked: false, name: "tag15")
     ]
-    static let totalList = markList + list
 }

@@ -9,9 +9,6 @@ import UIKit
 
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
-    // MARK: - Property
-    var cellDelegate: TagAlbumCellDelegate?
-    
     // MARK: - IBOutlet
     @IBOutlet weak var tagBackgroundImageView: UIImageView!
     @IBOutlet weak var tagDarkView: UIView!
@@ -22,14 +19,12 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tagDeleteButton: UIButton!
     @IBOutlet weak var tagEditButton: UIButton!
     
-    
     // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setCellUI()
         setMenuUI()
-        setAction()
     }
     
     // MARK: - Function
@@ -64,17 +59,9 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         attributedString.append(NSAttributedString(attachment: imageAttachment))
         attributedString.append(NSAttributedString(string: name))
         button.setAttributedTitle(attributedString, for: .normal)
+        tagNameButton.titleLabel?.textAlignment = NSTextAlignment.center
     }
-    
-    func setAction() {
-        self.tagDeleteButton.addTarget(self, action: #selector(deleteButtonDidTap), for: .touchUpInside)
-    }
-    
-    // MARK: - Objc Function
-    @objc func deleteButtonDidTap() {
-        cellDelegate?.deleteButtonDidTap()
-    }
-    
+        
     // MARK: - IBAction
     @IBAction func menuButtonDidTap(_ sender: Any) {
         menuView.isHidden.toggle()
@@ -83,9 +70,4 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBAction func starButtonDidTap(_ sender: Any) {
         tagStarButton.isSelected.toggle()
     }
-}
-
-protocol TagAlbumCellDelegate: AnyObject {
-    // 위임해줄 기능
-    func deleteButtonDidTap()
 }
