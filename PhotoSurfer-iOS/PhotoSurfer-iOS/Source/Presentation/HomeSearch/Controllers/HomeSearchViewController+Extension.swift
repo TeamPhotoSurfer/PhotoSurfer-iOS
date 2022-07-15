@@ -48,10 +48,21 @@ extension HomeSearchViewController {
 extension HomeSearchViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if Section(rawValue: indexPath.section) == .inputTag {
+        switch indexPath.section {
+        case 0:
             inputTags.remove(at: indexPath.item)
-            searchBar.text?.isEmpty ?? true ? applyInitialDataSource() : applyRelatedTagSnapshot()
+        case 1:
+            if inputTags.count < 6 {
+                inputTags.append(Tag(title: recentTags[indexPath.item].title))
+            }
+        case 2:
+            if inputTags.count < 6 {
+                inputTags.append(Tag(title: frequencyTags[indexPath.item].title))
+            }
+        default:
+            print("none")
         }
+        searchBar.text?.isEmpty ?? true ? applyInitialDataSource() : applyRelatedTagSnapshot()
     }
 }
 
