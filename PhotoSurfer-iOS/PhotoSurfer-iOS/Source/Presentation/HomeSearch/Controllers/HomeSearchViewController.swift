@@ -29,6 +29,7 @@ final class HomeSearchViewController: UIViewController {
     var frequencyTags: [Tag] = []
     var relatedTags: [Tag] = []
     var collectionViewHeaders: [String] = []
+    var isShownRelated: Bool = false
     
     // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!
@@ -88,15 +89,7 @@ final class HomeSearchViewController: UIViewController {
         }
     }
     
-    func applyInitialDataSource() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
-        collectionViewHeaders = ["입력한 태그", "최근 추가한 태그", "자주 추가한 태그", "연관 태그"]
-        snapshot.appendSections([.inputTag, .recentAddTag, .frequencyAddTag])
-        snapshot.appendItems(inputTags, toSection: .inputTag)
-        snapshot.appendItems(recentTags, toSection: .recentAddTag)
-        snapshot.appendItems(frequencyTags, toSection: .frequencyAddTag)
-        dataSource.apply(snapshot)
-    }
+   
 }
 
 // 이후 삭제할 부분이라 아래에 바로 넣어놓음
@@ -106,5 +99,7 @@ extension HomeSearchViewController {
         inputTags = [Tag(title: "input"), Tag(title: "input"), Tag(title: "input"),Tag(title: "input")]
         recentTags = [Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent")]
         frequencyTags = [Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주")]
+        relatedTags = [Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"),Tag(title: "연관")
+        ]
     }
 }
