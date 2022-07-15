@@ -89,14 +89,28 @@
                                     <constraint firstAttribute="height" constant="59" id="wFb-uF-kZ7"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7r-r1-AQM">
+                                <rect key="frame" x="74" y="321" width="94" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="ABI-ym-ChE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" name="grayGray70"/>
+                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="16" maxY="0.0"/>
+                                <state key="normal" image="icHashtagLineTagGray70" backgroundImage="colorGray">
+                                    <color key="titleColor" name="grayGray70"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Xd-am-t49"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="9v1-di-q75" secondAttribute="trailing" id="1UD-ef-7ZI"/>
                             <constraint firstItem="ym1-YB-0us" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="20" id="PBy-h5-7Bp"/>
+                            <constraint firstItem="G7r-r1-AQM" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="74" id="Rvc-xR-bgO"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="bottom" secondItem="ym1-YB-0us" secondAttribute="bottom" id="SIZ-fT-jGa"/>
                             <constraint firstItem="ym1-YB-0us" firstAttribute="top" secondItem="jhz-iw-P4t" secondAttribute="bottom" id="cbh-VB-eP9"/>
+                            <constraint firstItem="G7r-r1-AQM" firstAttribute="top" secondItem="jhz-iw-P4t" secondAttribute="bottom" constant="150" id="k89-c7-DSN"/>
                             <constraint firstItem="jhz-iw-P4t" firstAttribute="top" secondItem="9v1-di-q75" secondAttribute="bottom" id="r4Y-AD-kMS"/>
                             <constraint firstItem="jhz-iw-P4t" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="10" id="rhT-09-f9j"/>
                             <constraint firstItem="9v1-di-q75" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" id="th3-1f-Tco"/>
@@ -108,6 +122,7 @@
                     <connections>
                         <outlet property="addedTagCollectionView" destination="ym1-YB-0us" id="YVC-cZ-QXD"/>
                         <outlet property="searchBar" destination="jhz-iw-P4t" id="09L-bE-lvG"/>
+                        <outlet property="typingButton" destination="G7r-r1-AQM" id="RJe-na-mel"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -116,8 +131,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="colorGray" width="94" height="34"/>
+        <image name="icHashtagLineTagGray70" width="12" height="12"/>
         <namedColor name="grayGray60">
             <color red="0.41999998688697815" green="0.46299999952316284" blue="0.51800000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayGray70">
+            <color red="0.3059999942779541" green="0.34900000691413879" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
