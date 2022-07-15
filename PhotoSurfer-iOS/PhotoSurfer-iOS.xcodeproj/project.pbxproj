@@ -46,6 +46,8 @@
 		1553B725287D12BA00137E6C /* TagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1553B723287D12BA00137E6C /* TagCollectionViewCell.xib */; };
 		1553B729287D14CA00137E6C /* HomeSearchViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B728287D14CA00137E6C /* HomeSearchViewController+Extension.swift */; };
 		1584E751288060D9000FA459 /* HomeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E750288060D9000FA459 /* HomeViewController+Extension.swift */; };
+		1584E75728807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E75528807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift */; };
+		1584E75828807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1584E75628807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib */; };
 		15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEA2875BE0900852617 /* AppDelegate.swift */; };
 		15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEC2875BE0900852617 /* SceneDelegate.swift */; };
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
@@ -123,6 +125,8 @@
 		1553B723287D12BA00137E6C /* TagCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCollectionViewCell.xib; sourceTree = "<group>"; };
 		1553B728287D14CA00137E6C /* HomeSearchViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeSearchViewController+Extension.swift"; sourceTree = "<group>"; };
 		1584E750288060D9000FA459 /* HomeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Extension.swift"; sourceTree = "<group>"; };
+		1584E75528807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		1584E75628807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSearchHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		15D1DEE72875BE0900852617 /* PhotoSurfer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoSurfer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1DEEA2875BE0900852617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D1DEEC2875BE0900852617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -440,6 +444,8 @@
 			isa = PBXGroup;
 			children = (
 				1553B717287C88A700137E6C /* HomeSearch.storyboard */,
+				1584E75528807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift */,
+				1584E75628807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -608,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */,
+				1584E75828807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib in Resources */,
 				086F1802287ADF410061422F /* Tag.storyboard in Resources */,
 				086F17F4287ADE0D0061422F /* Home.storyboard in Resources */,
 				086F17D3287A9F620061422F /* Colors.xcassets in Resources */,
@@ -725,6 +732,7 @@
 				1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */,
 				1553B724287D12BA00137E6C /* TagCollectionViewCell.swift in Sources */,
 				15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */,
+				1584E75728807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift in Sources */,
 				086F180C287AF91F0061422F /* APIConstants.swift in Sources */,
 				DDAC9B76287C60330041566B /* UIFont+.swift in Sources */,
 				086F17FA287ADE7D0061422F /* SettingViewController.swift in Sources */,
