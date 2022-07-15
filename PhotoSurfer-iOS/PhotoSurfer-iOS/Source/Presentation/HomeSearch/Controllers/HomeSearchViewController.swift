@@ -28,7 +28,7 @@ final class HomeSearchViewController: UIViewController {
     var recentTags: [Tag] = []
     var frequencyTags: [Tag] = []
     var relatedTags: [Tag] = []
-    var collectionViewHeaders = ["입력한 태그", "최근 추가한 태그", "자주 추가한 태그", "연관 태그"]
+    var collectionViewHeaders: [String] = []
     
     // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!
@@ -90,6 +90,7 @@ final class HomeSearchViewController: UIViewController {
     
     func applyInitialDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
+        collectionViewHeaders = ["입력한 태그", "최근 추가한 태그", "자주 추가한 태그", "연관 태그"]
         snapshot.appendSections([.inputTag, .recentAddTag, .frequencyAddTag])
         snapshot.appendItems(inputTags, toSection: .inputTag)
         snapshot.appendItems(recentTags, toSection: .recentAddTag)
