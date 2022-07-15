@@ -21,7 +21,7 @@ final class TagCollectionViewCell: UICollectionViewCell {
     // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         setUI()
     }
     

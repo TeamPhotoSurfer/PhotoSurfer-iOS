@@ -8,16 +8,22 @@
 import UIKit
 import Social
 
+struct Tag: Hashable {
+    // 추후 없앨예정
+    let uuid = UUID()
+    let title: String
+}
+
 final class ShareViewController: UIViewController {
     
     // MARK: - Property
-    var addedTags: [String] = ["a", "b", "c", "d", "e", "1", "2", "3", "4", "5"]
-    var recentTags: [String] = ["k", "kk", "kkk", "kkkk", "kkkkk"]
-    var oftenTags: [String] = ["좋은노래", "솝트", "전시회", "그래픽디자인", "포토서퍼", "인턴"]
-    var platformTags: [String] = ["포토서퍼", "카페", "위시리스트", "휴학계획", "여행"]
-    var relatedTags: [String] = ["avdsdaf", "sdfds", "fdsds", "ssss", "aaaaaafds"]
-    var relatedTagsFetched: [String] = ["avdsdaf", "sdfds", "fdsds", "ssss", "aaaaaafds"]
-    var dataSource: UICollectionViewDiffableDataSource<Section, String>! = nil
+    var addedTags: [Tag] = []
+    var recentTags: [Tag] = []
+    var oftenTags: [Tag] = []
+    var platformTags: [Tag] = []
+    var relatedTags: [Tag] = []
+    var relatedTagsFetched: [Tag] = []
+    var dataSource: UICollectionViewDiffableDataSource<Section, Tag>! = nil
     let headerTitleArray: [String] = ["추가한 태그", "최근 추가한 태그", "자주 추가한 태그", "플랫폼 유형", "연관 태그"]
     let searchHeaderTitleArray: [String] = ["추가한 태그", "연관 태그"]
     var typingText: String = ""
@@ -45,8 +51,10 @@ final class ShareViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        setDummy()
         setKeyboard()
         bindData()
+        setCollectionView()
     }
     
     // MARK: - Function
@@ -55,6 +63,7 @@ final class ShareViewController: UIViewController {
         setSearchBar()
         registerXib()
         setHierarchy()
+        typingButton.isHidden = true
     }
     
     private func registerXib() {
@@ -62,6 +71,10 @@ final class ShareViewController: UIViewController {
                                         forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         addedTagCollectionView.register(UINib(nibName: TagsHeaderCollectionReusableView.identifier, bundle: nil),
                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagsHeaderCollectionReusableView.identifier)
+    }
+    
+    private func setCollectionView() {
+        addedTagCollectionView.delegate = self
     }
     
     private func bindData() {
@@ -89,7 +102,7 @@ final class ShareViewController: UIViewController {
         let toolBarKeyboard = UIToolbar()
         toolBarKeyboard.sizeToFit()
         let flexibleSpaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(self.doneButtonDidTap))
+        let doneButton = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(self.doneButtonDidTap))
         toolBarKeyboard.items = [flexibleSpaceButton, doneButton]
         return toolBarKeyboard
     }
@@ -106,5 +119,18 @@ final class ShareViewController: UIViewController {
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
         
+    }
+}
+
+// 이후 삭제할 부분이라 아래에 바로 넣어놓음
+extension ShareViewController {
+    
+    private func setDummy() {
+        addedTags = [Tag(title: "a"), Tag(title: "b"), Tag(title: "c"),Tag(title: "d")]
+        recentTags = [Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk")]
+        oftenTags = [Tag(title: "좋은노래"), Tag(title: "솝트"), Tag(title: "전시회"), Tag(title: "그래픽디자인"), Tag(title: "포토서퍼")]
+        platformTags = [Tag(title: "포토서퍼"), Tag(title: "카페"), Tag(title: "위시리스트"), Tag(title: "휴학계획"), Tag(title: "여행")]
+        relatedTags = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss")]
+        relatedTagsFetched = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss")]
     }
 }
