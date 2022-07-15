@@ -12,17 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TagAlbumCollectionViewCell" customModule="PhotoSurfer_iOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
+            <rect key="frame" x="0.0" y="0.0" width="172" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
+                <rect key="frame" x="0.0" y="0.0" width="172" height="120"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shapeWhitelogo" translatesAutoresizingMaskIntoConstraints="NO" id="oUn-4v-pZB" userLabel="background">
-                        <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
+                        <rect key="frame" x="5" y="5" width="162" height="110"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FP1-dg-bxG">
-                        <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
+                        <rect key="frame" x="5" y="5" width="162" height="110"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyK-Qi-DPD">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -118,24 +118,25 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="oUn-4v-pZB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7Gc-mI-Nz5"/>
-                <constraint firstAttribute="trailing" secondItem="FP1-dg-bxG" secondAttribute="trailing" id="Fdt-1B-yIk"/>
-                <constraint firstItem="oUn-4v-pZB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="GSw-4t-IFr"/>
-                <constraint firstAttribute="bottom" secondItem="FP1-dg-bxG" secondAttribute="bottom" id="WFy-cT-xe9"/>
-                <constraint firstAttribute="trailing" secondItem="oUn-4v-pZB" secondAttribute="trailing" id="bPk-2Y-Ixe"/>
-                <constraint firstAttribute="bottom" secondItem="oUn-4v-pZB" secondAttribute="bottom" id="bjc-x4-SLB"/>
-                <constraint firstItem="FP1-dg-bxG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gE7-UN-2rI"/>
-                <constraint firstItem="FP1-dg-bxG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="o1Z-Zp-PjG"/>
+                <constraint firstItem="oUn-4v-pZB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="7Gc-mI-Nz5"/>
+                <constraint firstAttribute="trailing" secondItem="FP1-dg-bxG" secondAttribute="trailing" constant="5" id="Fdt-1B-yIk"/>
+                <constraint firstItem="oUn-4v-pZB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="GSw-4t-IFr"/>
+                <constraint firstAttribute="bottom" secondItem="FP1-dg-bxG" secondAttribute="bottom" constant="5" id="WFy-cT-xe9"/>
+                <constraint firstAttribute="trailing" secondItem="oUn-4v-pZB" secondAttribute="trailing" constant="5" id="bPk-2Y-Ixe"/>
+                <constraint firstAttribute="bottom" secondItem="oUn-4v-pZB" secondAttribute="bottom" constant="5" id="bjc-x4-SLB"/>
+                <constraint firstItem="FP1-dg-bxG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="gE7-UN-2rI"/>
+                <constraint firstItem="FP1-dg-bxG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="o1Z-Zp-PjG"/>
             </constraints>
-            <size key="customSize" width="162" height="110"/>
+            <size key="customSize" width="172" height="120"/>
             <connections>
                 <outlet property="menuView" destination="Gd3-Zm-chD" id="Z2B-zi-Lw9"/>
                 <outlet property="tagBackgroundImageView" destination="oUn-4v-pZB" id="vV6-lq-Y6G"/>
+                <outlet property="tagDarkView" destination="FP1-dg-bxG" id="QxE-ne-hVJ"/>
                 <outlet property="tagMenuButton" destination="9gf-oT-XMQ" id="GCT-ca-zbC"/>
                 <outlet property="tagNameButton" destination="WGG-at-N3A" id="JyD-08-Xb4"/>
                 <outlet property="tagStarButton" destination="VyK-Qi-DPD" id="d1k-Qe-bh0"/>
             </connections>
-            <point key="canvasLocation" x="213.04347826086959" y="115.84821428571428"/>
+            <point key="canvasLocation" x="220.28985507246378" y="119.19642857142857"/>
         </collectionViewCell>
     </objects>
     <resources>

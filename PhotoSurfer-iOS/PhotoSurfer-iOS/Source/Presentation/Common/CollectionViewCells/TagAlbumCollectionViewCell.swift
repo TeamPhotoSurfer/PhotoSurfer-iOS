@@ -11,6 +11,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlet
     @IBOutlet weak var tagBackgroundImageView: UIImageView!
+    @IBOutlet weak var tagDarkView: UIView!
     @IBOutlet weak var tagNameButton: UIButton!
     @IBOutlet weak var tagStarButton: UIButton!
     @IBOutlet weak var tagMenuButton: UIButton!
@@ -27,7 +28,8 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Function
     func setCellUI() {
-        self.layer.cornerRadius = 8
+        tagBackgroundImageView.layer.cornerRadius = 8
+        tagDarkView.layer.cornerRadius = 8
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
         tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
     }
@@ -35,7 +37,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         menuView.layer.cornerRadius = 4
         menuView.layer.shadowColor = UIColor.black.cgColor
         menuView.layer.shadowOpacity = 0.12
-        menuView.layer.shadowRadius = 10
+        menuView.layer.shadowRadius = 4
         menuView.layer.shadowOffset = CGSize(width: 0, height: 4)
         menuView.layer.shadowPath = nil
         menuView.isHidden = true
