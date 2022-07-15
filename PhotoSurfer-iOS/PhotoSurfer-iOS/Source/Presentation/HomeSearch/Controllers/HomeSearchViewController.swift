@@ -65,6 +65,7 @@ final class HomeSearchViewController: UIViewController {
         collectionView.setCollectionViewLayout(createLayout(), animated: true)
         setDataSource()
         applyInitialDataSource()
+        collectionView.delegate = self
     }
     
     private func registerXib() {
@@ -77,7 +78,7 @@ final class HomeSearchViewController: UIViewController {
     private func setDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            tagCell.setData(title: itemIdentifier.title)
+            tagCell.setData(title: itemIdentifier.title, isInputTag: indexPath.section == 0)
             return tagCell
         })
         dataSource.supplementaryViewProvider = {(collectionView, kind, indexPath) -> UICollectionReusableView in
@@ -87,7 +88,7 @@ final class HomeSearchViewController: UIViewController {
         }
     }
     
-    private func applyInitialDataSource() {
+    func applyInitialDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         snapshot.appendSections([.inputTag, .recentAddTag, .frequencyAddTag])
         snapshot.appendItems(inputTags, toSection: .inputTag)

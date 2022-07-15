@@ -26,16 +26,33 @@ extension HomeSearchViewController {
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(48))
         let header = NSCollectionLayoutBoundarySupplementaryItem(
-                   layoutSize: headerSize,
-                   elementKind: UICollectionView.elementKindSectionHeader,
-                   alignment: .top)
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top)
         section.boundarySupplementaryItems = [header]
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
 }
 
+extension HomeSearchViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if Section(rawValue: indexPath.section) == .inputTag {
+            inputTags.remove(at: indexPath.item)
+            applyInitialDataSource()
+        }
+    }
+}
+
 extension HomeSearchViewController: UISearchBarDelegate {
     
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let text = searchBar.text {
+            if inputTags.count < 6 && !text.isEmpty {
+                inputTags.append(Tag(title: searchBar.text ?? ""))
+                applyInitialDataSource()
+            }
+        }
+    }
 }
