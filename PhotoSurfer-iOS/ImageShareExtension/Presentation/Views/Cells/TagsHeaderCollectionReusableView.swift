@@ -17,7 +17,6 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var underSixLabel: UILabel!
     @IBOutlet weak var platformDescriptionLabel: UILabel!
     @IBOutlet weak var relatedTagInputView: UIView!
-    @IBOutlet weak var typingTextButton: UIButton!
     @IBOutlet weak var relatedTagInputViewHeight: NSLayoutConstraint!
     @IBOutlet weak var platformCheckButton: UIButton!
     
@@ -31,6 +30,10 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - Function
     private func setUI() {
         self.frame.size.height = 200
+        platformCheckButton.setImage(Const.Image.icCheckCircleFill, for: .normal)
+        platformCheckButton.setImage(Const.Image.delete, for: .selected)
+        platformCheckButton.setTitle("플랫폼", for: .normal)
+        platformCheckButton.setTitle("플랫폼", for: .selected)
     }
     
     func setData(value: String) {
@@ -52,8 +55,8 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
         self.relatedTagInputViewHeight.constant = isRelatedTag ? 34 : 0
     }
     
-    func setInputText(inputText: String) {
-        self.typingTextButton.titleLabel?.text = inputText
+    // MARK: - IBAction
+    @IBAction func platformButtonDidTap(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
-    
 }

@@ -116,7 +116,6 @@ extension ShareViewController {
                     if self.typingTextCount == 0 {
                         self.relatedTags = self.relatedTagsFetched
                     }
-                    header.setInputText(inputText: self.typingText)
                 }
             }
             header.platformDescriptionLabel.isHidden = true
@@ -177,5 +176,11 @@ extension ShareViewController: UISearchBarDelegate {
             setSupplementaryViewProvider(dataSource: setDataSource())
             return
         }
+    }
+}
+
+extension ShareViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("aaa")
     }
 }

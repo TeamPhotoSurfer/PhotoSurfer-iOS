@@ -51,16 +51,6 @@
                             <color key="textColor" name="grayGray60"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z61-3f-ayb">
-                            <rect key="frame" x="54" y="0.0" width="67" height="34"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="34" id="B7d-l3-Hca"/>
-                                <constraint firstAttribute="width" constant="67" id="oeN-10-igH"/>
-                            </constraints>
-                            <color key="tintColor" name="grayGray70"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="#" backgroundImage="colorGray"/>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtz-Mh-Chd">
                             <rect key="frame" x="252" y="1" width="68" height="32"/>
                             <constraints>
@@ -72,14 +62,15 @@
                             <state key="normal" title="플랫폼" image="icCheckCircleFillCheckboxMain">
                                 <color key="titleColor" name="grayGray40"/>
                             </state>
+                            <connections>
+                                <action selector="platformButtonDidTap:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="Tl7-co-P6W"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="mtz-Mh-Chd" firstAttribute="centerY" secondItem="kSH-jn-utF" secondAttribute="centerY" id="8vF-RD-mIw"/>
-                        <constraint firstItem="Z61-3f-ayb" firstAttribute="leading" secondItem="EHI-VX-DsH" secondAttribute="trailing" constant="12" id="QBb-X4-a8i"/>
                         <constraint firstItem="EHI-VX-DsH" firstAttribute="centerY" secondItem="kSH-jn-utF" secondAttribute="centerY" id="eWe-zq-Ozu"/>
                         <constraint firstItem="EHI-VX-DsH" firstAttribute="leading" secondItem="kSH-jn-utF" secondAttribute="leading" id="fdM-HX-S1Z"/>
-                        <constraint firstItem="Z61-3f-ayb" firstAttribute="centerY" secondItem="kSH-jn-utF" secondAttribute="centerY" id="r24-zg-KXb"/>
                         <constraint firstAttribute="height" constant="34" id="uW4-zW-a6h"/>
                         <constraint firstAttribute="trailing" secondItem="mtz-Mh-Chd" secondAttribute="trailing" id="uth-7l-lqw"/>
                     </constraints>
@@ -100,14 +91,12 @@
                 <outlet property="platformDescriptionLabel" destination="VaX-Nr-waf" id="XzW-xD-0A9"/>
                 <outlet property="relatedTagInputView" destination="kSH-jn-utF" id="viy-SH-gZb"/>
                 <outlet property="relatedTagInputViewHeight" destination="uW4-zW-a6h" id="DTT-sD-IpG"/>
-                <outlet property="typingTextButton" destination="Z61-3f-ayb" id="8MA-fj-JW0"/>
                 <outlet property="underSixLabel" destination="eLY-JB-kbL" id="YBH-Gr-fry"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="98.102678571428569"/>
         </collectionReusableView>
     </objects>
     <resources>
-        <image name="colorGray" width="94" height="34"/>
         <image name="icCheckCircleFillCheckboxMain" width="16" height="16"/>
         <namedColor name="grayGray40">
             <color red="0.68999999761581421" green="0.72200000286102295" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -117,9 +106,6 @@
         </namedColor>
         <namedColor name="grayGray60">
             <color red="0.41999998688697815" green="0.46299999952316284" blue="0.51800000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="grayGray70">
-            <color red="0.3059999942779541" green="0.34900000691413879" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
