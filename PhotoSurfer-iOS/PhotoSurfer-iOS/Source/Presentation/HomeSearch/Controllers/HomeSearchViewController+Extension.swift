@@ -10,18 +10,30 @@ import UIKit
 extension HomeSearchViewController {
     
     func createLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewCompositionalLayout { sectionIdx, env in
+            return self.createSectionLayout(groupWidth: (sectionIdx == 0) ? .estimated(100) :
+                                                ((self.isShownRelated) ? .estimated(100) : .fractionalWidth(1.0)),
+                                            scrollBehavior: (sectionIdx == 0) ? .continuous : .none)
+        }
+        return layout
+    }
+    
+    
+    private func createSectionLayout(groupWidth: NSCollectionLayoutDimension,
+                                     scrollBehavior: UICollectionLayoutSectionOrthogonalScrollingBehavior) -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .estimated(100),
             heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
+            widthDimension: groupWidth,
             heightDimension: .absolute(34))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         group.interItemSpacing = .fixed(12)
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 12
         section.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 20, bottom: 8, trailing: 20)
+        section.orthogonalScrollingBehavior = scrollBehavior
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .absolute(48))
@@ -30,8 +42,7 @@ extension HomeSearchViewController {
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top)
         section.boundarySupplementaryItems = [header]
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
+        return section
     }
     
     func applyInitialDataSource() {
