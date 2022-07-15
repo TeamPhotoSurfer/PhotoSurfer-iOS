@@ -13,7 +13,10 @@ final class TagCollectionViewCell: UICollectionViewCell {
     static let identifier = "TagCollectionViewCell"
     
     // MARK: - IBOutlet
-    @IBOutlet weak var tagNameLabel: UILabel!
+    @IBOutlet weak var tagNameButton: UIButton!
+    @IBOutlet weak var deleteImageView: UIImageView!
+    @IBOutlet weak var backgroundImageButton: UIButton!
+    
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -24,7 +27,20 @@ final class TagCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Function
     func setData(value: String) {
-        tagNameLabel.text = value
+       // tagNameButton.titleLabel?.text = value
+        tagNameButton.setTitle(value, for: .normal)
+    }
+    
+    func setColorNLayout(isAddedTag: Bool) {
+        deleteImageView.isHidden = !isAddedTag
+        if isAddedTag {
+            backgroundImageButton.tintColor = UIColor.pointMain
+            tagNameButton.titleLabel?.textColor = .grayWhite
+        }
+        else {
+            backgroundImageButton.tintColor = UIColor.pointSub
+            tagNameButton.titleLabel?.textColor = .pointMain
+        }
     }
     
     private func setUI() {

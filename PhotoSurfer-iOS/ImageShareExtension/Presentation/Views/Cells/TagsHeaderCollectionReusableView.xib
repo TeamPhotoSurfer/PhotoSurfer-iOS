@@ -67,8 +67,9 @@
                                 <constraint firstAttribute="height" constant="32" id="HXA-Hh-v1y"/>
                                 <constraint firstAttribute="width" constant="68" id="sAf-u5-Hdy"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
-                            <state key="normal" title="플랫폼" image="icCheckCircleFillCheckboxGray40">
+                            <state key="normal" title="플랫폼" image="icCheckCircleFillCheckboxMain">
                                 <color key="titleColor" name="grayGray40"/>
                             </state>
                         </button>
@@ -95,6 +96,7 @@
             </constraints>
             <connections>
                 <outlet property="headerLabel" destination="419-6Z-l5K" id="bhL-Ap-F1d"/>
+                <outlet property="platformCheckButton" destination="mtz-Mh-Chd" id="wol-w1-D6B"/>
                 <outlet property="platformDescriptionLabel" destination="VaX-Nr-waf" id="XzW-xD-0A9"/>
                 <outlet property="relatedTagInputView" destination="kSH-jn-utF" id="viy-SH-gZb"/>
                 <outlet property="relatedTagInputViewHeight" destination="uW4-zW-a6h" id="DTT-sD-IpG"/>
@@ -106,7 +108,7 @@
     </objects>
     <resources>
         <image name="colorGray" width="94" height="34"/>
-        <image name="icCheckCircleFillCheckboxGray40" width="16" height="16"/>
+        <image name="icCheckCircleFillCheckboxMain" width="16" height="16"/>
         <namedColor name="grayGray40">
             <color red="0.68999999761581421" green="0.72200000286102295" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
