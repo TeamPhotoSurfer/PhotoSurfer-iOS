@@ -75,9 +75,21 @@ final class TagViewController: UIViewController {
     
     // MARK: - Objc Function
     @objc func deleteButtonDidTap(sender: UIButton) {
+        var superview = sender.superview
+        while superview != nil {
+            if let cell = superview as? UICollectionViewCell {
+                guard let indexPath = albumCollectionView.indexPath(for: cell),
+                      let objectIClickedOnto = dataSource.itemIdentifier(for: indexPath) else { return }
+                var snapshot = dataSource.snapshot()
+                snapshot.deleteItems([objectIClickedOnto])
+                dataSource.apply(snapshot)
+                break
+            }
+            superview = superview?.superview
+        }
         print("태그 삭제, ", sender.tag)
-        Album.list.remove(at: sender.tag)
-        applySnapshot()
+//        Album.list.remove(at: sender.tag)
+//        applySnapshot()
     }
 }
 
