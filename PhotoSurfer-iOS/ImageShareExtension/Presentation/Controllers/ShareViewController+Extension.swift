@@ -40,26 +40,13 @@ extension ShareViewController {
     }
     
     private func createCollectionViewLayout(createdSection: NSCollectionLayoutSection) -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { (section, _) -> NSCollectionLayoutSection? in
-            switch section {
-            case 0:
-                return self.createContinuousSectionLayout(section: createdSection)
-            default:
-                return self.createFixedSectionLayout(section: createdSection)
-            }
+        let layout = UICollectionViewCompositionalLayout { section, env in
+            createdSection.orthogonalScrollingBehavior = (section == 0) ? .continuous : .none
+            return createdSection
         }
+        return layout
     }
-    
-    private func createContinuousSectionLayout(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection {
-        section.orthogonalScrollingBehavior = .continuous
-        return section
-    }
-    
-    private func createFixedSectionLayout(section: NSCollectionLayoutSection) -> NSCollectionLayoutSection {
-        section.orthogonalScrollingBehavior = .none
-        return section
-    }
-    
+        
     func setHierarchy() {
         addedTagCollectionView.setCollectionViewLayout(createLayout(), animated: true)
     }
@@ -114,6 +101,7 @@ extension ShareViewController {
                                                   for: indexPath) as? TagsHeaderCollectionReusableView else {
                 fatalError()
             }
+            print("yuyuyu \(indexPath.section)")
             if indexPath.section == 0 {
                 header.setInputTagHeader()
                 header.setRelatedTagInputView(isRelatedTag: false)
@@ -145,33 +133,25 @@ extension ShareViewController {
         snapshot.appendItems(recentTags, toSection: .recentTag)
         snapshot.appendItems(oftenTags, toSection: .oftenTag)
         snapshot.appendItems(platformTags, toSection: .platformTag)
-        dataSource.apply(snapshot, animatingDifferences: false)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func applyChangedDataSource(inputText: String, isEmpty: Bool) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
-        print("relatedTags \(relatedTags)")
-        print("inputText \(inputText)")
+        var snapshot2 = NSDiffableDataSourceSnapshot<Section, String>()
         relatedTags = relatedTags.filter({ $0.contains(inputText) })
-        print("relatedTags \(relatedTags)")
-        snapshot.appendSections([.addedTag , .relatedTag])
-        snapshot.appendItems(addedTags, toSection: .addedTag)
-        snapshot.appendItems(relatedTags, toSection: .relatedTag)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        snapshot2.appendSections([.addedTag , .relatedTag])
+        snapshot2.appendItems(addedTags, toSection: .addedTag)
+        snapshot2.appendItems(relatedTags, toSection: .relatedTag)
+        //여긴가 (dataSource)
+        dataSource.apply(snapshot2, animatingDifferences: true)
     }
 }
 
 extension ShareViewController: UISearchBarDelegate {
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        guard let inputText = searchBar.text, !inputText.isEmpty else {
-            setSupplementaryViewProvider(dataSource: setDataSource())
-            return true
-        }
-        setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
-        return true
-    }
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        typingButton.setTitle(searchText, for: .normal)
         typingText = searchText
         if typingTextCount > searchText.count {
             print("relatedTagsFetched\(relatedTagsFetched)")
@@ -187,7 +167,6 @@ extension ShareViewController: UISearchBarDelegate {
         }
         // 질문
         setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
-        
         if searchText.count >= 1 {
             isTyping = true
         }
