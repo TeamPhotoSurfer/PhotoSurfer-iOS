@@ -19,6 +19,7 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var relatedTagInputView: UIView!
     @IBOutlet weak var typingTextButton: UIButton!
     @IBOutlet weak var relatedTagInputViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var platformCheckButton: UIButton!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -54,4 +55,5 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     func setInputText(inputText: String) {
         self.typingTextButton.titleLabel?.text = inputText
     }
+    
 }

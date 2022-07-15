@@ -150,6 +150,8 @@ extension ShareViewController {
 extension ShareViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        typingButton.setTitle(searchText, for: .normal)
         typingText = searchText
         if typingTextCount > searchText.count {
             print("relatedTagsFetched\(relatedTagsFetched)")

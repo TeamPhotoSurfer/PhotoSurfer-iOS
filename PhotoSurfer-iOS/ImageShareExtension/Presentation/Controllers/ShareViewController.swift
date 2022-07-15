@@ -38,6 +38,7 @@ final class ShareViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var addedTagCollectionView: UICollectionView!
+    @IBOutlet weak var typingButton: UIButton!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
