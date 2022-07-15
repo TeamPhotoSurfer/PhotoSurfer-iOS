@@ -60,6 +60,11 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBAction func menuButtonDidTap(_ sender: Any) {
         menuView.isHidden.toggle()
     }
+    
+    @IBAction func starButtonDidTap(_ sender: Any) {
+        tagStarButton.isSelected.toggle()
+    }
+    
 }
 
     

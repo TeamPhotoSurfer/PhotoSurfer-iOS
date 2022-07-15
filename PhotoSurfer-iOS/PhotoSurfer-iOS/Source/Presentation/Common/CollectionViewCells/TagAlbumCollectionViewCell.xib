@@ -32,6 +32,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="leftStarIconWhiteButton"/>
+                                <connections>
+                                    <action selector="starButtonDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="sVj-BB-S2A"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gf-oT-XMQ">
                                 <rect key="frame" x="122" y="0.0" width="40" height="40"/>
@@ -45,7 +48,7 @@
                                     <action selector="menuButtonDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Svs-9W-6Oi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-at-N3A">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-at-N3A">
                                 <rect key="frame" x="8" y="34" width="136" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="IWp-ez-l1f"/>
