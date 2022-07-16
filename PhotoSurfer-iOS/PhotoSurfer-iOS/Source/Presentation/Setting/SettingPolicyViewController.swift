@@ -14,4 +14,8 @@ class SettingPolicyViewController: UIViewController {
 
     }
 
+    // MARK: - IBAction
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="00j-Sw-8f6">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Setting View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="SettingViewController" id="Y6W-OH-hqX" customClass="SettingViewController" customModule="PhotoSurfer_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,6 +82,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="rightBackIconButton"/>
+                                                <connections>
+                                                    <action selector="settingUserButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="o19-KH-wKS"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -152,6 +155,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="rightBackIconButton"/>
+                                                <connections>
+                                                    <action selector="settingPolicyButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="g7R-x0-Ptd"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -186,12 +192,34 @@
                             <constraint firstItem="fg7-Q0-g2S" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="xiE-Ob-Ee8"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="cPs-jE-Oz2"/>
+                    <navigationItem key="navigationItem" id="PMX-AN-lN1"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="JDu-Lb-Czc" id="Q3f-MW-3gs"/>
+                        <outlet property="nameLabel" destination="rD8-hZ-8de" id="PhB-Vy-CbB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23.188405797101453" y="118.52678571428571"/>
+            <point key="canvasLocation" x="919.20000000000005" y="118.22660098522168"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="9pc-dZ-Hvw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="00j-Sw-8f6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="cPs-jE-Oz2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kjr-Eq-XfZ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Ekw-Zf-Pjm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbF-sf-Chk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23.199999999999999" y="118.22660098522168"/>
         </scene>
     </scenes>
     <resources>
