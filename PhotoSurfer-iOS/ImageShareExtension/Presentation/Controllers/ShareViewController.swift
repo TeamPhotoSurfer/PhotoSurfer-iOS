@@ -8,6 +8,8 @@
 import UIKit
 import Social
 
+import Toast_Swift
+
 struct Tag: Hashable {
     // 추후 없앨예정
     let uuid = UUID()
@@ -118,13 +120,12 @@ final class ShareViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
-        
+        self.view.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
     }
 }
 
 // 이후 삭제할 부분이라 아래에 바로 넣어놓음
 extension ShareViewController {
-    
     private func setDummy() {
         addedTags = [Tag(title: "a"), Tag(title: "b"), Tag(title: "c"),Tag(title: "d")]
         recentTags = [Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk")]
