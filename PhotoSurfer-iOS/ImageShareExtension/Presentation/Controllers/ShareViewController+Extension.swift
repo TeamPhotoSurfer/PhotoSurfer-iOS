@@ -288,3 +288,9 @@ extension ShareViewController: UICollectionViewDelegate {
         }
     }
 }
+
+extension ShareViewController: UIScrollViewDelegate {
+   func scrollViewDidScroll(_ scrollView: UIScrollView) {
+       typingButtonTopConst.constant = typingButtonTopConstValue + scrollView.contentOffset.y
+   }
+}

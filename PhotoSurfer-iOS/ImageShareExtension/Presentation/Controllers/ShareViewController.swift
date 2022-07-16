@@ -44,11 +44,13 @@ final class ShareViewController: UIViewController {
     }
     let underSixTagMessage: String = "태그는 최대 6개까지만 추가할 수 있어요."
     let alreadyAddedMessage: String = "이미 같은 태그를 추가했어요."
+    let typingButtonTopConstValue: CGFloat = -184
     
     // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var addedTagCollectionView: UICollectionView!
     @IBOutlet weak var typingButton: UIButton!
+    @IBOutlet weak var typingButtonTopConst: NSLayoutConstraint!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -137,10 +139,10 @@ final class ShareViewController: UIViewController {
 extension ShareViewController {
     private func setDummy() {
         addedTags = [Tag(title: "a"), Tag(title: "b"), Tag(title: "c"),Tag(title: "d")]
-        recentTags = [Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk")]
+        recentTags = [Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk"), Tag(title: "kkkkkk"), Tag(title: "kkkkkkk"), Tag(title: "kkkkkkkk")]
         oftenTags = [Tag(title: "좋은노래"), Tag(title: "솝트"), Tag(title: "전시회"), Tag(title: "그래픽디자인"), Tag(title: "포토서퍼")]
         platformTags = [Tag(title: "포토서퍼"), Tag(title: "카페"), Tag(title: "위시리스트"), Tag(title: "휴학계획"), Tag(title: "여행")]
         relatedTags = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss")]
-        relatedTagsFetched = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss")]
+        relatedTagsFetched = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss"), Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk"), Tag(title: "kkkkkk"), Tag(title: "kkkkkkk"), Tag(title: "kkkkkkkk")]
     }
 }

@@ -110,10 +110,10 @@
                             <constraint firstItem="G7r-r1-AQM" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="74" id="Rvc-xR-bgO"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="bottom" secondItem="ym1-YB-0us" secondAttribute="bottom" id="SIZ-fT-jGa"/>
                             <constraint firstItem="ym1-YB-0us" firstAttribute="top" secondItem="jhz-iw-P4t" secondAttribute="bottom" id="cbh-VB-eP9"/>
-                            <constraint firstItem="G7r-r1-AQM" firstAttribute="top" secondItem="jhz-iw-P4t" secondAttribute="bottom" constant="150" id="k89-c7-DSN"/>
                             <constraint firstItem="jhz-iw-P4t" firstAttribute="top" secondItem="9v1-di-q75" secondAttribute="bottom" id="r4Y-AD-kMS"/>
                             <constraint firstItem="jhz-iw-P4t" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="10" id="rhT-09-f9j"/>
                             <constraint firstItem="9v1-di-q75" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" id="th3-1f-Tco"/>
+                            <constraint firstItem="ym1-YB-0us" firstAttribute="top" secondItem="G7r-r1-AQM" secondAttribute="bottom" constant="-184" id="wgS-wG-2nC"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="top" secondItem="9v1-di-q75" secondAttribute="top" id="wvL-Pk-mHm"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="jhz-iw-P4t" secondAttribute="trailing" constant="10" id="zZu-kB-KcL"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="ym1-YB-0us" secondAttribute="trailing" constant="20" id="zlp-vX-b9V"/>
@@ -123,6 +123,7 @@
                         <outlet property="addedTagCollectionView" destination="ym1-YB-0us" id="YVC-cZ-QXD"/>
                         <outlet property="searchBar" destination="jhz-iw-P4t" id="09L-bE-lvG"/>
                         <outlet property="typingButton" destination="G7r-r1-AQM" id="RJe-na-mel"/>
+                        <outlet property="typingButtonTopConst" destination="wgS-wG-2nC" id="ooa-2J-s7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
