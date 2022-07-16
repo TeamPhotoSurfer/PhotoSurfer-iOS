@@ -20,7 +20,7 @@ final class TagViewController: UIViewController {
 
     // MARK: - Property
     var dataSource: UICollectionViewDiffableDataSource<Section, Album>!
-    var albumList: [Album] = Album.list
+    var albumList: [Album] = Album.totalList
     
     // MARK: - IBOutlet
     @IBOutlet weak var albumCollectionView: UICollectionView!
@@ -90,10 +90,12 @@ final class TagViewController: UIViewController {
 }
 
 extension Album {
-    static var list = [
+    static var markList = [
         Album(isMarked: true, name: "일이삼사오육칠녕하요안녕하세"),
         Album(isMarked: true, name: "instagram"),
         Album(isMarked: true, name: "youtube"),
+    ]
+    static var list = [
         Album(isMarked: false, name: "cafe"),
         Album(isMarked: false, name: "dog"),
         Album(isMarked: false, name: "cat"),
@@ -108,4 +110,5 @@ extension Album {
         Album(isMarked: false, name: "tag14"),
         Album(isMarked: false, name: "tag15")
     ]
+    static var totalList = markList + list
 }
