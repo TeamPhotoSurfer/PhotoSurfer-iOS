@@ -57,6 +57,8 @@
 		DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */; };
 		DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */; };
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
+		DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E292882982D00CF5036 /* SettingUser.storyboard */; };
+		DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */; };
 		DDDA8117287E9DBA0051338D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDA8116287E9DBA0051338D /* Image.swift */; };
 		F8D50F2B92EBE73B864A66DB /* Pods_ImageShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC916B927CB096BE2F53174 /* Pods_ImageShareExtension.framework */; };
 /* End PBXBuildFile section */
@@ -142,6 +144,8 @@
 		DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagAlbumCollectionViewCell.xib; sourceTree = "<group>"; };
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		DDB71E292882982D00CF5036 /* SettingUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingUser.storyboard; sourceTree = "<group>"; };
+		DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPolicy.storyboard; sourceTree = "<group>"; };
 		DDDA8116287E9DBA0051338D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FA434D01192DCB2FD9CF04E0 /* Pods-ImageShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -297,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				086F17F7287ADE650061422F /* Setting.storyboard */,
+				DDB71E292882982D00CF5036 /* SettingUser.storyboard */,
+				DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */,
 				086F17F9287ADE7D0061422F /* SettingViewController.swift */,
 			);
 			path = Setting;
@@ -616,11 +622,13 @@
 				15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */,
 				1584E75828807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib in Resources */,
 				086F1802287ADF410061422F /* Tag.storyboard in Resources */,
+				DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */,
 				086F17F4287ADE0D0061422F /* Home.storyboard in Resources */,
 				086F17D3287A9F620061422F /* Colors.xcassets in Resources */,
 				086F17FE287ADF170061422F /* Alarm.storyboard in Resources */,
 				15D1DEF42875BE0C00852617 /* Assets.xcassets in Resources */,
 				15D1DEF22875BE0900852617 /* Main.storyboard in Resources */,
+				DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */,
 				1553B725287D12BA00137E6C /* TagCollectionViewCell.xib in Resources */,
 				1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */,
 				DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */,
