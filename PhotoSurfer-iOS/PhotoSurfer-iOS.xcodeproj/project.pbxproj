@@ -48,6 +48,11 @@
 		1584E751288060D9000FA459 /* HomeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E750288060D9000FA459 /* HomeViewController+Extension.swift */; };
 		1584E75728807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E75528807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift */; };
 		1584E75828807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1584E75628807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib */; };
+		1584E75D2882A4EC000FA459 /* HomeResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1584E75C2882A4EC000FA459 /* HomeResult.storyboard */; };
+		1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E75E2882A505000FA459 /* HomeResultViewController.swift */; };
+		1584E7612882A524000FA459 /* HomeResultViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E7602882A524000FA459 /* HomeResultViewController+Extension.swift */; };
+		1584E7642882A554000FA459 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E7622882A554000FA459 /* PhotoCollectionViewCell.swift */; };
+		1584E7652882A554000FA459 /* PhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1584E7632882A554000FA459 /* PhotoCollectionViewCell.xib */; };
 		15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEA2875BE0900852617 /* AppDelegate.swift */; };
 		15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEC2875BE0900852617 /* SceneDelegate.swift */; };
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
@@ -129,6 +134,11 @@
 		1584E750288060D9000FA459 /* HomeViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Extension.swift"; sourceTree = "<group>"; };
 		1584E75528807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		1584E75628807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeSearchHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		1584E75C2882A4EC000FA459 /* HomeResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeResult.storyboard; sourceTree = "<group>"; };
+		1584E75E2882A505000FA459 /* HomeResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeResultViewController.swift; sourceTree = "<group>"; };
+		1584E7602882A524000FA459 /* HomeResultViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeResultViewController+Extension.swift"; sourceTree = "<group>"; };
+		1584E7622882A554000FA459 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		1584E7632882A554000FA459 /* PhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		15D1DEE72875BE0900852617 /* PhotoSurfer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoSurfer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1DEEA2875BE0900852617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D1DEEC2875BE0900852617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -243,6 +253,7 @@
 		086F17E0287AA18A0061422F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1584E7592882A4D9000FA459 /* HomeResult */,
 				086F17F2287ADE040061422F /* Tag */,
 				086F17F1287ADDB90061422F /* Alarm */,
 				086F17F0287ADDB10061422F /* Setting */,
@@ -433,6 +444,8 @@
 				1553B723287D12BA00137E6C /* TagCollectionViewCell.xib */,
 				DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */,
 				DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */,
+				1584E7622882A554000FA459 /* PhotoCollectionViewCell.swift */,
+				1584E7632882A554000FA459 /* PhotoCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -471,6 +484,32 @@
 				1584E750288060D9000FA459 /* HomeViewController+Extension.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1584E7592882A4D9000FA459 /* HomeResult */ = {
+			isa = PBXGroup;
+			children = (
+				1584E75B2882A4E3000FA459 /* Views */,
+				1584E75A2882A4DE000FA459 /* Controllers */,
+			);
+			path = HomeResult;
+			sourceTree = "<group>";
+		};
+		1584E75A2882A4DE000FA459 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1584E75E2882A505000FA459 /* HomeResultViewController.swift */,
+				1584E7602882A524000FA459 /* HomeResultViewController+Extension.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1584E75B2882A4E3000FA459 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1584E75C2882A4EC000FA459 /* HomeResult.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		15D1DEDE2875BE0900852617 = {
@@ -619,6 +658,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1584E75D2882A4EC000FA459 /* HomeResult.storyboard in Resources */,
 				15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */,
 				1584E75828807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib in Resources */,
 				086F1802287ADF410061422F /* Tag.storyboard in Resources */,
@@ -631,6 +671,7 @@
 				DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */,
 				1553B725287D12BA00137E6C /* TagCollectionViewCell.xib in Resources */,
 				1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */,
+				1584E7652882A554000FA459 /* PhotoCollectionViewCell.xib in Resources */,
 				DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */,
 				086F17F8287ADE650061422F /* Setting.storyboard in Resources */,
 			);
@@ -728,6 +769,7 @@
 				1584E751288060D9000FA459 /* HomeViewController+Extension.swift in Sources */,
 				DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */,
 				15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */,
+				1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,
 				086F17EC287ADCF30061422F /* File.swift in Sources */,
@@ -736,6 +778,7 @@
 				086F180E287AF99E0061422F /* NetworkResult.swift in Sources */,
 				086F1800287ADF2E0061422F /* TagViewController.swift in Sources */,
 				1553B71E287C8A3500137E6C /* ViewController.swift in Sources */,
+				1584E7642882A554000FA459 /* PhotoCollectionViewCell.swift in Sources */,
 				1553B720287C8A3A00137E6C /* Identifier.swift in Sources */,
 				1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */,
 				1553B724287D12BA00137E6C /* TagCollectionViewCell.swift in Sources */,
@@ -744,6 +787,7 @@
 				086F180C287AF91F0061422F /* APIConstants.swift in Sources */,
 				DDAC9B76287C60330041566B /* UIFont+.swift in Sources */,
 				086F17FA287ADE7D0061422F /* SettingViewController.swift in Sources */,
+				1584E7612882A524000FA459 /* HomeResultViewController+Extension.swift in Sources */,
 				1553B729287D14CA00137E6C /* HomeSearchViewController+Extension.swift in Sources */,
 				086F1806287AE14B0061422F /* Const.swift in Sources */,
 				086F1808287AE1740061422F /* UIColor+.swift in Sources */,
