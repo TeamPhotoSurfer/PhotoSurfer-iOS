@@ -64,6 +64,8 @@
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
 		DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E292882982D00CF5036 /* SettingUser.storyboard */; };
 		DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */; };
+		DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */; };
+		DDB71E342882A7EF00CF5036 /* SettingPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB71E332882A7EF00CF5036 /* SettingPolicyViewController.swift */; };
 		DDDA8117287E9DBA0051338D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDA8116287E9DBA0051338D /* Image.swift */; };
 		F8D50F2B92EBE73B864A66DB /* Pods_ImageShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC916B927CB096BE2F53174 /* Pods_ImageShareExtension.framework */; };
 /* End PBXBuildFile section */
@@ -156,6 +158,8 @@
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		DDB71E292882982D00CF5036 /* SettingUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingUser.storyboard; sourceTree = "<group>"; };
 		DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPolicy.storyboard; sourceTree = "<group>"; };
+		DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserViewController.swift; sourceTree = "<group>"; };
+		DDB71E332882A7EF00CF5036 /* SettingPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPolicyViewController.swift; sourceTree = "<group>"; };
 		DDDA8116287E9DBA0051338D /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		FA434D01192DCB2FD9CF04E0 /* Pods-ImageShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.debug.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -315,6 +319,8 @@
 				DDB71E292882982D00CF5036 /* SettingUser.storyboard */,
 				DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */,
 				086F17F9287ADE7D0061422F /* SettingViewController.swift */,
+				DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */,
+				DDB71E332882A7EF00CF5036 /* SettingPolicyViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -770,6 +776,7 @@
 				DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */,
 				15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */,
 				1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */,
+				DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,
 				086F17EC287ADCF30061422F /* File.swift in Sources */,
@@ -777,6 +784,7 @@
 				DDDA8117287E9DBA0051338D /* Image.swift in Sources */,
 				086F180E287AF99E0061422F /* NetworkResult.swift in Sources */,
 				086F1800287ADF2E0061422F /* TagViewController.swift in Sources */,
+				DDB71E342882A7EF00CF5036 /* SettingPolicyViewController.swift in Sources */,
 				1553B71E287C8A3500137E6C /* ViewController.swift in Sources */,
 				1584E7642882A554000FA459 /* PhotoCollectionViewCell.swift in Sources */,
 				1553B720287C8A3A00137E6C /* Identifier.swift in Sources */,
