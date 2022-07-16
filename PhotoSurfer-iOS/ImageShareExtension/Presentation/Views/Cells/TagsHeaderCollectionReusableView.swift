@@ -30,8 +30,10 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - Function
     private func setUI() {
         self.frame.size.height = 200
-        platformCheckButton.setImage(Const.Image.icCheckCircleFill, for: .normal)
-        platformCheckButton.setImage(Const.Image.delete, for: .selected)
+        platformCheckButton.setImage(Const.Image.icCheckCircleFillCheckboxGray40, for: .normal)
+        platformCheckButton.setImage(Const.Image.icCheckCircleFillCheckboxMain, for: .selected)
+        platformCheckButton.setTitleColor(.grayGray40, for: .normal)
+        platformCheckButton.setTitleColor(.pointMain, for: .selected)
         platformCheckButton.setTitle("플랫폼", for: .normal)
         platformCheckButton.setTitle("플랫폼", for: .selected)
     }

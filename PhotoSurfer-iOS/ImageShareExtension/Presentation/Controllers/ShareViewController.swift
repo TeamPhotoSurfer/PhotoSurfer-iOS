@@ -42,6 +42,8 @@ final class ShareViewController: UIViewController {
         case platformTag
         case relatedTag
     }
+    let underSixTagMessage: String = "태그는 최대 6개까지만 추가할 수 있어요."
+    let alreadyAddedMessage: String = "이미 같은 태그를 추가했어요."
     
     // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!
@@ -109,6 +111,10 @@ final class ShareViewController: UIViewController {
         return toolBarKeyboard
     }
     
+    func makeToast(message: String) {
+        self.view.makeToast(message)
+    }
+    
     // MARK: - Objc Function
     @objc private func doneButtonDidTap() {
         dismissKeyboard()
@@ -120,6 +126,9 @@ final class ShareViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
+        //windows.last?.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
+        var toastStyle = ToastStyle()
+        toastStyle.activitySize = CGSize(width: 335, height: 50)
         self.view.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
     }
 }

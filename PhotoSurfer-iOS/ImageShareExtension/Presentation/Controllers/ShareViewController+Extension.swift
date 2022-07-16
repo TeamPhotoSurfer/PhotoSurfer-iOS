@@ -199,7 +199,7 @@ extension ShareViewController: UISearchBarDelegate {
         }
         if !addedTags.contains(Tag(title: typingText)) {
             if addedTags.count >= 6 {
-                self.view.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
+                makeToast(message: self.underSixTagMessage)
             }
             else {
                 addedTags.append(Tag(title: typingText))
@@ -207,61 +207,70 @@ extension ShareViewController: UISearchBarDelegate {
                 applyChangedDataSource(inputText: typingText, isEmpty: false)
             }
         }
+        else {
+            makeToast(message: alreadyAddedMessage)
+        }
     }
 }
 
 extension ShareViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        /// 입력하는 경우
         if dataSource.snapshot().numberOfSections <= 2 {
+            print("1")
             switch indexPath.section {
             case 0:
                 addedTags.remove(at: indexPath.item)
             default:
-                if !addedTags.contains(relatedTags[indexPath.item]) {
-                    if addedTags.count >= 6 {
-                        self.view.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
-                    }
-                    else {
-                        addedTags.append(relatedTags[indexPath.item])
-                        relatedTags.append(Tag(title: typingText))
-                    }
-                }
+                break
             }
-            applyChangedDataSource(inputText: typingText, isEmpty: true)
+            applyChangedDataSource(inputText: "", isEmpty: true)
         }
         else {
+            /// 기존 태그 중 선택하는 경우
+            print("2")
             switch indexPath.section {
             case 0:
                 addedTags.remove(at: indexPath.item)
             case 1:
                 if !addedTags.contains(recentTags[indexPath.item]) {
                     if addedTags.count >= 6 {
-                        self.view.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
+                        makeToast(message: underSixTagMessage)
                     }
                     else {
+                        recentTags.remove(at: indexPath.item)
                         addedTags.append(recentTags[indexPath.item])
+                        applyInitialDataSource()
                     }
+                }
+                else {
+                    makeToast(message: alreadyAddedMessage)
                 }
             case 2:
                 if !addedTags.contains(oftenTags[indexPath.item]) {
                     if addedTags.count >= 6 {
-                        self.view.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
+                        makeToast(message: underSixTagMessage)
                     }
                     else {
                         addedTags.append(oftenTags[indexPath.item])
+                        applyInitialDataSource()
                     }
+                }
+                else {
+                    makeToast(message: alreadyAddedMessage)
                 }
             default:
                 if !addedTags.contains(platformTags[indexPath.item]) {
                     if addedTags.count >= 6 {
-                        let windows = UIWindowScene.window
-                        
-                        windows.last?.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
-                        self.view.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
+                        makeToast(message: underSixTagMessage)
                     }
                     else {
                         addedTags.append(platformTags[indexPath.item])
+                        applyInitialDataSource()
                     }
+                }
+                else {
+                    makeToast(message: alreadyAddedMessage)
                 }
             }
             applyInitialDataSource()
