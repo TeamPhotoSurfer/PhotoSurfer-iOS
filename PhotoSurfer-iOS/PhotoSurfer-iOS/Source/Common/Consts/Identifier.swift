@@ -14,5 +14,6 @@ extension Const {
         
         static let TagCollectionViewCell = "TagCollectionViewCell"
         static let TagAlbumCollectionViewCell = "TagAlbumCollectionViewCell"
+        static let HomeSearchHeaderCollectionReusableView = "HomeSearchHeaderCollectionReusableView"
     }
 }
