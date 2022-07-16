@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,16 +16,68 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1s-UA-JKv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMS-GJ-arn">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="48" id="Q6S-rZ-be8"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="leftBackIconButton"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hVe-WI-sXB">
+                                        <rect key="frame" x="0.0" y="55" width="414" height="1"/>
+                                        <color key="backgroundColor" name="grayGray30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="cd4-8U-udu"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정 관리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jMZ-lb-a7a">
+                                        <rect key="frame" x="173.5" y="17" width="67" height="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" name="grayGray90"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hVe-WI-sXB" secondAttribute="trailing" id="Exn-qV-aXM"/>
+                                    <constraint firstItem="SMS-GJ-arn" firstAttribute="leading" secondItem="V1s-UA-JKv" secondAttribute="leading" id="KBV-0J-ran"/>
+                                    <constraint firstItem="SMS-GJ-arn" firstAttribute="top" secondItem="V1s-UA-JKv" secondAttribute="top" id="Woz-Qj-zRu"/>
+                                    <constraint firstItem="jMZ-lb-a7a" firstAttribute="centerY" secondItem="V1s-UA-JKv" secondAttribute="centerY" id="YMp-UI-snr"/>
+                                    <constraint firstAttribute="bottom" secondItem="SMS-GJ-arn" secondAttribute="bottom" id="bcc-XQ-naJ"/>
+                                    <constraint firstAttribute="height" constant="56" id="kcd-3O-KFr"/>
+                                    <constraint firstItem="hVe-WI-sXB" firstAttribute="leading" secondItem="V1s-UA-JKv" secondAttribute="leading" id="kzR-0m-IIe"/>
+                                    <constraint firstItem="jMZ-lb-a7a" firstAttribute="centerX" secondItem="V1s-UA-JKv" secondAttribute="centerX" id="wA6-qD-xXn"/>
+                                    <constraint firstAttribute="bottom" secondItem="hVe-WI-sXB" secondAttribute="bottom" id="xh8-t7-NiC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="V1s-UA-JKv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="RDW-GA-9la"/>
+                            <constraint firstItem="V1s-UA-JKv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="blJ-lY-VEI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="V1s-UA-JKv" secondAttribute="trailing" id="g0f-Ao-zge"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57" y="43"/>
+            <point key="canvasLocation" x="56.521739130434788" y="42.857142857142854"/>
         </scene>
     </scenes>
     <resources>
+        <image name="leftBackIconButton" width="48" height="56"/>
+        <namedColor name="grayGray30">
+            <color red="0.81999999284744263" green="0.83899998664855957" blue="0.85900002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayGray90">
+            <color red="0.14900000393390656" green="0.18400000035762787" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
