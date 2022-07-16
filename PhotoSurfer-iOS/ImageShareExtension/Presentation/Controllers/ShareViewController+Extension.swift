@@ -36,7 +36,6 @@ extension ShareViewController {
                                                              subitems: [item])
                 }
             }
-            
             group.interItemSpacing = .fixed(itemMargin)
             
             /// header
@@ -70,16 +69,7 @@ extension ShareViewController {
                                                                 for: indexPath) as? TagCollectionViewCell else {
                 fatalError("err")
             }
-            switch indexPath.section {
-            case 0 :
-                cell.deleteImageView.isHidden = false
-                cell.backgroundImageButton.setBackgroundImage(Const.Image.colorMain, for: .normal)
-                cell.tagNameButton.setTitleColor(.grayWhite, for: .normal)
-            default:
-                cell.deleteImageView.isHidden = true
-                cell.backgroundImageButton.setBackgroundImage(Const.Image.colorSub, for: .normal)
-                cell.tagNameButton.setTitleColor(.pointMain, for: .normal)
-            }
+            cell.setUI(isAddedTag: indexPath.section == 0)
             cell.setData(value: "\(identifier.title)")
             return cell
         }
@@ -96,7 +86,6 @@ extension ShareViewController {
                 fatalError()
             }
             headerTitle = self.headerTitleArray[indexPath.section]
-            
             if indexPath.section != 0 {
                 header.setNotInputTagHeader()
                 header.underSixLabel.isHidden = true
@@ -160,7 +149,6 @@ extension ShareViewController {
         snapshot2.appendSections([.addedTag , .relatedTag])
         snapshot2.appendItems(addedTags, toSection: .addedTag)
         snapshot2.appendItems(relatedTags, toSection: .relatedTag)
-        //여긴가 (dataSource)
         dataSource.apply(snapshot2, animatingDifferences: true)
     }
 }
@@ -217,7 +205,6 @@ extension ShareViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         /// 입력하는 경우
         if dataSource.snapshot().numberOfSections <= 2 {
-            print("1")
             switch indexPath.section {
             case 0:
                 addedTags.remove(at: indexPath.item)
@@ -228,7 +215,6 @@ extension ShareViewController: UICollectionViewDelegate {
         }
         else {
             /// 기존 태그 중 선택하는 경우
-            print("2")
             switch indexPath.section {
             case 0:
                 addedTags.remove(at: indexPath.item)

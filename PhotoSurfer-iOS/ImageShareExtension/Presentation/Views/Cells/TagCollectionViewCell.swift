@@ -31,15 +31,19 @@ final class TagCollectionViewCell: UICollectionViewCell {
         tagNameButton.setTitle(value, for: .normal)
     }
     
-    func setColorNLayout(isAddedTag: Bool) {
+    func setUI(isAddedTag: Bool) {
         deleteImageView.isHidden = !isAddedTag
         if isAddedTag {
+            backgroundImageButton.setBackgroundImage(Const.Image.colorMain, for: .normal)
             backgroundImageButton.tintColor = UIColor.pointMain
             tagNameButton.titleLabel?.textColor = .grayWhite
+            tagNameButton.setTitleColor(.grayWhite, for: .normal)
         }
         else {
+            backgroundImageButton.setBackgroundImage(Const.Image.colorSub, for: .normal)
             backgroundImageButton.tintColor = UIColor.pointSub
             tagNameButton.titleLabel?.textColor = .pointMain
+            tagNameButton.setTitleColor(.pointMain, for: .normal)
         }
     }
     
