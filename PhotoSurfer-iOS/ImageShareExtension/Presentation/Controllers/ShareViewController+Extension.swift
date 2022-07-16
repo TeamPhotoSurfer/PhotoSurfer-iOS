@@ -233,40 +233,48 @@ extension ShareViewController: UICollectionViewDelegate {
             case 0:
                 addedTags.remove(at: indexPath.item)
             case 1:
-                if !addedTags.contains(recentTags[indexPath.item]) {
+                var isAddedTagContainIteam: Bool = false
+                for i in 0..<addedTags.count {
+                    isAddedTagContainIteam = (addedTags[i].title == recentTags[indexPath.item].title)
+                }
+                if !isAddedTagContainIteam {
                     if addedTags.count >= 6 {
                         makeToast(message: underSixTagMessage)
                     }
                     else {
-                        recentTags.remove(at: indexPath.item)
-                        addedTags.append(recentTags[indexPath.item])
-                        applyInitialDataSource()
+                        addedTags.append(Tag(title: recentTags[indexPath.item].title))
                     }
                 }
                 else {
                     makeToast(message: alreadyAddedMessage)
                 }
             case 2:
-                if !addedTags.contains(oftenTags[indexPath.item]) {
+                var isAddedTagContainIteam: Bool = false
+                for i in 0..<addedTags.count {
+                    isAddedTagContainIteam = (addedTags[i].title == oftenTags[indexPath.item].title)
+                }
+                if !isAddedTagContainIteam {
                     if addedTags.count >= 6 {
                         makeToast(message: underSixTagMessage)
                     }
                     else {
-                        addedTags.append(oftenTags[indexPath.item])
-                        applyInitialDataSource()
+                        addedTags.append(Tag(title: oftenTags[indexPath.item].title))
                     }
                 }
                 else {
                     makeToast(message: alreadyAddedMessage)
                 }
             default:
-                if !addedTags.contains(platformTags[indexPath.item]) {
+                var isAddedTagContainIteam: Bool = false
+                for i in 0..<addedTags.count {
+                    isAddedTagContainIteam = (addedTags[i].title == platformTags[indexPath.item].title)
+                }
+                if !isAddedTagContainIteam {
                     if addedTags.count >= 6 {
                         makeToast(message: underSixTagMessage)
                     }
                     else {
-                        addedTags.append(platformTags[indexPath.item])
-                        applyInitialDataSource()
+                        addedTags.append(Tag(title: platformTags[indexPath.item].title))
                     }
                 }
                 else {
