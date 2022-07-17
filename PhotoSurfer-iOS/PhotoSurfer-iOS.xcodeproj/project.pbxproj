@@ -68,6 +68,9 @@
 		15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */; };
 		15C4BFD428842FF70099CA8D /* NetworkBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD328842FF70099CA8D /* NetworkBase.swift */; };
 		15C4BFD6288430490099CA8D /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD5288430490099CA8D /* GeneralResponse.swift */; };
+		15C4BFDC2884788E0099CA8D /* AlarmListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFDA2884788E0099CA8D /* AlarmListTableViewCell.swift */; };
+		15C4BFDD2884788E0099CA8D /* AlarmListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C4BFDB2884788E0099CA8D /* AlarmListTableViewCell.xib */; };
+		15C4BFDF288478BB0099CA8D /* AlarmViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFDE288478BB0099CA8D /* AlarmViewController+Extension.swift */; };
 		15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEA2875BE0900852617 /* AppDelegate.swift */; };
 		15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEC2875BE0900852617 /* SceneDelegate.swift */; };
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
@@ -169,6 +172,9 @@
 		15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
 		15C4BFD328842FF70099CA8D /* NetworkBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBase.swift; sourceTree = "<group>"; };
 		15C4BFD5288430490099CA8D /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
+		15C4BFDA2884788E0099CA8D /* AlarmListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListTableViewCell.swift; sourceTree = "<group>"; };
+		15C4BFDB2884788E0099CA8D /* AlarmListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmListTableViewCell.xib; sourceTree = "<group>"; };
+		15C4BFDE288478BB0099CA8D /* AlarmViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmViewController+Extension.swift"; sourceTree = "<group>"; };
 		15D1DEE72875BE0900852617 /* PhotoSurfer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoSurfer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1DEEA2875BE0900852617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D1DEEC2875BE0900852617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -338,6 +344,7 @@
 		086F17E1287AA19D0061422F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				15C4BFD92884787F0099CA8D /* TableViewCells */,
 				1553B721287D129B00137E6C /* CollectionViewCells */,
 				15D1DEF02875BE0900852617 /* Main.storyboard */,
 				086F17ED287ADD710061422F /* MainTabBarController.swift */,
@@ -400,8 +407,8 @@
 		086F17F1287ADDB90061422F /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				086F17FD287ADF170061422F /* Alarm.storyboard */,
-				086F17FB287ADF070061422F /* AlarmViewController.swift */,
+				15C4BFD8288477E80099CA8D /* Views */,
+				15C4BFD7288477E10099CA8D /* Controllers */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -615,6 +622,32 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		15C4BFD7288477E10099CA8D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				086F17FB287ADF070061422F /* AlarmViewController.swift */,
+				15C4BFDE288478BB0099CA8D /* AlarmViewController+Extension.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		15C4BFD8288477E80099CA8D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				086F17FD287ADF170061422F /* Alarm.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		15C4BFD92884787F0099CA8D /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				15C4BFDA2884788E0099CA8D /* AlarmListTableViewCell.swift */,
+				15C4BFDB2884788E0099CA8D /* AlarmListTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		15D1DEDE2875BE0900852617 = {
 			isa = PBXGroup;
 			children = (
@@ -780,6 +813,7 @@
 				1553B725287D12BA00137E6C /* TagCollectionViewCell.xib in Resources */,
 				1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */,
 				1584E7652882A554000FA459 /* PhotoCollectionViewCell.xib in Resources */,
+				15C4BFDD2884788E0099CA8D /* AlarmListTableViewCell.xib in Resources */,
 				DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */,
 				086F17F8287ADE650061422F /* Setting.storyboard in Resources */,
 			);
@@ -883,6 +917,7 @@
 				1584E751288060D9000FA459 /* HomeViewController+Extension.swift in Sources */,
 				DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */,
 				15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */,
+				15C4BFDF288478BB0099CA8D /* AlarmViewController+Extension.swift in Sources */,
 				1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */,
 				DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
@@ -900,6 +935,7 @@
 				1584E7642882A554000FA459 /* PhotoCollectionViewCell.swift in Sources */,
 				1553B720287C8A3A00137E6C /* Identifier.swift in Sources */,
 				15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */,
+				15C4BFDC2884788E0099CA8D /* AlarmListTableViewCell.swift in Sources */,
 				15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */,
 				1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */,
 				1584E76C2882E74C000FA459 /* PictureViewController.swift in Sources */,
