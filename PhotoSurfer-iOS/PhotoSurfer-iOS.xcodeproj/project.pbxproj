@@ -14,6 +14,8 @@
 		0831EC9128847C2D007FF4F7 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAEDF43288411F600909129 /* UITextField+.swift */; };
 		0831EC9228847C30007FF4F7 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1807287AE1740061422F /* UIColor+.swift */; };
 		0831EC9328847C33007FF4F7 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
+		0831EC9728848084007FF4F7 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0831EC9628848084007FF4F7 /* UITextView+.swift */; };
+		0831EC98288480D2007FF4F7 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0831EC9628848084007FF4F7 /* UITextView+.swift */; };
 		086F17D3287A9F620061422F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086F17D2287A9F620061422F /* Colors.xcassets */; };
 		086F17EC287ADCF30061422F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F17EB287ADCF30061422F /* File.swift */; };
 		086F17EE287ADD710061422F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F17ED287ADD710061422F /* MainTabBarController.swift */; };
@@ -118,6 +120,7 @@
 		0831EC8728844E1C007FF4F7 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
 		0831EC8928844E9C007FF4F7 /* SetRepresentTag.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetRepresentTag.storyboard; sourceTree = "<group>"; };
 		0831EC8B28844EDB007FF4F7 /* SetRepresentTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepresentTagViewController.swift; sourceTree = "<group>"; };
+		0831EC9628848084007FF4F7 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		086F17D2287A9F620061422F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		086F17EB287ADCF30061422F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		086F17ED287ADD710061422F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -314,6 +317,7 @@
 				086F1807287AE1740061422F /* UIColor+.swift */,
 				DDAC9B75287C60330041566B /* UIFont+.swift */,
 				DDAEDF43288411F600909129 /* UITextField+.swift */,
+				0831EC9628848084007FF4F7 /* UITextView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -900,6 +904,7 @@
 				086F1850287C917A0061422F /* UIColor+.swift in Sources */,
 				086F184A287C8A110061422F /* TagCollectionViewCell.swift in Sources */,
 				0876FB83287D549500391B07 /* UIFont+.swift in Sources */,
+				0831EC98288480D2007FF4F7 /* UITextView+.swift in Sources */,
 				0831EC9328847C33007FF4F7 /* UIFont+.swift in Sources */,
 				0831EC9228847C30007FF4F7 /* UIColor+.swift in Sources */,
 				086F184D287C8EF10061422F /* ShareViewController+Extension.swift in Sources */,
@@ -945,6 +950,7 @@
 				086F180C287AF91F0061422F /* APIConstants.swift in Sources */,
 				DDAC9B76287C60330041566B /* UIFont+.swift in Sources */,
 				086F17FA287ADE7D0061422F /* SettingViewController.swift in Sources */,
+				0831EC9728848084007FF4F7 /* UITextView+.swift in Sources */,
 				1584E7612882A524000FA459 /* HomeResultViewController+Extension.swift in Sources */,
 				1553B729287D14CA00137E6C /* HomeSearchViewController+Extension.swift in Sources */,
 				086F1806287AE14B0061422F /* Const.swift in Sources */,
