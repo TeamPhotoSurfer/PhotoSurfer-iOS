@@ -28,6 +28,9 @@ final class HomeResultViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var tagCollectionView: UICollectionView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    @IBOutlet weak var selectedNavigationStackView: UIStackView!
+    @IBOutlet weak var bottomWaveView: UIView!
+    @IBOutlet weak var selectButton: UIButton!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -80,6 +83,12 @@ final class HomeResultViewController: UIViewController {
         photoDataSource.apply(snapshot)
     }
     
+    private func toggleMultiSelectedUI(isSelectable: Bool) {
+        bottomWaveView.isHidden = !isSelectable
+        selectedNavigationStackView.isHidden = !isSelectable
+        selectButton.isHidden = isSelectable
+    }
+    
     private func setDummy() {
         tags = [Tag(title: "태그"), Tag(title: "태그"), Tag(title: "태그"), Tag(title: "태그"), Tag(title: "태그"), Tag(title: "태그")]
         photos = [CapturePhoto(image: Const.Image.imgSea),
@@ -90,5 +99,14 @@ final class HomeResultViewController: UIViewController {
                   CapturePhoto(image: Const.Image.imgSea),
                   CapturePhoto(image: Const.Image.imgSea),
                   CapturePhoto(image: Const.Image.imgSea)]
+    }
+    
+    // MARK: - IBAction
+    @IBAction func selectButtonDidTap(_ sender: Any) {
+        toggleMultiSelectedUI(isSelectable: true)
+    }
+    
+    @IBAction func cancelButtonDidTap(_ sender: Any) {
+        toggleMultiSelectedUI(isSelectable: false)
     }
 }
