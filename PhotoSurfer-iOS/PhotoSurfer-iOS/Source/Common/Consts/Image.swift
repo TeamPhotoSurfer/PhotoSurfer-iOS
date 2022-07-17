@@ -76,6 +76,7 @@ extension Const {
         static let leftUserSettingIcon = UIImage(named: "leftUserSettingIcon")
         static let leftBellSettingIcon = UIImage(named: "leftBellSettingIcon")
         static let leftBookSettingIcon = UIImage(named: "leftBookSettingIcon")
+        static let rightBackIconButton = UIImage(named: "rightBackIconButton")
         
         static let icCheckCircleFillCheckboxGray40 = UIImage(named: "icCheckCircleFillCheckboxGray40")
         static let icCheckCircleFillCheckboxMain = UIImage(named: "icCheckCircleFillCheckboxMain")
