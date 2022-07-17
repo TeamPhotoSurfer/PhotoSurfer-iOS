@@ -210,38 +210,40 @@ extension ShareViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         if dataSource.snapshot().numberOfSections <= 2 {
-            didSelectItemSearching(indexPath: indexPath)
+            didSelectItemSearching(indexPath: indexPath, collectionView: collectionView)
         }
         else {
-            didSelectItemSaved(indexPath: indexPath)
-            applyInitialDataSource()
+            didSelectItemSaved(indexPath: indexPath, collectionView: collectionView)
         }
     }
     
-    private func didSelectItemSearching(indexPath: IndexPath) {
+    private func didSelectItemSearching(indexPath: IndexPath, collectionView: UICollectionView) {
         switch indexPath.section {
         case 0:
             addedTags.remove(at: indexPath.item)
+            setTagUI(indexPath: indexPath, collectionView: collectionView, isAdded: false)
         default:
-            addTag(indexPath: indexPath, tagType: relatedTags)
+            addTag(indexPath: indexPath, tagType: relatedTags, collectionView: collectionView)
         }
         applyChangedDataSource(inputText: "", isEmpty: true)
     }
     
-    private func didSelectItemSaved(indexPath: IndexPath) {
+    private func didSelectItemSaved(indexPath: IndexPath, collectionView: UICollectionView) {
         switch indexPath.section {
         case 0:
+            setDeselectedTagUI(indexPath: indexPath, collectionView: collectionView)
             addedTags.remove(at: indexPath.item)
         case 1:
-            addTag(indexPath: indexPath, tagType: recentTags)
+            addTag(indexPath: indexPath, tagType: recentTags, collectionView: collectionView)
         case 2:
-            addTag(indexPath: indexPath, tagType: oftenTags)
+            addTag(indexPath: indexPath, tagType: oftenTags, collectionView: collectionView)
         default:
-            addTag(indexPath: indexPath, tagType: platformTags)
+            addTag(indexPath: indexPath, tagType: platformTags, collectionView: collectionView)
         }
+        applyInitialDataSource()
     }
     
-    private func addTag(indexPath: IndexPath, tagType: [Tag]) {
+    private func addTag(indexPath: IndexPath, tagType: [Tag], collectionView: UICollectionView) {
         var isAddedTagContainItem: Bool = false
         for i in 0..<addedTags.count {
             isAddedTagContainItem = (addedTags[i].title == tagType[indexPath.item].title)
@@ -252,10 +254,43 @@ extension ShareViewController: UICollectionViewDelegate {
             }
             else {
                 addedTags.append(Tag(title: tagType[indexPath.item].title))
+                setTagUI(indexPath: indexPath, collectionView: collectionView, isAdded: true)
             }
         }
         else {
             showAlert(message: alreadyAddedMessage)
+        }
+    }
+    
+    private func setTagUI(indexPath: IndexPath, collectionView: UICollectionView, isAdded: Bool) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else {
+            return
+        }
+        cell.setClickedTagUI(isAdded: isAdded)
+    }
+    
+    private func setDeselectedTagUI(indexPath: IndexPath, collectionView: UICollectionView) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TagCollectionViewCell else {
+            return
+        }
+        let selectedTagText = cell.tagNameButton.titleLabel?.text
+        let allTags: [[Tag]] = [recentTags, oftenTags, platformTags]
+        
+        for tags in allTags {
+            for index in 0..<tags.count {
+                if tags[index].title == selectedTagText {
+                    switch tags {
+                    case recentTags:
+                        setTagUI(indexPath: IndexPath(item: index, section: 1), collectionView: collectionView, isAdded: false)
+                    case oftenTags:
+                        setTagUI(indexPath: IndexPath(item: index, section: 2), collectionView: collectionView, isAdded: false)
+                    case platformTags:
+                        setTagUI(indexPath: IndexPath(item: index, section: 3), collectionView: collectionView, isAdded: false)
+                    default:
+                        return
+                    }
+                }
+            }
         }
     }
 }

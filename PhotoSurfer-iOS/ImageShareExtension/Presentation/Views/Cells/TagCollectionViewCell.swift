@@ -36,15 +36,30 @@ final class TagCollectionViewCell: UICollectionViewCell {
         if isAddedTag {
             backgroundImageButton.setBackgroundImage(Const.Image.colorMain, for: .normal)
             backgroundImageButton.tintColor = UIColor.pointMain
-            tagNameButton.titleLabel?.textColor = .grayWhite
             tagNameButton.setTitleColor(.grayWhite, for: .normal)
+            tagNameButton.tintColor = .grayWhite
         }
         else {
             backgroundImageButton.setBackgroundImage(Const.Image.colorSub, for: .normal)
             backgroundImageButton.tintColor = UIColor.pointSub
-            tagNameButton.titleLabel?.textColor = .pointMain
             tagNameButton.setTitleColor(.pointMain, for: .normal)
+            tagNameButton.tintColor = .pointMain
         }
+    }
+    
+    func setClickedTagUI(isAdded: Bool) {
+        if isAdded {
+            backgroundImageButton.setBackgroundImage(Const.Image.colorGray, for: .normal)
+            backgroundImageButton.tintColor = UIColor.grayGray10
+            tagNameButton.setTitleColor(.grayGray70, for: .normal)
+            tagNameButton.tintColor = .grayGray70
+            self.isUserInteractionEnabled = !isAdded
+        }
+        else {
+            setUI(isAddedTag: false)
+            self.isUserInteractionEnabled = true
+        }
+        
     }
     
     private func setUI() {
