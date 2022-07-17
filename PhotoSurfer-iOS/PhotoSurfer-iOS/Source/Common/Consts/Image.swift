@@ -41,8 +41,8 @@ extension Const {
         static let icXCircleFill = UIImage(named: "icXCircleFill")
         static let icSearchLineSearchboxGray50 = UIImage(named: "icSearchLineSearchboxGray50")
         static let icSearchLineSearchboxMain = UIImage(named: "icSearchLineSearchboxMain")
-        static let hyesu = UIImage(named: "hyesu")
-        static let imgSea = UIImage(named: "imgSea")
+        static let hyesu = UIImage(named: "hyesu")!
+        static let imgSea = UIImage(named: "imgSea")!
         
         // MARK: - Picture
         /// image
