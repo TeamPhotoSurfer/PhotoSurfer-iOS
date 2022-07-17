@@ -7,11 +7,17 @@
 
 import UIKit
 
-class PhotoCollectionViewCell: UICollectionViewCell {
+final class PhotoCollectionViewCell: UICollectionViewCell {
 
+    // MARK: - IBOutlet
+    @IBOutlet weak var imageView: UIImageView!
+    
+    // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
+    func setData(image: UIImage) {
+        imageView.image = image
+    }
 }

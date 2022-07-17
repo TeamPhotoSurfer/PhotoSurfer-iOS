@@ -13,5 +13,8 @@ extension Const {
         
         static let HomeSearchViewController = "HomeSearchViewController"
         static let TagViewController = "TagViewController"
+        static let SettingViewController = "SettingViewController"
+        static let SettingUserViewController = "SettingUserViewController"
+        static let SettingPolicyViewController = "SettingPolicyViewController"
     }
 }

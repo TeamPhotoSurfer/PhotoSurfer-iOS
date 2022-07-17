@@ -3,24 +3,26 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TagAlbumCollectionViewCell" customModule="PhotoSurfer_iOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
+            <rect key="frame" x="0.0" y="0.0" width="172" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
+                <rect key="frame" x="0.0" y="0.0" width="172" height="120"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shapeWhitelogo" translatesAutoresizingMaskIntoConstraints="NO" id="oUn-4v-pZB" userLabel="background">
-                        <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
+                        <rect key="frame" x="5" y="5" width="162" height="110"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FP1-dg-bxG">
-                        <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
+                        <rect key="frame" x="5" y="5" width="162" height="110"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyK-Qi-DPD">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -30,6 +32,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="leftStarIconWhiteButton"/>
+                                <connections>
+                                    <action selector="starButtonDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="sVj-BB-S2A"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gf-oT-XMQ">
                                 <rect key="frame" x="122" y="0.0" width="40" height="40"/>
@@ -39,9 +44,12 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="rightThreedotsIconWhiteButton"/>
+                                <connections>
+                                    <action selector="menuButtonDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Svs-9W-6Oi"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-at-N3A">
-                                <rect key="frame" x="8" y="34" width="146" height="42"/>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-at-N3A">
+                                <rect key="frame" x="8" y="34" width="136" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="IWp-ez-l1f"/>
                                 </constraints>
@@ -50,12 +58,55 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="태그 이름"/>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gd3-Zm-chD">
+                                <rect key="frame" x="48" y="0.0" width="114" height="79"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHI-W2-PrR">
+                                        <rect key="frame" x="18.5" y="4" width="77" height="31"/>
+                                        <color key="tintColor" name="alphaGray95A70"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="태그 삭제">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Psw-SX-DyO">
+                                        <rect key="frame" x="9" y="39" width="96" height="1"/>
+                                        <color key="backgroundColor" name="grayGray20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="vhA-OP-bUm"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyj-U3-bmg">
+                                        <rect key="frame" x="18.5" y="44" width="77" height="31"/>
+                                        <color key="tintColor" name="alphaGray95A70"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="태그 수정">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="yyj-U3-bmg" secondAttribute="bottom" constant="4" id="7C9-J0-RTw"/>
+                                    <constraint firstItem="yyj-U3-bmg" firstAttribute="centerX" secondItem="Gd3-Zm-chD" secondAttribute="centerX" id="84h-Ow-czN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Psw-SX-DyO" secondAttribute="trailing" constant="9" id="CUc-a5-NFw"/>
+                                    <constraint firstItem="Psw-SX-DyO" firstAttribute="centerY" secondItem="Gd3-Zm-chD" secondAttribute="centerY" id="LkC-w8-5Mn"/>
+                                    <constraint firstItem="Psw-SX-DyO" firstAttribute="top" secondItem="nHI-W2-PrR" secondAttribute="bottom" constant="4" id="ViG-Kz-mjT"/>
+                                    <constraint firstAttribute="height" constant="79" id="Y2u-ra-0M6"/>
+                                    <constraint firstItem="nHI-W2-PrR" firstAttribute="top" secondItem="Gd3-Zm-chD" secondAttribute="top" constant="4" id="Yv9-DZ-5rb"/>
+                                    <constraint firstAttribute="width" constant="114" id="ZYC-dd-Lm6"/>
+                                    <constraint firstItem="Psw-SX-DyO" firstAttribute="leading" secondItem="Gd3-Zm-chD" secondAttribute="leading" constant="9" id="iWW-3E-Z5V"/>
+                                    <constraint firstItem="yyj-U3-bmg" firstAttribute="top" secondItem="Psw-SX-DyO" secondAttribute="bottom" constant="4" id="vrm-vT-tTH"/>
+                                    <constraint firstItem="nHI-W2-PrR" firstAttribute="centerX" secondItem="Gd3-Zm-chD" secondAttribute="centerX" id="yz4-Uu-6rh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="WGG-at-N3A" firstAttribute="centerX" secondItem="FP1-dg-bxG" secondAttribute="centerX" id="RMv-4m-7zT"/>
+                            <constraint firstAttribute="trailing" secondItem="Gd3-Zm-chD" secondAttribute="trailing" id="5jL-pV-I21"/>
+                            <constraint firstItem="Gd3-Zm-chD" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="I9H-Rc-ERO"/>
                             <constraint firstItem="VyK-Qi-DPD" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="Ros-i1-2ue"/>
-                            <constraint firstAttribute="trailing" secondItem="WGG-at-N3A" secondAttribute="trailing" constant="8" id="TRP-Bx-bY4"/>
+                            <constraint firstAttribute="trailing" secondItem="WGG-at-N3A" secondAttribute="trailing" constant="18" id="TRP-Bx-bY4"/>
                             <constraint firstItem="WGG-at-N3A" firstAttribute="centerY" secondItem="FP1-dg-bxG" secondAttribute="centerY" id="a1V-uC-1qY"/>
                             <constraint firstItem="9gf-oT-XMQ" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="aKu-3D-wZh"/>
                             <constraint firstItem="VyK-Qi-DPD" firstAttribute="leading" secondItem="FP1-dg-bxG" secondAttribute="leading" id="q2j-eJ-iHn"/>
@@ -67,27 +118,41 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="oUn-4v-pZB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7Gc-mI-Nz5"/>
-                <constraint firstAttribute="trailing" secondItem="FP1-dg-bxG" secondAttribute="trailing" id="Fdt-1B-yIk"/>
-                <constraint firstItem="oUn-4v-pZB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="GSw-4t-IFr"/>
-                <constraint firstAttribute="bottom" secondItem="FP1-dg-bxG" secondAttribute="bottom" id="WFy-cT-xe9"/>
-                <constraint firstAttribute="trailing" secondItem="oUn-4v-pZB" secondAttribute="trailing" id="bPk-2Y-Ixe"/>
-                <constraint firstAttribute="bottom" secondItem="oUn-4v-pZB" secondAttribute="bottom" id="bjc-x4-SLB"/>
-                <constraint firstItem="FP1-dg-bxG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gE7-UN-2rI"/>
-                <constraint firstItem="FP1-dg-bxG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="o1Z-Zp-PjG"/>
+                <constraint firstItem="oUn-4v-pZB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="7Gc-mI-Nz5"/>
+                <constraint firstAttribute="trailing" secondItem="FP1-dg-bxG" secondAttribute="trailing" constant="5" id="Fdt-1B-yIk"/>
+                <constraint firstItem="oUn-4v-pZB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="GSw-4t-IFr"/>
+                <constraint firstAttribute="bottom" secondItem="FP1-dg-bxG" secondAttribute="bottom" constant="5" id="WFy-cT-xe9"/>
+                <constraint firstAttribute="trailing" secondItem="oUn-4v-pZB" secondAttribute="trailing" constant="5" id="bPk-2Y-Ixe"/>
+                <constraint firstAttribute="bottom" secondItem="oUn-4v-pZB" secondAttribute="bottom" constant="5" id="bjc-x4-SLB"/>
+                <constraint firstItem="FP1-dg-bxG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="gE7-UN-2rI"/>
+                <constraint firstItem="FP1-dg-bxG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="o1Z-Zp-PjG"/>
             </constraints>
-            <size key="customSize" width="162" height="110"/>
+            <size key="customSize" width="172" height="120"/>
             <connections>
+                <outlet property="menuView" destination="Gd3-Zm-chD" id="Z2B-zi-Lw9"/>
                 <outlet property="tagBackgroundImageView" destination="oUn-4v-pZB" id="vV6-lq-Y6G"/>
+                <outlet property="tagDarkView" destination="FP1-dg-bxG" id="QxE-ne-hVJ"/>
+                <outlet property="tagDeleteButton" destination="nHI-W2-PrR" id="5nt-KM-yUf"/>
+                <outlet property="tagEditButton" destination="yyj-U3-bmg" id="AZX-he-ODj"/>
+                <outlet property="tagMenuButton" destination="9gf-oT-XMQ" id="GCT-ca-zbC"/>
                 <outlet property="tagNameButton" destination="WGG-at-N3A" id="JyD-08-Xb4"/>
                 <outlet property="tagStarButton" destination="VyK-Qi-DPD" id="d1k-Qe-bh0"/>
             </connections>
-            <point key="canvasLocation" x="213.04347826086959" y="115.84821428571428"/>
+            <point key="canvasLocation" x="220.28985507246378" y="119.19642857142857"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="leftStarIconWhiteButton" width="40" height="40"/>
         <image name="rightThreedotsIconWhiteButton" width="40" height="40"/>
         <image name="shapeWhitelogo" width="1024" height="1024"/>
+        <namedColor name="alphaGray95A70">
+            <color red="0.097999997437000275" green="0.12200000137090683" blue="0.15700000524520874" alpha="0.69999998807907104" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayGray20">
+            <color red="0.89800000190734863" green="0.9100000262260437" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
