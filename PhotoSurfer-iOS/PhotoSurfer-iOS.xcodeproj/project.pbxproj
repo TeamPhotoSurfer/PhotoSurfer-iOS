@@ -41,6 +41,8 @@
 		0876FB8B287DE85D00391B07 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB8A287DE85D00391B07 /* UIViewController+.swift */; };
 		0896AB41288149620043099D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDA8116287E9DBA0051338D /* Image.swift */; };
 		0896AB42288149740043099D /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1805287AE14B0061422F /* Const.swift */; };
+		08AA45212884909D00E961C4 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA45202884909D00E961C4 /* UIScrollView+.swift */; };
+		08AA45222884918100E961C4 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA45202884909D00E961C4 /* UIScrollView+.swift */; };
 		08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1553B717287C88A700137E6C /* HomeSearch.storyboard */; };
 		1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B719287C88B400137E6C /* HomeSearchViewController.swift */; };
@@ -144,6 +146,7 @@
 		0876FB86287D69C300391B07 /* TagsHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		0876FB8A287DE85D00391B07 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		08AA45202884909D00E961C4 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		1553B717287C88A700137E6C /* HomeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSearch.storyboard; sourceTree = "<group>"; };
 		1553B719287C88B400137E6C /* HomeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchViewController.swift; sourceTree = "<group>"; };
 		1553B71B287C8A0000137E6C /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -310,6 +313,7 @@
 				086F1807287AE1740061422F /* UIColor+.swift */,
 				DDAC9B75287C60330041566B /* UIFont+.swift */,
 				DDAEDF43288411F600909129 /* UITextField+.swift */,
+				08AA45202884909D00E961C4 /* UIScrollView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -894,6 +898,7 @@
 				086F184A287C8A110061422F /* TagCollectionViewCell.swift in Sources */,
 				0831EC9328847C33007FF4F7 /* UIFont+.swift in Sources */,
 				0831EC9228847C30007FF4F7 /* UIColor+.swift in Sources */,
+				08AA45222884918100E961C4 /* UIScrollView+.swift in Sources */,
 				086F184D287C8EF10061422F /* ShareViewController+Extension.swift in Sources */,
 				0896AB42288149740043099D /* Const.swift in Sources */,
 			);
@@ -939,6 +944,7 @@
 				086F17FA287ADE7D0061422F /* SettingViewController.swift in Sources */,
 				1584E7612882A524000FA459 /* HomeResultViewController+Extension.swift in Sources */,
 				1553B729287D14CA00137E6C /* HomeSearchViewController+Extension.swift in Sources */,
+				08AA45212884909D00E961C4 /* UIScrollView+.swift in Sources */,
 				086F1806287AE14B0061422F /* Const.swift in Sources */,
 				086F1808287AE1740061422F /* UIColor+.swift in Sources */,
 			);
