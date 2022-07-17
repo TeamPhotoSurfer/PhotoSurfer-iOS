@@ -192,7 +192,7 @@ extension ShareViewController: UISearchBarDelegate {
         }
         if !addedTags.contains(Tag(title: typingText)) {
             if addedTags.count >= 6 {
-                makeToast(message: self.underSixTagMessage)
+                showAlert(message: self.underSixTagMessage)
             }
             else {
                 addedTags.append(Tag(title: typingText))
@@ -201,7 +201,7 @@ extension ShareViewController: UISearchBarDelegate {
             }
         }
         else {
-            makeToast(message: alreadyAddedMessage)
+            showAlert(message: alreadyAddedMessage)
         }
     }
 }
@@ -248,14 +248,14 @@ extension ShareViewController: UICollectionViewDelegate {
         }
         if !isAddedTagContainItem {
             if addedTags.count >= 6 {
-                makeToast(message: underSixTagMessage)
+                showAlert(message: underSixTagMessage)
             }
             else {
                 addedTags.append(Tag(title: tagType[indexPath.item].title))
             }
         }
         else {
-            makeToast(message: alreadyAddedMessage)
+            showAlert(message: alreadyAddedMessage)
         }
     }
 }

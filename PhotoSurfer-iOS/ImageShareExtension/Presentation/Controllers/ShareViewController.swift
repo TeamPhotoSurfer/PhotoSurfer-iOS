@@ -8,8 +8,6 @@
 import UIKit
 import Social
 
-import Toast_Swift
-
 struct Tag: Hashable {
     // 추후 없앨예정
     let uuid = UUID()
@@ -112,8 +110,10 @@ final class ShareViewController: UIViewController {
         return toolBarKeyboard
     }
     
-    func makeToast(message: String) {
-        self.view.makeToast(message)
+    func showAlert(message: String) {
+        let sheet = UIAlertController(title: "", message: message, preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in }))
+        present(sheet, animated: true)
     }
     
     // MARK: - Objc Function
@@ -127,9 +127,7 @@ final class ShareViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
-        var toastStyle = ToastStyle()
-        toastStyle.activitySize = CGSize(width: 335, height: 50)
-        self.view.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
+        showAlert(message: "저장")
     }
 }
 
