@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0831EC8628844DD4007FF4F7 /* SetAlarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0831EC8528844DD4007FF4F7 /* SetAlarm.storyboard */; };
+		0831EC8828844E1C007FF4F7 /* SetAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0831EC8728844E1C007FF4F7 /* SetAlarmViewController.swift */; };
+		0831EC8A28844E9C007FF4F7 /* SetRepresentTag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0831EC8928844E9C007FF4F7 /* SetRepresentTag.storyboard */; };
+		0831EC8C28844EDB007FF4F7 /* SetRepresentTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0831EC8B28844EDB007FF4F7 /* SetRepresentTagViewController.swift */; };
 		086F17D3287A9F620061422F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086F17D2287A9F620061422F /* Colors.xcassets */; };
 		086F17EC287ADCF30061422F /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F17EB287ADCF30061422F /* File.swift */; };
 		086F17EE287ADD710061422F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F17ED287ADD710061422F /* MainTabBarController.swift */; };
@@ -104,6 +108,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0831EC8528844DD4007FF4F7 /* SetAlarm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetAlarm.storyboard; sourceTree = "<group>"; };
+		0831EC8728844E1C007FF4F7 /* SetAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAlarmViewController.swift; sourceTree = "<group>"; };
+		0831EC8928844E9C007FF4F7 /* SetRepresentTag.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetRepresentTag.storyboard; sourceTree = "<group>"; };
+		0831EC8B28844EDB007FF4F7 /* SetRepresentTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetRepresentTagViewController.swift; sourceTree = "<group>"; };
 		086F17D2287A9F620061422F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		086F17EB287ADCF30061422F /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		086F17ED287ADD710061422F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -202,6 +210,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0831EC8128844D12007FF4F7 /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				0876FB80287D4EC800391B07 /* Views */,
+				0876FB81287D4ED300391B07 /* Controllers */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
+		0831EC8228844D8E007FF4F7 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				0831EC8328844D99007FF4F7 /* Views */,
+				0831EC8428844DA2007FF4F7 /* Controllers */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		0831EC8328844D99007FF4F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0831EC8528844DD4007FF4F7 /* SetAlarm.storyboard */,
+				0831EC8928844E9C007FF4F7 /* SetRepresentTag.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0831EC8428844DA2007FF4F7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0831EC8728844E1C007FF4F7 /* SetAlarmViewController.swift */,
+				0831EC8B28844EDB007FF4F7 /* SetRepresentTagViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		086F17CF287A9F0D0061422F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,8 +479,8 @@
 		0876FB7F287D4EB200391B07 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				0876FB81287D4ED300391B07 /* Controllers */,
-				0876FB80287D4EC800391B07 /* Views */,
+				0831EC8228844D8E007FF4F7 /* Alarm */,
+				0831EC8128844D12007FF4F7 /* Tag */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -705,7 +749,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				086F1829287BED350061422F /* MainInterface.storyboard in Resources */,
+				0831EC8628844DD4007FF4F7 /* SetAlarm.storyboard in Resources */,
 				086F184B287C8A110061422F /* TagCollectionViewCell.xib in Resources */,
+				0831EC8A28844E9C007FF4F7 /* SetRepresentTag.storyboard in Resources */,
 				08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */,
 				0876FB89287D69C300391B07 /* TagsHeaderCollectionReusableView.xib in Resources */,
 			);
@@ -808,6 +854,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0876FB8B287DE85D00391B07 /* UIViewController+.swift in Sources */,
+				0831EC8828844E1C007FF4F7 /* SetAlarmViewController.swift in Sources */,
+				0831EC8C28844EDB007FF4F7 /* SetRepresentTagViewController.swift in Sources */,
 				0896AB41288149620043099D /* Image.swift in Sources */,
 				086F1826287BED350061422F /* ShareViewController.swift in Sources */,
 				0876FB88287D69C300391B07 /* TagsHeaderCollectionReusableView.swift in Sources */,

@@ -8,22 +8,80 @@
 import UIKit
 
 final class PictureViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    enum Section {
+        case tag
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Property
+    let photo = Const.Image.imgSea
+    var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
+    var tags = [Tag(title: "tag1"), Tag(title: "tag1"), Tag(title: "tag1"), Tag(title: "tag1")]
+    
+    // MARK: - IBOutlet
+    @IBOutlet weak var imageBackgroundView: UIView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageContainerView: UIView!
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setImageData()
+        setCollectionView()
     }
-    */
-
+    
+    // MARK: - Function
+    private func setImageData() {
+        imageView.image = photo
+        scrollViewHeight.priority = UILayoutPriority(photo.size.height <= photo.size.width ? 1000 : 250)
+    }
+    
+    private func setCollectionView() {
+        registerXib()
+        collectionView.setCollectionViewLayout(createLayout(), animated: true)
+        setDataSource()
+        applyTagsSnapshot()
+    }
+    
+    private func registerXib() {
+        collectionView.register(UINib(nibName: Const.Identifier.PhotoCollectionViewCell, bundle: nil),
+                                forCellWithReuseIdentifier: Const.Identifier.PhotoCollectionViewCell)
+        collectionView.register(UINib(nibName: Const.Identifier.TagCollectionViewCell, bundle: nil),
+                                forCellWithReuseIdentifier: Const.Identifier.TagCollectionViewCell)
+    }
+    
+    private func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(100),
+            heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .estimated(100),
+            heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .continuous
+        section.interGroupSpacing = 6
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }
+    
+    private func setDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
+            cell.setData(title: itemIdentifier.title, isInputTag: true)
+            return cell
+        })
+    }
+    
+    private func applyTagsSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
+        snapshot.appendSections([.tag])
+        snapshot.appendItems(tags, toSection: .tag)
+        dataSource.apply(snapshot)
+    }
 }
