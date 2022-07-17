@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlarmTopTableViewCell: UITableViewCell {
+final class AlarmTopTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
