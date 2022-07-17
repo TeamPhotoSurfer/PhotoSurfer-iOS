@@ -56,6 +56,11 @@
 		1584E76A2882E73C000FA459 /* Picture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1584E7692882E73C000FA459 /* Picture.storyboard */; };
 		1584E76C2882E74C000FA459 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E76B2882E74C000FA459 /* PictureViewController.swift */; };
 		1584E76E2883AD3F000FA459 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1584E76D2883AD3F000FA459 /* GoogleService-Info.plist */; };
+		15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */; };
+		15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCF28842F5D0099CA8D /* URLConstant.swift */; };
+		15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */; };
+		15C4BFD428842FF70099CA8D /* NetworkBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD328842FF70099CA8D /* NetworkBase.swift */; };
+		15C4BFD6288430490099CA8D /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD5288430490099CA8D /* GeneralResponse.swift */; };
 		15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEA2875BE0900852617 /* AppDelegate.swift */; };
 		15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1DEEC2875BE0900852617 /* SceneDelegate.swift */; };
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
@@ -148,6 +153,11 @@
 		1584E7692882E73C000FA459 /* Picture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Picture.storyboard; sourceTree = "<group>"; };
 		1584E76B2882E74C000FA459 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		1584E76D2883AD3F000FA459 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
+		15C4BFCF28842F5D0099CA8D /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
+		15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
+		15C4BFD328842FF70099CA8D /* NetworkBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkBase.swift; sourceTree = "<group>"; };
+		15C4BFD5288430490099CA8D /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		15D1DEE72875BE0900852617 /* PhotoSurfer-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhotoSurfer-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D1DEEA2875BE0900852617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15D1DEEC2875BE0900852617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -309,6 +319,11 @@
 			isa = PBXGroup;
 			children = (
 				086F180D287AF99E0061422F /* NetworkResult.swift */,
+				15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */,
+				15C4BFCF28842F5D0099CA8D /* URLConstant.swift */,
+				15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */,
+				15C4BFD328842FF70099CA8D /* NetworkBase.swift */,
+				15C4BFD5288430490099CA8D /* GeneralResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -809,6 +824,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				086F17F6287ADE150061422F /* HomeViewController.swift in Sources */,
+				15C4BFD6288430490099CA8D /* GeneralResponse.swift in Sources */,
 				086F180A287AF8B90061422F /* EmptyDelegate.swift in Sources */,
 				1584E751288060D9000FA459 /* HomeViewController+Extension.swift in Sources */,
 				DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */,
@@ -816,10 +832,12 @@
 				1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */,
 				DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
+				15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */,
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,
 				086F17EC287ADCF30061422F /* File.swift in Sources */,
 				086F17EE287ADD710061422F /* MainTabBarController.swift in Sources */,
 				DDDA8117287E9DBA0051338D /* Image.swift in Sources */,
+				15C4BFD428842FF70099CA8D /* NetworkBase.swift in Sources */,
 				086F180E287AF99E0061422F /* NetworkResult.swift in Sources */,
 				086F1800287ADF2E0061422F /* TagViewController.swift in Sources */,
 				DDB71E342882A7EF00CF5036 /* SettingPolicyViewController.swift in Sources */,
@@ -827,6 +845,8 @@
 				1553B71E287C8A3500137E6C /* ViewController.swift in Sources */,
 				1584E7642882A554000FA459 /* PhotoCollectionViewCell.swift in Sources */,
 				1553B720287C8A3A00137E6C /* Identifier.swift in Sources */,
+				15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */,
+				15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */,
 				1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */,
 				1584E76C2882E74C000FA459 /* PictureViewController.swift in Sources */,
 				1553B724287D12BA00137E6C /* TagCollectionViewCell.swift in Sources */,
