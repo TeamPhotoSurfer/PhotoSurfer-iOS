@@ -109,12 +109,53 @@
                                     <constraint firstItem="dh6-kI-LDT" firstAttribute="top" secondItem="lR5-8r-y9c" secondAttribute="top" id="yyU-Ks-dab"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWj-kW-YLh">
+                                <rect key="frame" x="0.0" y="812" width="414" height="84"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wave" translatesAutoresizingMaskIntoConstraints="NO" id="yOE-bk-ij4">
+                                        <rect key="frame" x="0.0" y="24" width="414" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="XoD-uj-gQd"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8u-Ph-FFy">
+                                        <rect key="frame" x="20" y="-1" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="29R-67-PV0"/>
+                                            <constraint firstAttribute="width" constant="44" id="dSU-zQ-ToJ"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="delete"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIM-3g-RB7">
+                                        <rect key="frame" x="350" y="-1" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Gs3-0y-aMt"/>
+                                            <constraint firstAttribute="width" constant="44" id="UVd-pi-Yan"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="share"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pIM-3g-RB7" secondAttribute="trailing" constant="20" id="0XK-LV-7Lh"/>
+                                    <constraint firstAttribute="bottom" secondItem="h8u-Ph-FFy" secondAttribute="bottom" constant="41" id="4jM-QM-raJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="yOE-bk-ij4" secondAttribute="trailing" id="CYe-s1-Lxe"/>
+                                    <constraint firstAttribute="height" constant="84" id="HtX-bK-FOh"/>
+                                    <constraint firstItem="h8u-Ph-FFy" firstAttribute="leading" secondItem="mWj-kW-YLh" secondAttribute="leading" constant="20" id="J0I-kQ-zR6"/>
+                                    <constraint firstItem="yOE-bk-ij4" firstAttribute="leading" secondItem="mWj-kW-YLh" secondAttribute="leading" id="cNL-Lk-UHG"/>
+                                    <constraint firstItem="pIM-3g-RB7" firstAttribute="centerY" secondItem="h8u-Ph-FFy" secondAttribute="centerY" id="fxE-eu-NU7"/>
+                                    <constraint firstAttribute="bottom" secondItem="yOE-bk-ij4" secondAttribute="bottom" id="vdI-Qu-ZGN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="HM1-lE-DPk" secondAttribute="trailing" id="4vP-Df-NV7"/>
                             <constraint firstItem="HM1-lE-DPk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7Na-RJ-BTo"/>
+                            <constraint firstAttribute="bottom" secondItem="mWj-kW-YLh" secondAttribute="bottom" id="BZD-hz-ldL"/>
+                            <constraint firstItem="mWj-kW-YLh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GOt-cS-RPf"/>
                             <constraint firstItem="HM1-lE-DPk" firstAttribute="top" secondItem="bCk-AB-mvb" secondAttribute="bottom" id="Lk4-S3-PNq"/>
                             <constraint firstItem="bCk-AB-mvb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="UB5-dw-0cz"/>
                             <constraint firstAttribute="bottom" secondItem="lR5-8r-y9c" secondAttribute="bottom" id="aDe-0t-WWn"/>
@@ -122,6 +163,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bCk-AB-mvb" secondAttribute="trailing" id="dl2-q4-P0i"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lR5-8r-y9c" secondAttribute="trailing" id="nkz-Fo-COi"/>
                             <constraint firstItem="lR5-8r-y9c" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="sxH-fD-PcZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mWj-kW-YLh" secondAttribute="trailing" id="tt0-eW-1xs"/>
                             <constraint firstItem="lR5-8r-y9c" firstAttribute="top" secondItem="HM1-lE-DPk" secondAttribute="bottom" id="zPF-0A-nsY"/>
                         </constraints>
                     </view>
@@ -138,10 +180,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="delete" width="44" height="44"/>
         <image name="icMenuVertical" width="24" height="24"/>
         <image name="imgSea" width="360" height="340"/>
         <image name="leftBackIconButton" width="48" height="56"/>
         <image name="leftBellSettingIcon" width="20" height="20"/>
+        <image name="share" width="44" height="44"/>
+        <image name="wave" width="360" height="60"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
