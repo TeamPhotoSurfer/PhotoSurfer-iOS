@@ -9,9 +9,12 @@ import UIKit
 
 class SetAlarmViewController: UIViewController {
 
-    // MARK: - Property
+    // MARK: - IBOutlet
     @IBOutlet weak var commentTimeView: UIView!
     @IBOutlet weak var memoTextView: UITextView!
+    
+    // MARK: - Property
+    let textViewPlaceHolder: String = "50자 이내로 알림메모를 작성해보세요."
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -28,6 +31,8 @@ class SetAlarmViewController: UIViewController {
     }
     
     private func setTextViewTextStyle() {
+        memoTextView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        memoTextView.layer.cornerRadius = 8
     }
     
     // MARK: - IBAction
