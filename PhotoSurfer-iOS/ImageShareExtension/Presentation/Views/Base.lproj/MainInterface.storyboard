@@ -89,7 +89,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7r-r1-AQM">
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7r-r1-AQM">
                                 <rect key="frame" x="74" y="321" width="94" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ABI-ym-ChE"/>
@@ -123,7 +123,7 @@
                         <outlet property="addedTagCollectionView" destination="ym1-YB-0us" id="YVC-cZ-QXD"/>
                         <outlet property="searchBar" destination="jhz-iw-P4t" id="09L-bE-lvG"/>
                         <outlet property="typingButton" destination="G7r-r1-AQM" id="RJe-na-mel"/>
-                        <outlet property="typingButtonTopConst" destination="wgS-wG-2nC" id="ooa-2J-s7f"/>
+                        <outlet property="typingButtonTopConstraint" destination="wgS-wG-2nC" id="f4A-d4-cnh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>

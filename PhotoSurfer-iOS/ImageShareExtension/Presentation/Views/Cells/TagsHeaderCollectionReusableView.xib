@@ -90,7 +90,7 @@
                 <outlet property="platformCheckButton" destination="mtz-Mh-Chd" id="wol-w1-D6B"/>
                 <outlet property="platformDescriptionLabel" destination="VaX-Nr-waf" id="XzW-xD-0A9"/>
                 <outlet property="relatedTagInputView" destination="kSH-jn-utF" id="viy-SH-gZb"/>
-                <outlet property="relatedTagInputViewHeight" destination="uW4-zW-a6h" id="DTT-sD-IpG"/>
+                <outlet property="relatedTagInputViewHeightConstraint" destination="uW4-zW-a6h" id="cjS-dY-FXM"/>
                 <outlet property="underSixLabel" destination="eLY-JB-kbL" id="YBH-Gr-fry"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="98.102678571428569"/>

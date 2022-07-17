@@ -17,7 +17,7 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var underSixLabel: UILabel!
     @IBOutlet weak var platformDescriptionLabel: UILabel!
     @IBOutlet weak var relatedTagInputView: UIView!
-    @IBOutlet weak var relatedTagInputViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var relatedTagInputViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var platformCheckButton: UIButton!
     
     // MARK: - LifeCycle
@@ -35,7 +35,6 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
         platformCheckButton.setTitleColor(.grayGray40, for: .normal)
         platformCheckButton.setTitleColor(.pointMain, for: .selected)
         platformCheckButton.setTitle("플랫폼", for: .normal)
-        platformCheckButton.setTitle("플랫폼", for: .selected)
     }
     
     func setData(value: String) {
@@ -54,11 +53,11 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     
     func setRelatedTagInputView(isRelatedTag: Bool) {
         self.relatedTagInputView.isHidden = !isRelatedTag
-        self.relatedTagInputViewHeight.constant = isRelatedTag ? 34 : 0
+        self.relatedTagInputViewHeightConstraint.constant = isRelatedTag ? 34 : 0
     }
     
     // MARK: - IBAction
     @IBAction func platformButtonDidTap(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        sender.isSelected.toggle()
     }
 }

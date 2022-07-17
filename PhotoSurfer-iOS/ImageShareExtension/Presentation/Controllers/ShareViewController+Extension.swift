@@ -144,12 +144,19 @@ extension ShareViewController {
     }
     
     private func applyChangedDataSource(inputText: String, isEmpty: Bool) {
-        var snapshot2 = NSDiffableDataSourceSnapshot<Section, Tag>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
+        for tag in relatedTags {
+            print(tag.title)
+        }
+        print(relatedTags)
         relatedTags = relatedTags.filter({ $0.title.contains(inputText) })
-        snapshot2.appendSections([.addedTag , .relatedTag])
-        snapshot2.appendItems(addedTags, toSection: .addedTag)
-        snapshot2.appendItems(relatedTags, toSection: .relatedTag)
-        dataSource.apply(snapshot2, animatingDifferences: true)
+        for tag in relatedTags {
+            print(tag.title)
+        }
+        snapshot.appendSections([.addedTag , .relatedTag])
+        snapshot.appendItems(addedTags, toSection: .addedTag)
+        snapshot.appendItems(relatedTags, toSection: .relatedTag)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 
@@ -158,10 +165,8 @@ extension ShareViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         typingButton.setTitle(searchText, for: .normal)
         typingText = searchText
-        if typingTextCount > searchText.count {
-            relatedTags = relatedTagsFetched.filter({ $0.title.contains(searchText) })
-        }
         typingTextCount = searchText.count
+        relatedTags = relatedTagsFetched.filter({ $0.title.contains(searchText) })
         guard let inputText = searchBar.text, !inputText.isEmpty else {
             setSupplementaryViewProvider(dataSource: setDataSource())
             relatedTags = relatedTagsFetched
@@ -202,81 +207,61 @@ extension ShareViewController: UISearchBarDelegate {
 }
 
 extension ShareViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        /// 입력하는 경우
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         if dataSource.snapshot().numberOfSections <= 2 {
-            switch indexPath.section {
-            case 0:
-                addedTags.remove(at: indexPath.item)
-            default:
-                break
-            }
-            applyChangedDataSource(inputText: "", isEmpty: true)
+            didSelectItemSearching(indexPath: indexPath)
         }
         else {
-            /// 기존 태그 중 선택하는 경우
-            switch indexPath.section {
-            case 0:
-                addedTags.remove(at: indexPath.item)
-            case 1:
-                var isAddedTagContainIteam: Bool = false
-                for i in 0..<addedTags.count {
-                    isAddedTagContainIteam = (addedTags[i].title == recentTags[indexPath.item].title)
-                }
-                if !isAddedTagContainIteam {
-                    if addedTags.count >= 6 {
-                        makeToast(message: underSixTagMessage)
-                    }
-                    else {
-                        addedTags.append(Tag(title: recentTags[indexPath.item].title))
-                    }
-                }
-                else {
-                    makeToast(message: alreadyAddedMessage)
-                }
-            case 2:
-                var isAddedTagContainIteam: Bool = false
-                for i in 0..<addedTags.count {
-                    isAddedTagContainIteam = (addedTags[i].title == oftenTags[indexPath.item].title)
-                }
-                if !isAddedTagContainIteam {
-                    if addedTags.count >= 6 {
-                        makeToast(message: underSixTagMessage)
-                    }
-                    else {
-                        addedTags.append(Tag(title: oftenTags[indexPath.item].title))
-                    }
-                }
-                else {
-                    makeToast(message: alreadyAddedMessage)
-                }
-            default:
-                var isAddedTagContainIteam: Bool = false
-                for i in 0..<addedTags.count {
-                    isAddedTagContainIteam = (addedTags[i].title == platformTags[indexPath.item].title)
-                }
-                if !isAddedTagContainIteam {
-                    if addedTags.count >= 6 {
-                        makeToast(message: underSixTagMessage)
-                    }
-                    else {
-                        addedTags.append(Tag(title: platformTags[indexPath.item].title))
-                    }
-                }
-                else {
-                    makeToast(message: alreadyAddedMessage)
-                }
-            }
+            didSelectItemSaved(indexPath: indexPath)
             applyInitialDataSource()
         }
-        for tag in addedTags {
-            print("tag.title \(tag.title)")            
+    }
+    
+    private func didSelectItemSearching(indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            addedTags.remove(at: indexPath.item)
+        default:
+            addTag(indexPath: indexPath, tagType: relatedTags)
+        }
+        applyChangedDataSource(inputText: "", isEmpty: true)
+    }
+    
+    private func didSelectItemSaved(indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            addedTags.remove(at: indexPath.item)
+        case 1:
+            addTag(indexPath: indexPath, tagType: recentTags)
+        case 2:
+            addTag(indexPath: indexPath, tagType: oftenTags)
+        default:
+            addTag(indexPath: indexPath, tagType: platformTags)
+        }
+    }
+    
+    private func addTag(indexPath: IndexPath, tagType: [Tag]) {
+        var isAddedTagContainItem: Bool = false
+        for i in 0..<addedTags.count {
+            isAddedTagContainItem = (addedTags[i].title == tagType[indexPath.item].title)
+        }
+        if !isAddedTagContainItem {
+            if addedTags.count >= 6 {
+                makeToast(message: underSixTagMessage)
+            }
+            else {
+                addedTags.append(Tag(title: tagType[indexPath.item].title))
+            }
+        }
+        else {
+            makeToast(message: alreadyAddedMessage)
         }
     }
 }
 
 extension ShareViewController: UIScrollViewDelegate {
    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-       typingButtonTopConst.constant = typingButtonTopConstValue + scrollView.contentOffset.y
+       typingButtonTopConstraint.constant = typingButtonTopConstValue + scrollView.contentOffset.y
    }
 }

@@ -50,7 +50,7 @@ final class ShareViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var addedTagCollectionView: UICollectionView!
     @IBOutlet weak var typingButton: UIButton!
-    @IBOutlet weak var typingButtonTopConst: NSLayoutConstraint!
+    @IBOutlet weak var typingButtonTopConstraint: NSLayoutConstraint!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -69,7 +69,6 @@ final class ShareViewController: UIViewController {
         setSearchBar()
         registerXib()
         setHierarchy()
-        typingButton.isHidden = true
     }
     
     private func registerXib() {
@@ -128,8 +127,6 @@ final class ShareViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
-        /// 키보드에 toast 가려지는  오류 수정 중
-        //windows.last?.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
         var toastStyle = ToastStyle()
         toastStyle.activitySize = CGSize(width: 335, height: 50)
         self.view.makeToast("태그는 최대 6개까지만 추가할 수 있어요.")
