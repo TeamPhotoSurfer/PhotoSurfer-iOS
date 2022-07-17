@@ -44,7 +44,7 @@ final class TagViewController: UIViewController {
         registerXib()
         dataSource = UICollectionViewDiffableDataSource<Section, Album>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
             guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as? TagAlbumCollectionViewCell else { fatalError() }
-            albumCell.setDummy(item)
+            albumCell.setDummy(album: item)
             albumCell.tag = indexPath.row
             albumCell.tagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
             return albumCell
