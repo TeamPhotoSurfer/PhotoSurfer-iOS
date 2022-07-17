@@ -38,6 +38,8 @@ final class TagViewController: UIViewController {
     private func setUI() {
         editTagTextField.layer.backgroundColor = UIColor.grayWhite.cgColor
         editTagTextField.layer.cornerRadius = editTagTextField.bounds.height * 0.5
+        editTagTextField.addPadding(padding: 16)
+        editTagTextField.clearButtonMode = .always
     }
     
     private func applySnapshot() {
