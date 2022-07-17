@@ -111,7 +111,7 @@ final class ShareViewController: UIViewController {
     }
     
     func showAlert(message: String) {
-        let sheet = UIAlertController(title: "", message: message, preferredStyle: .actionSheet)
+        let sheet = UIAlertController(title: "", message: message, preferredStyle: .alert)
         sheet.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in }))
         present(sheet, animated: true)
     }
