@@ -44,6 +44,8 @@
 		08AA45212884909D00E961C4 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA45202884909D00E961C4 /* UIScrollView+.swift */; };
 		08AA45222884918100E961C4 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA45202884909D00E961C4 /* UIScrollView+.swift */; };
 		08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
+		151F95C428849AD20089FE9E /* AlarmTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151F95C228849AD20089FE9E /* AlarmTopTableViewCell.swift */; };
+		151F95C528849AD20089FE9E /* AlarmTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F95C328849AD20089FE9E /* AlarmTopTableViewCell.xib */; };
 		1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1553B717287C88A700137E6C /* HomeSearch.storyboard */; };
 		1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B719287C88B400137E6C /* HomeSearchViewController.swift */; };
 		1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B71B287C8A0000137E6C /* Storyboard.swift */; };
@@ -151,6 +153,8 @@
 		0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		0876FB8A287DE85D00391B07 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		08AA45202884909D00E961C4 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
+		151F95C228849AD20089FE9E /* AlarmTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTopTableViewCell.swift; sourceTree = "<group>"; };
+		151F95C328849AD20089FE9E /* AlarmTopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmTopTableViewCell.xib; sourceTree = "<group>"; };
 		1553B717287C88A700137E6C /* HomeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSearch.storyboard; sourceTree = "<group>"; };
 		1553B719287C88B400137E6C /* HomeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchViewController.swift; sourceTree = "<group>"; };
 		1553B71B287C8A0000137E6C /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -645,6 +649,8 @@
 			isa = PBXGroup;
 			children = (
 				086F17FD287ADF170061422F /* Alarm.storyboard */,
+				151F95C228849AD20089FE9E /* AlarmTopTableViewCell.swift */,
+				151F95C328849AD20089FE9E /* AlarmTopTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -827,6 +833,7 @@
 				1584E7652882A554000FA459 /* PhotoCollectionViewCell.xib in Resources */,
 				15C4BFDD2884788E0099CA8D /* AlarmListTableViewCell.xib in Resources */,
 				DD82D7A22884896400A56F6C /* Symbol.json in Resources */,
+				151F95C528849AD20089FE9E /* AlarmTopTableViewCell.xib in Resources */,
 				DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */,
 				086F17F8287ADE650061422F /* Setting.storyboard in Resources */,
 			);
@@ -949,6 +956,7 @@
 				1553B720287C8A3A00137E6C /* Identifier.swift in Sources */,
 				15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */,
 				15C4BFDC2884788E0099CA8D /* AlarmListTableViewCell.swift in Sources */,
+				151F95C428849AD20089FE9E /* AlarmTopTableViewCell.swift in Sources */,
 				15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */,
 				1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */,
 				1584E76C2882E74C000FA459 /* PictureViewController.swift in Sources */,
