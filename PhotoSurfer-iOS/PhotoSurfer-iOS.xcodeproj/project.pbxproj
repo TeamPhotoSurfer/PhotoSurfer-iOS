@@ -65,6 +65,7 @@
 		DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */; };
 		DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */; };
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
+		DDAEDF44288411F600909129 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAEDF43288411F600909129 /* UITextField+.swift */; };
 		DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E292882982D00CF5036 /* SettingUser.storyboard */; };
 		DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */; };
 		DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */; };
@@ -162,6 +163,7 @@
 		DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagAlbumCollectionViewCell.xib; sourceTree = "<group>"; };
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		DDAEDF43288411F600909129 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		DDB71E292882982D00CF5036 /* SettingUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingUser.storyboard; sourceTree = "<group>"; };
 		DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingPolicy.storyboard; sourceTree = "<group>"; };
 		DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUserViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				086F1807287AE1740061422F /* UIColor+.swift */,
 				DDAC9B75287C60330041566B /* UIFont+.swift */,
+				DDAEDF43288411F600909129 /* UITextField+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -820,6 +823,7 @@
 				086F180E287AF99E0061422F /* NetworkResult.swift in Sources */,
 				086F1800287ADF2E0061422F /* TagViewController.swift in Sources */,
 				DDB71E342882A7EF00CF5036 /* SettingPolicyViewController.swift in Sources */,
+				DDAEDF44288411F600909129 /* UITextField+.swift in Sources */,
 				1553B71E287C8A3500137E6C /* ViewController.swift in Sources */,
 				1584E7642882A554000FA459 /* PhotoCollectionViewCell.swift in Sources */,
 				1553B720287C8A3A00137E6C /* Identifier.swift in Sources */,
