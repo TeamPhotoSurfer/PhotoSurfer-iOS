@@ -23,7 +23,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WS8-GC-d33">
                                         <rect key="frame" x="0.0" y="0.0" width="415" height="823.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0zE-wQ-tVm">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarmImage" translatesAutoresizingMaskIntoConstraints="NO" id="0zE-wQ-tVm">
                                                 <rect key="frame" x="140.5" y="86" width="134" height="134"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="134" id="PTj-pl-sdr"/>
@@ -55,6 +55,9 @@
                                                                 <rect key="frame" x="95.5" y="11" width="40" height="30"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain" image="icInfoCircleFile"/>
+                                                                <connections>
+                                                                    <action selector="showCommentTimeButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="QBi-ra-ntl"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -231,6 +234,10 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="415" height="1009"/>
+                    <connections>
+                        <outlet property="commentTimeView" destination="R7F-e2-hJB" id="f6l-A1-mfA"/>
+                        <outlet property="memoTextView" destination="0Oj-G4-Jgq" id="Nlt-Ma-t8G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,6 +245,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="alarmImage" width="1024" height="1024.5"/>
         <image name="icBellLineWhite" width="16" height="16"/>
         <image name="icInfoCircleFile" width="16" height="16"/>
         <image name="icShortarrowLineRight" width="24" height="24"/>

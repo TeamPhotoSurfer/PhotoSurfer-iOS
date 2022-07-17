@@ -9,21 +9,29 @@ import UIKit
 
 class SetAlarmViewController: UIViewController {
 
+    // MARK: - Property
+    @IBOutlet weak var commentTimeView: UIView!
+    @IBOutlet weak var memoTextView: UITextView!
+    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Function
+    private func setUI() {
+        commentTimeView.isHidden = true
+        commentTimeView.layer.cornerRadius = 4
+        setTextViewTextStyle()
     }
-    */
-
+    
+    private func setTextViewTextStyle() {
+    }
+    
+    // MARK: - IBAction
+    @IBAction func showCommentTimeButtonDidTap(_ sender: UIButton) {
+        commentTimeView.isHidden.toggle()
+    }
 }
