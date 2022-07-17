@@ -31,7 +31,6 @@ final class TagViewController: UIViewController {
         super.viewDidLoad()
 
         setUI()
-        setCollectionView()
     }
     
     // MARK: - Function
@@ -40,8 +39,8 @@ final class TagViewController: UIViewController {
         editTagTextField.layer.cornerRadius = editTagTextField.bounds.height * 0.5
         editTagTextField.addPadding(padding: 16)
         editTagTextField.layer.sublayerTransform = CATransform3DMakeTranslation(-4, 0, 0)
-//        editTagTextField.leftMargin = 16
         editTagTextField.clearButtonMode = .always
+        setCollectionView()
     }
     
     private func applySnapshot() {
