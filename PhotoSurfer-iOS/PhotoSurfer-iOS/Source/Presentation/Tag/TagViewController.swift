@@ -24,15 +24,22 @@ final class TagViewController: UIViewController {
     
     // MARK: - IBOutlet
     @IBOutlet weak var albumCollectionView: UICollectionView!
+    @IBOutlet weak var editTagTextField: UITextField!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUI()
         setCollectionView()
     }
     
     // MARK: - Function
+    private func setUI() {
+        editTagTextField.layer.backgroundColor = UIColor.grayWhite.cgColor
+        editTagTextField.layer.cornerRadius = editTagTextField.bounds.height * 0.5
+    }
+    
     private func applySnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Album>()
         snapshot.appendSections([.tag])

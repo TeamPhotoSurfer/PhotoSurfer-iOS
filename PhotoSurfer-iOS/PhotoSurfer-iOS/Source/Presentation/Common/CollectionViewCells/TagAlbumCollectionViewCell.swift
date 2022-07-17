@@ -64,6 +64,13 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         button.setAttributedTitle(attributedString, for: .normal)
         tagNameButton.titleLabel?.textAlignment = NSTextAlignment.center
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        if let touch = touches.first , touch.view == self.superview {
+            menuView.isHidden = true
+        }
+    }
         
     // MARK: - IBAction
     @IBAction func menuButtonDidTap(_ sender: Any) {
