@@ -77,6 +77,7 @@ extension Const {
         static let icShortarrowLineRight = UIImage(named: "icShortarrowLineRight")
         /// image
         static let alarmTitle = UIImage(named: "alarmTitle")
+        static let alarmImage = UIImage(named: "alarmImage")
         /// button
         static let leftBackIconButton = UIImage(named: "leftBackIconButton")
         static let rightBellIconButton = UIImage(named: "rightBellIconButton")
