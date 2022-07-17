@@ -127,7 +127,12 @@ final class ShareViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
-        showAlert(message: "저장")
+        //showAlert(message: "저장")
+        let storyboard: UIStoryboard = UIStoryboard(name: "SetAlarm", bundle: nil)
+        guard let setAlarmViewController = storyboard.instantiateViewController(withIdentifier: "SetAlarmViewController") as? SetAlarmViewController else {
+            return
+        }
+        self.present(setAlarmViewController, animated: true)
     }
 }
 
