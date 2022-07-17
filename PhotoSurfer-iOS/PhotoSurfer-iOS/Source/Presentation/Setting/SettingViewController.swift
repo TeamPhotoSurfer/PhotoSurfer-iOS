@@ -7,23 +7,28 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+final class SettingViewController: UIViewController {
 
+    // MARK: - IBOutlet
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - IBAction
+    @IBAction func settingUserButtonDidTap(_ sender: Any) {
+        let settingUserStoryboard = UIStoryboard(name: Const.Storyboard.SettingUser, bundle: nil)
+        let settingUserViewController = settingUserStoryboard.instantiateViewController(withIdentifier: Const.ViewController.SettingUserViewController)
+        self.navigationController?.pushViewController(settingUserViewController, animated: true)
     }
-    */
-
+    
+    @IBAction func settingPolicyButtonDidTap(_ sender: Any) {
+        let settingPolicyStoryboard = UIStoryboard(name: Const.Storyboard.SettingPolicy, bundle: nil)
+        let settingPolicyViewController = settingPolicyStoryboard.instantiateViewController(withIdentifier: Const.ViewController.SettingPolicyViewController)
+        self.navigationController?.pushViewController(settingPolicyViewController, animated: true)
+    }
+    
 }

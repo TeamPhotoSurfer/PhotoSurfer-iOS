@@ -23,17 +23,22 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setUI()
+    }
+    
+    // MARK: - Function
+    func setUI() {
         setCellUI()
         setMenuUI()
     }
     
-    // MARK: - Function
     func setCellUI() {
         tagBackgroundImageView.layer.cornerRadius = 8
         tagDarkView.layer.cornerRadius = 8
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
         tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
     }
+    
     func setMenuUI() {
         menuView.layer.cornerRadius = 4
         menuView.layer.shadowColor = UIColor.black.cgColor
@@ -41,16 +46,14 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         menuView.layer.shadowRadius = 4
         menuView.layer.shadowOffset = CGSize(width: 0, height: 4)
         menuView.layer.shadowPath = nil
-        menuView.isHidden = true
     }
     
-    func setDummy(_ album: Album) {
-        if album.isMarked {
-            tagStarButton.isSelected = true
-        }
+    func setDummy(album: Album) {
+        tagStarButton.isSelected = album.isMarked
         setTagName(button: tagNameButton, name: album.name)
     }
     
+    // TODO: UIButton extension으로 만들어줘도 좋을 것 같다
     func setTagName(button: UIButton, name: String) {
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()

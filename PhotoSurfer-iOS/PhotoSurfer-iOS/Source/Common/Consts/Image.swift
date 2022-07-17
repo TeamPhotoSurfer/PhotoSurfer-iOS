@@ -20,6 +20,9 @@ extension Const {
         static let icHashtagLineTagWhite = UIImage(named: "icHashtagLineTagWhite")
         static let icHashtagLineTagMain = UIImage(named: "icHashtagLineTagMain")
         static let icHashtagLineTagGray70 = UIImage(named: "icHashtagLineTagGray70")
+        /// image
+        static let shapeBluelogo = UIImage(named: "shapeBluelogo")
+        static let shapeWhitelogo = UIImage(named: "shapeWhitelogo")
         
         // MARK: - Bottom Bar
         /// icon
@@ -38,6 +41,8 @@ extension Const {
         static let icXCircleFill = UIImage(named: "icXCircleFill")
         static let icSearchLineSearchboxGray50 = UIImage(named: "icSearchLineSearchboxGray50")
         static let icSearchLineSearchboxMain = UIImage(named: "icSearchLineSearchboxMain")
+        static let hyesu = UIImage(named: "hyesu")!
+        static let imgSea = UIImage(named: "imgSea")!
         
         // MARK: - Picture
         /// image
@@ -73,5 +78,8 @@ extension Const {
         static let leftBookSettingIcon = UIImage(named: "leftBookSettingIcon")
         static let rightBackIconButton = UIImage(named: "rightBackIconButton")
         
+        static let icCheckCircleFillCheckboxGray40 = UIImage(named: "icCheckCircleFillCheckboxGray40")
+        static let icCheckCircleFillCheckboxMain = UIImage(named: "icCheckCircleFillCheckboxMain")
+        static let icThreedotsVerticalTagThumbnailWhite = UIImage(named: "icThreedotsVerticalTagThumbnailWhite")
     }
 }
