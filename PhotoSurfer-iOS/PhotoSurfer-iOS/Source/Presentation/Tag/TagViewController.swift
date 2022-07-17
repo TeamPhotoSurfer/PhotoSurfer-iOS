@@ -84,8 +84,6 @@ final class TagViewController: UIViewController {
             }
             superview = superview?.superview
         }
-        guard let cellID = superview?.tag else { return }
-        print("태그 삭제, ", cellID)
     }
 }
 
