@@ -79,6 +79,10 @@
 		8BD253CFC87C17C8EE4EDC06 /* Pods_PhotoSurfer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */; };
 		DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */; };
 		DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */; };
+		DD82D79D288486F000A56F6C /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82D79C288486F000A56F6C /* LaunchScreenViewController.swift */; };
+		DD82D7A22884896400A56F6C /* Symbol.json in Resources */ = {isa = PBXBuildFile; fileRef = DD82D79F2884896400A56F6C /* Symbol.json */; };
+		DD82D7A32884896400A56F6C /* Bubble.json in Resources */ = {isa = PBXBuildFile; fileRef = DD82D7A02884896400A56F6C /* Bubble.json */; };
+		DD82D7A42884896400A56F6C /* SymbolWithBubble.json in Resources */ = {isa = PBXBuildFile; fileRef = DD82D7A12884896400A56F6C /* SymbolWithBubble.json */; };
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
 		DDAEDF44288411F600909129 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAEDF43288411F600909129 /* UITextField+.swift */; };
 		DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E292882982D00CF5036 /* SettingUser.storyboard */; };
@@ -188,6 +192,10 @@
 		DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSurfer-iOS.release.xcconfig"; path = "Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagAlbumCollectionViewCell.xib; sourceTree = "<group>"; };
+		DD82D79C288486F000A56F6C /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		DD82D79F2884896400A56F6C /* Symbol.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Symbol.json; sourceTree = "<group>"; };
+		DD82D7A02884896400A56F6C /* Bubble.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bubble.json; sourceTree = "<group>"; };
+		DD82D7A12884896400A56F6C /* SymbolWithBubble.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SymbolWithBubble.json; sourceTree = "<group>"; };
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		DDAEDF43288411F600909129 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		DDB71E292882982D00CF5036 /* SettingUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingUser.storyboard; sourceTree = "<group>"; };
@@ -281,6 +289,7 @@
 			children = (
 				15D1DEEA2875BE0900852617 /* AppDelegate.swift */,
 				15D1DEEC2875BE0900852617 /* SceneDelegate.swift */,
+				DD82D79C288486F000A56F6C /* LaunchScreenViewController.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -441,6 +450,7 @@
 		086F181D287BE3D90061422F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				DD82D79E2884893000A56F6C /* Lottie */,
 				15D1DEF32875BE0C00852617 /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -698,6 +708,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DD82D79E2884893000A56F6C /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				DD82D7A02884896400A56F6C /* Bubble.json */,
+				DD82D79F2884896400A56F6C /* Symbol.json */,
+				DD82D7A12884896400A56F6C /* SymbolWithBubble.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -798,6 +818,7 @@
 				1584E75D2882A4EC000FA459 /* HomeResult.storyboard in Resources */,
 				15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */,
 				1584E75828807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib in Resources */,
+				DD82D7A42884896400A56F6C /* SymbolWithBubble.json in Resources */,
 				086F1802287ADF410061422F /* Tag.storyboard in Resources */,
 				DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */,
 				086F17F4287ADE0D0061422F /* Home.storyboard in Resources */,
@@ -808,10 +829,12 @@
 				15D1DEF22875BE0900852617 /* Main.storyboard in Resources */,
 				1584E76E2883AD3F000FA459 /* GoogleService-Info.plist in Resources */,
 				DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */,
+				DD82D7A32884896400A56F6C /* Bubble.json in Resources */,
 				1553B725287D12BA00137E6C /* TagCollectionViewCell.xib in Resources */,
 				1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */,
 				1584E7652882A554000FA459 /* PhotoCollectionViewCell.xib in Resources */,
 				15C4BFDD2884788E0099CA8D /* AlarmListTableViewCell.xib in Resources */,
+				DD82D7A22884896400A56F6C /* Symbol.json in Resources */,
 				DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */,
 				086F17F8287ADE650061422F /* Setting.storyboard in Resources */,
 			);
@@ -909,6 +932,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				086F17F6287ADE150061422F /* HomeViewController.swift in Sources */,
+				DD82D79D288486F000A56F6C /* LaunchScreenViewController.swift in Sources */,
 				15C4BFD6288430490099CA8D /* GeneralResponse.swift in Sources */,
 				086F180A287AF8B90061422F /* EmptyDelegate.swift in Sources */,
 				1584E751288060D9000FA459 /* HomeViewController+Extension.swift in Sources */,
