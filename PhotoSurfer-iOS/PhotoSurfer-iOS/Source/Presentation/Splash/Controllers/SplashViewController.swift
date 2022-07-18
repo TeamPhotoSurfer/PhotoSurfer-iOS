@@ -36,7 +36,7 @@ final class SplashViewController: UIViewController {
         self.view.addSubview(animationView)
         animationView.frame = self.view.bounds
         animationView.center = self.view.center
-        animationView.contentMode = .scaleAspectFit
+        animationView.contentMode = .scaleAspectFill
         finishLottie(name: name, animationView: animationView)
     }
     

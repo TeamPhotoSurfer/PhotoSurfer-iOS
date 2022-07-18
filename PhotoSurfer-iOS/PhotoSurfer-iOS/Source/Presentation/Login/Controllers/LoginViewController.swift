@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Lottie
+
 class LoginViewController: UIViewController {
     
     // MARK: - Property
@@ -30,6 +32,13 @@ class LoginViewController: UIViewController {
         self.gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         self.gradientLayer.endPoint = CGPoint(x: 0, y: 0.5)
         backgroundView.layer.addSublayer(self.gradientLayer)
+        let animationView: AnimationView = .init(name: "Bubble")
+        backgroundView.addSubview(animationView)
+        animationView.frame = backgroundView.bounds
+        animationView.center = backgroundView.center
+        animationView.contentMode = .scaleAspectFill
+        animationView.loopMode = .loop
+        animationView.play()
     }
 
 }
