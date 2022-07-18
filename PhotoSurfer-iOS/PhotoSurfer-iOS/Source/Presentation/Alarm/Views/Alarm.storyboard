@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZWZ-Y0-G8Z">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Alarm View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="AlarmViewController" id="Y6W-OH-hqX" customClass="AlarmViewController" customModule="PhotoSurfer_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -70,6 +70,9 @@
                                                     <state key="normal" title="더보기">
                                                         <color key="titleColor" name="grayWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="moreLastAlarmButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FQ9-2f-uTU"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,7 +198,7 @@
                             <constraint firstItem="5N9-ap-B2U" firstAttribute="trailing" secondItem="jcr-Gs-CNG" secondAttribute="trailing" id="wWN-gW-H0Y"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="KhX-FT-V0p"/>
+                    <navigationItem key="navigationItem" id="Kzm-C7-hvQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="headerImageView" destination="vXE-yI-MmN" id="1IK-df-gAk"/>
@@ -205,6 +208,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="886.95652173913049" y="118.52678571428571"/>
+        </scene>
+        <!--item-->
+        <scene sceneID="1VE-WT-FV0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZWZ-Y0-G8Z" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="item" id="PKR-du-evf"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="E1h-YZ-Bu9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Q0M-Dr-PyJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SaJ-EC-cEi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="118.52678571428571"/>
         </scene>

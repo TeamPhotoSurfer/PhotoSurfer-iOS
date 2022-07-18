@@ -35,4 +35,12 @@ final class AlarmViewController: UIViewController {
         tableView.register(UINib(nibName: Const.Identifier.AlarmListTableViewCell, bundle: nil),
                            forCellReuseIdentifier: Const.Identifier.AlarmListTableViewCell)
     }
+    
+    // MARK: - IBAction
+    @IBAction func moreLastAlarmButtonDidTap(_ sender: Any) {
+        guard let alarmListViewController = UIStoryboard(name: Const.Storyboard.AlarmList, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.AlarmListViewController) as? AlarmListViewController else { fatalError() }
+        alarmListViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(alarmListViewController, animated: true)
+    }
 }
