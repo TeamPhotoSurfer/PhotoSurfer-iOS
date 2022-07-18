@@ -40,7 +40,7 @@
                                 </cells>
                             </collectionView>
                             <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7r-r1-AQM">
-                                <rect key="frame" x="74" y="321" width="94" height="34"/>
+                                <rect key="frame" x="74" y="321" width="39" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ABI-ym-ChE"/>
                                 </constraints>
@@ -134,7 +134,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="colorGray" width="94" height="34"/>
+        <image name="colorGray" width="22" height="34"/>
         <image name="icHashtagLineTagGray70" width="12" height="12"/>
         <namedColor name="grayGray60">
             <color red="0.41999998688697815" green="0.46299999952316284" blue="0.51800000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

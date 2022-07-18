@@ -101,7 +101,7 @@ extension ShareViewController {
         applyInitialDataSource()
     }
     
-    func setSearchSupplementaryViewProvider(dataSource: UICollectionViewDiffableDataSource<Section, Tag>, isSearching: Bool) {
+    func setSearchSupplementaryViewProvider(dataSource: UICollectionViewDiffableDataSource<Section, Tag>) {
         dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
             var headerTitle: String = "입력한 태그"
             guard let header = collectionView
@@ -129,7 +129,7 @@ extension ShareViewController {
             header.setData(value: headerTitle)
             return header
         }
-        applyChangedDataSource(inputText: typingText, isEmpty: !isSearching)
+        applyChangedDataSource(inputText: typingText)
     }
     
     private func applyInitialDataSource() {
@@ -142,7 +142,7 @@ extension ShareViewController {
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
-    private func applyChangedDataSource(inputText: String, isEmpty: Bool) {
+    private func applyChangedDataSource(inputText: String) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         relatedTags = relatedTags.filter({ $0.title.contains(inputText) })
         snapshot.appendSections([.addedTag , .relatedTag])
@@ -167,10 +167,10 @@ extension ShareViewController: UISearchBarDelegate {
             return
         }
         typingButton.isHidden = false
-        setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
         if searchText.count >= 1 {
             isTyping = true
         }
+        setSearchSupplementaryViewProvider(dataSource: setDataSource())
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -188,8 +188,13 @@ extension ShareViewController: UISearchBarDelegate {
             }
             else {
                 addedTags.append(Tag(title: typingText))
+                if addedTags.count <= 0 {
+                    UIView.animate(withDuration: 0.5) {
+                        self.typingButtonTopConstraint.constant = self.typingButtonTopConstValue                       
+                    }
+                }
                 relatedTags.append(Tag(title: typingText))
-                applyChangedDataSource(inputText: typingText, isEmpty: false)
+                applyChangedDataSource(inputText: typingText)
             }
         }
         else {
@@ -214,10 +219,15 @@ extension ShareViewController: UICollectionViewDelegate {
         case 0:
             addedTags.remove(at: indexPath.item)
             setTagUI(indexPath: indexPath, collectionView: collectionView, isAdded: false)
+            if addedTags.count <= 0 {
+                UIView.animate(withDuration: 0.5) {
+                    self.typingButtonTopConstraint.constant += 34
+                }
+            }
         default:
             addTag(indexPath: indexPath, tagType: relatedTags, collectionView: collectionView)
         }
-        applyChangedDataSource(inputText: "", isEmpty: true)
+        applyChangedDataSource(inputText: "")
     }
     
     private func didSelectItemSaved(indexPath: IndexPath, collectionView: UICollectionView) {
@@ -225,6 +235,11 @@ extension ShareViewController: UICollectionViewDelegate {
         case 0:
             setDeselectedTagUI(indexPath: indexPath, collectionView: collectionView)
             addedTags.remove(at: indexPath.item)
+            if addedTags.count <= 0 {
+                UIView.animate(withDuration: 0.5) {
+                    self.typingButtonTopConstraint.constant += 34
+                }
+            }
         case 1:
             addTag(indexPath: indexPath, tagType: recentTags, collectionView: collectionView)
         case 2:
@@ -247,6 +262,11 @@ extension ShareViewController: UICollectionViewDelegate {
             else {
                 addedTags.append(Tag(title: tagType[indexPath.item].title))
                 setTagUI(indexPath: indexPath, collectionView: collectionView, isAdded: true)
+                if addedTags.count <= 0 {
+                    UIView.animate(withDuration: 0.5) {
+                        self.typingButtonTopConstraint.constant = self.typingButtonTopConstValue
+                    }
+                }
             }
         }
         else {
