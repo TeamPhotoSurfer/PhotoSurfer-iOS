@@ -79,7 +79,7 @@ final class HomeSearchViewController: UIViewController {
     private func setDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            tagCell.setData(title: itemIdentifier.title, isInputTag: indexPath.section == 0)
+            tagCell.setData(title: itemIdentifier.title, type: indexPath.section == 0 ? .deleteEnableBlueTag : .defaultSkyblueTag)
             return tagCell
         })
         dataSource.supplementaryViewProvider = {(collectionView, kind, indexPath) -> UICollectionReusableView in
