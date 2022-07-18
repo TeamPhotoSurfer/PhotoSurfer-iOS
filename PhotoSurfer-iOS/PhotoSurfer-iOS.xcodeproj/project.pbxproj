@@ -49,6 +49,9 @@
 		08D06584288532C3007B6635 /* SetRepresentTagViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D06583288532C3007B6635 /* SetRepresentTagViewController+Extension.swift */; };
 		08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		151F95C7288552230089FE9E /* AlarmListSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151F95C6288552230089FE9E /* AlarmListSectionHeaderView.swift */; };
+		151F95CC288563C10089FE9E /* AlarmList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 151F95CB288563C10089FE9E /* AlarmList.storyboard */; };
+		151F95CE288563D10089FE9E /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151F95CD288563D10089FE9E /* AlarmListViewController.swift */; };
+		151F95D0288563DB0089FE9E /* AlarmListViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151F95CF288563DB0089FE9E /* AlarmListViewController+Extension.swift */; };
 		1553B718287C88A700137E6C /* HomeSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1553B717287C88A700137E6C /* HomeSearch.storyboard */; };
 		1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B719287C88B400137E6C /* HomeSearchViewController.swift */; };
 		1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1553B71B287C8A0000137E6C /* Storyboard.swift */; };
@@ -164,6 +167,9 @@
 		08D0658128853255007B6635 /* SetAlarmViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetAlarmViewController+Extension.swift"; sourceTree = "<group>"; };
 		08D06583288532C3007B6635 /* SetRepresentTagViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetRepresentTagViewController+Extension.swift"; sourceTree = "<group>"; };
 		151F95C6288552230089FE9E /* AlarmListSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListSectionHeaderView.swift; sourceTree = "<group>"; };
+		151F95CB288563C10089FE9E /* AlarmList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmList.storyboard; sourceTree = "<group>"; };
+		151F95CD288563D10089FE9E /* AlarmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
+		151F95CF288563DB0089FE9E /* AlarmListViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlarmListViewController+Extension.swift"; sourceTree = "<group>"; };
 		1553B717287C88A700137E6C /* HomeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSearch.storyboard; sourceTree = "<group>"; };
 		1553B719287C88B400137E6C /* HomeSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchViewController.swift; sourceTree = "<group>"; };
 		1553B71B287C8A0000137E6C /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -356,6 +362,7 @@
 		086F17E0287AA18A0061422F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				151F95C8288563A80089FE9E /* AlarmList */,
 				DDA6AD8428855BD400902F5A /* Login */,
 				DD82D7C22884A0C200A56F6C /* Splash */,
 				1584E7662882E6FA000FA459 /* Picture */,
@@ -550,6 +557,32 @@
 				08D0657A2885282C007B6635 /* RepresentTagTableViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		151F95C8288563A80089FE9E /* AlarmList */ = {
+			isa = PBXGroup;
+			children = (
+				151F95CA288563B50089FE9E /* Views */,
+				151F95C9288563AE0089FE9E /* Controllers */,
+			);
+			path = AlarmList;
+			sourceTree = "<group>";
+		};
+		151F95C9288563AE0089FE9E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				151F95CD288563D10089FE9E /* AlarmListViewController.swift */,
+				151F95CF288563DB0089FE9E /* AlarmListViewController+Extension.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		151F95CA288563B50089FE9E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				151F95CB288563C10089FE9E /* AlarmList.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1553B716287C889600137E6C /* HomeSearch */ = {
@@ -909,6 +942,7 @@
 				1584E75828807A08000FA459 /* HomeSearchHeaderCollectionReusableView.xib in Resources */,
 				DD82D7A42884896400A56F6C /* SymbolWithBubble.json in Resources */,
 				086F1802287ADF410061422F /* Tag.storyboard in Resources */,
+				151F95CC288563C10089FE9E /* AlarmList.storyboard in Resources */,
 				DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */,
 				086F17F4287ADE0D0061422F /* Home.storyboard in Resources */,
 				086F17D3287A9F620061422F /* Colors.xcassets in Resources */,
@@ -1036,6 +1070,7 @@
 				1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */,
 				DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
+				151F95CE288563D10089FE9E /* AlarmListViewController.swift in Sources */,
 				15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */,
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,
 				086F17EC287ADCF30061422F /* File.swift in Sources */,
@@ -1050,6 +1085,7 @@
 				1584E7642882A554000FA459 /* PhotoCollectionViewCell.swift in Sources */,
 				1553B720287C8A3A00137E6C /* Identifier.swift in Sources */,
 				15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */,
+				151F95D0288563DB0089FE9E /* AlarmListViewController+Extension.swift in Sources */,
 				15C4BFDC2884788E0099CA8D /* AlarmListTableViewCell.swift in Sources */,
 				15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */,
 				1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */,
