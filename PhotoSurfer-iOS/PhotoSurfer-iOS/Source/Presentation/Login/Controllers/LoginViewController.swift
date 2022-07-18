@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
     func setUI() {
         setGradientBackGround()
         setLottie()
-        kakaoLoginImageViewDidTap()
+        setUIImageTapAction()
     }
     
     func setGradientBackGround() {
@@ -54,10 +54,10 @@ class LoginViewController: UIViewController {
         animationView.play()
     }
     
-    func kakaoLoginImageViewDidTap() {
-        let kakaoLoginButton = UITapGestureRecognizer(target: self, action: #selector(kakaoLoginClick))
+    func setUIImageTapAction() {
+        let kakaoLoginTapGesture = UITapGestureRecognizer(target: self, action: #selector(kakaoLoginImageViewDidTap))
         kakaoLoginImageView.isUserInteractionEnabled = true
-        kakaoLoginImageView.addGestureRecognizer(kakaoLoginButton)
+        kakaoLoginImageView.addGestureRecognizer(kakaoLoginTapGesture)
     }
     
     func changeRootViewController() {
@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Objc Function
-    @objc func kakaoLoginClick(sender: UITapGestureRecognizer) {
+    @objc func kakaoLoginImageViewDidTap(sender: UITapGestureRecognizer) {
         if (UserApi.isKakaoTalkLoginAvailable()) {
             UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
                 if let error = error {
