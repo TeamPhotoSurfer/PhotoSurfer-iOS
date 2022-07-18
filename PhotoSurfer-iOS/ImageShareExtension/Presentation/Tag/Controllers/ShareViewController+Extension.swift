@@ -12,14 +12,12 @@ extension ShareViewController {
     // MARK: - Function
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { selectedSection, env in
-            let estimatedValueSize: CGFloat = 1.0
-            let itemMargin: CGFloat =  12.0
             let groupSizeWidth: NSCollectionLayoutDimension = (selectedSection == 0) ? .estimated(1.0) : .fractionalWidth(1.0)
-            let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(estimatedValueSize),
-                                                  heightDimension: .estimated(estimatedValueSize))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(1),
+                                                  heightDimension: .estimated(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let groupSize = NSCollectionLayoutSize(widthDimension: groupSizeWidth,
-                                                   heightDimension: .estimated(estimatedValueSize))
+                                                   heightDimension: .estimated(1))
             var group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                            subitems: [item])
             if self.dataSource.snapshot().numberOfSections > 3 {
@@ -36,7 +34,7 @@ extension ShareViewController {
                                                              subitems: [item])
                 }
             }
-            group.interItemSpacing = .fixed(itemMargin)
+            group.interItemSpacing = .fixed(12)
             
             /// header
             let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -48,7 +46,7 @@ extension ShareViewController {
             let section = NSCollectionLayoutSection(group: group)
             let groupMargin: CGFloat =  12.0
             section.interGroupSpacing = groupMargin
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0)
             section.boundarySupplementaryItems = [sectionHeader]
             section.orthogonalScrollingBehavior = (selectedSection == 0) ? .continuous : .none
             return section
@@ -69,8 +67,7 @@ extension ShareViewController {
                                                                 for: indexPath) as? TagCollectionViewCell else {
                 fatalError("err")
             }
-            cell.setUI(isAddedTag: indexPath.section == 0)
-            cell.setData(value: "\(identifier.title)")
+            cell.setUI(isAddedTag: indexPath.section == 0, value: identifier.title)
             return cell
         }
         return dataSource
@@ -129,6 +126,7 @@ extension ShareViewController {
             header.setData(value: headerTitle)
             return header
         }
+        print("🤥 \(typingText)")
         applyChangedDataSource(inputText: typingText)
     }
     
@@ -148,7 +146,7 @@ extension ShareViewController {
         snapshot.appendSections([.addedTag , .relatedTag])
         snapshot.appendItems(addedTags, toSection: .addedTag)
         snapshot.appendItems(relatedTags, toSection: .relatedTag)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
 
@@ -163,14 +161,15 @@ extension ShareViewController: UISearchBarDelegate {
             setSupplementaryViewProvider(dataSource: setDataSource())
             relatedTags = relatedTagsFetched
             isTyping = false
-            typingButton.isHidden = true
+            typingView.isHidden = true
             return
         }
-        typingButton.isHidden = false
+        typingView.isHidden = false
         if searchText.count >= 1 {
             isTyping = true
         }
-        setSearchSupplementaryViewProvider(dataSource: setDataSource())
+        applyChangedDataSource(inputText: inputText)
+        //4setSearchSupplementaryViewProvider(dataSource: setDataSource())
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -179,7 +178,7 @@ extension ShareViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let inputText = searchBar.text, !inputText.isEmpty else {
-            typingButton.isHidden = true
+            typingView.isHidden = true
             return
         }
         if !addedTags.contains(Tag(title: typingText)) {
@@ -190,7 +189,7 @@ extension ShareViewController: UISearchBarDelegate {
                 addedTags.append(Tag(title: typingText))
                 if addedTags.count <= 0 {
                     UIView.animate(withDuration: 0.5) {
-                        self.typingButtonTopConstraint.constant = self.typingButtonTopConstValue                       
+                        self.typingViewTopConstraint.constant = self.typingButtonTopConstValue
                     }
                 }
                 relatedTags.append(Tag(title: typingText))
@@ -221,7 +220,7 @@ extension ShareViewController: UICollectionViewDelegate {
             setTagUI(indexPath: indexPath, collectionView: collectionView, isAdded: false)
             if addedTags.count <= 0 {
                 UIView.animate(withDuration: 0.5) {
-                    self.typingButtonTopConstraint.constant += 34
+                    self.typingViewTopConstraint.constant += 34
                 }
             }
         default:
@@ -237,7 +236,7 @@ extension ShareViewController: UICollectionViewDelegate {
             addedTags.remove(at: indexPath.item)
             if addedTags.count <= 0 {
                 UIView.animate(withDuration: 0.5) {
-                    self.typingButtonTopConstraint.constant += 34
+                    self.typingViewTopConstraint.constant += 34
                 }
             }
         case 1:
@@ -264,7 +263,7 @@ extension ShareViewController: UICollectionViewDelegate {
                 setTagUI(indexPath: indexPath, collectionView: collectionView, isAdded: true)
                 if addedTags.count <= 0 {
                     UIView.animate(withDuration: 0.5) {
-                        self.typingButtonTopConstraint.constant = self.typingButtonTopConstValue
+                        self.typingViewTopConstraint.constant = self.typingButtonTopConstValue
                     }
                 }
             }
@@ -309,6 +308,6 @@ extension ShareViewController: UICollectionViewDelegate {
 
 extension ShareViewController: UIScrollViewDelegate {
    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-       typingButtonTopConstraint.constant = typingButtonTopConstValue + scrollView.contentOffset.y
+       typingViewTopConstraint.constant = typingButtonTopConstValue + scrollView.contentOffset.y
    }
 }

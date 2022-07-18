@@ -39,18 +39,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7r-r1-AQM">
-                                <rect key="frame" x="74" y="321" width="39" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="ABI-ym-ChE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="tintColor" name="grayGray70"/>
-                                <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="16" maxY="0.0"/>
-                                <state key="normal" image="icHashtagLineTagGray70" backgroundImage="colorGray">
-                                    <color key="titleColor" name="grayGray70"/>
-                                </state>
-                            </button>
                             <searchBar contentMode="redraw" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="jhz-iw-P4t">
                                 <rect key="frame" x="10" y="103" width="394" height="68"/>
                                 <color key="backgroundColor" name="grayWhite"/>
@@ -102,19 +90,59 @@
                                     <constraint firstAttribute="height" constant="59" id="wFb-uF-kZ7"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLj-WK-Fxb">
+                                <rect key="frame" x="20" y="281" width="374" height="74"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YT7-Nl-hhC">
+                                        <rect key="frame" x="0.0" y="49.5" width="42" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" name="grayGray60"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연관태그" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4e-J1-U7M">
+                                        <rect key="frame" x="0.0" y="9.5" width="48.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <color key="textColor" name="grayGray90"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7r-r1-AQM">
+                                        <rect key="frame" x="54" y="40" width="39" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="ABI-ym-ChE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="tintColor" name="grayGray70"/>
+                                        <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="16" maxY="0.0"/>
+                                        <state key="normal" image="icHashtagLineTagGray70" backgroundImage="colorGray">
+                                            <color key="titleColor" name="grayGray70"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="YT7-Nl-hhC" secondAttribute="bottom" constant="10" id="5V4-vt-nqi"/>
+                                    <constraint firstItem="T4e-J1-U7M" firstAttribute="leading" secondItem="ZLj-WK-Fxb" secondAttribute="leading" id="Lm7-nx-wpH"/>
+                                    <constraint firstItem="YT7-Nl-hhC" firstAttribute="top" secondItem="T4e-J1-U7M" secondAttribute="bottom" constant="23" id="XGy-9C-y98"/>
+                                    <constraint firstItem="YT7-Nl-hhC" firstAttribute="leading" secondItem="ZLj-WK-Fxb" secondAttribute="leading" id="fZ3-6P-Gmc"/>
+                                    <constraint firstItem="G7r-r1-AQM" firstAttribute="leading" secondItem="YT7-Nl-hhC" secondAttribute="trailing" constant="12" id="lh6-KD-1tg"/>
+                                    <constraint firstAttribute="height" constant="74" id="nYM-pv-NB0"/>
+                                    <constraint firstItem="G7r-r1-AQM" firstAttribute="centerY" secondItem="YT7-Nl-hhC" secondAttribute="centerY" id="umg-m6-1iq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Xd-am-t49"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="9v1-di-q75" secondAttribute="trailing" id="1UD-ef-7ZI"/>
+                            <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="ZLj-WK-Fxb" secondAttribute="trailing" constant="20" id="3MK-qv-YFo"/>
                             <constraint firstItem="ym1-YB-0us" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="20" id="PBy-h5-7Bp"/>
-                            <constraint firstItem="G7r-r1-AQM" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="74" id="Rvc-xR-bgO"/>
+                            <constraint firstItem="ym1-YB-0us" firstAttribute="top" secondItem="ZLj-WK-Fxb" secondAttribute="bottom" constant="-184" id="QhV-NM-DfH"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="bottom" secondItem="ym1-YB-0us" secondAttribute="bottom" id="SIZ-fT-jGa"/>
                             <constraint firstItem="ym1-YB-0us" firstAttribute="top" secondItem="jhz-iw-P4t" secondAttribute="bottom" id="cbh-VB-eP9"/>
                             <constraint firstItem="jhz-iw-P4t" firstAttribute="top" secondItem="9v1-di-q75" secondAttribute="bottom" id="r4Y-AD-kMS"/>
                             <constraint firstItem="jhz-iw-P4t" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="10" id="rhT-09-f9j"/>
                             <constraint firstItem="9v1-di-q75" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" id="th3-1f-Tco"/>
-                            <constraint firstItem="ym1-YB-0us" firstAttribute="top" secondItem="G7r-r1-AQM" secondAttribute="bottom" constant="-184" id="wgS-wG-2nC"/>
+                            <constraint firstItem="ZLj-WK-Fxb" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="20" id="vZP-8n-yzY"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="top" secondItem="9v1-di-q75" secondAttribute="top" id="wvL-Pk-mHm"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="jhz-iw-P4t" secondAttribute="trailing" constant="10" id="zZu-kB-KcL"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="ym1-YB-0us" secondAttribute="trailing" constant="20" id="zlp-vX-b9V"/>
@@ -125,7 +153,8 @@
                         <outlet property="collectionViewBottonConstraint" destination="SIZ-fT-jGa" id="Bbq-H7-sP5"/>
                         <outlet property="searchBar" destination="jhz-iw-P4t" id="09L-bE-lvG"/>
                         <outlet property="typingButton" destination="G7r-r1-AQM" id="RJe-na-mel"/>
-                        <outlet property="typingButtonTopConstraint" destination="wgS-wG-2nC" id="f4A-d4-cnh"/>
+                        <outlet property="typingView" destination="ZLj-WK-Fxb" id="0BC-Ct-cnE"/>
+                        <outlet property="typingViewTopConstraint" destination="QhV-NM-DfH" id="sJg-As-G0a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,6 +170,9 @@
         </namedColor>
         <namedColor name="grayGray70">
             <color red="0.3059999942779541" green="0.34900000691413879" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayGray90">
+            <color red="0.14900000393390656" green="0.18400000035762787" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="grayWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -44,8 +44,10 @@ final class ShareViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var addedTagCollectionView: UICollectionView!
     @IBOutlet weak var typingButton: UIButton!
-    @IBOutlet weak var typingButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var typingViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionViewBottonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var typingView: UIView!
+    
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -122,7 +124,7 @@ final class ShareViewController: UIViewController {
             let keyboardHeight = keyboardRectangle.height
             if collectionViewBottonConstraint.constant != 0 {
                 collectionViewBottonConstraint.constant = 0
-                typingButtonTopConstraint.constant = typingButtonTopConstValue
+                typingViewTopConstraint.constant = typingButtonTopConstValue
             }
             else {
                 collectionViewBottonConstraint.constant += keyboardHeight
@@ -133,7 +135,7 @@ final class ShareViewController: UIViewController {
     @objc func keyboardWillHide(_ sender: Notification) {
         if collectionViewBottonConstraint.constant != 0 {
             collectionViewBottonConstraint.constant = 0
-            typingButtonTopConstraint.constant = typingButtonTopConstValue
+            typingViewTopConstraint.constant = typingButtonTopConstValue
         }
     }
     
