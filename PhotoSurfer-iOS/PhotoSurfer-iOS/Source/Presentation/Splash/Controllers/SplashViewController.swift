@@ -44,11 +44,11 @@ class SplashViewController: UIViewController {
     func playLottie(name: String, animationView: AnimationView) {
         animationView.play { (finish) in
             animationView.removeFromSuperview()
-            let homeStoryboard = UIStoryboard(name: Const.Storyboard.Home, bundle: nil)
-            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: Const.ViewController.HomeViewController) as! HomeViewController
+            let mainStoryboard = UIStoryboard(name: Const.Storyboard.Main, bundle: nil)
+            let mainTabBarController = mainStoryboard.instantiateViewController(withIdentifier: Const.Identifier.MainTabBarController) as! MainTabBarController
             let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
             guard let delegate = sceneDelegate else { return }
-            delegate.window?.rootViewController = homeViewController
+            delegate.window?.rootViewController = mainTabBarController
         }
     }
 }
