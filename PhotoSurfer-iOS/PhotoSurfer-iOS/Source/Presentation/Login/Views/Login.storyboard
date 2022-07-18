@@ -21,6 +21,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="D1H-3l-CFy">
+                                <rect key="frame" x="21" y="53.666666666666657" width="333" height="333"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="D1H-3l-CFy" secondAttribute="height" multiplier="1:1" id="GvI-Y4-TQ6"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정 연결" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGf-v2-uBm">
                                 <rect key="frame" x="165" y="398.66666666666669" width="45" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -73,11 +79,14 @@
                             <constraint firstItem="zGf-v2-uBm" firstAttribute="leading" secondItem="Fed-Lo-0cq" secondAttribute="trailing" constant="5" id="PlC-gG-rh0"/>
                             <constraint firstItem="qkF-93-Q7y" firstAttribute="top" secondItem="zGf-v2-uBm" secondAttribute="bottom" constant="18" id="TvT-de-WvQ"/>
                             <constraint firstAttribute="bottom" secondItem="Puo-0i-CTL" secondAttribute="bottom" id="U6C-ml-W9z"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="D1H-3l-CFy" secondAttribute="trailing" constant="21" id="WvK-re-i14"/>
+                            <constraint firstItem="D1H-3l-CFy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="21" id="YjG-HO-TfU"/>
                             <constraint firstAttribute="bottom" secondItem="67r-1X-iq8" secondAttribute="bottom" id="ZPy-ty-4ES"/>
                             <constraint firstItem="Fed-Lo-0cq" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="55" id="ZYW-el-LiP"/>
                             <constraint firstItem="gWZ-9t-UL9" firstAttribute="top" secondItem="qkF-93-Q7y" secondAttribute="bottom" constant="20" id="Zcn-Fu-dm5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gWZ-9t-UL9" secondAttribute="trailing" constant="38" id="bNc-Sl-gjt"/>
                             <constraint firstItem="67r-1X-iq8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cJc-2A-dBF"/>
+                            <constraint firstItem="zGf-v2-uBm" firstAttribute="top" secondItem="D1H-3l-CFy" secondAttribute="bottom" constant="12" id="dd4-LK-t6e"/>
                             <constraint firstItem="Fed-Lo-0cq" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="gbf-aP-VaF"/>
                             <constraint firstItem="Puo-0i-CTL" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="hcL-YO-uB5"/>
                             <constraint firstItem="36h-Gg-Rqn" firstAttribute="leading" secondItem="zGf-v2-uBm" secondAttribute="trailing" constant="5" id="l8A-fq-px0"/>
@@ -97,6 +106,7 @@
         <image name="appleRoundButton" width="299" height="44"/>
         <image name="kakaoRoundButton" width="299" height="44"/>
         <image name="seaBottom" width="375" height="181.66667175292969"/>
+        <image name="splashLogo" width="333" height="333"/>
         <namedColor name="grayGray20">
             <color red="0.89800000190734863" green="0.9100000262260437" blue="0.92199999094009399" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
