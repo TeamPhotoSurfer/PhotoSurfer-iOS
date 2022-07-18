@@ -1,14 +1,14 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
       "filename" : "selectSetting.png",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "scale" : "2x",
+      "filename" : "selectSetting@2x.png",
       "idiom" : "universal",
-      "filename" : "selectSetting@2x.png"
+      "scale" : "2x"
     },
     {
       "filename" : "selectSetting@3x.png",
@@ -17,7 +17,10 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }

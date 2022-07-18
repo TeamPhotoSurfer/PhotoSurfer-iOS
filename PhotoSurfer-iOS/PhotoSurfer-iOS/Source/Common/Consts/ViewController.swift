@@ -11,6 +11,7 @@ extension Const {
     
     struct ViewController {
         
+        static let LoginViewController = "LoginViewController"
         static let MainTabBarController = "MainTabBarController"
         static let HomeViewController = "HomeViewController"
         static let HomeSearchViewController = "HomeSearchViewController"
@@ -19,5 +20,7 @@ extension Const {
         static let SettingUserViewController = "SettingUserViewController"
         static let SettingPolicyViewController = "SettingPolicyViewController"
         static let AlarmListViewController = "AlarmListViewController"
+        static let PictureViewController = "PictureViewController"
+        static let AlarmDetailViewController = "AlarmDetailViewController"
     }
 }

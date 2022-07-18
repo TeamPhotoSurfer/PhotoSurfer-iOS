@@ -36,18 +36,17 @@ final class SplashViewController: UIViewController {
         self.view.addSubview(animationView)
         animationView.frame = self.view.bounds
         animationView.center = self.view.center
-        animationView.contentMode = .scaleAspectFit
+        animationView.contentMode = .scaleAspectFill
         finishLottie(name: name, animationView: animationView)
     }
     
     func finishLottie(name: String, animationView: AnimationView) {
         animationView.play { (finish) in
             animationView.removeFromSuperview()
-            let mainStoryboard = UIStoryboard(name: Const.Storyboard.Main, bundle: nil)
-            let mainTabBarController = mainStoryboard.instantiateViewController(withIdentifier: Const.ViewController.MainTabBarController) as! MainTabBarController
-            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
-            guard let delegate = sceneDelegate else { return }
-            delegate.window?.rootViewController = mainTabBarController
+            guard let loginViewController = UIStoryboard(name: Const.Storyboard.Login, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.LoginViewController) as? LoginViewController else { fatalError() }
+            guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+            delegate.window?.rootViewController = loginViewController
         }
     }
 }

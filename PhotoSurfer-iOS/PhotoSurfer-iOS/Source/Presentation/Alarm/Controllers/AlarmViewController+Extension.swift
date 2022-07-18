@@ -15,6 +15,14 @@ extension AlarmViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let alarmSelectedViewController = UIStoryboard(name: Const.Storyboard.Picture, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
+        alarmSelectedViewController.type = .alarmSelected
+        alarmSelectedViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(alarmSelectedViewController, animated: true)
+    }
 }
 
 extension AlarmViewController: UITableViewDataSource {
