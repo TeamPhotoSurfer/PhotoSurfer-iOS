@@ -1,28 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Alarm Detail View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlarmDetailViewController" id="Y6W-OH-hqX" customClass="AlarmDetailViewController" customModule="PhotoSurfer_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylM-4W-fxO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="59"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g88-vC-bFF">
+                                        <rect key="frame" x="362" y="7" width="44" height="44"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="rightXIconButton"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="g88-vC-bFF" secondAttribute="trailing" constant="8" id="KDv-SO-ynC"/>
+                                    <constraint firstAttribute="bottom" secondItem="g88-vC-bFF" secondAttribute="bottom" constant="8" id="KKp-Pa-gBH"/>
+                                    <constraint firstItem="g88-vC-bFF" firstAttribute="top" secondItem="ylM-4W-fxO" secondAttribute="top" constant="7" id="OPY-er-EqX"/>
+                                    <constraint firstAttribute="height" constant="59" id="kP9-Ir-132"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDW-cC-uP6">
+                                <rect key="frame" x="0.0" y="112" width="414" height="337"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xW3-1j-SpP">
+                                        <rect key="frame" x="114" y="87" width="186" height="163.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarmImage" translatesAutoresizingMaskIntoConstraints="NO" id="lmt-6W-rUC">
+                                                <rect key="frame" x="26" y="0.0" width="134" height="134"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="134" id="GB5-Uu-FGM"/>
+                                                    <constraint firstAttribute="width" constant="134" id="wUo-dv-9SQ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서퍼님을 위한 알림이에요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20D-kk-i92">
+                                                <rect key="frame" x="0.0" y="142" width="186" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="xW3-1j-SpP" firstAttribute="centerY" secondItem="QDW-cC-uP6" secondAttribute="centerY" id="2g2-u8-gjX"/>
+                                    <constraint firstAttribute="height" constant="337" id="Koy-L5-zBD"/>
+                                    <constraint firstItem="xW3-1j-SpP" firstAttribute="centerX" secondItem="QDW-cC-uP6" secondAttribute="centerX" id="aC9-4e-DcK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="QDW-cC-uP6" firstAttribute="top" secondItem="ylM-4W-fxO" secondAttribute="bottom" constant="9" id="NG4-zd-vj8"/>
+                            <constraint firstItem="ylM-4W-fxO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="fD1-RV-01Y"/>
+                            <constraint firstItem="QDW-cC-uP6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="igG-Ng-6wV"/>
+                            <constraint firstItem="ylM-4W-fxO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ruT-Mk-TbE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ylM-4W-fxO" secondAttribute="trailing" id="ugv-4p-C4Z"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="QDW-cC-uP6" secondAttribute="trailing" id="z7T-f5-mcQ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="87"/>
         </scene>
     </scenes>
     <resources>
+        <image name="alarmImage" width="1024" height="1024.5"/>
+        <image name="rightXIconButton" width="44" height="44"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

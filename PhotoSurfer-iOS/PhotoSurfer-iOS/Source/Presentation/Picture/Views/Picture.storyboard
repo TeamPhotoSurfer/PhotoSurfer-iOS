@@ -191,6 +191,9 @@
                                 <state key="normal" title="알림 내용 확인하기">
                                     <color key="titleColor" name="grayWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="alarmDetailButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hvM-qB-Zak"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
