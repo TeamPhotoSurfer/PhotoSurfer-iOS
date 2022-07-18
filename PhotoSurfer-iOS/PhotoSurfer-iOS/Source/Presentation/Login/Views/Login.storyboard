@@ -94,7 +94,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="appleLoginImageView" destination="gWZ-9t-UL9" id="OV0-gV-guX"/>
                         <outlet property="backgroundView" destination="67r-1X-iq8" id="ogK-VQ-zta"/>
+                        <outlet property="kakaoLoginImageView" destination="qkF-93-Q7y" id="75Y-30-pYb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

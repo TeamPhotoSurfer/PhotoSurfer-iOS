@@ -11,6 +11,7 @@ import Firebase
 import FirebaseMessaging
 import IQKeyboardManagerSwift
 import KakaoSDKCommon
+import KakaoSDKAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
         KakaoSDK.initSDK(appKey: "f14d0a0bde5034131c54a0b2a7674cb4")
         
         /// Push

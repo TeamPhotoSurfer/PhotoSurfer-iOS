@@ -7,6 +7,8 @@
 
 import UIKit
 
+import KakaoSDKAuth
+import KakaoSDKUser
 import Lottie
 
 class LoginViewController: UIViewController {
@@ -16,6 +18,8 @@ class LoginViewController: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var kakaoLoginImageView: UIImageView!
+    @IBOutlet weak var appleLoginImageView: UIImageView!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -26,12 +30,21 @@ class LoginViewController: UIViewController {
     
     // MARK: - Function
     func setUI() {
+        setGradientBackGround()
+        setLottie()
+        kakaoLoginImageViewDidTap()
+    }
+    
+    func setGradientBackGround() {
         self.gradientLayer = CAGradientLayer()
         self.gradientLayer.frame = self.view.bounds
         self.gradientLayer.colors = [UIColor.splashGradientTop.cgColor, UIColor.splashGradientBottom.cgColor]
         self.gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         self.gradientLayer.endPoint = CGPoint(x: 0, y: 0.5)
         backgroundView.layer.addSublayer(self.gradientLayer)
+    }
+    
+    func setLottie() {
         let animationView: AnimationView = .init(name: "Bubble")
         backgroundView.addSubview(animationView)
         animationView.frame = backgroundView.bounds
@@ -40,5 +53,41 @@ class LoginViewController: UIViewController {
         animationView.loopMode = .loop
         animationView.play()
     }
-
+    
+    func kakaoLoginImageViewDidTap() {
+        let kakaoLoginButton = UITapGestureRecognizer(target: self, action: #selector(kakaoLoginClick))
+        kakaoLoginImageView.isUserInteractionEnabled = true
+        kakaoLoginImageView.addGestureRecognizer(kakaoLoginButton)
+    }
+    
+    // MARK: - Objc Function
+    @objc func kakaoLoginClick(sender: UITapGestureRecognizer) {
+        if (UserApi.isKakaoTalkLoginAvailable()) {
+            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("카카오톡 로그인 loginWithKakaoTalk() success.")
+                    _ = oauthToken
+                    if let accessToken = oauthToken?.accessToken {
+                        print(accessToken)
+                    }
+                }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("카카오 계정 로그인 loginWithKakaoAccount() success.")
+                    _ = oauthToken
+                    if let accessToken = oauthToken?.accessToken {
+                        print(accessToken)
+                    }
+                }
+            }
+        }
+    }
 }
