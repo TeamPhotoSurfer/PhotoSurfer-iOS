@@ -126,6 +126,7 @@ final class ShareViewController: UIViewController {
             let keyboardHeight = keyboardRectangle.height
             if collectionViewBottonConstraint.constant != 0 {
                 collectionViewBottonConstraint.constant = 0
+                typingButtonTopConstraint.constant = typingButtonTopConstValue
             }
             else {
                 collectionViewBottonConstraint.constant += keyboardHeight
@@ -136,6 +137,7 @@ final class ShareViewController: UIViewController {
     @objc func keyboardWillHide(_ sender: Notification) {
         if collectionViewBottonConstraint.constant != 0 {
             collectionViewBottonConstraint.constant = 0
+            typingButtonTopConstraint.constant = typingButtonTopConstValue
         }
     }
     
