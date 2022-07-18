@@ -43,6 +43,10 @@
 		0896AB42288149740043099D /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1805287AE14B0061422F /* Const.swift */; };
 		08AA45212884909D00E961C4 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA45202884909D00E961C4 /* UIScrollView+.swift */; };
 		08AA45222884918100E961C4 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA45202884909D00E961C4 /* UIScrollView+.swift */; };
+		08D0657B2885282C007B6635 /* RepresentTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D065792885282C007B6635 /* RepresentTagTableViewCell.swift */; };
+		08D0657C2885282C007B6635 /* RepresentTagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D0657A2885282C007B6635 /* RepresentTagTableViewCell.xib */; };
+		08D0658228853255007B6635 /* SetAlarmViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0658128853255007B6635 /* SetAlarmViewController+Extension.swift */; };
+		08D06584288532C3007B6635 /* SetRepresentTagViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D06583288532C3007B6635 /* SetRepresentTagViewController+Extension.swift */; };
 		08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		151F95C428849AD20089FE9E /* AlarmTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151F95C228849AD20089FE9E /* AlarmTopTableViewCell.swift */; };
 		151F95C528849AD20089FE9E /* AlarmTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F95C328849AD20089FE9E /* AlarmTopTableViewCell.xib */; };
@@ -85,6 +89,8 @@
 		DD82D7A22884896400A56F6C /* Symbol.json in Resources */ = {isa = PBXBuildFile; fileRef = DD82D79F2884896400A56F6C /* Symbol.json */; };
 		DD82D7A32884896400A56F6C /* Bubble.json in Resources */ = {isa = PBXBuildFile; fileRef = DD82D7A02884896400A56F6C /* Bubble.json */; };
 		DD82D7A42884896400A56F6C /* SymbolWithBubble.json in Resources */ = {isa = PBXBuildFile; fileRef = DD82D7A12884896400A56F6C /* SymbolWithBubble.json */; };
+		DD82D7C62884A0FF00A56F6C /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD82D7C52884A0FF00A56F6C /* Splash.storyboard */; };
+		DD82D7C82884A10A00A56F6C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82D7C72884A10A00A56F6C /* SplashViewController.swift */; };
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
 		DDAEDF44288411F600909129 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAEDF43288411F600909129 /* UITextField+.swift */; };
 		DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E292882982D00CF5036 /* SettingUser.storyboard */; };
@@ -153,6 +159,10 @@
 		0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		0876FB8A287DE85D00391B07 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		08AA45202884909D00E961C4 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
+		08D065792885282C007B6635 /* RepresentTagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepresentTagTableViewCell.swift; sourceTree = "<group>"; };
+		08D0657A2885282C007B6635 /* RepresentTagTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepresentTagTableViewCell.xib; sourceTree = "<group>"; };
+		08D0658128853255007B6635 /* SetAlarmViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetAlarmViewController+Extension.swift"; sourceTree = "<group>"; };
+		08D06583288532C3007B6635 /* SetRepresentTagViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetRepresentTagViewController+Extension.swift"; sourceTree = "<group>"; };
 		151F95C228849AD20089FE9E /* AlarmTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTopTableViewCell.swift; sourceTree = "<group>"; };
 		151F95C328849AD20089FE9E /* AlarmTopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmTopTableViewCell.xib; sourceTree = "<group>"; };
 		1553B717287C88A700137E6C /* HomeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSearch.storyboard; sourceTree = "<group>"; };
@@ -200,6 +210,8 @@
 		DD82D79F2884896400A56F6C /* Symbol.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Symbol.json; sourceTree = "<group>"; };
 		DD82D7A02884896400A56F6C /* Bubble.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bubble.json; sourceTree = "<group>"; };
 		DD82D7A12884896400A56F6C /* SymbolWithBubble.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SymbolWithBubble.json; sourceTree = "<group>"; };
+		DD82D7C52884A0FF00A56F6C /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		DD82D7C72884A10A00A56F6C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		DDAEDF43288411F600909129 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		DDB71E292882982D00CF5036 /* SettingUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingUser.storyboard; sourceTree = "<group>"; };
@@ -251,6 +263,7 @@
 		0831EC8328844D99007FF4F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				08D06576288527D2007B6635 /* Cells */,
 				0831EC8528844DD4007FF4F7 /* SetAlarm.storyboard */,
 				0831EC8928844E9C007FF4F7 /* SetRepresentTag.storyboard */,
 			);
@@ -262,6 +275,8 @@
 			children = (
 				0831EC8728844E1C007FF4F7 /* SetAlarmViewController.swift */,
 				0831EC8B28844EDB007FF4F7 /* SetRepresentTagViewController.swift */,
+				08D0658128853255007B6635 /* SetAlarmViewController+Extension.swift */,
+				08D06583288532C3007B6635 /* SetRepresentTagViewController+Extension.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -342,6 +357,7 @@
 		086F17E0287AA18A0061422F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DD82D7C22884A0C200A56F6C /* Splash */,
 				1584E7662882E6FA000FA459 /* Picture */,
 				1584E7592882A4D9000FA459 /* HomeResult */,
 				086F17F2287ADE040061422F /* Tag */,
@@ -429,8 +445,8 @@
 		086F17F2287ADE040061422F /* Tag */ = {
 			isa = PBXGroup;
 			children = (
-				086F1801287ADF410061422F /* Tag.storyboard */,
-				086F17FF287ADF2E0061422F /* TagViewController.swift */,
+				DDA6AD8228852FEE00902F5A /* Controllers */,
+				DDA6AD8028852FDF00902F5A /* Views */,
 			);
 			path = Tag;
 			sourceTree = "<group>";
@@ -525,6 +541,15 @@
 				086F184C287C8EF10061422F /* ShareViewController+Extension.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		08D06576288527D2007B6635 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				08D065792885282C007B6635 /* RepresentTagTableViewCell.swift */,
+				08D0657A2885282C007B6635 /* RepresentTagTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		1553B716287C889600137E6C /* HomeSearch */ = {
@@ -716,6 +741,47 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DD82D7C22884A0C200A56F6C /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				DD82D7C42884A0E300A56F6C /* Controllers */,
+				DD82D7C32884A0DC00A56F6C /* Views */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		DD82D7C32884A0DC00A56F6C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DD82D7C52884A0FF00A56F6C /* Splash.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DD82D7C42884A0E300A56F6C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DD82D7C72884A10A00A56F6C /* SplashViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DDA6AD8028852FDF00902F5A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				086F1801287ADF410061422F /* Tag.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDA6AD8228852FEE00902F5A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				086F17FF287ADF2E0061422F /* TagViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -806,6 +872,7 @@
 				0831EC8A28844E9C007FF4F7 /* SetRepresentTag.storyboard in Resources */,
 				08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */,
 				0876FB89287D69C300391B07 /* TagsHeaderCollectionReusableView.xib in Resources */,
+				08D0657C2885282C007B6635 /* RepresentTagTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +891,7 @@
 				086F17FE287ADF170061422F /* Alarm.storyboard in Resources */,
 				15D1DEF42875BE0C00852617 /* Assets.xcassets in Resources */,
 				1584E76A2882E73C000FA459 /* Picture.storyboard in Resources */,
+				DD82D7C62884A0FF00A56F6C /* Splash.storyboard in Resources */,
 				15D1DEF22875BE0900852617 /* Main.storyboard in Resources */,
 				1584E76E2883AD3F000FA459 /* GoogleService-Info.plist in Resources */,
 				DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */,
@@ -911,6 +979,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0876FB8B287DE85D00391B07 /* UIViewController+.swift in Sources */,
+				08D0657B2885282C007B6635 /* RepresentTagTableViewCell.swift in Sources */,
 				0831EC8828844E1C007FF4F7 /* SetAlarmViewController.swift in Sources */,
 				0831EC8C28844EDB007FF4F7 /* SetRepresentTagViewController.swift in Sources */,
 				0831EC9128847C2D007FF4F7 /* UITextField+.swift in Sources */,
@@ -921,8 +990,10 @@
 				0831EC9328847C33007FF4F7 /* UIFont+.swift in Sources */,
 				0831EC9228847C30007FF4F7 /* UIColor+.swift in Sources */,
 				08AA45222884918100E961C4 /* UIScrollView+.swift in Sources */,
+				08D0658228853255007B6635 /* SetAlarmViewController+Extension.swift in Sources */,
 				086F184D287C8EF10061422F /* ShareViewController+Extension.swift in Sources */,
 				0896AB42288149740043099D /* Const.swift in Sources */,
+				08D06584288532C3007B6635 /* SetRepresentTagViewController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -963,6 +1034,7 @@
 				1553B724287D12BA00137E6C /* TagCollectionViewCell.swift in Sources */,
 				15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */,
 				1584E75728807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift in Sources */,
+				DD82D7C82884A10A00A56F6C /* SplashViewController.swift in Sources */,
 				086F180C287AF91F0061422F /* APIConstants.swift in Sources */,
 				DDAC9B76287C60330041566B /* UIFont+.swift in Sources */,
 				086F17FA287ADE7D0061422F /* SettingViewController.swift in Sources */,
