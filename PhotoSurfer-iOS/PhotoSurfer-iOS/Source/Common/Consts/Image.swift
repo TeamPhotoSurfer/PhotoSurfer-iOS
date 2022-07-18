@@ -29,6 +29,7 @@ extension Const {
         /// image
         static let shapeBluelogo = UIImage(named: "shapeBluelogo")
         static let shapeWhitelogo = UIImage(named: "shapeWhitelogo")
+        static let SplashBackground = UIImage(named: "SplashBackground")
         
         // MARK: - Bottom Bar
         /// icon

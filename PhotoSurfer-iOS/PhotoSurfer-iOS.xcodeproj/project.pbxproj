@@ -439,8 +439,8 @@
 		086F17F2287ADE040061422F /* Tag */ = {
 			isa = PBXGroup;
 			children = (
-				086F1801287ADF410061422F /* Tag.storyboard */,
-				086F17FF287ADF2E0061422F /* TagViewController.swift */,
+				DDA6AD8228852FEE00902F5A /* Controllers */,
+				DDA6AD8028852FDF00902F5A /* Views */,
 			);
 			path = Tag;
 			sourceTree = "<group>";
@@ -756,6 +756,22 @@
 			isa = PBXGroup;
 			children = (
 				DD82D7C72884A10A00A56F6C /* SplashViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DDA6AD8028852FDF00902F5A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				086F1801287ADF410061422F /* Tag.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDA6AD8228852FEE00902F5A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				086F17FF287ADF2E0061422F /* TagViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
