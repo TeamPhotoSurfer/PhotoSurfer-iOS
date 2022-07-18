@@ -203,12 +203,13 @@
             </objects>
             <point key="canvasLocation" x="919.20000000000005" y="118.22660098522168"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="9pc-dZ-Hvw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="00j-Sw-8f6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="cPs-jE-Oz2"/>
+                    <tabBarItem key="tabBarItem" title="" image="icGearLine" selectedImage="selectSetting" id="18w-Fw-yk3"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kjr-Eq-XfZ">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -223,10 +224,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icGearLine" width="24.333333969116211" height="24"/>
         <image name="leftBellSettingIcon" width="20" height="20"/>
         <image name="leftBookSettingIcon" width="20" height="20"/>
         <image name="leftUserSettingIcon" width="20" height="20"/>
         <image name="rightBackIconButton" width="48" height="48"/>
+        <image name="selectSetting" width="72" height="40"/>
         <namedColor name="grayGray10">
             <color red="0.94900000095367432" green="0.9570000171661377" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
