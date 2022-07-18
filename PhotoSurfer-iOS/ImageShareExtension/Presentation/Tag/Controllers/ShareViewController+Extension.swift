@@ -69,7 +69,6 @@ extension ShareViewController {
                                                                 for: indexPath) as? TagCollectionViewCell else {
                 fatalError("err")
             }
-            print("1")
             cell.setUI(isAddedTag: indexPath.section == 0)
             cell.setData(value: "\(identifier.title)")
             return cell
@@ -121,7 +120,6 @@ extension ShareViewController {
                 header.setRelatedTagInputView(isRelatedTag: true)
                 headerTitle = self.searchHeaderTitleArray[1]
                 if self.isTyping {
-                    print("self.typingText \(self.typingText)")
                     if self.typingTextCount == 0 {
                         self.relatedTags = self.relatedTagsFetched
                     }
@@ -168,7 +166,6 @@ extension ShareViewController: UISearchBarDelegate {
             typingButton.isHidden = true
             return
         }
-        print("170")
         typingButton.isHidden = false
         setSearchSupplementaryViewProvider(dataSource: setDataSource(), isSearching: true)
         if searchText.count >= 1 {

@@ -43,13 +43,12 @@ final class SetRepresentTagViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func cancelButtonDidTap(_ sender: UIButton) {
-        delegate?.sendSelectedRepresentTag(tags: selectedTags)
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
+        delegate?.sendSelectedRepresentTag(tags: selectedTags)
         self.navigationController?.popViewController(animated: true)
-        
     }
 }
 
