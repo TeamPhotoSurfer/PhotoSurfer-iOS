@@ -7,23 +7,42 @@
 
 import UIKit
 
-class AlarmListViewController: UIViewController {
+final class AlarmListViewController: UIViewController {
+    
+    enum ListMode {
+        case last
+        case coming
+    }
 
+    // MARK: - IBOutlet
+    @IBOutlet weak var navigationTitleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setTableView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Function
+    func setMode(_ mode: ListMode) {
+        switch mode {
+        case .coming:
+            navigationTitleLabel.text = "다가오는 알림"
+        case .last:
+            navigationTitleLabel.text = "지난 알림"
+        }
     }
-    */
-
+    
+    private func setTableView() {
+        registerXib()
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    private func registerXib() {
+        tableView.register(UINib(nibName: Const.Identifier.AlarmListTableViewCell, bundle: nil),
+                           forCellReuseIdentifier: Const.Identifier.AlarmListTableViewCell)
+    }
 }
