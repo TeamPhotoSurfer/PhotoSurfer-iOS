@@ -8,6 +8,12 @@
 import UIKit
 
 final class TagCollectionViewCell: UICollectionViewCell {
+    
+    enum tagType {
+        case defaultTag /// 기본 하늘색 바탕 서핑보드모양
+        case deleteEnable /// 진한 파란색 삭제 가능
+        case selectDisable /// 회색
+    }
 
     // MARK: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
