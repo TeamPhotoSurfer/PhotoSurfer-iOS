@@ -12,10 +12,6 @@ class SplashViewController: UIViewController {
     // MARK: - Property
     var gradientLayer: CAGradientLayer!
     
-    // MARK: - IBOutlet
-    @IBOutlet weak var symbolView: UIView!
-    @IBOutlet weak var bubbleView: UIView!
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +38,17 @@ class SplashViewController: UIViewController {
         animationView.frame = self.view.bounds
         animationView.center = self.view.center
         animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
-        animationView.play()
+        playLottie(name: name, animationView: animationView)
+    }
+    
+    func playLottie(name: String, animationView: AnimationView) {
+        animationView.play { (finish) in
+            animationView.removeFromSuperview()
+            let homeStoryboard = UIStoryboard(name: Const.Storyboard.Home, bundle: nil)
+            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: Const.ViewController.HomeViewController) as! HomeViewController
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            guard let delegate = sceneDelegate else { return }
+            delegate.window?.rootViewController = homeViewController
+        }
     }
 }
