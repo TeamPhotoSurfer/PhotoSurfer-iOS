@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Tag View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="TagViewController" id="Y6W-OH-hqX" customClass="TagViewController" customModule="PhotoSurfer_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -66,7 +66,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="M7N-Zg-Q6U" secondAttribute="trailing" id="uvF-CJ-G7L"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Z05-Az-a76"/>
+                    <tabBarItem key="tabBarItem" title="" image="icTagLine" selectedImage="selectTag" id="Z05-Az-a76"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="albumCollectionView" destination="sGk-2j-PuJ" id="PI6-KS-4uZ"/>
@@ -78,6 +78,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icTagLine" width="24.5" height="24"/>
+        <image name="selectTag" width="72" height="40"/>
         <namedColor name="grayGray30">
             <color red="0.81999999284744263" green="0.83899998664855957" blue="0.85900002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
