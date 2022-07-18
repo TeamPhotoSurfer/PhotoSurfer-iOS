@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RepresentTagTableViewCell: UITableViewCell {
+final class RepresentTagTableViewCell: UITableViewCell {
 
     // MARK: - Property
     static let identifier = "RepresentTagTableViewCell"
@@ -32,12 +32,10 @@ class RepresentTagTableViewCell: UITableViewCell {
     
     func setCheckButton(count: Int) {
         if count <= 3 {
-            //checkButton.isSelected.toggle()
-            print("36")
+            checkButton.isSelected.toggle()
         }
         else {
-            //checkButton.isSelected = false
-            print("40")
+            checkButton.isSelected = false
         }
     }
 }

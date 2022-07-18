@@ -27,7 +27,6 @@ final class TagCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Function
     func setData(value: String) {
-       // tagNameButton.titleLabel?.text = value
         tagNameButton.setTitle(value, for: .normal)
     }
     
@@ -59,7 +58,6 @@ final class TagCollectionViewCell: UICollectionViewCell {
             setUI(isAddedTag: false)
             self.isUserInteractionEnabled = true
         }
-        
     }
     
     private func setUI() {

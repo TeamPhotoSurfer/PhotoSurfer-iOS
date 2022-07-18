@@ -23,6 +23,7 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
+    /// 오류
     private func addSelectedTags(indexPath: IndexPath, cell: RepresentTagTableViewCell) {
         cell.setCheckButton(count: selectedTags.count)
         if selectedTags.count <= 2 {
@@ -35,13 +36,11 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
                         for itemIndex in 0..<tags.count {
                             if selectedTags[selectedItemIndex] == tags[itemIndex] {
                                 selectedTags.remove(at: selectedItemIndex)
-                                print(selectedItemIndex)
                             }
                         }
                     }
                 }
             }
-            print(selectedTags)
         }
         else {
             showAlert(message: "대표 태그는 최대 3개까지 선택할 수 있어요.")
@@ -60,7 +59,6 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
             superview = superview?.superview
         }
     }
-    
 }
 
 protocol SetSelectedRepresentTag {
