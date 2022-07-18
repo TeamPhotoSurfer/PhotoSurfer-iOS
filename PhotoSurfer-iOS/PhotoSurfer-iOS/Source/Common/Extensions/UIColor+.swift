@@ -117,4 +117,12 @@ extension UIColor {
         return UIColor(white: 0.0, alpha: 1.0)
     }
     
+    @nonobjc class var splashGradientBottom: UIColor {
+        return UIColor(red: 81 / 255.0, green: 198 / 255.0, blue: 255 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var splashGradientTop: UIColor {
+        return UIColor(red: 59 / 255.0, green: 140 / 255.0, blue: 250 / 255.0, alpha: 1.0)
+    }
+    
 }
