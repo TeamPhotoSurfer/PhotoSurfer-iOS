@@ -29,6 +29,7 @@ extension Const {
         /// image
         static let shapeBluelogo = UIImage(named: "shapeBluelogo")
         static let shapeWhitelogo = UIImage(named: "shapeWhitelogo")
+        static let SplashBackground = UIImage(named: "SplashBackground")
         
         // MARK: - Bottom Bar
         /// icon
@@ -94,5 +95,6 @@ extension Const {
         static let icCheckCircleFillCheckboxMain = UIImage(named: "icCheckCircleFillCheckboxMain")
         static let icThreedotsVerticalTagThumbnailWhite = UIImage(named: "icThreedotsVerticalTagThumbnailWhite")
         static let icGearFill = UIImage(named: "icGearFill")
+        static let imgAlarm = UIImage(named: "imgAlarm")!
     }
 }

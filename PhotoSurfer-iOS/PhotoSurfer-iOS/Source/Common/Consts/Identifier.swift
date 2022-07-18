@@ -16,5 +16,6 @@ extension Const {
         static let TagAlbumCollectionViewCell = "TagAlbumCollectionViewCell"
         static let HomeSearchHeaderCollectionReusableView = "HomeSearchHeaderCollectionReusableView"
         static let PhotoCollectionViewCell = "PhotoCollectionViewCell"
+        static let AlarmListTableViewCell = "AlarmListTableViewCell"
     }
 }
