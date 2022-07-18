@@ -9,15 +9,35 @@ import UIKit
 
 class RepresentTagTableViewCell: UITableViewCell {
 
+    // MARK: - Property
+    static let identifier = "RepresentTagTableViewCell"
+    
+    // MARK: - IBAction
+    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var tagButton: UIButton!
+    @IBOutlet weak var selectButton: UIButton!
+    
+    // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setUI()
     }
     
+    // MARK: - Function
+    private func setUI() {
+        checkButton.setBackgroundImage(Const.Image.icCircleLine, for: .normal)
+        checkButton.setBackgroundImage(Const.Image.icCheckCircleFill, for: .selected)
+    }
+    
+    func setCheckButton(count: Int) {
+        if count <= 3 {
+            //checkButton.isSelected.toggle()
+            print("36")
+        }
+        else {
+            //checkButton.isSelected = false
+            print("40")
+        }
+    }
 }

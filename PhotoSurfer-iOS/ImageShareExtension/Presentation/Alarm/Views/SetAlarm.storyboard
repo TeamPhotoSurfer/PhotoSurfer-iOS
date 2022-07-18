@@ -14,14 +14,14 @@
             <objects>
                 <viewController storyboardIdentifier="SetAlarmViewController" id="Y6W-OH-hqX" customClass="SetAlarmViewController" customModule="ImageShareExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="415" height="1009"/>
+                        <rect key="frame" x="0.0" y="0.0" width="415" height="798"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNE-7E-bbo">
-                                <rect key="frame" x="0.0" y="44" width="415" height="931"/>
+                                <rect key="frame" x="0.0" y="44" width="415" height="720"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WS8-GC-d33">
-                                        <rect key="frame" x="0.0" y="0.0" width="415" height="823.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="415" height="663.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarmImage" translatesAutoresizingMaskIntoConstraints="NO" id="0zE-wQ-tVm">
                                                 <rect key="frame" x="140.5" y="86" width="134" height="134"/>
@@ -37,7 +37,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aTX-Hz-DTB">
-                                                <rect key="frame" x="0.0" y="334.5" width="415" height="425"/>
+                                                <rect key="frame" x="0.0" y="334.5" width="415" height="265"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gAh-9N-qvH">
                                                         <rect key="frame" x="0.0" y="0.0" width="415" height="52"/>
@@ -64,6 +64,9 @@
                                                                 </constraints>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="2022. 7. 7. (토)"/>
+                                                                <connections>
+                                                                    <action selector="showDatePickerButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GSh-Ku-YfK"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -77,11 +80,12 @@
                                                             <constraint firstItem="xoa-cR-MHR" firstAttribute="leading" secondItem="gAh-9N-qvH" secondAttribute="leading" constant="32" id="oNr-jD-Tnn"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wch-MV-Gvo">
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wch-MV-Gvo">
                                                         <rect key="frame" x="0.0" y="52" width="415" height="160"/>
                                                         <subviews>
-                                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="HUo-Pc-bjc">
+                                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="HUo-Pc-bjc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="415" height="160"/>
+                                                                <locale key="locale" localeIdentifier="ko_KR"/>
                                                             </datePicker>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -94,7 +98,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XTH-hh-bzL">
-                                                        <rect key="frame" x="0.0" y="212" width="415" height="52"/>
+                                                        <rect key="frame" x="0.0" y="52" width="415" height="52"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대표 태그" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qd-km-jJR">
                                                                 <rect key="frame" x="32" y="16" width="63.5" height="20.5"/>
@@ -129,7 +133,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dg-d4-UoM">
-                                                        <rect key="frame" x="0.0" y="264" width="415" height="161"/>
+                                                        <rect key="frame" x="0.0" y="104" width="415" height="161"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="메모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m70-dt-7XY">
                                                                 <rect key="frame" x="32" y="15.5" width="29.5" height="20.5"/>
@@ -205,7 +209,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="bg2-cx-vnD"/>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDA-Qi-e7h">
-                                <rect key="frame" x="0.0" y="911" width="415" height="64"/>
+                                <rect key="frame" x="0.0" y="700" width="415" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyB-Ex-Prg">
                                         <rect key="frame" x="20" y="0.0" width="375" height="48"/>
@@ -242,6 +246,9 @@
                                         <state key="normal" image="rightXIconButton">
                                             <color key="titleColor" name="grayGray60"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="lHw-lI-Ni8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -268,19 +275,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4RQ-05-NCx"/>
-                    <size key="freeformSize" width="415" height="1009"/>
+                    <size key="freeformSize" width="415" height="798"/>
                     <connections>
                         <outlet property="commentTimeView" destination="R7F-e2-hJB" id="f6l-A1-mfA"/>
                         <outlet property="datePicker" destination="HUo-Pc-bjc" id="5eg-iX-Xng"/>
+                        <outlet property="datePickerView" destination="Wch-MV-Gvo" id="6Qh-rW-FEE"/>
                         <outlet property="memoTextView" destination="0Oj-G4-Jgq" id="Nlt-Ma-t8G"/>
                         <outlet property="scrollView" destination="cNE-7E-bbo" id="xa5-Hw-voh"/>
                         <outlet property="setAlarmButton" destination="cyB-Ex-Prg" id="d7r-j5-rat"/>
+                        <outlet property="setRepresentTagButton" destination="s21-9n-djb" id="d3O-aW-dAg"/>
                         <outlet property="settingTimeButton" destination="FEe-CN-919" id="sDv-W1-8xw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.753623188406" y="99.441964285714278"/>
+            <point key="canvasLocation" x="886" y="99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bGn-vS-uGf">

@@ -3,21 +3,73 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RepresentTagTableViewCell" customModule="ImageShareExtension" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepresentTagTableViewCell" rowHeight="53" id="KGk-i7-Jjw" customClass="RepresentTagTableViewCell" customModule="ImageShareExtension" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="137" height="53"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="137" height="53"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cca-cO-xsc">
+                        <rect key="frame" x="34" y="6" width="94" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="yRI-ax-Zq4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="tintColor" name="pointMain"/>
+                        <inset key="contentEdgeInsets" minX="11" minY="0.0" maxX="16" maxY="0.0"/>
+                        <state key="normal" image="icHashtagLineTagMain" backgroundImage="colorSub">
+                            <color key="titleColor" name="pointMain"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V03-iQ-3CP">
+                        <rect key="frame" x="0.0" y="0.0" width="137" height="46"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                    </button>
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2V-Jb-Yad">
+                        <rect key="frame" x="0.0" y="11" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="BLM-jA-pea"/>
+                            <constraint firstAttribute="width" constant="24" id="Qzc-ka-DeS"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Cca-cO-xsc" firstAttribute="leading" secondItem="a2V-Jb-Yad" secondAttribute="trailing" constant="10" id="3mg-XT-hIc"/>
+                    <constraint firstItem="Cca-cO-xsc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="G4U-hq-2jZ"/>
+                    <constraint firstAttribute="trailing" secondItem="V03-iQ-3CP" secondAttribute="trailing" id="Iyj-4S-cWx"/>
+                    <constraint firstItem="a2V-Jb-Yad" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="NYI-Mt-f66"/>
+                    <constraint firstItem="V03-iQ-3CP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Tj2-7G-7yY"/>
+                    <constraint firstItem="Cca-cO-xsc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="WRQ-f9-wB0"/>
+                    <constraint firstAttribute="bottom" secondItem="V03-iQ-3CP" secondAttribute="bottom" id="YJi-jQ-ZNd"/>
+                    <constraint firstItem="V03-iQ-3CP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="a4B-Ko-zYY"/>
+                    <constraint firstAttribute="bottom" secondItem="Cca-cO-xsc" secondAttribute="bottom" constant="6" id="e4E-98-Yx7"/>
+                    <constraint firstItem="a2V-Jb-Yad" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jj7-YF-YIC"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="132" y="78"/>
+            <connections>
+                <outlet property="checkButton" destination="a2V-Jb-Yad" id="GBf-b4-fxz"/>
+                <outlet property="selectButton" destination="V03-iQ-3CP" id="e76-rV-KDm"/>
+                <outlet property="tagButton" destination="Cca-cO-xsc" id="e9y-nU-lhF"/>
+            </connections>
+            <point key="canvasLocation" x="3.6231884057971016" y="95.424107142857139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="colorSub" width="94" height="34"/>
+        <image name="icHashtagLineTagMain" width="12" height="12"/>
+        <namedColor name="pointMain">
+            <color red="0.20800000429153442" green="0.4779999852180481" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

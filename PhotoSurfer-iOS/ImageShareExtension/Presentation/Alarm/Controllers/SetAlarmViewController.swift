@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SetAlarmViewController: UIViewController {
+final class SetAlarmViewController: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet weak var commentTimeView: UIView!
@@ -16,6 +16,8 @@ class SetAlarmViewController: UIViewController {
     @IBOutlet weak var setAlarmButton: UIButton!
     @IBOutlet weak var settingTimeButton: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var datePickerView: UIView!
+    @IBOutlet weak var setRepresentTagButton: UIButton!
     
     // MARK: - Property
     let textViewPlaceHolder: String = "50자 이내로 알림메모를 작성해보세요."
@@ -80,8 +82,8 @@ class SetAlarmViewController: UIViewController {
     
     @objc func datePickerChanged() {
         let dateformatter = DateFormatter()
-        dateformatter.dateStyle = .none
-        dateformatter.timeStyle = .short
+        dateformatter.dateFormat = "yyyy. M. dd (EEEEE)"
+        dateformatter.locale = Locale(identifier:"ko_KR")
         let date = dateformatter.string(from: datePicker.date)
         settingTimeButton.setTitle(date, for: .normal)
     }
@@ -99,29 +101,15 @@ class SetAlarmViewController: UIViewController {
         }
         self.navigationController?.pushViewController(setRepresentTagViewController, animated: true)
     }
+    
+    @IBAction func backButtonDidTap(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func showDatePickerButtonDidTap(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5) {
+            self.datePickerView.isHidden.toggle()
+        }
+    }
 }
 
-extension SetAlarmViewController: UITextViewDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == textViewPlaceHolder {
-            textView.text = ""
-            textView.textColor  = .grayGray90
-        }
-    }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            textView.text = textViewPlaceHolder
-            textView.textColor = .grayGray50
-        }
-    }
-}
