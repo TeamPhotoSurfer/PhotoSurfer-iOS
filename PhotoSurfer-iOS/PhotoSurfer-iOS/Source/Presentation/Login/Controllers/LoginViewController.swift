@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Property
     var gradientLayer: CAGradientLayer!
-
+    
     // MARK: - IBOutlet
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var kakaoLoginImageView: UIImageView!
@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUI()
     }
     
@@ -59,6 +59,12 @@ class LoginViewController: UIViewController {
         kakaoLoginImageView.isUserInteractionEnabled = true
         kakaoLoginImageView.addGestureRecognizer(kakaoLoginButton)
     }
+    func changeRootViewController() {
+        guard let mainTabBarController = UIStoryboard(name: Const.Storyboard.Main, bundle: nil)
+            .instantiateViewController(withIdentifier: Const.ViewController.MainTabBarController) as? MainTabBarController else { fatalError() }
+        guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        delegate.window?.rootViewController = mainTabBarController
+    }
     
     // MARK: - Objc Function
     @objc func kakaoLoginClick(sender: UITapGestureRecognizer) {
@@ -73,6 +79,7 @@ class LoginViewController: UIViewController {
                     if let accessToken = oauthToken?.accessToken {
                         print(accessToken)
                     }
+                    self.changeRootViewController()
                 }
             }
         } else {
@@ -86,6 +93,7 @@ class LoginViewController: UIViewController {
                     if let accessToken = oauthToken?.accessToken {
                         print(accessToken)
                     }
+                    self.changeRootViewController()
                 }
             }
         }
