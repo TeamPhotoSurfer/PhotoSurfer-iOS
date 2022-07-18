@@ -9,31 +9,56 @@ import UIKit
 
 final class PictureViewController: UIViewController {
     
+    enum ViewType {
+        case picture
+        case alarmSelected
+    }
+    
     enum Section {
         case tag
     }
     
     // MARK: - Property
     let photo = Const.Image.imgSea
+    var type: ViewType = .alarmSelected
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
     var tags = [Tag(title: "tag1"), Tag(title: "tag1"), Tag(title: "tag1"), Tag(title: "tag1")]
     
     // MARK: - IBOutlet
+    @IBOutlet weak var navigationPictureButtonContainerStackView: UIStackView!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var imageBackgroundView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageContainerView: UIView!
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var alarmDetailButton: UIButton!
+    @IBOutlet weak var bottomWaveView: UIView!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setViewType(type: type)
+        setUI()
         setImageData()
         setCollectionView()
     }
     
     // MARK: - Function
+    private func setViewType(type: ViewType) {
+        [alarmDetailButton, shareButton].forEach {
+            $0?.isHidden = (type == .picture)
+        }
+        [bottomWaveView, collectionView, navigationPictureButtonContainerStackView].forEach {
+            $0?.isHidden = (type == .alarmSelected)
+        }
+    }
+    
+    private func setUI() {
+        alarmDetailButton.layer.cornerRadius = 8
+    }
+    
     private func setImageData() {
         imageView.image = photo
         scrollViewHeight.priority = UILayoutPriority(photo.size.height <= photo.size.width ? 1000 : 250)
