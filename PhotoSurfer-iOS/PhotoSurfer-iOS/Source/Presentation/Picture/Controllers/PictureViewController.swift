@@ -109,4 +109,12 @@ final class PictureViewController: UIViewController {
         snapshot.appendItems(tags, toSection: .tag)
         dataSource.apply(snapshot)
     }
+    
+    // MARK: - IBAction
+    @IBAction func alarmDetailButtonDidTap(_ sender: Any) {
+        guard let alarmDetailViewController = UIStoryboard(name: Const.Storyboard.AlarmDetail, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.AlarmDetailViewController) as? AlarmDetailViewController else { return }
+        alarmDetailViewController.modalPresentationStyle = .fullScreen
+        self.present(alarmDetailViewController, animated: true, completion: nil)
+    }
 }
