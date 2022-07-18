@@ -12,7 +12,6 @@ extension Const {
     
     struct Identifier {
         
-        static let MainTabBarController = "MainTabBarController"
         static let TagCollectionViewCell = "TagCollectionViewCell"
         static let TagAlbumCollectionViewCell = "TagAlbumCollectionViewCell"
         static let HomeSearchHeaderCollectionReusableView = "HomeSearchHeaderCollectionReusableView"

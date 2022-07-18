@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class SplashViewController: UIViewController {
+final class SplashViewController: UIViewController {
     // MARK: - Property
     var gradientLayer: CAGradientLayer!
     
@@ -27,7 +27,6 @@ class SplashViewController: UIViewController {
         self.gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         self.gradientLayer.endPoint = CGPoint(x: 0, y: 0.5)
         self.view.layer.addSublayer(self.gradientLayer)
-        
         setLottie(name: "Bubble")
         setLottie(name: "Symbol")
     }
@@ -38,14 +37,14 @@ class SplashViewController: UIViewController {
         animationView.frame = self.view.bounds
         animationView.center = self.view.center
         animationView.contentMode = .scaleAspectFit
-        playLottie(name: name, animationView: animationView)
+        finishLottie(name: name, animationView: animationView)
     }
     
-    func playLottie(name: String, animationView: AnimationView) {
+    func finishLottie(name: String, animationView: AnimationView) {
         animationView.play { (finish) in
             animationView.removeFromSuperview()
             let mainStoryboard = UIStoryboard(name: Const.Storyboard.Main, bundle: nil)
-            let mainTabBarController = mainStoryboard.instantiateViewController(withIdentifier: Const.Identifier.MainTabBarController) as! MainTabBarController
+            let mainTabBarController = mainStoryboard.instantiateViewController(withIdentifier: Const.ViewController.MainTabBarController) as! MainTabBarController
             let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
             guard let delegate = sceneDelegate else { return }
             delegate.window?.rootViewController = mainTabBarController
