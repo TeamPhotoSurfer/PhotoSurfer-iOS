@@ -27,11 +27,7 @@ final class ShareViewController: UIViewController {
     let headerTitleArray: [String] = ["추가한 태그", "최근 추가한 태그", "자주 추가한 태그", "플랫폼 유형", "연관 태그"]
     let searchHeaderTitleArray: [String] = ["추가한 태그", "연관 태그"]
     var typingText: String = ""
-    var isTyping: Bool = false {
-        willSet(newValue) {
-            print(newValue)
-        }
-    }
+    var isTyping: Bool = false
     var typingTextCount: Int = 0
     enum Section: Int {
         case addedTag
@@ -48,8 +44,10 @@ final class ShareViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var addedTagCollectionView: UICollectionView!
     @IBOutlet weak var typingButton: UIButton!
-    @IBOutlet weak var typingButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var typingViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionViewBottonConstraint: NSLayoutConstraint!
+    @IBOutlet weak var typingView: UIView!
+    
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -126,6 +124,7 @@ final class ShareViewController: UIViewController {
             let keyboardHeight = keyboardRectangle.height
             if collectionViewBottonConstraint.constant != 0 {
                 collectionViewBottonConstraint.constant = 0
+                typingViewTopConstraint.constant = typingButtonTopConstValue
             }
             else {
                 collectionViewBottonConstraint.constant += keyboardHeight
@@ -136,6 +135,7 @@ final class ShareViewController: UIViewController {
     @objc func keyboardWillHide(_ sender: Notification) {
         if collectionViewBottonConstraint.constant != 0 {
             collectionViewBottonConstraint.constant = 0
+            typingViewTopConstraint.constant = typingButtonTopConstValue
         }
     }
     

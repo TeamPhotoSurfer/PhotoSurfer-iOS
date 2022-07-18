@@ -26,11 +26,10 @@ final class TagCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Function
-    func setData(value: String) {
-        tagNameButton.setTitle(value, for: .normal)
-    }
     
-    func setUI(isAddedTag: Bool) {
+    
+    func setUI(isAddedTag: Bool, value: String) {
+        tagNameButton.setTitle(value, for: .normal)
         deleteImageView.isHidden = !isAddedTag
         if isAddedTag {
             backgroundImageButton.setBackgroundImage(Const.Image.colorMain, for: .normal)
@@ -55,7 +54,7 @@ final class TagCollectionViewCell: UICollectionViewCell {
             self.isUserInteractionEnabled = !isAdded
         }
         else {
-            setUI(isAddedTag: false)
+            setUI(isAddedTag: false, value: "")
             self.isUserInteractionEnabled = true
         }
     }
