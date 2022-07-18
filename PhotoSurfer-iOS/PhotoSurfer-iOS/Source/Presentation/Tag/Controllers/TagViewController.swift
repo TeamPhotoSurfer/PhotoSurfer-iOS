@@ -14,11 +14,11 @@ struct Album: Hashable {
 }
 
 final class TagViewController: UIViewController {
+
+    // MARK: - Property
     enum Section {
         case tag
     }
-
-    // MARK: - Property
     var dataSource: UICollectionViewDiffableDataSource<Section, Album>!
     var albumList: [Album] = Album.list
     

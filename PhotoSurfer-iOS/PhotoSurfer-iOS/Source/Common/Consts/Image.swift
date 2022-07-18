@@ -26,10 +26,14 @@ extension Const {
         static let icTrashcanLine = UIImage(named: "icTrashcanLine")
         static let icXLine = UIImage(named: "icXLine")
         static let phPlusFill = UIImage(named: "phPlusFill")
+        /// button
+        static let appleRoundButton = UIImage(named: "appleRoundButton")
+        static let kakaoRoundButton = UIImage(named: "kakaoRoundButton")
         /// image
         static let shapeBluelogo = UIImage(named: "shapeBluelogo")
         static let shapeWhitelogo = UIImage(named: "shapeWhitelogo")
         static let SplashBackground = UIImage(named: "SplashBackground")
+        static let seaBottom = UIImage(named: "seaBottom")
         
         // MARK: - Bottom Bar
         /// icon
