@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,20 +12,102 @@
         <!--Set Represent Tag View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="SetRepresentTagViewController" customModule="ImageShareExtension" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetRepresentTagViewController" id="Y6W-OH-hqX" customClass="SetRepresentTagViewController" customModule="ImageShareExtension" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대표 태그" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBD-WD-Qqg">
+                                <rect key="frame" x="20" y="118.5" width="60" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="textColor" name="grayGray90"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사진을 대표하는 태그를 3개까지 선택할 수 있어요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buu-Yc-8HV">
+                                <rect key="frame" x="20" y="155.5" width="239" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="grayGray40"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="374" placeholderIntrinsicHeight="594" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lVi-q6-x71">
+                                <rect key="frame" x="0.0" y="181" width="414" height="594"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XlJ-R5-vXA">
+                                <rect key="frame" x="0.0" y="44" width="414" height="59"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpx-qh-mbV">
+                                        <rect key="frame" x="8" y="8" width="52" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="NDl-a5-f4M"/>
+                                            <constraint firstAttribute="width" constant="52" id="v2t-sb-XPf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="취소">
+                                            <color key="titleColor" name="grayGray60"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1fZ-8T-KOO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVB-2R-R4r">
+                                        <rect key="frame" x="354" y="8" width="52" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="52" id="lW3-lG-9MW"/>
+                                            <constraint firstAttribute="height" constant="43" id="rdf-jb-2zI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="저장">
+                                            <color key="titleColor" name="grayGray60"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="svaeButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="e2r-P3-NS7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="mpx-qh-mbV" firstAttribute="leading" secondItem="XlJ-R5-vXA" secondAttribute="leading" constant="8" id="BVv-ca-9IR"/>
+                                    <constraint firstItem="aVB-2R-R4r" firstAttribute="centerY" secondItem="XlJ-R5-vXA" secondAttribute="centerY" id="VaU-Du-OZ2"/>
+                                    <constraint firstAttribute="height" constant="59" id="abO-uA-AJ0"/>
+                                    <constraint firstItem="mpx-qh-mbV" firstAttribute="centerY" secondItem="XlJ-R5-vXA" secondAttribute="centerY" id="t2N-4q-utZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="aVB-2R-R4r" secondAttribute="trailing" constant="8" id="to9-mN-Te3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XlJ-R5-vXA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0Dj-aS-0Cw"/>
+                            <constraint firstItem="lVi-q6-x71" firstAttribute="top" secondItem="buu-Yc-8HV" secondAttribute="bottom" constant="11" id="4uV-10-VFi"/>
+                            <constraint firstItem="buu-Yc-8HV" firstAttribute="top" secondItem="kBD-WD-Qqg" secondAttribute="bottom" constant="17.5" id="I7j-OT-tLt"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XlJ-R5-vXA" secondAttribute="trailing" id="KA9-LW-bFy"/>
+                            <constraint firstItem="kBD-WD-Qqg" firstAttribute="top" secondItem="XlJ-R5-vXA" secondAttribute="bottom" constant="15.5" id="Lvd-Zu-XVO"/>
+                            <constraint firstItem="lVi-q6-x71" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="T6m-04-fA5"/>
+                            <constraint firstItem="buu-Yc-8HV" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="VTY-iB-QYW"/>
+                            <constraint firstItem="kBD-WD-Qqg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="fV0-CA-NpS"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lVi-q6-x71" secondAttribute="trailing" id="nuy-dE-PeX"/>
+                            <constraint firstItem="XlJ-R5-vXA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="vY4-uI-1le"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="62"/>
+            <point key="canvasLocation" x="131.8840579710145" y="61.607142857142854"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="grayGray40">
+            <color red="0.68999999761581421" green="0.72200000286102295" blue="0.75700002908706665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayGray60">
+            <color red="0.41999998688697815" green="0.46299999952316284" blue="0.51800000667572021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayGray90">
+            <color red="0.14900000393390656" green="0.18400000035762787" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

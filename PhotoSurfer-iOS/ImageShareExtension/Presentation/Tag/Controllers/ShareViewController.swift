@@ -49,6 +49,7 @@ final class ShareViewController: UIViewController {
     @IBOutlet weak var addedTagCollectionView: UICollectionView!
     @IBOutlet weak var typingButton: UIButton!
     @IBOutlet weak var typingButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewBottonConstraint: NSLayoutConstraint!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -67,6 +68,7 @@ final class ShareViewController: UIViewController {
         setSearchBar()
         registerXib()
         setHierarchy()
+        self.isModalInPresentation = true
     }
     
     private func registerXib() {
@@ -86,6 +88,8 @@ final class ShareViewController: UIViewController {
     
     private func setKeyboard() {
         hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setSearchBar() {
@@ -121,15 +125,34 @@ final class ShareViewController: UIViewController {
         dismissKeyboard()
     }
     
+    // MARK: - Objc Function
+    @objc func keyboardWillShow(_ sender: Notification) {
+        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            if collectionViewBottonConstraint.constant != 0 {
+                collectionViewBottonConstraint.constant = 0
+            }
+            else {
+                collectionViewBottonConstraint.constant += keyboardHeight
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        if collectionViewBottonConstraint.constant != 0 {
+            collectionViewBottonConstraint.constant = 0
+        }
+    }
+    
     // MARK: - IBAction
     @IBAction func cancelButtonDidTap(_ sender: UIButton) {
         self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
     }
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
-        //showAlert(message: "저장")
         let storyboard: UIStoryboard = UIStoryboard(name: "SetAlarm", bundle: nil)
-        guard let setAlarmViewController = storyboard.instantiateViewController(withIdentifier: "SetAlarmViewController") as? SetAlarmViewController else {
+        guard let setAlarmViewController = storyboard.instantiateViewController(withIdentifier: "navigation") as? UINavigationController else {
             return
         }
         self.present(setAlarmViewController, animated: true)

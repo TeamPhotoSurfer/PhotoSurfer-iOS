@@ -12,6 +12,10 @@ class SetAlarmViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var commentTimeView: UIView!
     @IBOutlet weak var memoTextView: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var setAlarmButton: UIButton!
+    @IBOutlet weak var settingTimeButton: UIButton!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     // MARK: - Property
     let textViewPlaceHolder: String = "50자 이내로 알림메모를 작성해보세요."
@@ -27,9 +31,10 @@ class SetAlarmViewController: UIViewController {
     
     // MARK: - Function
     private func setUI() {
-        commentTimeView.isHidden = true
-        commentTimeView.layer.cornerRadius = 4
-        setTextViewTextStyle()
+        setCommentTimeView()
+        setTextView()
+        setAlarmButton.layer.cornerRadius = 8
+        settingTimeButton.layer.cornerRadius = 8
     }
     
     private func setKeyboard() {
@@ -38,28 +43,75 @@ class SetAlarmViewController: UIViewController {
         hideKeyboardWhenTappedAround()
     }
     
-    private func setTextViewTextStyle() {
+    private func setCommentTimeView() {
+        commentTimeView.isHidden = true
+        commentTimeView.layer.cornerRadius = 4
+    }
+    
+    private func setTextView() {
+        memoTextView.delegate = self
         memoTextView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         memoTextView.layer.cornerRadius = 8
     }
     
     // MARK: - Objc Function
     @objc func keyboardWillShow(_ sender: Notification) {
-        let userInfo: NSDictionary = sender.userInfo! as NSDictionary
-        let keyboardFrame: NSValue = userInfo.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue
-        let keyboardRectangle = keyboardFrame.cgRectValue
-        let keyboardHeight = keyboardRectangle.height
-        keyHeight = keyboardHeight
-
-        self.view.frame.size.height -= keyboardHeight
+        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            if self.view.window?.frame.origin.y != 0 {
+                self.view.window?.frame.origin.y = 0
+            }
+            else {
+                self.view.window?.frame.origin.y -= keyboardHeight
+            }
+        }
+        scrollView.scroll(to: .bottom)
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {
-        self.view.frame.size.height += keyHeight!
+        if self.view.window?.frame.origin.y != 0 {
+            self.view.window?.frame.origin.y = 0
+        }
+        scrollView.scroll(to: .bottom)
     }
     
     // MARK: - IBAction
     @IBAction func showCommentTimeButtonDidTap(_ sender: UIButton) {
         commentTimeView.isHidden.toggle()
+    }
+    
+    @IBAction func setRepresentationTagButtonDidTap(_ sender: UIButton) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "SetRepresentTag", bundle: nil)
+        guard let setRepresentTagViewController = storyboard.instantiateViewController(withIdentifier: "SetRepresentTagViewController") as? SetRepresentTagViewController else {
+            return
+        }
+        self.navigationController?.pushViewController(setRepresentTagViewController, animated: true)
+    }
+}
+
+extension SetAlarmViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == textViewPlaceHolder {
+            textView.text = ""
+            textView.textColor  = .grayGray90
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.text = textViewPlaceHolder
+            textView.textColor = .grayGray50
+        }
     }
 }
