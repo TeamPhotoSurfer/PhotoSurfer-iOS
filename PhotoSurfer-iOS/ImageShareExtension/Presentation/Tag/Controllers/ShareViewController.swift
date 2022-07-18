@@ -49,6 +49,7 @@ final class ShareViewController: UIViewController {
     @IBOutlet weak var addedTagCollectionView: UICollectionView!
     @IBOutlet weak var typingButton: UIButton!
     @IBOutlet weak var typingButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionViewBottonConstraint: NSLayoutConstraint!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -67,6 +68,7 @@ final class ShareViewController: UIViewController {
         setSearchBar()
         registerXib()
         setHierarchy()
+        self.isModalInPresentation = true
     }
     
     private func registerXib() {
@@ -86,6 +88,8 @@ final class ShareViewController: UIViewController {
     
     private func setKeyboard() {
         hideKeyboardWhenTappedAround()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func setSearchBar() {
@@ -110,15 +114,29 @@ final class ShareViewController: UIViewController {
         return toolBarKeyboard
     }
     
-    func showAlert(message: String) {
-        let sheet = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        sheet.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in }))
-        present(sheet, animated: true)
-    }
-    
     // MARK: - Objc Function
     @objc private func doneButtonDidTap() {
         dismissKeyboard()
+    }
+    
+    // MARK: - Objc Function
+    @objc func keyboardWillShow(_ sender: Notification) {
+        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            if collectionViewBottonConstraint.constant != 0 {
+                collectionViewBottonConstraint.constant = 0
+            }
+            else {
+                collectionViewBottonConstraint.constant += keyboardHeight
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        if collectionViewBottonConstraint.constant != 0 {
+            collectionViewBottonConstraint.constant = 0
+        }
     }
     
     // MARK: - IBAction
@@ -127,7 +145,11 @@ final class ShareViewController: UIViewController {
     }
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
-        showAlert(message: "저장")
+        let storyboard: UIStoryboard = UIStoryboard(name: "SetAlarm", bundle: nil)
+        guard let setAlarmViewController = storyboard.instantiateViewController(withIdentifier: "navigation") as? UINavigationController else {
+            return
+        }
+        self.present(setAlarmViewController, animated: true)
     }
 }
 
