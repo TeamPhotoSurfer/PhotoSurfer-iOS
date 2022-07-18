@@ -21,5 +21,6 @@ extension Const {
         static let SettingPolicy = "SettingPolicy"
         static let AlarmList = "AlarmList"
         static let Picture = "Picture"
+        static let AlarmDetail = "AlarmDetail"
     }
 }

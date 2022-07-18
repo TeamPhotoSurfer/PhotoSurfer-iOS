@@ -21,5 +21,6 @@ extension Const {
         static let SettingPolicyViewController = "SettingPolicyViewController"
         static let AlarmListViewController = "AlarmListViewController"
         static let PictureViewController = "PictureViewController"
+        static let AlarmDetailViewController = "AlarmDetailViewController"
     }
 }
