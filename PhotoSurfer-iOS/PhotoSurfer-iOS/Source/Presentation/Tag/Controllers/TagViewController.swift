@@ -95,6 +95,11 @@ final class TagViewController: UIViewController {
             superview = superview?.superview
         }
     }
+    // MARK: - IBAction
+    @IBAction func viewDidTap(_ sender: Any) {
+//        let isTouch = (self.view.hitTest(sender.location(in: self.view), with: nil) as? UILabel)?.text ?? "NONE"
+    }
+    
 }
 
 extension Album {
