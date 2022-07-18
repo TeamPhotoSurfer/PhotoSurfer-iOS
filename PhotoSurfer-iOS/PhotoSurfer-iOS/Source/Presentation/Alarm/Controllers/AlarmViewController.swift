@@ -12,6 +12,8 @@ final class AlarmViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var tableHeaderView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var statusBarBackgroundView: UIView!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {

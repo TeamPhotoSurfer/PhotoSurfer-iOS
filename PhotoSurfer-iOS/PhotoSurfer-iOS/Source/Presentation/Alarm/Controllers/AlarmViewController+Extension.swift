@@ -35,3 +35,9 @@ extension AlarmViewController: UITableViewDataSource {
         return AlarmListSectionHeaderView(title: section == 0 ? "오늘" : "내일")
     }
 }
+
+extension AlarmViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        statusBarBackgroundView.isHidden = scrollView.contentOffset.y < 10
+    }
+}
