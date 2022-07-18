@@ -16,6 +16,8 @@ final class AlarmViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setTableView()
     }
     
     // MARK: - Function
@@ -25,7 +27,6 @@ final class AlarmViewController: UIViewController {
         tableView.tableHeaderView = tableHeaderView
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.automaticallyAdjustsScrollIndicatorInsets = false
     }
     
     private func registerXib() {
