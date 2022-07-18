@@ -55,6 +55,9 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appleRoundButton" translatesAutoresizingMaskIntoConstraints="NO" id="gWZ-9t-UL9">
                                 <rect key="frame" x="38" y="495.66666666666674" width="299" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gWZ-9t-UL9" secondAttribute="height" multiplier="299:44" id="dzd-Z4-NWS"/>
+                                </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seaBottom" translatesAutoresizingMaskIntoConstraints="NO" id="Puo-0i-CTL">
                                 <rect key="frame" x="0.0" y="631" width="375" height="181"/>
