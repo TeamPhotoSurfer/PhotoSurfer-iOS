@@ -15,18 +15,51 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hd0-Lq-zgN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="3CP-iO-l8P">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="413"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgAlarm" translatesAutoresizingMaskIntoConstraints="NO" id="vXE-yI-MmN">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="413"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="vXE-yI-MmN" firstAttribute="leading" secondItem="3CP-iO-l8P" secondAttribute="leading" id="LiT-jY-7or"/>
+                                        <constraint firstItem="vXE-yI-MmN" firstAttribute="top" secondItem="3CP-iO-l8P" secondAttribute="top" id="Psq-gQ-egq"/>
+                                        <constraint firstAttribute="trailing" secondItem="vXE-yI-MmN" secondAttribute="trailing" id="Wba-Um-qwP"/>
+                                        <constraint firstAttribute="bottom" secondItem="vXE-yI-MmN" secondAttribute="bottom" id="zP2-xO-HbL"/>
+                                    </constraints>
+                                </view>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5N9-ap-B2U"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5N9-ap-B2U" firstAttribute="bottom" secondItem="Hd0-Lq-zgN" secondAttribute="bottom" id="Tg6-E0-Uhj"/>
+                            <constraint firstItem="Hd0-Lq-zgN" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="iIY-1e-7dR"/>
+                            <constraint firstItem="Hd0-Lq-zgN" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="sNC-K6-hGz"/>
+                            <constraint firstAttribute="trailing" secondItem="Hd0-Lq-zgN" secondAttribute="trailing" id="vbG-4O-5bM"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="KhX-FT-V0p"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableHeaderView" destination="3CP-iO-l8P" id="lh8-Eq-6sx"/>
+                        <outlet property="tableView" destination="Hd0-Lq-zgN" id="N7l-Uu-XRL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23" y="119"/>
+            <point key="canvasLocation" x="-23.188405797101453" y="118.52678571428571"/>
         </scene>
     </scenes>
     <resources>
+        <image name="imgAlarm" width="405" height="264"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
