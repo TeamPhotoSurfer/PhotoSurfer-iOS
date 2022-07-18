@@ -45,6 +45,8 @@
 		08AA45222884918100E961C4 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA45202884909D00E961C4 /* UIScrollView+.swift */; };
 		08D0657B2885282C007B6635 /* RepresentTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D065792885282C007B6635 /* RepresentTagTableViewCell.swift */; };
 		08D0657C2885282C007B6635 /* RepresentTagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D0657A2885282C007B6635 /* RepresentTagTableViewCell.xib */; };
+		08D0658228853255007B6635 /* SetAlarmViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D0658128853255007B6635 /* SetAlarmViewController+Extension.swift */; };
+		08D06584288532C3007B6635 /* SetRepresentTagViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D06583288532C3007B6635 /* SetRepresentTagViewController+Extension.swift */; };
 		08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		151F95C428849AD20089FE9E /* AlarmTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151F95C228849AD20089FE9E /* AlarmTopTableViewCell.swift */; };
 		151F95C528849AD20089FE9E /* AlarmTopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F95C328849AD20089FE9E /* AlarmTopTableViewCell.xib */; };
@@ -159,6 +161,8 @@
 		08AA45202884909D00E961C4 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		08D065792885282C007B6635 /* RepresentTagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepresentTagTableViewCell.swift; sourceTree = "<group>"; };
 		08D0657A2885282C007B6635 /* RepresentTagTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepresentTagTableViewCell.xib; sourceTree = "<group>"; };
+		08D0658128853255007B6635 /* SetAlarmViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetAlarmViewController+Extension.swift"; sourceTree = "<group>"; };
+		08D06583288532C3007B6635 /* SetRepresentTagViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetRepresentTagViewController+Extension.swift"; sourceTree = "<group>"; };
 		151F95C228849AD20089FE9E /* AlarmTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTopTableViewCell.swift; sourceTree = "<group>"; };
 		151F95C328849AD20089FE9E /* AlarmTopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmTopTableViewCell.xib; sourceTree = "<group>"; };
 		1553B717287C88A700137E6C /* HomeSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeSearch.storyboard; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 			children = (
 				0831EC8728844E1C007FF4F7 /* SetAlarmViewController.swift */,
 				0831EC8B28844EDB007FF4F7 /* SetRepresentTagViewController.swift */,
+				08D0658128853255007B6635 /* SetAlarmViewController+Extension.swift */,
+				08D06583288532C3007B6635 /* SetRepresentTagViewController+Extension.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -984,8 +990,10 @@
 				0831EC9328847C33007FF4F7 /* UIFont+.swift in Sources */,
 				0831EC9228847C30007FF4F7 /* UIColor+.swift in Sources */,
 				08AA45222884918100E961C4 /* UIScrollView+.swift in Sources */,
+				08D0658228853255007B6635 /* SetAlarmViewController+Extension.swift in Sources */,
 				086F184D287C8EF10061422F /* ShareViewController+Extension.swift in Sources */,
 				0896AB42288149740043099D /* Const.swift in Sources */,
+				08D06584288532C3007B6635 /* SetRepresentTagViewController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
