@@ -145,14 +145,7 @@ extension ShareViewController {
     
     private func applyChangedDataSource(inputText: String, isEmpty: Bool) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
-        for tag in relatedTags {
-            print(tag.title)
-        }
-        print(relatedTags)
         relatedTags = relatedTags.filter({ $0.title.contains(inputText) })
-        for tag in relatedTags {
-            print(tag.title)
-        }
         snapshot.appendSections([.addedTag , .relatedTag])
         snapshot.appendItems(addedTags, toSection: .addedTag)
         snapshot.appendItems(relatedTags, toSection: .relatedTag)

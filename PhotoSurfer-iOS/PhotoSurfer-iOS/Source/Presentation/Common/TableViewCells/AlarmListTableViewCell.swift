@@ -7,17 +7,21 @@
 
 import UIKit
 
-class AlarmListTableViewCell: UITableViewCell {
+final class AlarmListTableViewCell: UITableViewCell {
 
+    // MARK: - IBOutlet
+    @IBOutlet weak var tagLabel: UILabel!
+    @IBOutlet weak var photoImageView: UIImageView!
+    
+    // MARK: - LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setUI()
     }
     
+    // MARK: - Function
+    private func setUI() {
+        photoImageView.layer.cornerRadius = 8
+    }
 }

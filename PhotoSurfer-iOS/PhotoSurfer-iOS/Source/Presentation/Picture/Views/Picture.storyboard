@@ -31,36 +31,46 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="leftBackIconButton"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EI1-XH-izf">
-                                        <rect key="frame" x="370" y="13.5" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="rNU-EO-UCv"/>
-                                            <constraint firstAttribute="height" constant="24" id="td2-bf-L6b"/>
-                                        </constraints>
-                                        <color key="tintColor" name="AccentColor"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="56K-Hg-bxd">
+                                        <rect key="frame" x="331" y="18" width="63" height="24"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBD-BC-O3O">
+                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="Mji-m0-jzS"/>
+                                                    <constraint firstAttribute="width" constant="24" id="lD3-o4-3NM"/>
+                                                </constraints>
+                                                <color key="tintColor" name="AccentColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="leftBellSettingIcon"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EI1-XH-izf">
+                                                <rect key="frame" x="39" y="0.0" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="rNU-EO-UCv"/>
+                                                    <constraint firstAttribute="height" constant="24" id="td2-bf-L6b"/>
+                                                </constraints>
+                                                <color key="tintColor" name="AccentColor"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="icMenuVertical"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZS-N1-AiV">
+                                        <rect key="frame" x="362" y="-2.5" width="48" height="56"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="icMenuVertical"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBD-BC-O3O">
-                                        <rect key="frame" x="331" y="13.5" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="Mji-m0-jzS"/>
-                                            <constraint firstAttribute="width" constant="24" id="lD3-o4-3NM"/>
-                                        </constraints>
-                                        <color key="tintColor" name="AccentColor"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="leftBellSettingIcon"/>
+                                        <state key="normal" image="rightShareIconButton"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="56K-Hg-bxd" secondAttribute="trailing" constant="20" id="4UN-D0-XzK"/>
                                     <constraint firstAttribute="height" constant="51" id="Atk-Rt-VoQ"/>
+                                    <constraint firstItem="56K-Hg-bxd" firstAttribute="top" secondItem="bCk-AB-mvb" secondAttribute="top" constant="18" id="EYk-CG-Q3y"/>
                                     <constraint firstItem="bE9-mJ-zyM" firstAttribute="leading" secondItem="bCk-AB-mvb" secondAttribute="leading" id="NHP-pg-Jgn"/>
-                                    <constraint firstItem="EI1-XH-izf" firstAttribute="centerY" secondItem="bCk-AB-mvb" secondAttribute="centerY" id="eFv-8z-rM2"/>
-                                    <constraint firstAttribute="trailing" secondItem="EI1-XH-izf" secondAttribute="trailing" constant="20" id="gdH-uc-h3j"/>
                                     <constraint firstItem="bE9-mJ-zyM" firstAttribute="centerY" secondItem="bCk-AB-mvb" secondAttribute="centerY" id="hdj-Ti-se7"/>
-                                    <constraint firstItem="JBD-BC-O3O" firstAttribute="centerY" secondItem="bCk-AB-mvb" secondAttribute="centerY" id="jkN-gw-0G9"/>
-                                    <constraint firstItem="EI1-XH-izf" firstAttribute="leading" secondItem="JBD-BC-O3O" secondAttribute="trailing" constant="15" id="m2Z-xI-G49"/>
+                                    <constraint firstItem="ZZS-N1-AiV" firstAttribute="centerY" secondItem="bCk-AB-mvb" secondAttribute="centerY" id="s2E-jo-H86"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZZS-N1-AiV" secondAttribute="trailing" constant="4" id="yWm-jb-bZB"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HM1-lE-DPk">
@@ -171,6 +181,17 @@
                                     <constraint firstAttribute="bottom" secondItem="yOE-bk-ij4" secondAttribute="bottom" id="vdI-Qu-ZGN"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXk-uj-diP">
+                                <rect key="frame" x="20" y="798" width="374" height="48"/>
+                                <color key="backgroundColor" name="pointMain"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="85p-Qj-PKu"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="알림 내용 확인하기">
+                                    <color key="titleColor" name="grayWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -182,11 +203,14 @@
                             <constraint firstItem="mWj-kW-YLh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GOt-cS-RPf"/>
                             <constraint firstItem="HM1-lE-DPk" firstAttribute="top" secondItem="bCk-AB-mvb" secondAttribute="bottom" id="Lk4-S3-PNq"/>
                             <constraint firstItem="bCk-AB-mvb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="UB5-dw-0cz"/>
+                            <constraint firstItem="rXk-uj-diP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="XAb-CG-NBs"/>
                             <constraint firstAttribute="bottom" secondItem="lR5-8r-y9c" secondAttribute="bottom" id="aDe-0t-WWn"/>
                             <constraint firstItem="bCk-AB-mvb" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="aTo-JA-UJ9"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rXk-uj-diP" secondAttribute="trailing" constant="20" id="dYh-FY-kB7"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bCk-AB-mvb" secondAttribute="trailing" id="dl2-q4-P0i"/>
                             <constraint firstItem="Jub-5d-gYG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="mw5-Zs-nOC"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lR5-8r-y9c" secondAttribute="trailing" id="nkz-Fo-COi"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="rXk-uj-diP" secondAttribute="bottom" constant="16" id="pOt-Ce-ZaF"/>
                             <constraint firstItem="lR5-8r-y9c" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="sxH-fD-PcZ"/>
                             <constraint firstItem="mWj-kW-YLh" firstAttribute="top" secondItem="Jub-5d-gYG" secondAttribute="bottom" id="t3K-1Z-Yhz"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mWj-kW-YLh" secondAttribute="trailing" id="tt0-eW-1xs"/>
@@ -194,11 +218,15 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="alarmDetailButton" destination="rXk-uj-diP" id="8nJ-gB-USP"/>
+                        <outlet property="bottomWaveView" destination="mWj-kW-YLh" id="Mrr-80-HCZ"/>
                         <outlet property="collectionView" destination="Jub-5d-gYG" id="aRg-V6-qZ4"/>
                         <outlet property="imageBackgroundView" destination="lR5-8r-y9c" id="Iba-EF-uSA"/>
                         <outlet property="imageContainerView" destination="Tba-it-jKc" id="yya-WR-ie9"/>
                         <outlet property="imageView" destination="Un1-OY-IMz" id="IPy-yV-1de"/>
+                        <outlet property="navigationPictureButtonContainerStackView" destination="56K-Hg-bxd" id="RdW-i0-GRh"/>
                         <outlet property="scrollViewHeight" destination="m0v-EL-Bu3" id="yff-AQ-L7c"/>
+                        <outlet property="shareButton" destination="ZZS-N1-AiV" id="Pae-D4-GTt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -212,6 +240,7 @@
         <image name="imgSea" width="360" height="340"/>
         <image name="leftBackIconButton" width="48" height="56"/>
         <image name="leftBellSettingIcon" width="20" height="20"/>
+        <image name="rightShareIconButton" width="48" height="56"/>
         <image name="share" width="44" height="44"/>
         <image name="wave" width="360" height="60"/>
         <namedColor name="AccentColor">
@@ -222,6 +251,12 @@
         </namedColor>
         <namedColor name="grayGray80">
             <color red="0.20000000298023224" green="0.23899999260902405" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pointMain">
+            <color red="0.20800000429153442" green="0.4779999852180481" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

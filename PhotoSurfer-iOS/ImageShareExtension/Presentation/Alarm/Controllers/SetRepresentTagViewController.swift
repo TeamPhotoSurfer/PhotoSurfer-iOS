@@ -7,23 +7,55 @@
 
 import UIKit
 
-class SetRepresentTagViewController: UIViewController {
+final class SetRepresentTagViewController: UIViewController {
 
+    // MARK: - Property
+    var tags: [Tag] = []
+    var delegate: SetSelectedRepresentTag?
+    var selectedTags: [Tag] = []
+    
+    // MARK: - IBOutlet
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setDummy()
+        setCollectionView()
+        registerXib()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Function
+    private func registerXib() {
+        tableView.register(UINib(nibName: RepresentTagTableViewCell.identifier, bundle: nil),
+                           forCellReuseIdentifier: RepresentTagTableViewCell.identifier)
     }
-    */
+    
+    private func setCollectionView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 8.0
+        
+    }
+    
+    // MARK: - IBAction
+    @IBAction func cancelButtonDidTap(_ sender: UIButton) {
+        delegate?.sendSelectedRepresentTag(tags: selectedTags)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func saveButtonDidTap(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+}
 
+// 이후 삭제할 부분이라 아래에 바로 넣어놓음
+extension SetRepresentTagViewController {
+    private func setDummy() {
+        tags = [Tag(title: "휴학계획"), Tag(title: "인턴"), Tag(title: "블로그"), Tag(title: "취준"), Tag(title: "채용공고"), Tag(title: "스펙")]
+    }
 }
