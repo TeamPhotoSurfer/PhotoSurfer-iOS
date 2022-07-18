@@ -94,5 +94,6 @@ extension Const {
         static let icCheckCircleFillCheckboxMain = UIImage(named: "icCheckCircleFillCheckboxMain")
         static let icThreedotsVerticalTagThumbnailWhite = UIImage(named: "icThreedotsVerticalTagThumbnailWhite")
         static let icGearFill = UIImage(named: "icGearFill")
+        static let imgAlarm = UIImage(named: "imgAlarm")!
     }
 }
