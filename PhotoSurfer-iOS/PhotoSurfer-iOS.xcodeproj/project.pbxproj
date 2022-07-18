@@ -71,6 +71,8 @@
 		1584E76A2882E73C000FA459 /* Picture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1584E7692882E73C000FA459 /* Picture.storyboard */; };
 		1584E76C2882E74C000FA459 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1584E76B2882E74C000FA459 /* PictureViewController.swift */; };
 		1584E76E2883AD3F000FA459 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1584E76D2883AD3F000FA459 /* GoogleService-Info.plist */; };
+		15A7788E2885A8FA00672CAE /* AlarmDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A7788D2885A8FA00672CAE /* AlarmDetail.storyboard */; };
+		15A778902885A90700672CAE /* AlarmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A7788F2885A90700672CAE /* AlarmDetailViewController.swift */; };
 		15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */; };
 		15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCF28842F5D0099CA8D /* URLConstant.swift */; };
 		15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */; };
@@ -189,6 +191,8 @@
 		1584E7692882E73C000FA459 /* Picture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Picture.storyboard; sourceTree = "<group>"; };
 		1584E76B2882E74C000FA459 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		1584E76D2883AD3F000FA459 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		15A7788D2885A8FA00672CAE /* AlarmDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmDetail.storyboard; sourceTree = "<group>"; };
+		15A7788F2885A90700672CAE /* AlarmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailViewController.swift; sourceTree = "<group>"; };
 		15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		15C4BFCF28842F5D0099CA8D /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
@@ -362,6 +366,7 @@
 		086F17E0287AA18A0061422F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				15A7788A2885A8E400672CAE /* AlarmDetail */,
 				151F95C8288563A80089FE9E /* AlarmList */,
 				DDA6AD8428855BD400902F5A /* Login */,
 				DD82D7C22884A0C200A56F6C /* Splash */,
@@ -694,6 +699,31 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		15A7788A2885A8E400672CAE /* AlarmDetail */ = {
+			isa = PBXGroup;
+			children = (
+				15A7788C2885A8EF00672CAE /* Views */,
+				15A7788B2885A8E900672CAE /* Controllers */,
+			);
+			path = AlarmDetail;
+			sourceTree = "<group>";
+		};
+		15A7788B2885A8E900672CAE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				15A7788F2885A90700672CAE /* AlarmDetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		15A7788C2885A8EF00672CAE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				15A7788D2885A8FA00672CAE /* AlarmDetail.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		15C4BFD7288477E10099CA8D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -952,6 +982,7 @@
 				1584E76A2882E73C000FA459 /* Picture.storyboard in Resources */,
 				DD82D7C62884A0FF00A56F6C /* Splash.storyboard in Resources */,
 				15D1DEF22875BE0900852617 /* Main.storyboard in Resources */,
+				15A7788E2885A8FA00672CAE /* AlarmDetail.storyboard in Resources */,
 				1584E76E2883AD3F000FA459 /* GoogleService-Info.plist in Resources */,
 				DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */,
 				DD82D7A32884896400A56F6C /* Bubble.json in Resources */,
@@ -1070,6 +1101,7 @@
 				1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */,
 				DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
+				15A778902885A90700672CAE /* AlarmDetailViewController.swift in Sources */,
 				151F95CE288563D10089FE9E /* AlarmListViewController.swift in Sources */,
 				15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */,
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,

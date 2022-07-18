@@ -10,7 +10,7 @@
         },
         "center" : {
           "mode" : "tile",
-          "width" : 71
+          "width" : 1
         },
         "mode" : "3-part-horizontal"
       },
@@ -26,7 +26,7 @@
         },
         "center" : {
           "mode" : "tile",
-          "width" : 145
+          "width" : 1
         },
         "mode" : "3-part-horizontal"
       },
@@ -42,7 +42,7 @@
         },
         "center" : {
           "mode" : "tile",
-          "width" : 215
+          "width" : 1
         },
         "mode" : "3-part-horizontal"
       },
