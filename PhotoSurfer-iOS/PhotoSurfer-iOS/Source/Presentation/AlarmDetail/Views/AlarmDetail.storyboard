@@ -38,10 +38,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDW-cC-uP6">
-                                <rect key="frame" x="0.0" y="112" width="414" height="337"/>
+                                <rect key="frame" x="0.0" y="112" width="414" height="421"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xW3-1j-SpP">
-                                        <rect key="frame" x="114" y="87" width="186" height="163.5"/>
+                                        <rect key="frame" x="114" y="129" width="186" height="163.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarmImage" translatesAutoresizingMaskIntoConstraints="NO" id="lmt-6W-rUC">
                                                 <rect key="frame" x="26" y="0.0" width="134" height="134"/>
@@ -62,12 +62,12 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="xW3-1j-SpP" firstAttribute="centerY" secondItem="QDW-cC-uP6" secondAttribute="centerY" id="2g2-u8-gjX"/>
-                                    <constraint firstAttribute="height" constant="337" id="Koy-L5-zBD"/>
+                                    <constraint firstAttribute="height" priority="250" constant="337" id="Koy-L5-zBD"/>
                                     <constraint firstItem="xW3-1j-SpP" firstAttribute="centerX" secondItem="QDW-cC-uP6" secondAttribute="centerX" id="aC9-4e-DcK"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhh-kX-HaG">
-                                <rect key="frame" x="0.0" y="449" width="414" height="265"/>
+                                <rect key="frame" x="0.0" y="533" width="414" height="265"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0j8-dg-zhM">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
@@ -192,7 +192,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKX-hV-Q1G">
-                                <rect key="frame" x="20" y="714" width="374" height="48"/>
+                                <rect key="frame" x="20" y="798" width="374" height="48"/>
                                 <color key="backgroundColor" name="pointMain"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="idp-IU-1zn"/>
@@ -217,6 +217,7 @@
                             <constraint firstItem="hKX-hV-Q1G" firstAttribute="top" secondItem="qhh-kX-HaG" secondAttribute="bottom" id="erR-SB-D3x"/>
                             <constraint firstItem="ylM-4W-fxO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="fD1-RV-01Y"/>
                             <constraint firstItem="QDW-cC-uP6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="igG-Ng-6wV"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="hKX-hV-Q1G" secondAttribute="bottom" constant="16" id="pZr-3w-V3g"/>
                             <constraint firstItem="ylM-4W-fxO" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ruT-Mk-TbE"/>
                             <constraint firstItem="qhh-kX-HaG" firstAttribute="top" secondItem="QDW-cC-uP6" secondAttribute="bottom" id="tSA-wq-Dfm"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ylM-4W-fxO" secondAttribute="trailing" id="ugv-4p-C4Z"/>
@@ -227,6 +228,7 @@
                         <outlet property="completeButton" destination="hKX-hV-Q1G" id="n79-Rh-LVF"/>
                         <outlet property="dateButton" destination="FRV-Ji-tdD" id="sJV-0h-rB2"/>
                         <outlet property="memoTextView" destination="sIT-Zi-nSX" id="ljq-jq-lno"/>
+                        <outlet property="topViewHeightConstraint" destination="Koy-L5-zBD" id="Kd3-ff-zVW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

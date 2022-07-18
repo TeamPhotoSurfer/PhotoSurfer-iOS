@@ -13,6 +13,7 @@ final class AlarmDetailViewController: UIViewController {
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var memoTextView: UITextView!
     @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: - LifeCyele
     override func viewDidLoad() {
