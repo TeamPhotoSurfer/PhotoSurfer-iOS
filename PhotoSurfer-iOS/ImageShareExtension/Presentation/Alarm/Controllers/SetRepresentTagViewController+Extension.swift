@@ -25,25 +25,42 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
     
     /// 오류
     private func addSelectedTags(indexPath: IndexPath, cell: RepresentTagTableViewCell) {
-        cell.setCheckButton(count: selectedTags.count)
-        if selectedTags.count <= 2 {
-            if !selectedTags.contains(tags[indexPath.item]) {
-                selectedTags.append(tags[indexPath.item])
+        
+        
+        if selectedTags.count >= 3 {
+            if selectedTags.contains(tags[indexPath.item]) {
+                removeSelectedTag(indexPath: indexPath, cell: cell)
             }
             else {
-                if !selectedTags.isEmpty {
-                    for selectedItemIndex in 0..<selectedTags.count {
-                        for itemIndex in 0..<tags.count {
-                            if selectedTags[selectedItemIndex] == tags[itemIndex] {
-                                selectedTags.remove(at: selectedItemIndex)
-                            }
-                        }
-                    }
-                }
+                showAlert(message: "대표 태그는 최대 3개까지 선택할 수 있어요.")
+            }
+        }
+        else if !selectedTags.isEmpty {
+            if selectedTags.contains(tags[indexPath.item]) {
+                removeSelectedTag(indexPath: indexPath, cell: cell)
+            }
+            else {
+                addSelectedTag(indexPath: indexPath, cell: cell)
             }
         }
         else {
-            showAlert(message: "대표 태그는 최대 3개까지 선택할 수 있어요.")
+            addSelectedTag(indexPath: indexPath, cell: cell)
+        }
+        
+    }
+    
+    private func addSelectedTag(indexPath: IndexPath, cell: RepresentTagTableViewCell) {
+        cell.checkButton.isSelected = true
+        selectedTags.append(tags[indexPath.item])
+    }
+    
+    private func removeSelectedTag(indexPath: IndexPath, cell: RepresentTagTableViewCell) {
+        for i in 0..<selectedTags.count {
+            if selectedTags[i] == tags[indexPath.item] {
+                cell.checkButton.isSelected = false
+                selectedTags.remove(at: i)
+                break
+            }
         }
     }
     

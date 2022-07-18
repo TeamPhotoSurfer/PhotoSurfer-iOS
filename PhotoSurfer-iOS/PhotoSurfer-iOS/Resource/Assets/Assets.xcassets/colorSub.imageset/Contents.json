@@ -10,7 +10,7 @@
         },
         "center" : {
           "mode" : "tile",
-          "width" : 71
+          "width" : 1
         },
         "mode" : "3-part-horizontal"
       },
@@ -21,12 +21,12 @@
       "idiom" : "universal",
       "resizing" : {
         "cap-insets" : {
-          "left" : 24,
+          "left" : 13,
           "right" : 30
         },
         "center" : {
           "mode" : "tile",
-          "width" : 134
+          "width" : 1
         },
         "mode" : "3-part-horizontal"
       },
@@ -42,7 +42,7 @@
         },
         "center" : {
           "mode" : "tile",
-          "width" : 215
+          "width" : 1
         },
         "mode" : "3-part-horizontal"
       },
