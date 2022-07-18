@@ -20,9 +20,16 @@ extension Const {
         static let icHashtagLineTagWhite = UIImage(named: "icHashtagLineTagWhite")
         static let icHashtagLineTagMain = UIImage(named: "icHashtagLineTagMain")
         static let icHashtagLineTagGray70 = UIImage(named: "icHashtagLineTagGray70")
+        static let icHouseFill = UIImage(named: "icHouseFill")
+        static let icHouseLine = UIImage(named: "icHouseLine")
+        static let icSearchFill = UIImage(named: "icSearchFill")
+        static let icTrashcanLine = UIImage(named: "icTrashcanLine")
+        static let icXLine = UIImage(named: "icXLine")
+        static let phPlusFill = UIImage(named: "phPlusFill")
         /// image
         static let shapeBluelogo = UIImage(named: "shapeBluelogo")
         static let shapeWhitelogo = UIImage(named: "shapeWhitelogo")
+        static let SplashBackground = UIImage(named: "SplashBackground")
         
         // MARK: - Bottom Bar
         /// icon
@@ -57,15 +64,21 @@ extension Const {
         static let leftStarIconWhiteButton = UIImage(named: "leftStarIconWhiteButton")
         static let leftStarIconYellowButton = UIImage(named: "leftStarIconYellowButton")
         static let rightThreedotsIconWhiteButton = UIImage(named: "rightThreedotsIconWhiteButton")
+        static let icStarFill = UIImage(named: "icStarFill")
+        static let icStartLine = UIImage(named: "icStartLine")
+        static let icTagFill = UIImage(named: "icTagFill")
         
         // MARK: - Alarm
         /// icon
         static let icBellLineWhite = UIImage(named: "icBellLineWhite")
+        static let icBellFill = UIImage(named: "icBellFill")
         static let icCheckCircleFill = UIImage(named: "icCheckCircleFill")
         static let icCircleLine = UIImage(named: "icCircleLine")
         static let icInfoCircleFile = UIImage(named: "icInfoCircleFile")
+        static let icShortarrowLineRight = UIImage(named: "icShortarrowLineRight")
         /// image
         static let alarmTitle = UIImage(named: "alarmTitle")
+        static let alarmImage = UIImage(named: "alarmImage")
         /// button
         static let leftBackIconButton = UIImage(named: "leftBackIconButton")
         static let rightBellIconButton = UIImage(named: "rightBellIconButton")
@@ -81,5 +94,7 @@ extension Const {
         static let icCheckCircleFillCheckboxGray40 = UIImage(named: "icCheckCircleFillCheckboxGray40")
         static let icCheckCircleFillCheckboxMain = UIImage(named: "icCheckCircleFillCheckboxMain")
         static let icThreedotsVerticalTagThumbnailWhite = UIImage(named: "icThreedotsVerticalTagThumbnailWhite")
+        static let icGearFill = UIImage(named: "icGearFill")
+        static let imgAlarm = UIImage(named: "imgAlarm")!
     }
 }
