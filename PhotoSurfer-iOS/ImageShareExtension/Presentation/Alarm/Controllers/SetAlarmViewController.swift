@@ -35,6 +35,7 @@ class SetAlarmViewController: UIViewController {
         setTextView()
         setAlarmButton.layer.cornerRadius = 8
         settingTimeButton.layer.cornerRadius = 8
+        datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
     }
     
     private func setKeyboard() {
@@ -77,6 +78,15 @@ class SetAlarmViewController: UIViewController {
         scrollView.scroll(to: .bottom)
     }
     
+    @objc func datePickerChanged() {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = .none
+        dateformatter.timeStyle = .short
+        let date = dateformatter.string(from: datePicker.date)
+        settingTimeButton.setTitle(date, for: .normal)
+    }
+    
+    
     // MARK: - IBAction
     @IBAction func showCommentTimeButtonDidTap(_ sender: UIButton) {
         commentTimeView.isHidden.toggle()
@@ -88,30 +98,5 @@ class SetAlarmViewController: UIViewController {
             return
         }
         self.navigationController?.pushViewController(setRepresentTagViewController, animated: true)
-    }
-}
-
-extension SetAlarmViewController: UITextViewDelegate {
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == textViewPlaceHolder {
-            textView.text = ""
-            textView.textColor  = .grayGray90
-        }
-    }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            textView.text = textViewPlaceHolder
-            textView.textColor = .grayGray50
-        }
     }
 }
