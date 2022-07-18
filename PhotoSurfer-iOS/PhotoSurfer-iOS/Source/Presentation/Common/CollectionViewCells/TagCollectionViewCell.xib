@@ -52,6 +52,7 @@
             <connections>
                 <outlet property="backgroundImageView" destination="L4K-Pa-IAt" id="mCD-0O-OJd"/>
                 <outlet property="deleteImageView" destination="pXz-HO-EKc" id="dBX-uA-lPa"/>
+                <outlet property="deleteImageViewWidthConstraint" destination="f25-R5-0nG" id="6J6-Va-uhq"/>
                 <outlet property="titleLabel" destination="cVX-5E-6gq" id="aRj-Ks-o5u"/>
             </connections>
             <point key="canvasLocation" x="180.43478260869566" y="145.98214285714286"/>

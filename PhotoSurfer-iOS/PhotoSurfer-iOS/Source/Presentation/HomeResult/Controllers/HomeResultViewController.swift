@@ -56,7 +56,7 @@ final class HomeResultViewController: UIViewController {
     private func setDataSource() {
         tagDataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: tagCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            cell.setData(title: itemIdentifier.title, isInputTag: true)
+            cell.setData(title: itemIdentifier.title, type: .deleteEnableBlueTag)
             return cell
         })
         photoDataSource = UICollectionViewDiffableDataSource<Section, CapturePhoto>(collectionView: photoCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in

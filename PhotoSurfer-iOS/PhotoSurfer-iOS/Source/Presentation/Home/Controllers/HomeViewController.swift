@@ -72,7 +72,7 @@ final class HomeViewController: UIViewController {
     private func setDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            cell.setData(title: itemIdentifier.title, isInputTag: false)
+            cell.setData(title: itemIdentifier.title, type: .defaultSkyblueTag)
             return cell
         })
     }
