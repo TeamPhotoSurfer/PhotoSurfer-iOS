@@ -59,6 +59,7 @@ class LoginViewController: UIViewController {
         kakaoLoginImageView.isUserInteractionEnabled = true
         kakaoLoginImageView.addGestureRecognizer(kakaoLoginButton)
     }
+    
     func changeRootViewController() {
         guard let mainTabBarController = UIStoryboard(name: Const.Storyboard.Main, bundle: nil)
             .instantiateViewController(withIdentifier: Const.ViewController.MainTabBarController) as? MainTabBarController else { fatalError() }
