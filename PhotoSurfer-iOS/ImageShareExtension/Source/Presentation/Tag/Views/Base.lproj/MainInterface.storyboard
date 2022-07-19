@@ -39,14 +39,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <searchBar contentMode="redraw" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="jhz-iw-P4t">
-                                <rect key="frame" x="10" y="103" width="394" height="68"/>
-                                <color key="backgroundColor" name="grayWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="aHu-oj-1F5"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                            </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9v1-di-q75">
                                 <rect key="frame" x="0.0" y="44" width="414" height="59"/>
                                 <subviews>
@@ -130,6 +122,14 @@
                                     <constraint firstItem="G7r-r1-AQM" firstAttribute="centerY" secondItem="YT7-Nl-hhC" secondAttribute="centerY" id="umg-m6-1iq"/>
                                 </constraints>
                             </view>
+                            <searchBar contentMode="redraw" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="jhz-iw-P4t">
+                                <rect key="frame" x="10" y="103" width="394" height="68"/>
+                                <color key="backgroundColor" name="grayWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="aHu-oj-1F5"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Xd-am-t49"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

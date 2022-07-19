@@ -56,7 +56,7 @@ extension ShareViewController {
             else {
                 sectionContentInset.bottom = 20
                 if selectedSection == 1 {
-                    sectionContentInset.top = 34
+                    sectionContentInset.top = 34 + 12
                 }
                 else {
                     sectionContentInset.top = 4
