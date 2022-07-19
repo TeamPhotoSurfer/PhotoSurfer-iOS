@@ -34,6 +34,7 @@ final class PictureViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var alarmDetailButton: UIButton!
     @IBOutlet weak var bottomWaveView: UIView!
+    @IBOutlet weak var moreButton: UIButton!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -43,6 +44,7 @@ final class PictureViewController: UIViewController {
         setUI()
         setImageData()
         setCollectionView()
+        setMoreButtonMenu()
     }
     
     // MARK: - Function
@@ -108,6 +110,20 @@ final class PictureViewController: UIViewController {
         snapshot.appendSections([.tag])
         snapshot.appendItems(tags, toSection: .tag)
         dataSource.apply(snapshot)
+    }
+    
+    private func setMoreButtonMenu() {
+        let addTag = UIAction(title: "태그추가") { action in
+            
+        }
+        let deleteTag = UIAction(title: "태그삭제") { action in
+           
+        }
+        let editTag = UIAction(title: "태그수정") { action in
+            
+        }
+        moreButton.menu = UIMenu(title: "", children: [addTag, deleteTag, editTag])
+        moreButton.showsMenuAsPrimaryAction = true
     }
     
     // MARK: - IBAction

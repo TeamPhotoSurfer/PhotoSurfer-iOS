@@ -227,6 +227,7 @@
                         <outlet property="imageBackgroundView" destination="lR5-8r-y9c" id="Iba-EF-uSA"/>
                         <outlet property="imageContainerView" destination="Tba-it-jKc" id="yya-WR-ie9"/>
                         <outlet property="imageView" destination="Un1-OY-IMz" id="IPy-yV-1de"/>
+                        <outlet property="moreButton" destination="EI1-XH-izf" id="A1j-ya-Yyi"/>
                         <outlet property="navigationPictureButtonContainerStackView" destination="56K-Hg-bxd" id="RdW-i0-GRh"/>
                         <outlet property="scrollViewHeight" destination="m0v-EL-Bu3" id="yff-AQ-L7c"/>
                         <outlet property="shareButton" destination="ZZS-N1-AiV" id="Pae-D4-GTt"/>
