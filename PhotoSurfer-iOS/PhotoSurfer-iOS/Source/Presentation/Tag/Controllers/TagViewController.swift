@@ -92,12 +92,16 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         return layout
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        editTagTextField.resignFirstResponder()
+        print("🚨resign", editTagTextField.resignFirstResponder())
         return true
     }
     
@@ -123,9 +127,16 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         while superview != nil {
             if let cell = superview as? TagAlbumCollectionViewCell {
                 guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
+                print("셀을 찾았다")
                 indexpath = indexPath
-                editTagTextField.becomeFirstResponder()
-                editToolBarView.isHidden.toggle()
+                editToolBarView.isHidden = false
+                print("✨can?", editTagTextField.canBecomeFirstResponder)
+                DispatchQueue.global(qos: .background).async {
+                    DispatchQueue.main.async {
+                        print("🧤become", self.editTagTextField.becomeFirstResponder())
+                    }
+                }
+                editTagTextField.text = cell.tagNameButton.titleLabel?.text
                 cell.menuView.isHidden.toggle()
                 break
             }
@@ -149,6 +160,8 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     // MARK: - IBAction
     @IBAction func viewDidTap(_ sender: Any) {
         NotificationCenter.default.post(name: Notification.Name("CellTouch"), object: nil)
+//        editToolBarView.isHidden.toggle()
+        print("🚨resign", editTagTextField.resignFirstResponder())
     }
 }
 
