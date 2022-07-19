@@ -108,6 +108,8 @@
 		DD82D7C82884A10A00A56F6C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82D7C72884A10A00A56F6C /* SplashViewController.swift */; };
 		DDA6AD8828855C0700902F5A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA6AD8728855C0700902F5A /* Login.storyboard */; };
 		DDA6AD8A28855C1300902F5A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6AD8928855C1300902F5A /* LoginViewController.swift */; };
+		DDABCF0A2886F567009232DD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDABCF092886F567009232DD /* Onboarding.storyboard */; };
+		DDABCF0C2886F572009232DD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDABCF0B2886F572009232DD /* OnboardingViewController.swift */; };
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
 		DDAEDF44288411F600909129 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAEDF43288411F600909129 /* UITextField+.swift */; };
 		DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E292882982D00CF5036 /* SettingUser.storyboard */; };
@@ -246,6 +248,8 @@
 		DD82D7C72884A10A00A56F6C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DDA6AD8728855C0700902F5A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DDA6AD8928855C1300902F5A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DDABCF092886F567009232DD /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		DDABCF0B2886F572009232DD /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		DDAEDF43288411F600909129 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		DDB71E292882982D00CF5036 /* SettingUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingUser.storyboard; sourceTree = "<group>"; };
@@ -391,6 +395,7 @@
 		086F17E0287AA18A0061422F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DDABCF062886F539009232DD /* Onboarding */,
 				15A7788A2885A8E400672CAE /* AlarmDetail */,
 				151F95C8288563A80089FE9E /* AlarmList */,
 				DDA6AD8428855BD400902F5A /* Login */,
@@ -985,6 +990,31 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		DDABCF062886F539009232DD /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DDABCF082886F544009232DD /* Controller */,
+				DDABCF072886F53E009232DD /* Views */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		DDABCF072886F53E009232DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDABCF092886F567009232DD /* Onboarding.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDABCF082886F544009232DD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DDABCF0B2886F572009232DD /* OnboardingViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1100,6 +1130,7 @@
 				1584E76A2882E73C000FA459 /* Picture.storyboard in Resources */,
 				DD82D7C62884A0FF00A56F6C /* Splash.storyboard in Resources */,
 				15D1DEF22875BE0900852617 /* Main.storyboard in Resources */,
+				DDABCF0A2886F567009232DD /* Onboarding.storyboard in Resources */,
 				15A7788E2885A8FA00672CAE /* AlarmDetail.storyboard in Resources */,
 				1584E76E2883AD3F000FA459 /* GoogleService-Info.plist in Resources */,
 				DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */,
@@ -1219,6 +1250,7 @@
 				15A778992885F97C00672CAE /* PhotoRouter.swift in Sources */,
 				15C4BFDF288478BB0099CA8D /* AlarmViewController+Extension.swift in Sources */,
 				1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */,
+				DDABCF0C2886F572009232DD /* OnboardingViewController.swift in Sources */,
 				DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
 				15A778902885A90700672CAE /* AlarmDetailViewController.swift in Sources */,
