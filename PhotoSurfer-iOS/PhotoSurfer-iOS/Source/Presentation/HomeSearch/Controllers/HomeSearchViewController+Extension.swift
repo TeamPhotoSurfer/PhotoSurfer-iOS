@@ -96,13 +96,10 @@ extension HomeSearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let text = searchBar.text {
-            if inputTags.count < 6 && !text.isEmpty {
-                inputTags.append(Tag(title: searchBar.text ?? ""))
-                searchBar.text?.removeAll()
-                applyInitialDataSource()
-            }
-        }
+        guard let searchResultViewController = UIStoryboard(name: Const.Storyboard.HomeResult, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.HomeResultViewController) as? HomeResultViewController else { return }
+        searchResultViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(searchResultViewController, animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
