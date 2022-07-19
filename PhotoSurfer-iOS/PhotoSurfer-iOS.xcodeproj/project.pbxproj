@@ -452,12 +452,8 @@
 		086F17F0287ADDB10061422F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				086F17F7287ADE650061422F /* Setting.storyboard */,
-				DDB71E292882982D00CF5036 /* SettingUser.storyboard */,
-				DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */,
-				086F17F9287ADE7D0061422F /* SettingViewController.swift */,
-				DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */,
-				DDB71E332882A7EF00CF5036 /* SettingPolicyViewController.swift */,
+				DD602B3128863C91004F546B /* Controllers */,
+				DD602B3028863C81004F546B /* Views */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -865,6 +861,26 @@
 				6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD602B3028863C81004F546B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				086F17F7287ADE650061422F /* Setting.storyboard */,
+				DDB71E292882982D00CF5036 /* SettingUser.storyboard */,
+				DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DD602B3128863C91004F546B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				086F17F9287ADE7D0061422F /* SettingViewController.swift */,
+				DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */,
+				DDB71E332882A7EF00CF5036 /* SettingPolicyViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		DD82D7C22884A0C200A56F6C /* Splash */ = {
