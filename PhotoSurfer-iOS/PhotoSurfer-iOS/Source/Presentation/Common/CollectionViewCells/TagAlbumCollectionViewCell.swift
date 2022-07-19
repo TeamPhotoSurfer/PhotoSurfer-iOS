@@ -97,13 +97,4 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBAction func starButtonDidTap(_ sender: Any) {
         tagStarButton.isSelected.toggle()
     }
-    @IBAction func tagNameButtonDidTap(_ sender: Any) {
-        print("태그 이름 클릭")
-//        NotificationCenter.default.post(name: Notification.Name("TagDidTap"), object: tagNameButton.titleLabel?.text)
-//        let tagDetailStoryboard = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil)
-        let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
-//        let tagStoryboard = UIStoryboard(name: Const.Storyboard.Tag, bundle: nil)
-        let tagViewController = UIStoryboard(name: Const.Storyboard.Tag, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagViewController)
-        tagViewController.navigationController?.pushViewController(tagDetailViewController, animated: true)
-    }
 }

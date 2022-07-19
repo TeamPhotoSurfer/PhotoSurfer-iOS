@@ -46,6 +46,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setCollectionView()
         setEditToolbar()
         editTagTextField.delegate = self
+        albumCollectionView.delegate = self
     }
     
     private func setEditToolbar() {
@@ -192,4 +193,11 @@ extension Album {
         Album(isMarked: false, isPlatform: false, name: "tag12"),
     ]
     static var totalList = markList + list
+}
+
+extension TagViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        print("셀 선택", cell)
+    }
 }
