@@ -14,7 +14,7 @@ struct Album: Hashable {
     var name: String
 }
 
-final class TagViewController: UIViewController {
+final class TagViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Property
     enum Section {
@@ -45,6 +45,7 @@ final class TagViewController: UIViewController {
         editTagTextField.addTarget(self, action: #selector(self.editTagTextFieldDidChange(_:)), for: .editingChanged)
         setCollectionView()
         setEditToolbar()
+        editTagTextField.delegate = self
     }
     
     private func setEditToolbar() {
@@ -93,6 +94,11 @@ final class TagViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        editTagTextField.resignFirstResponder()
+        return true
     }
     
     // MARK: - Objc Function
