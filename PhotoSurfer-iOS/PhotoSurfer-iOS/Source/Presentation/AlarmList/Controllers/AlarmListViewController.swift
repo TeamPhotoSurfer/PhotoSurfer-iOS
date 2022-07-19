@@ -35,6 +35,7 @@ final class AlarmListViewController: UIViewController {
         switch mode {
         case .coming:
             navigationTitleLabel.text = "다가오는 알림"
+            getPushComing()
         case .last:
             navigationTitleLabel.text = "지난 알림"
             getPushLast()
@@ -54,6 +55,25 @@ final class AlarmListViewController: UIViewController {
     
     private func getPushLast() {
         PushService.shared.getPushListLast { [weak self] result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? PushResponse else { return }
+                self?.pushes = data.push
+                self?.tableView.reloadData()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    private func getPushComing() {
+        PushService.shared.getPushListComing{ [weak self] result in
             switch result {
             case .success(let data):
                 guard let data = data as? PushResponse else { return }
