@@ -41,6 +41,8 @@
 		0876FB8B287DE85D00391B07 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0876FB8A287DE85D00391B07 /* UIViewController+.swift */; };
 		0896AB41288149620043099D /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDA8116287E9DBA0051338D /* Image.swift */; };
 		0896AB42288149740043099D /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F1805287AE14B0061422F /* Const.swift */; };
+		0899F0F22886C8EC00319F2E /* surfing.json in Resources */ = {isa = PBXBuildFile; fileRef = 0899F0F02886C8EC00319F2E /* surfing.json */; };
+		0899F0F32886C8EC00319F2E /* bell.json in Resources */ = {isa = PBXBuildFile; fileRef = 0899F0F12886C8EC00319F2E /* bell.json */; };
 		08AA45212884909D00E961C4 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA45202884909D00E961C4 /* UIScrollView+.swift */; };
 		08AA45222884918100E961C4 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA45202884909D00E961C4 /* UIScrollView+.swift */; };
 		08D0657B2885282C007B6635 /* RepresentTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D065792885282C007B6635 /* RepresentTagTableViewCell.swift */; };
@@ -172,6 +174,8 @@
 		0876FB86287D69C300391B07 /* TagsHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		0876FB87287D69C300391B07 /* TagsHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagsHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		0876FB8A287DE85D00391B07 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		0899F0F02886C8EC00319F2E /* surfing.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = surfing.json; sourceTree = "<group>"; };
+		0899F0F12886C8EC00319F2E /* bell.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bell.json; sourceTree = "<group>"; };
 		08AA45202884909D00E961C4 /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		08D065792885282C007B6635 /* RepresentTagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepresentTagTableViewCell.swift; sourceTree = "<group>"; };
 		08D0657A2885282C007B6635 /* RepresentTagTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepresentTagTableViewCell.xib; sourceTree = "<group>"; };
@@ -517,8 +521,8 @@
 		086F1824287BED350061422F /* ImageShareExtension */ = {
 			isa = PBXGroup;
 			children = (
-				0876FB7F287D4EB200391B07 /* Presentation */,
-				086F184E287C91520061422F /* Extensions */,
+				0899F0ED2886C83600319F2E /* Resource */,
+				0899F0EE2886C84000319F2E /* Source */,
 				086F1833287BFA530061422F /* ImageShareExtension.entitlements */,
 				086F182A287BED350061422F /* Info.plist */,
 			);
@@ -569,6 +573,32 @@
 				086F184C287C8EF10061422F /* ShareViewController+Extension.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0899F0ED2886C83600319F2E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0899F0EF2886C85400319F2E /* Gifs */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		0899F0EE2886C84000319F2E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0876FB7F287D4EB200391B07 /* Presentation */,
+				086F184E287C91520061422F /* Extensions */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		0899F0EF2886C85400319F2E /* Gifs */ = {
+			isa = PBXGroup;
+			children = (
+				0899F0F12886C8EC00319F2E /* bell.json */,
+				0899F0F02886C8EC00319F2E /* surfing.json */,
+			);
+			path = Gifs;
 			sourceTree = "<group>";
 		};
 		08D06576288527D2007B6635 /* Cells */ = {
@@ -1036,8 +1066,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0899F0F32886C8EC00319F2E /* bell.json in Resources */,
 				086F1829287BED350061422F /* MainInterface.storyboard in Resources */,
 				0831EC8628844DD4007FF4F7 /* SetAlarm.storyboard in Resources */,
+				0899F0F22886C8EC00319F2E /* surfing.json in Resources */,
 				086F184B287C8A110061422F /* TagCollectionViewCell.xib in Resources */,
 				0831EC8A28844E9C007FF4F7 /* SetRepresentTag.storyboard in Resources */,
 				08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */,
