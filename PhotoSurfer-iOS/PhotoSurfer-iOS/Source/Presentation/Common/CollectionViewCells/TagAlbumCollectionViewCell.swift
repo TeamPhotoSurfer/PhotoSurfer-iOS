@@ -9,6 +9,18 @@ import UIKit
 
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Property
+    var menuItems: [UIAction] {
+        return [
+            UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
+                print("태그 삭제")
+            }),
+            UIAction(title: "태그 수정", image: UIImage(systemName: "pencil"), handler: { _ in
+                print("태그 수정")
+            })
+        ]
+    }
+    
     // MARK: - IBOutlet
     @IBOutlet weak var tagBackgroundImageView: UIImageView!
     @IBOutlet weak var tagDarkView: UIView!
@@ -26,6 +38,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     // MARK: - Function
     private func setUI() {
         setCellUI()
+//        setMoreButton()
     }
     
     private func setCellUI() {
@@ -35,9 +48,22 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
     }
     
+    func setMoreButton() {
+        tagMenuButton.menu = UIMenu(
+            title: "",
+            options: [],
+            children: menuItems)
+        tagMenuButton.showsMenuAsPrimaryAction = true
+    }
+    
     func setDummy(album: Album) {
         tagStarButton.isSelected = album.isMarked
         tagNameButton.setTagName(name: album.name)
+        tagMenuButton.menu = UIMenu(
+            title: "",
+            options: [],
+            children: menuItems)
+        tagMenuButton.showsMenuAsPrimaryAction = true
     }
     
     // TODO: UIButton extension으로 만들어줘도 좋을 것 같다
