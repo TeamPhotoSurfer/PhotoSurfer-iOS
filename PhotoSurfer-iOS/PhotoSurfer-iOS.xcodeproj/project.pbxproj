@@ -83,6 +83,7 @@
 		15A778A12885F99C00672CAE /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A02885F99C00672CAE /* TagService.swift */; };
 		15A778A32885F9A300672CAE /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A22885F9A300672CAE /* PhotoService.swift */; };
 		15A778A52885F9AA00672CAE /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A42885F9AA00672CAE /* PushService.swift */; };
+		15BE00202886EB3F008C80B2 /* PictureViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE001F2886EB3F008C80B2 /* PictureViewController+Extension.swift */; };
 		15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */; };
 		15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCF28842F5D0099CA8D /* URLConstant.swift */; };
 		15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */; };
@@ -214,6 +215,7 @@
 		15A778A02885F99C00672CAE /* TagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagService.swift; sourceTree = "<group>"; };
 		15A778A22885F9A300672CAE /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		15A778A42885F9AA00672CAE /* PushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
+		15BE001F2886EB3F008C80B2 /* PictureViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PictureViewController+Extension.swift"; sourceTree = "<group>"; };
 		15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		15C4BFCF28842F5D0099CA8D /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
@@ -741,6 +743,7 @@
 			isa = PBXGroup;
 			children = (
 				1584E76B2882E74C000FA459 /* PictureViewController.swift */,
+				15BE001F2886EB3F008C80B2 /* PictureViewController+Extension.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1221,6 +1224,7 @@
 				15A778902885A90700672CAE /* AlarmDetailViewController.swift in Sources */,
 				151F95CE288563D10089FE9E /* AlarmListViewController.swift in Sources */,
 				15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */,
+				15BE00202886EB3F008C80B2 /* PictureViewController+Extension.swift in Sources */,
 				15A778A52885F9AA00672CAE /* PushService.swift in Sources */,
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,
 				086F17EC287ADCF30061422F /* File.swift in Sources */,
