@@ -27,7 +27,6 @@ final class TagViewController: UIViewController {
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBOutlet weak var editTagTextField: UITextField!
     @IBOutlet weak var editToolBarView: UIView!
-    @IBOutlet weak var keyboardHandleTextField: UITextField!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -111,8 +110,11 @@ final class TagViewController: UIViewController {
         var superview = sender.superview
         while superview != nil {
             if let cell = superview as? TagAlbumCollectionViewCell {
-                cell.tagNameButton.setTagName(name: "안녕안녕")
+//                cell.tagNameButton.setTagName(name: "안녕안녕")
+                editTagTextField.becomeFirstResponder()
+                editToolBarView.isHidden.toggle()
                 applySnapshot()
+                cell.menuView.isHidden.toggle()
                 break
             }
             superview = superview?.superview
