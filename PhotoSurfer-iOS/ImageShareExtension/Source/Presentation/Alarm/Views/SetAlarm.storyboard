@@ -23,13 +23,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WS8-GC-d33">
                                         <rect key="frame" x="0.0" y="0.0" width="415" height="664.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarmImage" translatesAutoresizingMaskIntoConstraints="NO" id="0zE-wQ-tVm">
-                                                <rect key="frame" x="140.5" y="86" width="134" height="134"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="134" id="PTj-pl-sdr"/>
-                                                    <constraint firstAttribute="width" constant="134" id="YVg-yg-I5z"/>
-                                                </constraints>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="푸시알림도 설정하시겠어요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gib-rt-VOh">
                                                 <rect key="frame" x="107" y="228" width="201" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -165,17 +158,25 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTh-Zb-ZQy">
+                                                <rect key="frame" x="140.5" y="86" width="134" height="134"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="134" id="tOA-MZ-cWL"/>
+                                                    <constraint firstAttribute="height" constant="134" id="znW-pM-d0a"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="gib-rt-VOh" firstAttribute="top" secondItem="0zE-wQ-tVm" secondAttribute="bottom" constant="8" id="4Az-tM-7PK"/>
+                                            <constraint firstItem="TTh-Zb-ZQy" firstAttribute="top" secondItem="WS8-GC-d33" secondAttribute="top" constant="86" id="1gl-Ln-CyW"/>
                                             <constraint firstItem="gib-rt-VOh" firstAttribute="centerX" secondItem="WS8-GC-d33" secondAttribute="centerX" id="7Fe-ht-lF8"/>
-                                            <constraint firstItem="0zE-wQ-tVm" firstAttribute="top" secondItem="WS8-GC-d33" secondAttribute="top" constant="86" id="Cwf-3U-mar"/>
                                             <constraint firstItem="aTX-Hz-DTB" firstAttribute="leading" secondItem="WS8-GC-d33" secondAttribute="leading" id="Gk2-P9-jsI"/>
                                             <constraint firstAttribute="trailing" secondItem="aTX-Hz-DTB" secondAttribute="trailing" id="M12-MR-bwT"/>
                                             <constraint firstAttribute="bottom" secondItem="aTX-Hz-DTB" secondAttribute="bottom" constant="64" id="Yn9-yA-rQ6"/>
+                                            <constraint firstItem="TTh-Zb-ZQy" firstAttribute="centerX" secondItem="WS8-GC-d33" secondAttribute="centerX" id="Z4I-F7-sLL"/>
                                             <constraint firstItem="aTX-Hz-DTB" firstAttribute="top" secondItem="gib-rt-VOh" secondAttribute="bottom" constant="86" id="eBy-wH-VOc"/>
-                                            <constraint firstItem="0zE-wQ-tVm" firstAttribute="centerX" secondItem="WS8-GC-d33" secondAttribute="centerX" id="tim-ha-0Kj"/>
+                                            <constraint firstItem="gib-rt-VOh" firstAttribute="top" secondItem="TTh-Zb-ZQy" secondAttribute="bottom" constant="8" id="lET-rH-81V"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7F-e2-hJB">
@@ -282,6 +283,7 @@
                         <outlet property="commentTimeView" destination="R7F-e2-hJB" id="f6l-A1-mfA"/>
                         <outlet property="datePicker" destination="HUo-Pc-bjc" id="5eg-iX-Xng"/>
                         <outlet property="datePickerView" destination="Wch-MV-Gvo" id="6Qh-rW-FEE"/>
+                        <outlet property="lottieView" destination="TTh-Zb-ZQy" id="YLx-Nz-QQM"/>
                         <outlet property="memoTextView" destination="0Oj-G4-Jgq" id="Nlt-Ma-t8G"/>
                         <outlet property="scrollView" destination="cNE-7E-bbo" id="xa5-Hw-voh"/>
                         <outlet property="setAlarmButton" destination="cyB-Ex-Prg" id="d7r-j5-rat"/>
@@ -312,7 +314,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="alarmImage" width="1024" height="1024.5"/>
         <image name="icBellLineWhite" width="16" height="16"/>
         <image name="icInfoCircleFile" width="16" height="16"/>
         <image name="icShortarrowLineRight" width="24" height="24"/>

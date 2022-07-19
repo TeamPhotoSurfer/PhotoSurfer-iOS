@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Lottie
+
 final class SetAlarmViewController: UIViewController {
 
     // MARK: - IBOutlet
@@ -19,10 +21,12 @@ final class SetAlarmViewController: UIViewController {
     @IBOutlet weak var datePickerView: UIView!
     @IBOutlet weak var setRepresentTagButton: UIButton!
     @IBOutlet weak var alarmSaveView: UIView!
+    @IBOutlet weak var lottieView: UIView!
     
     // MARK: - Property
     let textViewPlaceHolder: String = "50자 이내로 알림메모를 작성해보세요."
     var keyHeight: CGFloat?
+    let animationView = AnimationView()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -39,6 +43,7 @@ final class SetAlarmViewController: UIViewController {
         setAlarmButton.layer.cornerRadius = 8
         settingTimeButton.layer.cornerRadius = 8
         datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        setLottie()
     }
     
     private func setKeyboard() {
@@ -56,6 +61,15 @@ final class SetAlarmViewController: UIViewController {
         memoTextView.delegate = self
         memoTextView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         memoTextView.layer.cornerRadius = 8
+    }
+    
+    private func setLottie() {
+        animationView.frame = view.bounds
+        animationView.animation = Animation.named("bell")
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.play()
+        lottieView = animationView
     }
     
     // MARK: - Objc Function
