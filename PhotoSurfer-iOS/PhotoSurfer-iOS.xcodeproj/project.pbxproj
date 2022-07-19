@@ -83,6 +83,7 @@
 		15A778A12885F99C00672CAE /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A02885F99C00672CAE /* TagService.swift */; };
 		15A778A32885F9A300672CAE /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A22885F9A300672CAE /* PhotoService.swift */; };
 		15A778A52885F9AA00672CAE /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A42885F9AA00672CAE /* PushService.swift */; };
+		15BE00202886EB3F008C80B2 /* PictureViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE001F2886EB3F008C80B2 /* PictureViewController+Extension.swift */; };
 		15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */; };
 		15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCF28842F5D0099CA8D /* URLConstant.swift */; };
 		15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */; };
@@ -107,6 +108,10 @@
 		DD82D7C82884A10A00A56F6C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82D7C72884A10A00A56F6C /* SplashViewController.swift */; };
 		DDA6AD8828855C0700902F5A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA6AD8728855C0700902F5A /* Login.storyboard */; };
 		DDA6AD8A28855C1300902F5A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6AD8928855C1300902F5A /* LoginViewController.swift */; };
+		DDABCF0A2886F567009232DD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDABCF092886F567009232DD /* Onboarding.storyboard */; };
+		DDABCF0C2886F572009232DD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDABCF0B2886F572009232DD /* OnboardingViewController.swift */; };
+		DDABCF0E28870796009232DD /* TagDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDABCF0D28870796009232DD /* TagDetail.storyboard */; };
+		DDABCF10288707A1009232DD /* TagDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDABCF0F288707A1009232DD /* TagDetailViewController.swift */; };
 		DDAC9B76287C60330041566B /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B75287C60330041566B /* UIFont+.swift */; };
 		DDAEDF44288411F600909129 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAEDF43288411F600909129 /* UITextField+.swift */; };
 		DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB71E292882982D00CF5036 /* SettingUser.storyboard */; };
@@ -214,6 +219,7 @@
 		15A778A02885F99C00672CAE /* TagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagService.swift; sourceTree = "<group>"; };
 		15A778A22885F9A300672CAE /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		15A778A42885F9AA00672CAE /* PushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
+		15BE001F2886EB3F008C80B2 /* PictureViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PictureViewController+Extension.swift"; sourceTree = "<group>"; };
 		15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		15C4BFCF28842F5D0099CA8D /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
@@ -244,6 +250,10 @@
 		DD82D7C72884A10A00A56F6C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DDA6AD8728855C0700902F5A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DDA6AD8928855C1300902F5A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DDABCF092886F567009232DD /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		DDABCF0B2886F572009232DD /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DDABCF0D28870796009232DD /* TagDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TagDetail.storyboard; sourceTree = "<group>"; };
+		DDABCF0F288707A1009232DD /* TagDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDetailViewController.swift; sourceTree = "<group>"; };
 		DDAC9B75287C60330041566B /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		DDAEDF43288411F600909129 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		DDB71E292882982D00CF5036 /* SettingUser.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingUser.storyboard; sourceTree = "<group>"; };
@@ -389,6 +399,7 @@
 		086F17E0287AA18A0061422F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DDABCF062886F539009232DD /* Onboarding */,
 				15A7788A2885A8E400672CAE /* AlarmDetail */,
 				151F95C8288563A80089FE9E /* AlarmList */,
 				DDA6AD8428855BD400902F5A /* Login */,
@@ -741,6 +752,7 @@
 			isa = PBXGroup;
 			children = (
 				1584E76B2882E74C000FA459 /* PictureViewController.swift */,
+				15BE001F2886EB3F008C80B2 /* PictureViewController+Extension.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -945,6 +957,7 @@
 			isa = PBXGroup;
 			children = (
 				086F1801287ADF410061422F /* Tag.storyboard */,
+				DDABCF0D28870796009232DD /* TagDetail.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -953,6 +966,7 @@
 			isa = PBXGroup;
 			children = (
 				086F17FF287ADF2E0061422F /* TagViewController.swift */,
+				DDABCF0F288707A1009232DD /* TagDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -980,6 +994,31 @@
 				DDA6AD8928855C1300902F5A /* LoginViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DDABCF062886F539009232DD /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DDABCF082886F544009232DD /* Controller */,
+				DDABCF072886F53E009232DD /* Views */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		DDABCF072886F53E009232DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDABCF092886F567009232DD /* Onboarding.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DDABCF082886F544009232DD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DDABCF0B2886F572009232DD /* OnboardingViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1097,8 +1136,10 @@
 				1584E76A2882E73C000FA459 /* Picture.storyboard in Resources */,
 				DD82D7C62884A0FF00A56F6C /* Splash.storyboard in Resources */,
 				15D1DEF22875BE0900852617 /* Main.storyboard in Resources */,
+				DDABCF0A2886F567009232DD /* Onboarding.storyboard in Resources */,
 				15A7788E2885A8FA00672CAE /* AlarmDetail.storyboard in Resources */,
 				1584E76E2883AD3F000FA459 /* GoogleService-Info.plist in Resources */,
+				DDABCF0E28870796009232DD /* TagDetail.storyboard in Resources */,
 				DDB71E2C2882986600CF5036 /* SettingPolicy.storyboard in Resources */,
 				DD82D7A32884896400A56F6C /* Bubble.json in Resources */,
 				1553B725287D12BA00137E6C /* TagCollectionViewCell.xib in Resources */,
@@ -1216,16 +1257,19 @@
 				15A778992885F97C00672CAE /* PhotoRouter.swift in Sources */,
 				15C4BFDF288478BB0099CA8D /* AlarmViewController+Extension.swift in Sources */,
 				1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */,
+				DDABCF0C2886F572009232DD /* OnboardingViewController.swift in Sources */,
 				DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */,
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
 				15A778902885A90700672CAE /* AlarmDetailViewController.swift in Sources */,
 				151F95CE288563D10089FE9E /* AlarmListViewController.swift in Sources */,
 				15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */,
+				15BE00202886EB3F008C80B2 /* PictureViewController+Extension.swift in Sources */,
 				15A778A52885F9AA00672CAE /* PushService.swift in Sources */,
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,
 				086F17EC287ADCF30061422F /* File.swift in Sources */,
 				086F17EE287ADD710061422F /* MainTabBarController.swift in Sources */,
 				DDDA8117287E9DBA0051338D /* Image.swift in Sources */,
+				DDABCF10288707A1009232DD /* TagDetailViewController.swift in Sources */,
 				15C4BFD428842FF70099CA8D /* NetworkBase.swift in Sources */,
 				086F180E287AF99E0061422F /* NetworkResult.swift in Sources */,
 				15A778972885F96500672CAE /* PushRouter.swift in Sources */,
