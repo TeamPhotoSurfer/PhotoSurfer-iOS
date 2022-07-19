@@ -41,13 +41,18 @@ final class HomeResultViewController: UIViewController {
     }
     
     private func setCollectionView() {
+        setCollectionViewDelegate()
         registerXib()
         tagCollectionView.setCollectionViewLayout(createTagsLayout(), animated: true)
         photoCollectionView.setCollectionViewLayout(createPhotosLayout(), animated: true)
         setDataSource()
         applyTagSnapshot()
         applyPhotoSnapshot()
+    }
+    
+    private func setCollectionViewDelegate() {
         tagCollectionView.delegate = self
+        photoCollectionView.delegate = self
     }
     
     private func registerXib() {
@@ -82,6 +87,13 @@ final class HomeResultViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(photos, toSection: .main)
         photoDataSource.apply(snapshot)
+    }
+    
+    func goToPictureViewController() {
+        guard let pictureViewController = UIStoryboard(name: Const.Storyboard.Picture, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
+        pictureViewController.type = .picture
+        self.navigationController?.pushViewController(pictureViewController, animated: true)
     }
     
     private func toggleMultiSelectedUI(isSelectable: Bool) {
