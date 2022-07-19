@@ -16,11 +16,11 @@ final class PictureViewController: UIViewController {
         case alarmSelected
     }
     
-    enum PictureEditMode {
-        case none
-        case add
-        case delete
-        case edit
+    enum PictureEditMode: String {
+        case none = ""
+        case add = "태그 추가"
+        case delete = "태그 삭제"
+        case edit = "태그 수정"
     }
     
     enum Section {
@@ -61,12 +61,18 @@ final class PictureViewController: UIViewController {
         setCollectionView()
         setMoreButtonMenu()
         addKeyboardObserver()
-        setKeyboardManagerEnable(false)
         setTextFieldDelegate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setKeyboardManagerEnable(false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         removeKeyboardObserver()
         setKeyboardManagerEnable(true)
     }
@@ -92,34 +98,21 @@ final class PictureViewController: UIViewController {
     private func setUI(editMode: PictureEditMode) {
         alarmDetailButton.layer.cornerRadius = 8
         setKeyboardTopTextFieldUI()
-        switch editMode {
-        case .add:
-            navigationTitleLabel.text = "태그 추가"
-            deleteButton.isHidden = true
-            bottomShareButton.isHidden = true
-            keyboardTopTextField.isHidden = false
-            setDataSource(isDeletable: false)
-        case .delete:
-            navigationTitleLabel.text = "태그 삭제"
-            deleteButton.isHidden = true
-            bottomShareButton.isHidden = true
-            keyboardTopTextField.isHidden = true
-            setDataSource(isDeletable: true)
-            applyTagsSnapshot()
-        case .edit:
-            navigationTitleLabel.text = "태그 수정"
-            deleteButton.isHidden = true
-            bottomShareButton.isHidden = true
-            keyboardTopTextField.isHidden = false
-            setDataSource(isDeletable: false)
-        case .none:
-            navigationTitleLabel.text = ""
-            deleteButton.isHidden = false
-            bottomShareButton.isHidden = false
-            keyboardTopTextField.isHidden = true
-            setDataSource(isDeletable: false)
+        isEditModeUI(editMode != .none,
+                     isShownTextField: editMode == .add)
+        navigationTitleLabel.text = editMode.rawValue
+        if editMode == .add {
+            keyboardTopTextField.becomeFirstResponder()
         }
-        applyTagsSnapshot()
+        else if editMode == .edit {
+            keyboardTopTextField.placeholder = "수정할 태그를 입력하세요"
+        }
+    }
+    
+    private func isEditModeUI(_ isEdit: Bool, isShownTextField: Bool) {
+        deleteButton.isHidden = isEdit
+        bottomShareButton.isHidden = isEdit
+        navigationPictureButtonContainerStackView.isHidden = isEdit
     }
     
     private func setKeyboardTopTextFieldUI() {
@@ -137,7 +130,7 @@ final class PictureViewController: UIViewController {
     private func setCollectionView() {
         registerXib()
         collectionView.setCollectionViewLayout(createLayout(), animated: true)
-        setDataSource(isDeletable: false)
+        setDataSource(isDeletable: editMode == .delete)
         applyTagsSnapshot()
         collectionView.delegate = self
     }
@@ -181,21 +174,23 @@ final class PictureViewController: UIViewController {
         dataSource.apply(snapshot)
     }
     
+    private func goToEditPictureViewController(editMode: PictureEditMode) {
+        guard let editPictureViewController = self.storyboard?
+                .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
+        editPictureViewController.type = .picture
+        editPictureViewController.editMode = editMode
+        self.navigationController?.pushViewController(editPictureViewController, animated: true)
+    }
+    
     private func setMoreButtonMenu() {
         let addTag = UIAction(title: "태그추가") { action in
-            self.editMode = .add
-            self.setUI(editMode: self.editMode)
-            self.keyboardTopTextField.becomeFirstResponder()
+            self.goToEditPictureViewController(editMode: .add)
         }
         let deleteTag = UIAction(title: "태그삭제") { action in
-            self.editMode = .delete
-            self.setUI(editMode: self.editMode)
-            self.keyboardTopTextField.resignFirstResponder()
+            self.goToEditPictureViewController(editMode: .delete)
         }
         let editTag = UIAction(title: "태그수정") { action in
-            self.editMode = .edit
-            self.setUI(editMode: self.editMode)
-            self.keyboardTopTextField.becomeFirstResponder()
+            self.goToEditPictureViewController(editMode: .edit)
         }
         moreButton.menu = UIMenu(title: "", children: [addTag, deleteTag, editTag])
         moreButton.showsMenuAsPrimaryAction = true
@@ -216,15 +211,13 @@ final class PictureViewController: UIViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardHeight = keyboardFrame.cgRectValue.height
             waveViewBottomConstraint.constant = keyboardHeight
+            keyboardTopTextField.isHidden = false
         }
     }
     
     @objc private func keyboardWillHide(_ notification: Notification) {
-        if editMode != .delete {
-            editMode = .none
-        }
-        setUI(editMode: editMode)
         waveViewBottomConstraint.constant = 0
+        keyboardTopTextField.isHidden = true
     }
     
     // MARK: - IBAction
