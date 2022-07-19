@@ -62,7 +62,7 @@
                                 <rect key="frame" x="48" y="0.0" width="114" height="79"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHI-W2-PrR">
-                                        <rect key="frame" x="18.5" y="4" width="77" height="31"/>
+                                        <rect key="frame" x="0.0" y="4" width="114" height="31"/>
                                         <color key="tintColor" name="alphaGray95A70"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="태그 삭제">
@@ -77,7 +77,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyj-U3-bmg">
-                                        <rect key="frame" x="18.5" y="44" width="77" height="31"/>
+                                        <rect key="frame" x="0.0" y="44" width="114" height="31"/>
                                         <color key="tintColor" name="alphaGray95A70"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="태그 수정">
@@ -87,17 +87,46 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nHI-W2-PrR" secondAttribute="trailing" id="5YB-Cl-2OA"/>
                                     <constraint firstAttribute="bottom" secondItem="yyj-U3-bmg" secondAttribute="bottom" constant="4" id="7C9-J0-RTw"/>
                                     <constraint firstItem="yyj-U3-bmg" firstAttribute="centerX" secondItem="Gd3-Zm-chD" secondAttribute="centerX" id="84h-Ow-czN"/>
+                                    <constraint firstAttribute="trailing" secondItem="yyj-U3-bmg" secondAttribute="trailing" id="CF3-lP-CPq"/>
                                     <constraint firstAttribute="trailing" secondItem="Psw-SX-DyO" secondAttribute="trailing" constant="9" id="CUc-a5-NFw"/>
+                                    <constraint firstItem="Psw-SX-DyO" firstAttribute="top" secondItem="nHI-W2-PrR" secondAttribute="bottom" constant="4" id="KJy-PQ-8pE"/>
                                     <constraint firstItem="Psw-SX-DyO" firstAttribute="centerY" secondItem="Gd3-Zm-chD" secondAttribute="centerY" id="LkC-w8-5Mn"/>
+                                    <constraint firstItem="nHI-W2-PrR" firstAttribute="leading" secondItem="Gd3-Zm-chD" secondAttribute="leading" id="VAV-02-NhH"/>
                                     <constraint firstItem="Psw-SX-DyO" firstAttribute="top" secondItem="nHI-W2-PrR" secondAttribute="bottom" constant="4" id="ViG-Kz-mjT"/>
                                     <constraint firstAttribute="height" constant="79" id="Y2u-ra-0M6"/>
                                     <constraint firstItem="nHI-W2-PrR" firstAttribute="top" secondItem="Gd3-Zm-chD" secondAttribute="top" constant="4" id="Yv9-DZ-5rb"/>
                                     <constraint firstAttribute="width" constant="114" id="ZYC-dd-Lm6"/>
+                                    <constraint firstItem="nHI-W2-PrR" firstAttribute="top" secondItem="Gd3-Zm-chD" secondAttribute="top" constant="4" id="glO-ti-jhz"/>
                                     <constraint firstItem="Psw-SX-DyO" firstAttribute="leading" secondItem="Gd3-Zm-chD" secondAttribute="leading" constant="9" id="iWW-3E-Z5V"/>
+                                    <constraint firstItem="yyj-U3-bmg" firstAttribute="leading" secondItem="Gd3-Zm-chD" secondAttribute="leading" id="tdd-J0-4ze"/>
                                     <constraint firstItem="yyj-U3-bmg" firstAttribute="top" secondItem="Psw-SX-DyO" secondAttribute="bottom" constant="4" id="vrm-vT-tTH"/>
                                     <constraint firstItem="nHI-W2-PrR" firstAttribute="centerX" secondItem="Gd3-Zm-chD" secondAttribute="centerX" id="yz4-Uu-6rh"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trQ-Pq-ciu">
+                                <rect key="frame" x="48" y="0.0" width="114" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSm-Xt-laH">
+                                        <rect key="frame" x="0.0" y="4" width="114" height="32"/>
+                                        <color key="tintColor" name="alphaGray95A70"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="태그 삭제">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="wSm-Xt-laH" firstAttribute="top" secondItem="trQ-Pq-ciu" secondAttribute="top" constant="4" id="1UJ-xh-H7u"/>
+                                    <constraint firstAttribute="trailing" secondItem="wSm-Xt-laH" secondAttribute="trailing" id="7Zw-cE-uWB"/>
+                                    <constraint firstItem="wSm-Xt-laH" firstAttribute="centerX" secondItem="trQ-Pq-ciu" secondAttribute="centerX" id="Dea-1o-Gz3"/>
+                                    <constraint firstAttribute="bottom" secondItem="wSm-Xt-laH" secondAttribute="bottom" constant="4" id="aay-Ec-nqu"/>
+                                    <constraint firstItem="wSm-Xt-laH" firstAttribute="leading" secondItem="trQ-Pq-ciu" secondAttribute="leading" id="rIj-2a-X13"/>
+                                    <constraint firstAttribute="width" constant="114" id="riI-l4-Oau"/>
+                                    <constraint firstAttribute="height" constant="40" id="w2z-JX-hOh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -106,9 +135,11 @@
                             <constraint firstAttribute="trailing" secondItem="Gd3-Zm-chD" secondAttribute="trailing" id="5jL-pV-I21"/>
                             <constraint firstItem="Gd3-Zm-chD" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="I9H-Rc-ERO"/>
                             <constraint firstItem="VyK-Qi-DPD" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="Ros-i1-2ue"/>
+                            <constraint firstAttribute="trailing" secondItem="trQ-Pq-ciu" secondAttribute="trailing" id="TF2-fk-oZm"/>
                             <constraint firstAttribute="trailing" secondItem="WGG-at-N3A" secondAttribute="trailing" constant="18" id="TRP-Bx-bY4"/>
                             <constraint firstItem="WGG-at-N3A" firstAttribute="centerY" secondItem="FP1-dg-bxG" secondAttribute="centerY" id="a1V-uC-1qY"/>
                             <constraint firstItem="9gf-oT-XMQ" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="aKu-3D-wZh"/>
+                            <constraint firstItem="trQ-Pq-ciu" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="cEU-fu-Nu7"/>
                             <constraint firstItem="VyK-Qi-DPD" firstAttribute="leading" secondItem="FP1-dg-bxG" secondAttribute="leading" id="q2j-eJ-iHn"/>
                             <constraint firstItem="WGG-at-N3A" firstAttribute="leading" secondItem="FP1-dg-bxG" secondAttribute="leading" constant="8" id="yqe-ef-0oM"/>
                             <constraint firstAttribute="trailing" secondItem="9gf-oT-XMQ" secondAttribute="trailing" id="zr9-Ln-fiY"/>
@@ -131,6 +162,8 @@
             <connections>
                 <outlet property="menuDividerView" destination="Psw-SX-DyO" id="cBm-bT-524"/>
                 <outlet property="menuView" destination="Gd3-Zm-chD" id="Z2B-zi-Lw9"/>
+                <outlet property="platformMenuView" destination="trQ-Pq-ciu" id="4Di-gS-yLn"/>
+                <outlet property="platformTagDeleteButton" destination="wSm-Xt-laH" id="pip-kJ-J0H"/>
                 <outlet property="tagBackgroundImageView" destination="oUn-4v-pZB" id="vV6-lq-Y6G"/>
                 <outlet property="tagDarkView" destination="FP1-dg-bxG" id="QxE-ne-hVJ"/>
                 <outlet property="tagDeleteButton" destination="nHI-W2-PrR" id="5nt-KM-yUf"/>

@@ -51,7 +51,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgr-7d-qTg">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgr-7d-qTg">
                                 <rect key="frame" x="0.0" y="666.66666666666663" width="375" height="62.333333333333371"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wave" translatesAutoresizingMaskIntoConstraints="NO" id="cdV-GQ-0Kt">
@@ -77,6 +77,12 @@
                                     <constraint firstItem="O6J-D7-Dic" firstAttribute="top" secondItem="zgr-7d-qTg" secondAttribute="top" constant="13" id="znZ-hJ-uC0"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-j4-WN6">
+                                <rect key="frame" x="139" y="389" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -104,6 +110,8 @@
                     <connections>
                         <outlet property="albumCollectionView" destination="sGk-2j-PuJ" id="PI6-KS-4uZ"/>
                         <outlet property="editTagTextField" destination="O6J-D7-Dic" id="Fxz-eE-fTg"/>
+                        <outlet property="editToolBarView" destination="zgr-7d-qTg" id="Xhw-xC-M99"/>
+                        <outlet property="keyboardHandleTextField" destination="x2c-j4-WN6" id="jY3-t4-9KL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

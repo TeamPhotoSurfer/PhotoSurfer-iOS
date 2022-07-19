@@ -26,6 +26,8 @@ final class TagViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBOutlet weak var editTagTextField: UITextField!
+    @IBOutlet weak var editToolBarView: UIView!
+    @IBOutlet weak var keyboardHandleTextField: UITextField!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -42,6 +44,14 @@ final class TagViewController: UIViewController {
         editTagTextField.layer.sublayerTransform = CATransform3DMakeTranslation(-4, 0, 0)
         editTagTextField.clearButtonMode = .always
         setCollectionView()
+        setEditToolbar()
+    }
+    
+    private func setEditToolbar() {
+        let toolBar = UIToolbar()
+        let customToolBarItem = UIBarButtonItem(customView: editToolBarView)
+        toolBar.items = [customToolBarItem]
+        keyboardHandleTextField.inputAccessoryView = toolBar
     }
     
     private func applySnapshot() {
@@ -58,6 +68,7 @@ final class TagViewController: UIViewController {
             albumCell.setDummy(album: item)
             albumCell.tag = indexPath.row
             albumCell.tagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
+            albumCell.platformTagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
             return albumCell
         })
         applySnapshot()

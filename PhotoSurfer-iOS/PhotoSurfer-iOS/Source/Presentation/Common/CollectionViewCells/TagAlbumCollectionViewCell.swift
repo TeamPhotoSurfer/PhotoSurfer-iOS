@@ -19,6 +19,8 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tagDeleteButton: UIButton!
     @IBOutlet weak var tagEditButton: UIButton!
     @IBOutlet weak var menuDividerView: UIView!
+    @IBOutlet weak var platformMenuView: UIView!
+    @IBOutlet weak var platformTagDeleteButton: UIButton!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -28,13 +30,13 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Function
-    func setUI() {
+    private func setUI() {
         setCellUI()
-        setMenuUI()
+        setMenuUI(view: menuView)
+        setMenuUI(view: platformMenuView)
     }
     
-    func setCellUI() {
-//        setPlatformMenu()
+    private func setCellUI() {
         tagBackgroundImageView.layer.cornerRadius = 8
         tagDarkView.layer.cornerRadius = 8
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
@@ -42,14 +44,13 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         NotificationCenter.default.addObserver(self, selector: #selector(closeMenu), name: Notification.Name("CellTouch"), object: nil)
     }
     
-    func setMenuUI() {
-        menuView.layer.cornerRadius = 4
-        menuView.layer.shadowColor = UIColor.black.cgColor
-        menuView.layer.shadowOpacity = 0.12
-        menuView.layer.shadowRadius = 4
-        menuView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        menuView.layer.shadowPath = nil
-        print("setMenuUI", menuView.frame)
+    func setMenuUI(view: UIView) {
+        view.layer.cornerRadius = 4
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.12
+        view.layer.shadowRadius = 4
+        view.layer.shadowOffset = CGSize(width: 0, height: 4)
+        view.layer.shadowPath = nil
     }
     
     func setDummy(album: Album) {
@@ -75,24 +76,21 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     func setPlatformMenu() {
         self.tagEditButton.isHidden = true
         self.menuDividerView.isHidden = true
-        print("setPlatformMenu1", menuView.frame)
-//        menuView.frame.size.height = 40
-        menuView.frame.size.height = 40.0
-        print("setPlatformMenu2", menuView.frame)
     }
     
     // MARK: - Objc Function
     @objc func closeMenu(notification: NSNotification) {
         self.menuView.isHidden = true
+        self.platformMenuView.isHidden = true
     }
         
     // MARK: - IBAction
     @IBAction func menuButtonDidTap(_ sender: Any) {
-        menuView.isHidden.toggle()
         if tagEditButton.isHidden {
-            menuView.frame.size.height = 40.0
+            platformMenuView.isHidden.toggle()
+        } else {
+            menuView.isHidden.toggle()
         }
-        print("menuButtonDidTap", menuView.frame)
     }
     
     @IBAction func starButtonDidTap(_ sender: Any) {
