@@ -24,15 +24,18 @@ final class HomeResultViewController: UIViewController {
     var photoDataSource: UICollectionViewDiffableDataSource<Section, CapturePhoto>!
     var tags: [Tag] = []
     var photos: [CapturePhoto] = []
-
+    
     // MARK: - IBOutlet
     @IBOutlet weak var tagCollectionView: UICollectionView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    @IBOutlet weak var selectButton: UIButton!
+    @IBOutlet weak var bottomWaveView: UIView!
+    @IBOutlet weak var selectedNavigationStackView: UIStackView!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setDummy()
         setCollectionView()
     }
@@ -81,6 +84,12 @@ final class HomeResultViewController: UIViewController {
         photoDataSource.apply(snapshot)
     }
     
+    private func toggleMultiSelectedUI(isSelectable: Bool) {
+        bottomWaveView.isHidden = !isSelectable
+        selectedNavigationStackView.isHidden = !isSelectable
+        selectButton.isHidden = isSelectable
+    }
+    
     private func setDummy() {
         photos = [CapturePhoto(image: Const.Image.imgSea),
                   CapturePhoto(image: Const.Image.imgSea),
@@ -95,5 +104,13 @@ final class HomeResultViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func selectButtonDidTap(_ sender: Any) {
+        toggleMultiSelectedUI(isSelectable: true)
+    }
+    
+    @IBAction func cancelButtonDidTap(_ sender: Any) {
+        toggleMultiSelectedUI(isSelectable: false)
     }
 }
