@@ -91,4 +91,9 @@ final class HomeResultViewController: UIViewController {
                   CapturePhoto(image: Const.Image.imgSea),
                   CapturePhoto(image: Const.Image.imgSea)]
     }
+    
+    // MARK: - IBAction
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
