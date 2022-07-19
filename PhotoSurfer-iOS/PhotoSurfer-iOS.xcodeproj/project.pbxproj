@@ -84,6 +84,7 @@
 		15A778A32885F9A300672CAE /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A22885F9A300672CAE /* PhotoService.swift */; };
 		15A778A52885F9AA00672CAE /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A42885F9AA00672CAE /* PushService.swift */; };
 		15BE00202886EB3F008C80B2 /* PictureViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE001F2886EB3F008C80B2 /* PictureViewController+Extension.swift */; };
+		15BE002228873AE0008C80B2 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE002128873AE0008C80B2 /* UIViewController+.swift */; };
 		15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */; };
 		15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCF28842F5D0099CA8D /* URLConstant.swift */; };
 		15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */; };
@@ -220,6 +221,7 @@
 		15A778A22885F9A300672CAE /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		15A778A42885F9AA00672CAE /* PushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		15BE001F2886EB3F008C80B2 /* PictureViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PictureViewController+Extension.swift"; sourceTree = "<group>"; };
+		15BE002128873AE0008C80B2 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		15C4BFCF28842F5D0099CA8D /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				DDAEDF43288411F600909129 /* UITextField+.swift */,
 				08AA45202884909D00E961C4 /* UIScrollView+.swift */,
 				DD602B3228868FD7004F546B /* UIButton+.swift */,
+				15BE002128873AE0008C80B2 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1270,6 +1273,7 @@
 				086F17EE287ADD710061422F /* MainTabBarController.swift in Sources */,
 				DDDA8117287E9DBA0051338D /* Image.swift in Sources */,
 				DDABCF10288707A1009232DD /* TagDetailViewController.swift in Sources */,
+				15BE002228873AE0008C80B2 /* UIViewController+.swift in Sources */,
 				15C4BFD428842FF70099CA8D /* NetworkBase.swift in Sources */,
 				086F180E287AF99E0061422F /* NetworkResult.swift in Sources */,
 				15A778972885F96500672CAE /* PushRouter.swift in Sources */,
