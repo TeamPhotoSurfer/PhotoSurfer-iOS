@@ -18,6 +18,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var tagDeleteButton: UIButton!
     @IBOutlet weak var tagEditButton: UIButton!
+    @IBOutlet weak var menuDividerView: UIView!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -33,6 +34,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     }
     
     func setCellUI() {
+//        setPlatformMenu()
         tagBackgroundImageView.layer.cornerRadius = 8
         tagDarkView.layer.cornerRadius = 8
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
@@ -47,11 +49,15 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         menuView.layer.shadowRadius = 4
         menuView.layer.shadowOffset = CGSize(width: 0, height: 4)
         menuView.layer.shadowPath = nil
+        print("setMenuUI", menuView.frame)
     }
     
     func setDummy(album: Album) {
         tagStarButton.isSelected = album.isMarked
         setTagName(button: tagNameButton, name: album.name)
+        if (album.isPlatform) {
+            setPlatformMenu()
+        }
     }
     
     // TODO: UIButton extension으로 만들어줘도 좋을 것 같다
@@ -66,11 +72,13 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         tagNameButton.titleLabel?.textAlignment = NSTextAlignment.center
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        if let touch = touches.first , touch.view == self.superview {
-            menuView.isHidden = true
-        }
+    func setPlatformMenu() {
+        self.tagEditButton.isHidden = true
+        self.menuDividerView.isHidden = true
+        print("setPlatformMenu1", menuView.frame)
+//        menuView.frame.size.height = 40
+        menuView.frame.size.height = 40.0
+        print("setPlatformMenu2", menuView.frame)
     }
     
     // MARK: - Objc Function
@@ -81,6 +89,10 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     // MARK: - IBAction
     @IBAction func menuButtonDidTap(_ sender: Any) {
         menuView.isHidden.toggle()
+        if tagEditButton.isHidden {
+            menuView.frame.size.height = 40.0
+        }
+        print("menuButtonDidTap", menuView.frame)
     }
     
     @IBAction func starButtonDidTap(_ sender: Any) {

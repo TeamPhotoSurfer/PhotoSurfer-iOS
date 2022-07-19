@@ -129,6 +129,7 @@
             </constraints>
             <size key="customSize" width="172" height="120"/>
             <connections>
+                <outlet property="menuDividerView" destination="Psw-SX-DyO" id="cBm-bT-524"/>
                 <outlet property="menuView" destination="Gd3-Zm-chD" id="Z2B-zi-Lw9"/>
                 <outlet property="tagBackgroundImageView" destination="oUn-4v-pZB" id="vV6-lq-Y6G"/>
                 <outlet property="tagDarkView" destination="FP1-dg-bxG" id="QxE-ne-hVJ"/>

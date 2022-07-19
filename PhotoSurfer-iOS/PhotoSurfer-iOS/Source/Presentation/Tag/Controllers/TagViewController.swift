@@ -10,6 +10,7 @@ import UIKit
 struct Album: Hashable {
     let uuid = UUID()
     let isMarked: Bool
+    let isPlatform: Bool
     let name: String
 }
 
@@ -104,24 +105,28 @@ final class TagViewController: UIViewController {
 
 extension Album {
     static var markList = [
-        Album(isMarked: true, name: "일이삼사오육칠녕하요안녕하세"),
-        Album(isMarked: true, name: "instagram"),
-        Album(isMarked: true, name: "youtube"),
+        Album(isMarked: true, isPlatform: true, name: "유튜브"),
+        Album(isMarked: true, isPlatform: true, name: "인스타그램"),
+        Album(isMarked: true, isPlatform: true, name: "카카오톡"),
+        Album(isMarked: true, isPlatform: false, name: "랄라"),
+        Album(isMarked: true, isPlatform: true, name: "쇼핑몰"),
     ]
     static var list = [
-        Album(isMarked: false, name: "cafe"),
-        Album(isMarked: false, name: "dog"),
-        Album(isMarked: false, name: "cat"),
-        Album(isMarked: false, name: "tag6"),
-        Album(isMarked: false, name: "tag7"),
-        Album(isMarked: false, name: "tag8"),
-        Album(isMarked: false, name: "tag9"),
-        Album(isMarked: false, name: "tag10"),
-        Album(isMarked: false, name: "tag11"),
-        Album(isMarked: false, name: "tag12"),
-        Album(isMarked: false, name: "tag13"),
-        Album(isMarked: false, name: "tag14"),
-        Album(isMarked: false, name: "tag15")
+        Album(isMarked: false, isPlatform: false, name: "cafe"),
+        Album(isMarked: false, isPlatform: false, name: "air"),
+        Album(isMarked: false, isPlatform: false, name: "tree"),
+        Album(isMarked: false, isPlatform: false, name: "tag1"),
+        Album(isMarked: false, isPlatform: false, name: "tag2"),
+        Album(isMarked: false, isPlatform: false, name: "tag3"),
+        Album(isMarked: false, isPlatform: false, name: "tag4"),
+        Album(isMarked: false, isPlatform: false, name: "tag5"),
+        Album(isMarked: false, isPlatform: false, name: "tag6"),
+        Album(isMarked: false, isPlatform: false, name: "tag7"),
+        Album(isMarked: false, isPlatform: false, name: "tag8"),
+        Album(isMarked: false, isPlatform: false, name: "tag9"),
+        Album(isMarked: false, isPlatform: false, name: "tag10"),
+        Album(isMarked: false, isPlatform: false, name: "tag11"),
+        Album(isMarked: false, isPlatform: false, name: "tag12"),
     ]
     static var totalList = markList + list
 }
