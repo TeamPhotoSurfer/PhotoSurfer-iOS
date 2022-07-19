@@ -198,6 +198,8 @@ extension Album {
 extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        print("셀 선택", cell)
+        let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
+        tagDetailViewController.modalPresentationStyle = .fullScreen
+        self.present(tagDetailViewController, animated: true)
     }
 }

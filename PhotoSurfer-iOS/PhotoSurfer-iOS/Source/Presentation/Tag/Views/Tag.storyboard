@@ -95,9 +95,6 @@
                             <constraint firstItem="aES-Ml-0ca" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="s1o-DN-qBw"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="M7N-Zg-Q6U" secondAttribute="trailing" id="uvF-CJ-G7L"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="QA9-eA-G4t" appends="YES" id="Pn0-YE-hbq"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icTagLine" selectedImage="selectTag" id="Z05-Az-a76"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -108,11 +105,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="QA9-eA-G4t">
-                    <connections>
-                        <action selector="viewDidTap:" destination="Y6W-OH-hqX" id="ecE-HW-l4N"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="QA9-eA-G4t"/>
             </objects>
             <point key="canvasLocation" x="-23.199999999999999" y="118.22660098522168"/>
         </scene>
