@@ -75,9 +75,9 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
             guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as? TagAlbumCollectionViewCell else { fatalError() }
             albumCell.setDummy(album: item)
             albumCell.tag = indexPath.row
-            albumCell.tagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
-            albumCell.platformTagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
-            albumCell.tagEditButton.addTarget(self, action: #selector(self.editButtonDidTap), for: .touchUpInside)
+//            albumCell.tagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
+//            albumCell.platformTagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
+//            albumCell.tagEditButton.addTarget(self, action: #selector(self.editButtonDidTap), for: .touchUpInside)
             return albumCell
         })
         applySnapshot()
@@ -147,7 +147,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
                 editTagTextField.text = cell.tagNameButton.titleLabel?.text
-                cell.menuView.isHidden.toggle()
                 break
             }
             superview = superview?.superview
@@ -207,19 +206,9 @@ extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
-//        print(cell.platformMenuView.isHidden)
-//        print(cell.menuView.isHidden)
-        // TODO: 메뉴 닫는 로직에 좀 더 고민 필요....
-        if cell.menuView.isHidden && cell.platformMenuView.isHidden {
-//            print("메뉴 닫힘 -> 화면 전환")
-            let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
-            tagDetailViewController.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(tagDetailViewController, animated: true)
-            NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
-        } else {
-//            print("메뉴 열림 -> 메뉴 숨김")
-            cell.menuView.isHidden = true
-            cell.platformMenuView.isHidden = true
-        }
+        let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
+        tagDetailViewController.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(tagDetailViewController, animated: true)
+        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
     }
 }

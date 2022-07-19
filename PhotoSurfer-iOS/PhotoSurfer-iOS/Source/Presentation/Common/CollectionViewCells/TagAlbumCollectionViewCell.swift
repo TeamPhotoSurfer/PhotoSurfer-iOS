@@ -15,12 +15,6 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tagNameButton: UIButton!
     @IBOutlet weak var tagStarButton: UIButton!
     @IBOutlet weak var tagMenuButton: UIButton!
-    @IBOutlet weak var menuView: UIView!
-    @IBOutlet weak var tagDeleteButton: UIButton!
-    @IBOutlet weak var tagEditButton: UIButton!
-    @IBOutlet weak var menuDividerView: UIView!
-    @IBOutlet weak var platformMenuView: UIView!
-    @IBOutlet weak var platformTagDeleteButton: UIButton!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -32,8 +26,6 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     // MARK: - Function
     private func setUI() {
         setCellUI()
-        setMenuUI(view: menuView)
-        setMenuUI(view: platformMenuView)
     }
     
     private func setCellUI() {
@@ -41,24 +33,11 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         tagDarkView.layer.cornerRadius = 8
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
         tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
-        NotificationCenter.default.addObserver(self, selector: #selector(closeMenu), name: Notification.Name("CellTouch"), object: nil)
-    }
-    
-    func setMenuUI(view: UIView) {
-        view.layer.cornerRadius = 4
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.12
-        view.layer.shadowRadius = 4
-        view.layer.shadowOffset = CGSize(width: 0, height: 4)
-        view.layer.shadowPath = nil
     }
     
     func setDummy(album: Album) {
         tagStarButton.isSelected = album.isMarked
         tagNameButton.setTagName(name: album.name)
-        if (album.isPlatform) {
-            setPlatformMenu()
-        }
     }
     
     // TODO: UIButton extension으로 만들어줘도 좋을 것 같다
@@ -72,26 +51,10 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         button.setAttributedTitle(attributedString, for: .normal)
         tagNameButton.titleLabel?.textAlignment = NSTextAlignment.center
     }
-    
-    func setPlatformMenu() {
-        self.tagEditButton.isHidden = true
-        self.menuDividerView.isHidden = true
-    }
-    
-    // MARK: - Objc Function
-    @objc func closeMenu(notification: NSNotification) {
-        self.menuView.isHidden = true
-        self.platformMenuView.isHidden = true
-    }
         
     // MARK: - IBAction
     @IBAction func menuButtonDidTap(_ sender: Any) {
-        // TODO: [FIX] 여기가 문제 같은데 플랫폼 삭제하고 그 자리에 올라온 일반 태그 수정하면 플랫폼 메뉴가 깜빡거림
-        if tagEditButton.isHidden {
-            platformMenuView.isHidden.toggle()
-        } else {
-            menuView.isHidden.toggle()
-        }
+        
     }
     
     @IBAction func starButtonDidTap(_ sender: Any) {
