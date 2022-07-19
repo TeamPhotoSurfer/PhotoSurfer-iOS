@@ -18,6 +18,7 @@ final class SetAlarmViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var datePickerView: UIView!
     @IBOutlet weak var setRepresentTagButton: UIButton!
+    @IBOutlet weak var alarmSaveView: UIView!
     
     // MARK: - Property
     let textViewPlaceHolder: String = "50자 이내로 알림메모를 작성해보세요."
@@ -67,13 +68,15 @@ final class SetAlarmViewController: UIViewController {
                 self.view.window?.frame.origin.y = 0
             }
             else {
-                self.view.window?.frame.origin.y -= keyboardHeight
+                self.view.window?.frame.origin.y -= keyboardHeight - (datePickerView.isHidden ? 200 : 16)
+                alarmSaveView.isHidden = true
             }
         }
         scrollView.scroll(to: .bottom)
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {
+        alarmSaveView.isHidden = false
         if self.view.window?.frame.origin.y != 0 {
             self.view.window?.frame.origin.y = 0
         }
