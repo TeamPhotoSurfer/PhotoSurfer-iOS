@@ -53,6 +53,9 @@
                                                 <color key="tintColor" name="AccentColor"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="icMenuVertical"/>
+                                                <connections>
+                                                    <action selector="moreButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="8Pg-eD-vEc"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -61,14 +64,22 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="rightShareIconButton"/>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc8-7P-arr">
+                                        <rect key="frame" x="184" y="15" width="46" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="56K-Hg-bxd" secondAttribute="trailing" constant="20" id="4UN-D0-XzK"/>
+                                    <constraint firstItem="Bc8-7P-arr" firstAttribute="centerX" secondItem="bCk-AB-mvb" secondAttribute="centerX" id="6IM-cG-hCJ"/>
                                     <constraint firstAttribute="height" constant="51" id="Atk-Rt-VoQ"/>
                                     <constraint firstItem="56K-Hg-bxd" firstAttribute="top" secondItem="bCk-AB-mvb" secondAttribute="top" constant="18" id="EYk-CG-Q3y"/>
                                     <constraint firstItem="bE9-mJ-zyM" firstAttribute="leading" secondItem="bCk-AB-mvb" secondAttribute="leading" id="NHP-pg-Jgn"/>
                                     <constraint firstItem="bE9-mJ-zyM" firstAttribute="centerY" secondItem="bCk-AB-mvb" secondAttribute="centerY" id="hdj-Ti-se7"/>
+                                    <constraint firstItem="Bc8-7P-arr" firstAttribute="centerY" secondItem="bE9-mJ-zyM" secondAttribute="centerY" id="pvg-JF-w66"/>
                                     <constraint firstItem="ZZS-N1-AiV" firstAttribute="centerY" secondItem="bCk-AB-mvb" secondAttribute="centerY" id="s2E-jo-H86"/>
                                     <constraint firstAttribute="trailing" secondItem="ZZS-N1-AiV" secondAttribute="trailing" constant="4" id="yWm-jb-bZB"/>
                                 </constraints>
@@ -184,7 +195,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="share"/>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="추가할 태그를 입력하세요" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jTN-JW-3Rw">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="추가할 태그를 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTN-JW-3Rw">
                                         <rect key="frame" x="20" y="35" width="374" height="44"/>
                                         <color key="backgroundColor" name="grayWhite"/>
                                         <constraints>
@@ -245,6 +256,7 @@
                         <outlet property="keyboardTopTextField" destination="jTN-JW-3Rw" id="h4F-Ub-VWu"/>
                         <outlet property="moreButton" destination="EI1-XH-izf" id="A1j-ya-Yyi"/>
                         <outlet property="navigationPictureButtonContainerStackView" destination="56K-Hg-bxd" id="RdW-i0-GRh"/>
+                        <outlet property="navigationTitleLabel" destination="Bc8-7P-arr" id="Pxd-l9-ney"/>
                         <outlet property="scrollViewHeight" destination="m0v-EL-Bu3" id="yff-AQ-L7c"/>
                         <outlet property="shareButton" destination="ZZS-N1-AiV" id="JqI-ou-dlX"/>
                         <outlet property="waveViewBottomConstraint" destination="BZD-hz-ldL" id="b6e-Ev-1af"/>

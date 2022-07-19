@@ -17,3 +17,13 @@ extension PictureViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension PictureViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if editMode == .delete {
+            tags.remove(at: indexPath.item)
+            applyTagsSnapshot()
+        }
+    }
+}

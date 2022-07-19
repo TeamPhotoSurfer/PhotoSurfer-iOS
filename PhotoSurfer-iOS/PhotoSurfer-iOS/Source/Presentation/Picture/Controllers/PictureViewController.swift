@@ -49,6 +49,7 @@ final class PictureViewController: UIViewController {
     @IBOutlet weak var keyboardTopTextField: UITextField!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var bottomShareButton: UIButton!
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -90,26 +91,42 @@ final class PictureViewController: UIViewController {
     
     private func setUI(editMode: PictureEditMode) {
         alarmDetailButton.layer.cornerRadius = 8
+        setKeyboardTopTextFieldUI()
+        switch editMode {
+        case .add:
+            navigationTitleLabel.text = "태그 추가"
+            deleteButton.isHidden = true
+            bottomShareButton.isHidden = true
+            keyboardTopTextField.isHidden = false
+            setDataSource(isDeletable: false)
+        case .delete:
+            navigationTitleLabel.text = "태그 삭제"
+            deleteButton.isHidden = true
+            bottomShareButton.isHidden = true
+            keyboardTopTextField.isHidden = true
+            setDataSource(isDeletable: true)
+            applyTagsSnapshot()
+        case .edit:
+            navigationTitleLabel.text = "태그 수정"
+            deleteButton.isHidden = true
+            bottomShareButton.isHidden = true
+            keyboardTopTextField.isHidden = false
+            setDataSource(isDeletable: false)
+        case .none:
+            navigationTitleLabel.text = ""
+            deleteButton.isHidden = false
+            bottomShareButton.isHidden = false
+            keyboardTopTextField.isHidden = true
+            setDataSource(isDeletable: false)
+        }
+        applyTagsSnapshot()
+    }
+    
+    private func setKeyboardTopTextFieldUI() {
         keyboardTopTextField.layer.cornerRadius = 22
         keyboardTopTextField.layer.borderColor = UIColor.grayGray30.cgColor
         keyboardTopTextField.layer.borderWidth = 1
         keyboardTopTextField.addPadding(padding: 12)
-        switch editMode {
-        case .add:
-            deleteButton.isHidden = true
-            bottomShareButton.isHidden = true
-            keyboardTopTextField.isHidden = false
-        case .delete:
-            print("delete")
-        case .edit:
-            deleteButton.isHidden = true
-            bottomShareButton.isHidden = true
-            keyboardTopTextField.isHidden = false
-        case .none:
-            deleteButton.isHidden = false
-            bottomShareButton.isHidden = false
-            keyboardTopTextField.isHidden = true
-        }
     }
     
     private func setImageData() {
@@ -120,8 +137,9 @@ final class PictureViewController: UIViewController {
     private func setCollectionView() {
         registerXib()
         collectionView.setCollectionViewLayout(createLayout(), animated: true)
-        setDataSource()
+        setDataSource(isDeletable: false)
         applyTagsSnapshot()
+        collectionView.delegate = self
     }
     
     private func registerXib() {
@@ -148,10 +166,10 @@ final class PictureViewController: UIViewController {
         return layout
     }
     
-    private func setDataSource() {
+    private func setDataSource(isDeletable: Bool) {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            cell.setData(title: itemIdentifier.title, type: .defaultBlueTag)
+            cell.setData(title: itemIdentifier.title, type: isDeletable ? .deleteEnableBlueTag : .defaultBlueTag)
             return cell
         })
     }
@@ -170,7 +188,9 @@ final class PictureViewController: UIViewController {
             self.keyboardTopTextField.becomeFirstResponder()
         }
         let deleteTag = UIAction(title: "태그삭제") { action in
-            
+            self.editMode = .delete
+            self.setUI(editMode: self.editMode)
+            self.keyboardTopTextField.resignFirstResponder()
         }
         let editTag = UIAction(title: "태그수정") { action in
             self.editMode = .edit
@@ -200,7 +220,9 @@ final class PictureViewController: UIViewController {
     }
     
     @objc private func keyboardWillHide(_ notification: Notification) {
-        editMode = .none
+        if editMode != .delete {
+            editMode = .none
+        }
         setUI(editMode: editMode)
         waveViewBottomConstraint.constant = 0
     }
@@ -211,5 +233,9 @@ final class PictureViewController: UIViewController {
                 .instantiateViewController(withIdentifier: Const.ViewController.AlarmDetailViewController) as? AlarmDetailViewController else { return }
         alarmDetailViewController.modalPresentationStyle = .fullScreen
         self.present(alarmDetailViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func moreButtonDidTap(_ sender: Any) {
+        keyboardTopTextField.resignFirstResponder()
     }
 }
