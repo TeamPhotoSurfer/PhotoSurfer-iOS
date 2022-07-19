@@ -55,7 +55,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     func setDummy(album: Album) {
         tagStarButton.isSelected = album.isMarked
-        setTagName(button: tagNameButton, name: album.name)
+        tagNameButton.setTagName(name: album.name)
         if (album.isPlatform) {
             setPlatformMenu()
         }

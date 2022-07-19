@@ -11,7 +11,7 @@ struct Album: Hashable {
     let uuid = UUID()
     let isMarked: Bool
     let isPlatform: Bool
-    let name: String
+    var name: String
 }
 
 final class TagViewController: UIViewController {
@@ -107,19 +107,16 @@ final class TagViewController: UIViewController {
     }
     
     @objc func editButtonDidTap(sender: UIButton) {
+        print("수정하기 클릭")
         var superview = sender.superview
         while superview != nil {
-            if let cell = superview as? UICollectionViewCell {
-                cell.tagNameButton.titleLabel?.text
-                guard let indexPath = albumCollectionView.indexPath(for: cell),
-                      let objectIClickedOnto = dataSource.itemIdentifier(for: indexPath) else { return }
-                var snapshot = dataSource.snapshot()
-                snapshot.deleteItems([objectIClickedOnto])
-                dataSource.apply(snapshot)
+            if let cell = superview as? TagAlbumCollectionViewCell {
+                cell.tagNameButton.setTagName(name: "안녕안녕")
+                applySnapshot()
                 break
             }
             superview = superview?.superview
-//        }
+        }
     }
     
     // MARK: - IBAction
