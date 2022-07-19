@@ -89,14 +89,16 @@ final class HomeSearchViewController: UIViewController {
         }
     }
     
-   
+    // MARK: - IBAction
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 // 이후 삭제할 부분이라 아래에 바로 넣어놓음
 extension HomeSearchViewController {
     
     private func setDummy() {
-        inputTags = [Tag(title: "input"), Tag(title: "input"), Tag(title: "input"),Tag(title: "input")]
         recentTags = [Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent")]
         frequencyTags = [Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주")]
         relatedTags = [Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"),Tag(title: "연관")
