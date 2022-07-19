@@ -56,7 +56,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZS-N1-AiV">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZS-N1-AiV">
                                         <rect key="frame" x="362" y="-2.5" width="48" height="56"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="rightShareIconButton"/>
@@ -120,8 +120,9 @@
                                     <constraint firstItem="dh6-kI-LDT" firstAttribute="top" secondItem="lR5-8r-y9c" secondAttribute="top" id="yyU-Ks-dab"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jub-5d-gYG">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jub-5d-gYG">
                                 <rect key="frame" x="0.0" y="771" width="414" height="34"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="lDT-uy-T4O"/>
                                 </constraints>
@@ -142,13 +143,27 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXk-uj-diP">
+                                <rect key="frame" x="20" y="798" width="374" height="48"/>
+                                <color key="backgroundColor" name="pointMain"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="85p-Qj-PKu"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="알림 내용 확인하기">
+                                    <color key="titleColor" name="grayWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="alarmDetailButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hvM-qB-Zak"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWj-kW-YLh">
                                 <rect key="frame" x="0.0" y="805" width="414" height="91"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wave" translatesAutoresizingMaskIntoConstraints="NO" id="yOE-bk-ij4">
-                                        <rect key="frame" x="0.0" y="31" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="23" width="414" height="68"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="XoD-uj-gQd"/>
+                                            <constraint firstAttribute="height" constant="68" id="XoD-uj-gQd"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8u-Ph-FFy">
@@ -169,32 +184,30 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="share"/>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="추가할 태그를 입력하세요" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jTN-JW-3Rw">
+                                        <rect key="frame" x="20" y="35" width="374" height="44"/>
+                                        <color key="backgroundColor" name="grayWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Eab-UP-upj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="pIM-3g-RB7" secondAttribute="trailing" constant="20" id="0XK-LV-7Lh"/>
                                     <constraint firstAttribute="bottom" secondItem="h8u-Ph-FFy" secondAttribute="bottom" constant="41" id="4jM-QM-raJ"/>
+                                    <constraint firstItem="jTN-JW-3Rw" firstAttribute="leading" secondItem="mWj-kW-YLh" secondAttribute="leading" constant="20" id="7pT-Xi-Y9y"/>
                                     <constraint firstAttribute="trailing" secondItem="yOE-bk-ij4" secondAttribute="trailing" id="CYe-s1-Lxe"/>
                                     <constraint firstAttribute="height" constant="91" id="HtX-bK-FOh"/>
                                     <constraint firstItem="h8u-Ph-FFy" firstAttribute="leading" secondItem="mWj-kW-YLh" secondAttribute="leading" constant="20" id="J0I-kQ-zR6"/>
                                     <constraint firstItem="yOE-bk-ij4" firstAttribute="leading" secondItem="mWj-kW-YLh" secondAttribute="leading" id="cNL-Lk-UHG"/>
+                                    <constraint firstAttribute="bottom" secondItem="jTN-JW-3Rw" secondAttribute="bottom" constant="12" id="cVM-mI-6X5"/>
                                     <constraint firstItem="pIM-3g-RB7" firstAttribute="centerY" secondItem="h8u-Ph-FFy" secondAttribute="centerY" id="fxE-eu-NU7"/>
+                                    <constraint firstAttribute="trailing" secondItem="jTN-JW-3Rw" secondAttribute="trailing" constant="20" id="qoe-Or-xFa"/>
                                     <constraint firstAttribute="bottom" secondItem="yOE-bk-ij4" secondAttribute="bottom" id="vdI-Qu-ZGN"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXk-uj-diP">
-                                <rect key="frame" x="20" y="798" width="374" height="48"/>
-                                <color key="backgroundColor" name="pointMain"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="85p-Qj-PKu"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="알림 내용 확인하기">
-                                    <color key="titleColor" name="grayWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="alarmDetailButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hvM-qB-Zak"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -222,19 +235,24 @@
                     </view>
                     <connections>
                         <outlet property="alarmDetailButton" destination="rXk-uj-diP" id="8nJ-gB-USP"/>
+                        <outlet property="bottomShareButton" destination="pIM-3g-RB7" id="y1F-jj-6Bs"/>
                         <outlet property="bottomWaveView" destination="mWj-kW-YLh" id="Mrr-80-HCZ"/>
                         <outlet property="collectionView" destination="Jub-5d-gYG" id="aRg-V6-qZ4"/>
+                        <outlet property="deleteButton" destination="h8u-Ph-FFy" id="l5Q-jo-daF"/>
                         <outlet property="imageBackgroundView" destination="lR5-8r-y9c" id="Iba-EF-uSA"/>
                         <outlet property="imageContainerView" destination="Tba-it-jKc" id="yya-WR-ie9"/>
                         <outlet property="imageView" destination="Un1-OY-IMz" id="IPy-yV-1de"/>
+                        <outlet property="keyboardTopTextField" destination="jTN-JW-3Rw" id="h4F-Ub-VWu"/>
+                        <outlet property="moreButton" destination="EI1-XH-izf" id="A1j-ya-Yyi"/>
                         <outlet property="navigationPictureButtonContainerStackView" destination="56K-Hg-bxd" id="RdW-i0-GRh"/>
                         <outlet property="scrollViewHeight" destination="m0v-EL-Bu3" id="yff-AQ-L7c"/>
-                        <outlet property="shareButton" destination="ZZS-N1-AiV" id="Pae-D4-GTt"/>
+                        <outlet property="shareButton" destination="ZZS-N1-AiV" id="JqI-ou-dlX"/>
+                        <outlet property="waveViewBottomConstraint" destination="BZD-hz-ldL" id="b6e-Ev-1af"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="110"/>
+            <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </scene>
     </scenes>
     <resources>

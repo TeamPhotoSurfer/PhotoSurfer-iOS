@@ -24,26 +24,35 @@ final class HomeResultViewController: UIViewController {
     var photoDataSource: UICollectionViewDiffableDataSource<Section, CapturePhoto>!
     var tags: [Tag] = []
     var photos: [CapturePhoto] = []
-
+    
     // MARK: - IBOutlet
     @IBOutlet weak var tagCollectionView: UICollectionView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    @IBOutlet weak var selectButton: UIButton!
+    @IBOutlet weak var bottomWaveView: UIView!
+    @IBOutlet weak var selectedNavigationStackView: UIStackView!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setDummy()
         setCollectionView()
     }
     
     private func setCollectionView() {
+        setCollectionViewDelegate()
         registerXib()
         tagCollectionView.setCollectionViewLayout(createTagsLayout(), animated: true)
         photoCollectionView.setCollectionViewLayout(createPhotosLayout(), animated: true)
         setDataSource()
         applyTagSnapshot()
         applyPhotoSnapshot()
+    }
+    
+    private func setCollectionViewDelegate() {
+        tagCollectionView.delegate = self
+        photoCollectionView.delegate = self
     }
     
     private func registerXib() {
@@ -66,18 +75,31 @@ final class HomeResultViewController: UIViewController {
         })
     }
     
-    private func applyTagSnapshot() {
+    func applyTagSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         snapshot.appendSections([.main])
         snapshot.appendItems(tags, toSection: .main)
         tagDataSource.apply(snapshot)
     }
     
-    private func applyPhotoSnapshot() {
+    func applyPhotoSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, CapturePhoto>()
         snapshot.appendSections([.main])
         snapshot.appendItems(photos, toSection: .main)
         photoDataSource.apply(snapshot)
+    }
+    
+    func goToPictureViewController() {
+        guard let pictureViewController = UIStoryboard(name: Const.Storyboard.Picture, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
+        pictureViewController.type = .picture
+        self.navigationController?.pushViewController(pictureViewController, animated: true)
+    }
+    
+    private func toggleMultiSelectedUI(isSelectable: Bool) {
+        bottomWaveView.isHidden = !isSelectable
+        selectedNavigationStackView.isHidden = !isSelectable
+        selectButton.isHidden = isSelectable
     }
     
     private func setDummy() {
@@ -89,5 +111,18 @@ final class HomeResultViewController: UIViewController {
                   CapturePhoto(image: Const.Image.imgSea),
                   CapturePhoto(image: Const.Image.imgSea),
                   CapturePhoto(image: Const.Image.imgSea)]
+    }
+    
+    // MARK: - IBAction
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func selectButtonDidTap(_ sender: Any) {
+        toggleMultiSelectedUI(isSelectable: true)
+    }
+    
+    @IBAction func cancelButtonDidTap(_ sender: Any) {
+        toggleMultiSelectedUI(isSelectable: false)
     }
 }

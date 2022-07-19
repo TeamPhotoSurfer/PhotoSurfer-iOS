@@ -19,6 +19,7 @@ final class HomeSearchViewController: UIViewController {
         case inputTag
         case recentAddTag
         case frequencyAddTag
+        case platformTag
         case relatedTag
     }
     
@@ -27,6 +28,7 @@ final class HomeSearchViewController: UIViewController {
     var inputTags: [Tag] = []
     var recentTags: [Tag] = []
     var frequencyTags: [Tag] = []
+    var platformTags: [Tag] = []
     var relatedTags: [Tag] = []
     var collectionViewHeaders: [String] = []
     var isShownRelated: Bool = false
@@ -127,6 +129,7 @@ extension HomeSearchViewController {
     private func setDummy() {
         recentTags = [Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent")]
         frequencyTags = [Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주")]
+        platformTags = [Tag(title: "인스타그램"), Tag(title: "카카오톡"), Tag(title: "페이스북")]
         relatedTags = [Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"),Tag(title: "연관")
         ]
     }
