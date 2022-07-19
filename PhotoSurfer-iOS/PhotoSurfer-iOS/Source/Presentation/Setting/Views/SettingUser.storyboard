@@ -135,6 +135,10 @@
                             <constraint firstItem="pBE-f9-UQZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ukz-bW-QQc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logoutView" destination="PXT-js-v7r" id="19B-sf-l3Z"/>
+                        <outlet property="withdrawView" destination="lMe-RA-fgo" id="xqe-x0-W2T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -25,9 +25,9 @@ final class SettingViewController: UIViewController {
     // MARK: - Function
     func setUIViewTapAction() {
         let userSettingTapGesture = UITapGestureRecognizer(target: self, action: #selector(settingUserButtonDidTap))
-        let policySettingTapGesture = UITapGestureRecognizer(target: self, action: #selector(settingPolicyButtonDidTap))
         userSettingView.isUserInteractionEnabled = true
         userSettingView.addGestureRecognizer(userSettingTapGesture)
+        let policySettingTapGesture = UITapGestureRecognizer(target: self, action: #selector(settingPolicyButtonDidTap))
         policySettingView.isUserInteractionEnabled = true
         policySettingView.addGestureRecognizer(policySettingTapGesture)
     }
