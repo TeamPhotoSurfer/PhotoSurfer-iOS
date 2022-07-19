@@ -157,7 +157,7 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
         typingTextCount = searchText.count
         relatedTags = relatedTagsFetched.filter({ $0.title.contains(searchText) })
         guard let inputText = searchBar.text, !inputText.isEmpty else {
-            setSupplementaryViewProvider(dataSource: setDataSource())
+            applyInitialDataSource()
             relatedTags = relatedTagsFetched
             isTyping = false
             typingView.isHidden = true
@@ -168,7 +168,6 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
             isTyping = true
         }
         applyChangedDataSource(inputText: inputText)
-        //setSearchSupplementaryViewProvider(dataSource: setDataSource())
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {

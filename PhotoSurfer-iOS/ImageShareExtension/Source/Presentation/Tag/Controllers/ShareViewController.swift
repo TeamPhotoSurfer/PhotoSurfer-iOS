@@ -48,7 +48,6 @@ final class ShareViewController: UIViewController {
     @IBOutlet weak var collectionViewBottonConstraint: NSLayoutConstraint!
     @IBOutlet weak var typingView: UIView!
     
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
