@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Lottie
+
 final class SetAlarmViewController: UIViewController {
 
     // MARK: - IBOutlet
@@ -19,10 +21,15 @@ final class SetAlarmViewController: UIViewController {
     @IBOutlet weak var datePickerView: UIView!
     @IBOutlet weak var setRepresentTagButton: UIButton!
     @IBOutlet weak var alarmSaveView: UIView!
+    @IBOutlet weak var bellView: UIView!
+    @IBOutlet weak var surfingView: UIView!
+    @IBOutlet weak var loadingView: UIView!
     
     // MARK: - Property
     let textViewPlaceHolder: String = "50자 이내로 알림메모를 작성해보세요."
     var keyHeight: CGFloat?
+    let bellAnimationView = AnimationView()
+    let surfingAnimationView = AnimationView()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -39,6 +46,7 @@ final class SetAlarmViewController: UIViewController {
         setAlarmButton.layer.cornerRadius = 8
         settingTimeButton.layer.cornerRadius = 8
         datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        setLottie()
     }
     
     private func setKeyboard() {
@@ -56,6 +64,25 @@ final class SetAlarmViewController: UIViewController {
         memoTextView.delegate = self
         memoTextView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         memoTextView.layer.cornerRadius = 8
+    }
+    
+    private func setLottie() {
+        bellAnimationView.frame = bellView.bounds
+        bellAnimationView.animation = Animation.named("bell")
+        bellAnimationView.loopMode = .loop
+        bellAnimationView.play()
+        bellView.addSubview(bellAnimationView)
+        
+        surfingAnimationView.frame = surfingView.bounds
+        surfingAnimationView.animation = Animation.named("surfing")
+        surfingAnimationView.loopMode = .loop
+        surfingAnimationView.play()
+        surfingView.addSubview(surfingAnimationView)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.surfingAnimationView.stop()
+            self.loadingView.isHidden = true
+        }
     }
     
     // MARK: - Objc Function

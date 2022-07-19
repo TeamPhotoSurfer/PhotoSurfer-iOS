@@ -9,7 +9,8 @@ target 'ImageShareExtension' do
 pod 'Moya', '~> 15.0'
 pod 'IQKeyboardManagerSwift'
 pod 'Toast-Swift', '~> 5.0.1'
-
+pod 'Kingfisher', '~> 7.0'
+pod 'lottie-ios'
 end
 
 target 'PhotoSurfer-iOS' do
