@@ -56,6 +56,8 @@ final class HomeSearchViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         searchBar.setImage(UIImage(), for: .search, state: .normal)
         searchBar.searchTextField.font = .iosBody2
+        searchBar.backgroundColor = .grayGray10
+        searchBar.searchTextField.backgroundColor = .clear
     }
     
     private func setSearchBarDelegate() {
