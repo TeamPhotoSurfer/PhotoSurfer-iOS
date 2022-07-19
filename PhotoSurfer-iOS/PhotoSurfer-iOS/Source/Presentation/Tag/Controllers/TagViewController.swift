@@ -22,6 +22,7 @@ final class TagViewController: UIViewController {
     }
     var dataSource: UICollectionViewDiffableDataSource<Section, Album>!
     var albumList: [Album] = Album.totalList
+    var indexpath: IndexPath = IndexPath.init()
     
     // MARK: - IBOutlet
     @IBOutlet weak var albumCollectionView: UICollectionView!
@@ -41,6 +42,7 @@ final class TagViewController: UIViewController {
         editTagTextField.layer.cornerRadius = editTagTextField.bounds.height * 0.5
         editTagTextField.addPadding(padding: 16)
         editTagTextField.clearButtonMode = .always
+        editTagTextField.addTarget(self, action: #selector(self.editTagTextFieldDidChange(_:)), for: .editingChanged)
         setCollectionView()
         setEditToolbar()
     }
@@ -109,15 +111,55 @@ final class TagViewController: UIViewController {
         var superview = sender.superview
         while superview != nil {
             if let cell = superview as? TagAlbumCollectionViewCell {
-//                cell.tagNameButton.setTagName(name: "안녕안녕")
+                guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
+                indexpath = indexPath
                 editTagTextField.becomeFirstResponder()
                 editToolBarView.isHidden.toggle()
-                applySnapshot()
+//                guard let tagName = self.editTagTextField?.text else { return }
+//                cell.tagNameButton.setTagName(name: "tagName")
                 cell.menuView.isHidden.toggle()
+                self.applySnapshot()
                 break
             }
             superview = superview?.superview
         }
+    }
+    
+    @objc func editTagTextFieldDidChange(_ sender: Any?) {
+        guard let tagName = self.editTagTextField?.text else { return }
+        guard let selectedItem = dataSource.itemIdentifier(for: indexpath) else { return }
+        var updatedSelectedItem = selectedItem
+        updatedSelectedItem.name = tagName
+        var newSnapshot = dataSource.snapshot()
+//        newSnapshot.reloadItems([selectedItem])
+//        newSnapshot.reconfigureItems([selectedItem])
+        newSnapshot.insertItems([updatedSelectedItem], beforeItem: selectedItem)
+        newSnapshot.deleteItems([selectedItem])
+        dataSource.apply(newSnapshot)
+//        print("🧤tagName", tagName)
+//        guard var item = dataSource.itemIdentifier(for: indexpath) else { return }
+////        print(Album.totalList[indexpath.item].name)
+////        print(Album.totalList[indexpath.item].name)
+//        print("🚨item", item)
+//        guard let indexx = dataSource.indexPath(for: item) else { return }
+//        print("😀dataSource index", indexx)
+//        Album.totalList[indexpath.item].name = tagName
+//
+////        self.applySnapshot()
+//        print("👔list.name", Album.totalList[indexpath.item].name)
+//        print("🚨item", dataSource.itemIdentifier(for: indexx))
+////        item.name = tagName
+////        print("👔after item", item)
+////        var snapshot = dataSource.snapshot()
+////        dataSource.apply(snapshot, animatingDifferences: true)
+//        print("😀dataSource", dataSource.indexPath(for: item))
+//
+//        let cell = albumCollectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexpath) as! TagAlbumCollectionViewCell
+//        print("✨cell.tagNameButton", cell.tagNameButton.titleLabel!)
+//        cell.tagNameButton.setTagName(name: tagName)
+//        snapshot.reconfigureItems([item])
+//        self.applySnapshot()
+
     }
     
     // MARK: - IBAction
