@@ -39,3 +39,11 @@ extension HomeResultViewController {
         return layout
     }
 }
+
+extension HomeResultViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        tags.remove(at: indexPath.item)
+        applyTagSnapshot()
+    }
+}

@@ -44,6 +44,7 @@ final class HomeResultViewController: UIViewController {
         setDataSource()
         applyTagSnapshot()
         applyPhotoSnapshot()
+        tagCollectionView.delegate = self
     }
     
     private func registerXib() {
@@ -66,14 +67,14 @@ final class HomeResultViewController: UIViewController {
         })
     }
     
-    private func applyTagSnapshot() {
+    func applyTagSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         snapshot.appendSections([.main])
         snapshot.appendItems(tags, toSection: .main)
         tagDataSource.apply(snapshot)
     }
     
-    private func applyPhotoSnapshot() {
+    func applyPhotoSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, CapturePhoto>()
         snapshot.appendSections([.main])
         snapshot.appendItems(photos, toSection: .main)
