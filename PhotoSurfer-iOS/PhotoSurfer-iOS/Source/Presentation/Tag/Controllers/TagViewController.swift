@@ -159,11 +159,11 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - IBAction
-    @IBAction func viewDidTap(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name("CellTouch"), object: nil)
-//        editToolBarView.isHidden.toggle()
-        print("🚨resign", editTagTextField.resignFirstResponder())
-    }
+//    @IBAction func viewDidTap(_ sender: Any) {
+//        NotificationCenter.default.post(name: Notification.Name("CellTouch"), object: nil)
+////        editToolBarView.isHidden.toggle()
+//        print("🚨resign", editTagTextField.resignFirstResponder())
+//    }
 }
 
 extension Album {
