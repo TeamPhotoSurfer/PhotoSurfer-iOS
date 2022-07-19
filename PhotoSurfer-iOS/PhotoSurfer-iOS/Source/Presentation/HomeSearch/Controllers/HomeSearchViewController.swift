@@ -52,6 +52,7 @@ final class HomeSearchViewController: UIViewController {
     }
     
     private func setSearchBarUI() {
+        searchBar.becomeFirstResponder()
         searchBar.layer.cornerRadius = 8
         searchBar.backgroundImage = UIImage()
         searchBar.setImage(UIImage(), for: .search, state: .normal)
