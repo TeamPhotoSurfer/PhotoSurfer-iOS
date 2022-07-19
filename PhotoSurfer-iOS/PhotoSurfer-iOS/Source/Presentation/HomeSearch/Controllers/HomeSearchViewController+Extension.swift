@@ -48,11 +48,12 @@ extension HomeSearchViewController {
     func applyInitialDataSource() {
         isShownRelated = false
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
-        collectionViewHeaders = ["입력한 태그", "최근 추가한 태그", "자주 추가한 태그", "연관 태그"]
-        snapshot.appendSections([.inputTag, .recentAddTag, .frequencyAddTag])
+        collectionViewHeaders = ["입력한 태그", "최근 추가한 태그", "자주 추가한 태그", "플랫폼 태그"]
+        snapshot.appendSections([.inputTag, .recentAddTag, .frequencyAddTag, .platformTag])
         snapshot.appendItems(inputTags, toSection: .inputTag)
         snapshot.appendItems(recentTags, toSection: .recentAddTag)
         snapshot.appendItems(frequencyTags, toSection: .frequencyAddTag)
+        snapshot.appendItems(platformTags, toSection: .platformTag)
         dataSource.apply(snapshot)
     }
     
@@ -80,6 +81,10 @@ extension HomeSearchViewController: UICollectionViewDelegate {
         case 2:
             if inputTags.count < 6 {
                 inputTags.append(Tag(title: frequencyTags[indexPath.item].title))
+            }
+        case 3:
+            if inputTags.count < 6 {
+                inputTags.append(Tag(title: platformTags[indexPath.item].title))
             }
         default:
             print("none")
