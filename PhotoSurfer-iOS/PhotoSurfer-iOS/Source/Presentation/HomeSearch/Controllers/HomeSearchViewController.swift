@@ -43,6 +43,7 @@ final class HomeSearchViewController: UIViewController {
         setUI()
         setCollectionView()
         setSearchBarDelegate()
+        setKeyboardToolBar()
     }
     
     // MARK: - Function
@@ -87,6 +88,20 @@ final class HomeSearchViewController: UIViewController {
             header.setData(title: self.collectionViewHeaders[indexPath.section])
             return header
         }
+    }
+    
+    private func setKeyboardToolBar() {
+        let toolbar = UIToolbar()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let closeButton = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(self.closeKeyboard))
+        toolbar.sizeToFit()
+        toolbar.setItems([flexSpace, closeButton], animated: false)
+        searchBar.inputAccessoryView = toolbar
+    }
+    
+    // MARK: - Objc Function
+    @objc private func closeKeyboard() {
+        searchBar.resignFirstResponder()
     }
     
     // MARK: - IBAction
