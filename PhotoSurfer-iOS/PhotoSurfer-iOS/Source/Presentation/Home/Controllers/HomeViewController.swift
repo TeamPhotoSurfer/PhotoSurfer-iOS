@@ -26,9 +26,9 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setDummy()
         setUI()
         setCollectionView()
+        getFrequencyTag()
     }
     
     // MARK: - Function
@@ -73,7 +73,7 @@ final class HomeViewController: UIViewController {
     private func setDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            cell.setData(title: itemIdentifier.title, type: .defaultSkyblueTag)
+            cell.setData(title: itemIdentifier.name, type: .defaultSkyblueTag)
             return cell
         })
     }
@@ -91,6 +91,25 @@ final class HomeViewController: UIViewController {
         homeSearchViewController.hidesBottomBarWhenPushed = true
         homeSearchViewController.inputTags = inputTags
         self.navigationController?.pushViewController(homeSearchViewController, animated: true)
+    }
+    
+    private func getFrequencyTag() {
+        TagService.shared.getTagSearch { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? TagResponse else { return }
+                self.tags = data.tags
+                self.applyTagSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     // MARK: - IBAction

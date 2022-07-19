@@ -9,15 +9,6 @@ import UIKit
 
 extension HomeViewController {
     
-    func setDummy() {
-        tags = [Tag(title: "포토서퍼"),
-                Tag(title: "카페"),
-                Tag(title: "생활꿀팁"),
-                Tag(title: "위시리스트"),
-                Tag(title: "배경화면"),
-                Tag(title: "여행")]
-    }
-    
     func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .estimated(86),

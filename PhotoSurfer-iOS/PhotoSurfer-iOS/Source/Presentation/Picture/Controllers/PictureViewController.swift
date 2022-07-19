@@ -32,7 +32,7 @@ final class PictureViewController: UIViewController {
     var type: ViewType = .alarmSelected
     var editMode: PictureEditMode = .none
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
-    var tags = [Tag(title: "tag1ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"), Tag(title: "tag1"), Tag(title: "tag1"), Tag(title: "tag1")]
+    var tags = [Tag(name: "tag1ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"), Tag(name: "tag1"), Tag(name: "tag1"), Tag(name: "tag1")]
     
     // MARK: - IBOutlet
     @IBOutlet weak var navigationPictureButtonContainerStackView: UIStackView!
@@ -162,7 +162,7 @@ final class PictureViewController: UIViewController {
     private func setDataSource(isDeletable: Bool) {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            cell.setData(title: itemIdentifier.title, type: isDeletable ? .deleteEnableBlueTag : .defaultBlueTag)
+            cell.setData(title: itemIdentifier.name, type: isDeletable ? .deleteEnableBlueTag : .defaultBlueTag)
             return cell
         })
     }
