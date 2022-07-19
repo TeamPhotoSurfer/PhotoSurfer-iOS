@@ -91,6 +91,10 @@ final class TagViewController: UIViewController {
         return layout
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     // MARK: - Objc Function
     @objc func deleteButtonDidTap(sender: UIButton) {
         var superview = sender.superview
@@ -133,7 +137,7 @@ final class TagViewController: UIViewController {
 //        newSnapshot.reconfigureItems([selectedItem])
         newSnapshot.insertItems([updatedSelectedItem], beforeItem: selectedItem)
         newSnapshot.deleteItems([selectedItem])
-        dataSource.apply(newSnapshot)
+        dataSource.apply(newSnapshot, animatingDifferences: false, completion: nil)
     }
     
     // MARK: - IBAction
