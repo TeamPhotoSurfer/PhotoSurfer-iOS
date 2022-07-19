@@ -48,10 +48,7 @@ final class TagViewController: UIViewController {
     }
     
     private func setEditToolbar() {
-        let toolBar = UIToolbar()
-        let customToolBarItem = UIBarButtonItem(customView: editToolBarView)
-        toolBar.items = [customToolBarItem]
-        keyboardHandleTextField.inputAccessoryView = toolBar
+        keyboardHandleTextField.inputAccessoryView = editToolBarView
     }
     
     private func applySnapshot() {
@@ -69,6 +66,7 @@ final class TagViewController: UIViewController {
             albumCell.tag = indexPath.row
             albumCell.tagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
             albumCell.platformTagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
+            albumCell.tagEditButton.addTarget(self, action: #selector(self.editButtonDidTap), for: .touchUpInside)
             return albumCell
         })
         applySnapshot()
@@ -106,6 +104,22 @@ final class TagViewController: UIViewController {
             }
             superview = superview?.superview
         }
+    }
+    
+    @objc func editButtonDidTap(sender: UIButton) {
+        var superview = sender.superview
+        while superview != nil {
+            if let cell = superview as? UICollectionViewCell {
+                cell.tagNameButton.titleLabel?.text
+                guard let indexPath = albumCollectionView.indexPath(for: cell),
+                      let objectIClickedOnto = dataSource.itemIdentifier(for: indexPath) else { return }
+                var snapshot = dataSource.snapshot()
+                snapshot.deleteItems([objectIClickedOnto])
+                dataSource.apply(snapshot)
+                break
+            }
+            superview = superview?.superview
+//        }
     }
     
     // MARK: - IBAction

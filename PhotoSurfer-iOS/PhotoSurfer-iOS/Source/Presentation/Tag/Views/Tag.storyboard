@@ -77,9 +77,12 @@
                                     <constraint firstItem="O6J-D7-Dic" firstAttribute="top" secondItem="zgr-7d-qTg" secondAttribute="top" constant="13" id="znZ-hJ-uC0"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-j4-WN6">
-                                <rect key="frame" x="139" y="389" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-j4-WN6">
+                                <rect key="frame" x="139" y="832.66666666666663" width="97" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="4Aw-Ca-nBT"/>
+                                    <constraint firstAttribute="width" constant="97" id="BdW-iZ-upd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -94,6 +97,8 @@
                             <constraint firstItem="M7N-Zg-Q6U" firstAttribute="top" secondItem="aES-Ml-0ca" secondAttribute="bottom" constant="15" id="J2X-fi-ZZJ"/>
                             <constraint firstItem="sGk-2j-PuJ" firstAttribute="top" secondItem="M7N-Zg-Q6U" secondAttribute="bottom" id="JKo-h4-mtf"/>
                             <constraint firstItem="M7N-Zg-Q6U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KSc-li-DMC"/>
+                            <constraint firstItem="zgr-7d-qTg" firstAttribute="top" secondItem="x2c-j4-WN6" secondAttribute="bottom" constant="-200" id="O0P-s3-Jm6"/>
+                            <constraint firstItem="x2c-j4-WN6" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="a7l-mu-MVg"/>
                             <constraint firstItem="zgr-7d-qTg" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="dhz-aj-9TO"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="sGk-2j-PuJ" secondAttribute="trailing" id="fbG-6j-5I0"/>
                             <constraint firstItem="aES-Ml-0ca" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="jU2-Jz-4Cl"/>

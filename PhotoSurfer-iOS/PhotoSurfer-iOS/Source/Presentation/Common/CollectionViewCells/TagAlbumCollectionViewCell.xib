@@ -24,6 +24,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FP1-dg-bxG">
                         <rect key="frame" x="5" y="5" width="162" height="110"/>
                         <subviews>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-at-N3A">
+                                <rect key="frame" x="0.0" y="0.0" width="162" height="110"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="태그 이름"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VyK-Qi-DPD">
                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                 <constraints>
@@ -47,16 +54,6 @@
                                 <connections>
                                     <action selector="menuButtonDidTap:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Svs-9W-6Oi"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WGG-at-N3A">
-                                <rect key="frame" x="8" y="34" width="136" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="IWp-ez-l1f"/>
-                                </constraints>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="태그 이름"/>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gd3-Zm-chD">
                                 <rect key="frame" x="48" y="0.0" width="114" height="79"/>
@@ -132,16 +129,18 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WGG-at-N3A" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="2jg-4J-ot2"/>
                             <constraint firstAttribute="trailing" secondItem="Gd3-Zm-chD" secondAttribute="trailing" id="5jL-pV-I21"/>
+                            <constraint firstAttribute="trailing" secondItem="WGG-at-N3A" secondAttribute="trailing" id="CTn-2f-EXL"/>
                             <constraint firstItem="Gd3-Zm-chD" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="I9H-Rc-ERO"/>
                             <constraint firstItem="VyK-Qi-DPD" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="Ros-i1-2ue"/>
                             <constraint firstAttribute="trailing" secondItem="trQ-Pq-ciu" secondAttribute="trailing" id="TF2-fk-oZm"/>
-                            <constraint firstAttribute="trailing" secondItem="WGG-at-N3A" secondAttribute="trailing" constant="18" id="TRP-Bx-bY4"/>
                             <constraint firstItem="WGG-at-N3A" firstAttribute="centerY" secondItem="FP1-dg-bxG" secondAttribute="centerY" id="a1V-uC-1qY"/>
                             <constraint firstItem="9gf-oT-XMQ" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="aKu-3D-wZh"/>
                             <constraint firstItem="trQ-Pq-ciu" firstAttribute="top" secondItem="FP1-dg-bxG" secondAttribute="top" id="cEU-fu-Nu7"/>
+                            <constraint firstItem="WGG-at-N3A" firstAttribute="leading" secondItem="FP1-dg-bxG" secondAttribute="leading" id="pYn-Mu-vkW"/>
                             <constraint firstItem="VyK-Qi-DPD" firstAttribute="leading" secondItem="FP1-dg-bxG" secondAttribute="leading" id="q2j-eJ-iHn"/>
-                            <constraint firstItem="WGG-at-N3A" firstAttribute="leading" secondItem="FP1-dg-bxG" secondAttribute="leading" constant="8" id="yqe-ef-0oM"/>
+                            <constraint firstAttribute="bottom" secondItem="WGG-at-N3A" secondAttribute="bottom" id="x0Y-v0-Ya9"/>
                             <constraint firstAttribute="trailing" secondItem="9gf-oT-XMQ" secondAttribute="trailing" id="zr9-Ln-fiY"/>
                         </constraints>
                     </view>
