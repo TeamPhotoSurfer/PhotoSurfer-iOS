@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cca-cO-xsc">
-                        <rect key="frame" x="34" y="6" width="94" height="34"/>
+                        <rect key="frame" x="38" y="6" width="39" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="yRI-ax-Zq4"/>
                         </constraints>
@@ -35,7 +35,7 @@
                         <buttonConfiguration key="configuration" style="plain" title=""/>
                     </button>
                     <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2V-Jb-Yad">
-                        <rect key="frame" x="0.0" y="11" width="24" height="24"/>
+                        <rect key="frame" x="4" y="11" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="BLM-jA-pea"/>
                             <constraint firstAttribute="width" constant="24" id="Qzc-ka-DeS"/>
@@ -53,7 +53,7 @@
                     <constraint firstAttribute="bottom" secondItem="V03-iQ-3CP" secondAttribute="bottom" id="YJi-jQ-ZNd"/>
                     <constraint firstItem="V03-iQ-3CP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="a4B-Ko-zYY"/>
                     <constraint firstAttribute="bottom" secondItem="Cca-cO-xsc" secondAttribute="bottom" constant="6" id="e4E-98-Yx7"/>
-                    <constraint firstItem="a2V-Jb-Yad" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jj7-YF-YIC"/>
+                    <constraint firstItem="a2V-Jb-Yad" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="jj7-YF-YIC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -66,7 +66,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="colorSub" width="94" height="34"/>
+        <image name="colorSub" width="22" height="34"/>
         <image name="icHashtagLineTagMain" width="12" height="12"/>
         <namedColor name="pointMain">
             <color red="0.20800000429153442" green="0.4779999852180481" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

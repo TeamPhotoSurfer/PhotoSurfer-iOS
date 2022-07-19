@@ -278,6 +278,7 @@
                     <navigationItem key="navigationItem" id="4RQ-05-NCx"/>
                     <size key="freeformSize" width="415" height="798"/>
                     <connections>
+                        <outlet property="alarmSaveView" destination="JDA-Qi-e7h" id="Avt-ey-6ee"/>
                         <outlet property="commentTimeView" destination="R7F-e2-hJB" id="f6l-A1-mfA"/>
                         <outlet property="datePicker" destination="HUo-Pc-bjc" id="5eg-iX-Xng"/>
                         <outlet property="datePickerView" destination="Wch-MV-Gvo" id="6Qh-rW-FEE"/>
