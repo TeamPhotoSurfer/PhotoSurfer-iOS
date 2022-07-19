@@ -28,6 +28,12 @@ final class AlarmListTableViewCell: UITableViewCell {
     }
     
     func setData(push: Push) {
+        photoImageView.setImage(with: push.imageURL)
+        var tagText = ""
+        for tag in push.tags {
+            tagText += "#\(tag) "
+        }
+        tagLabel.text = tagText
         dateLabel.text = push.pushDate
         memoLabel.text = push.memo
     }
