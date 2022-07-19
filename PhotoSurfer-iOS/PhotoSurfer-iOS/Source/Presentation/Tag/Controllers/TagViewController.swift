@@ -49,6 +49,7 @@ final class TagViewController: UIViewController {
     
     private func setEditToolbar() {
         editTagTextField.inputAccessoryView = editToolBarView
+        editTagTextField.returnKeyType = .done
     }
     
     private func applySnapshot() {
