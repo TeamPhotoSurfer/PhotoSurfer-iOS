@@ -81,7 +81,6 @@ final class HomeResultViewController: UIViewController {
     }
     
     private func setDummy() {
-        tags = [Tag(title: "태그"), Tag(title: "태그"), Tag(title: "태그"), Tag(title: "태그"), Tag(title: "태그"), Tag(title: "태그")]
         photos = [CapturePhoto(image: Const.Image.imgSea),
                   CapturePhoto(image: Const.Image.imgSea),
                   CapturePhoto(image: Const.Image.imgSea),

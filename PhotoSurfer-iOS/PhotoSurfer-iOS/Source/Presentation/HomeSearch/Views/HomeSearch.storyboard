@@ -27,6 +27,9 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="leftBackIconButton"/>
+                                        <connections>
+                                            <action selector="backButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ghc-wO-d8C"/>
+                                        </connections>
                                     </button>
                                     <searchBar contentMode="redraw" placeholder="태그를 입력하세요" translatesAutoresizingMaskIntoConstraints="NO" id="9ji-Cl-vcY">
                                         <rect key="frame" x="48" y="10" width="346" height="48"/>

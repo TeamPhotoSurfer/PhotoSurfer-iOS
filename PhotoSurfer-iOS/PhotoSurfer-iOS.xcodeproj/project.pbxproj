@@ -97,6 +97,7 @@
 		8BD253CFC87C17C8EE4EDC06 /* Pods_PhotoSurfer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */; };
 		DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */; };
 		DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */; };
+		DD602B3328868FD7004F546B /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD602B3228868FD7004F546B /* UIButton+.swift */; };
 		DD82D7A22884896400A56F6C /* Symbol.json in Resources */ = {isa = PBXBuildFile; fileRef = DD82D79F2884896400A56F6C /* Symbol.json */; };
 		DD82D7A32884896400A56F6C /* Bubble.json in Resources */ = {isa = PBXBuildFile; fileRef = DD82D7A02884896400A56F6C /* Bubble.json */; };
 		DD82D7A42884896400A56F6C /* SymbolWithBubble.json in Resources */ = {isa = PBXBuildFile; fileRef = DD82D7A12884896400A56F6C /* SymbolWithBubble.json */; };
@@ -231,6 +232,7 @@
 		DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSurfer-iOS.release.xcconfig"; path = "Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagAlbumCollectionViewCell.xib; sourceTree = "<group>"; };
+		DD602B3228868FD7004F546B /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		DD82D79F2884896400A56F6C /* Symbol.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Symbol.json; sourceTree = "<group>"; };
 		DD82D7A02884896400A56F6C /* Bubble.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Bubble.json; sourceTree = "<group>"; };
 		DD82D7A12884896400A56F6C /* SymbolWithBubble.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SymbolWithBubble.json; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				DDAC9B75287C60330041566B /* UIFont+.swift */,
 				DDAEDF43288411F600909129 /* UITextField+.swift */,
 				08AA45202884909D00E961C4 /* UIScrollView+.swift */,
+				DD602B3228868FD7004F546B /* UIButton+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -452,12 +455,8 @@
 		086F17F0287ADDB10061422F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				086F17F7287ADE650061422F /* Setting.storyboard */,
-				DDB71E292882982D00CF5036 /* SettingUser.storyboard */,
-				DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */,
-				086F17F9287ADE7D0061422F /* SettingViewController.swift */,
-				DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */,
-				DDB71E332882A7EF00CF5036 /* SettingPolicyViewController.swift */,
+				DD602B3128863C91004F546B /* Controllers */,
+				DD602B3028863C81004F546B /* Views */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -867,6 +866,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DD602B3028863C81004F546B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				086F17F7287ADE650061422F /* Setting.storyboard */,
+				DDB71E292882982D00CF5036 /* SettingUser.storyboard */,
+				DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DD602B3128863C91004F546B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				086F17F9287ADE7D0061422F /* SettingViewController.swift */,
+				DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */,
+				DDB71E332882A7EF00CF5036 /* SettingPolicyViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		DD82D7C22884A0C200A56F6C /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -1185,6 +1204,7 @@
 				1553B71E287C8A3500137E6C /* ViewController.swift in Sources */,
 				1584E7642882A554000FA459 /* PhotoCollectionViewCell.swift in Sources */,
 				1553B720287C8A3A00137E6C /* Identifier.swift in Sources */,
+				DD602B3328868FD7004F546B /* UIButton+.swift in Sources */,
 				15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */,
 				151F95D0288563DB0089FE9E /* AlarmListViewController+Extension.swift in Sources */,
 				15A778A32885F9A300672CAE /* PhotoService.swift in Sources */,

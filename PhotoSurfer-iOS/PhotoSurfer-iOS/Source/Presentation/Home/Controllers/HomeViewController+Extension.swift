@@ -36,3 +36,10 @@ extension HomeViewController {
         return layout
     }
 }
+
+extension HomeViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        goToHomeSearchViewController(inputTags: [tags[indexPath.item]])
+    }
+}
