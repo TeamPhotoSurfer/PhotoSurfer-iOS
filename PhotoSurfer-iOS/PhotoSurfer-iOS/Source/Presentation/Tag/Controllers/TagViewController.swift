@@ -115,10 +115,7 @@ final class TagViewController: UIViewController {
                 indexpath = indexPath
                 editTagTextField.becomeFirstResponder()
                 editToolBarView.isHidden.toggle()
-//                guard let tagName = self.editTagTextField?.text else { return }
-//                cell.tagNameButton.setTagName(name: "tagName")
                 cell.menuView.isHidden.toggle()
-                self.applySnapshot()
                 break
             }
             superview = superview?.superview
@@ -136,30 +133,6 @@ final class TagViewController: UIViewController {
         newSnapshot.insertItems([updatedSelectedItem], beforeItem: selectedItem)
         newSnapshot.deleteItems([selectedItem])
         dataSource.apply(newSnapshot)
-//        print("🧤tagName", tagName)
-//        guard var item = dataSource.itemIdentifier(for: indexpath) else { return }
-////        print(Album.totalList[indexpath.item].name)
-////        print(Album.totalList[indexpath.item].name)
-//        print("🚨item", item)
-//        guard let indexx = dataSource.indexPath(for: item) else { return }
-//        print("😀dataSource index", indexx)
-//        Album.totalList[indexpath.item].name = tagName
-//
-////        self.applySnapshot()
-//        print("👔list.name", Album.totalList[indexpath.item].name)
-//        print("🚨item", dataSource.itemIdentifier(for: indexx))
-////        item.name = tagName
-////        print("👔after item", item)
-////        var snapshot = dataSource.snapshot()
-////        dataSource.apply(snapshot, animatingDifferences: true)
-//        print("😀dataSource", dataSource.indexPath(for: item))
-//
-//        let cell = albumCollectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexpath) as! TagAlbumCollectionViewCell
-//        print("✨cell.tagNameButton", cell.tagNameButton.titleLabel!)
-//        cell.tagNameButton.setTagName(name: tagName)
-//        snapshot.reconfigureItems([item])
-//        self.applySnapshot()
-
     }
     
     // MARK: - IBAction
