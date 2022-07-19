@@ -101,6 +101,14 @@ final class HomeSearchViewController: UIViewController {
         searchBar.inputAccessoryView = toolbar
     }
     
+    func goToSearchResultViewController(tags: [Tag] = []) {
+        guard let resultViewController = UIStoryboard(name: Const.Storyboard.HomeResult, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.HomeResultViewController) as? HomeResultViewController else { return }
+        resultViewController.tags = tags
+        resultViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(resultViewController, animated: true)
+    }
+    
     // MARK: - Objc Function
     @objc private func closeKeyboard() {
         searchBar.resignFirstResponder()
