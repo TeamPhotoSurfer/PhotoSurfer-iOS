@@ -64,10 +64,10 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hBk-M8-NAk">
-                                <rect key="frame" x="0.0" y="97" width="414" height="65"/>
+                                <rect key="frame" x="0.0" y="112" width="414" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="Tkg-1J-g5b"/>
+                                    <constraint firstAttribute="height" constant="34" id="Tkg-1J-g5b"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t2B-EE-hfY">
                                     <size key="itemSize" width="128" height="128"/>
@@ -87,7 +87,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wdd-n0-n5V">
-                                <rect key="frame" x="0.0" y="162" width="414" height="700"/>
+                                <rect key="frame" x="0.0" y="156" width="414" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="z5y-lw-a9m">
                                     <size key="itemSize" width="128" height="128"/>
@@ -114,9 +114,9 @@
                             <constraint firstItem="hBk-M8-NAk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3lG-N8-5ba"/>
                             <constraint firstItem="pAe-UK-9fT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6mx-aQ-swS"/>
                             <constraint firstItem="pAe-UK-9fT" firstAttribute="top" secondItem="8xI-4Z-JZf" secondAttribute="bottom" id="Fhh-eb-e7l"/>
-                            <constraint firstItem="wdd-n0-n5V" firstAttribute="top" secondItem="hBk-M8-NAk" secondAttribute="bottom" id="Hx8-bG-X8h"/>
+                            <constraint firstItem="wdd-n0-n5V" firstAttribute="top" secondItem="hBk-M8-NAk" secondAttribute="bottom" constant="10" id="Hx8-bG-X8h"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8xI-4Z-JZf" secondAttribute="trailing" id="NWY-Ps-ubB"/>
-                            <constraint firstItem="hBk-M8-NAk" firstAttribute="top" secondItem="pAe-UK-9fT" secondAttribute="bottom" id="Pu3-Cb-9HR"/>
+                            <constraint firstItem="hBk-M8-NAk" firstAttribute="top" secondItem="pAe-UK-9fT" secondAttribute="bottom" constant="15" id="Pu3-Cb-9HR"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wdd-n0-n5V" secondAttribute="trailing" id="Sjg-iH-cI2"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wdd-n0-n5V" secondAttribute="bottom" id="grn-Vu-FZg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hBk-M8-NAk" secondAttribute="trailing" id="h27-c0-C1C"/>

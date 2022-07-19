@@ -96,13 +96,7 @@ extension HomeSearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let text = searchBar.text {
-            if inputTags.count < 6 && !text.isEmpty {
-                inputTags.append(Tag(title: searchBar.text ?? ""))
-                searchBar.text?.removeAll()
-                applyInitialDataSource()
-            }
-        }
+        goToSearchResultViewController(tags: inputTags)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

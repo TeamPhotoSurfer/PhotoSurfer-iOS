@@ -104,6 +104,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="saveButton" destination="aVB-2R-R4r" id="d6I-JU-A0a"/>
                         <outlet property="tableView" destination="lVi-q6-x71" id="t3v-eI-gjR"/>
                     </connections>
                 </viewController>

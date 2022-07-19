@@ -38,7 +38,7 @@ final class ShareViewController: UIViewController {
     }
     let underSixTagMessage: String = "태그는 최대 6개까지만 추가할 수 있어요."
     let alreadyAddedMessage: String = "이미 같은 태그를 추가했어요."
-    let typingButtonTopConstValue: CGFloat = -184
+    let typingButtonTopConstValue: CGFloat = -90
     
     // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!
@@ -65,7 +65,7 @@ final class ShareViewController: UIViewController {
         setSearchBarUI()
         setSearchBar()
         registerXib()
-        setHierarchy()
+        setHierarchy(isSearching: false)
         self.isModalInPresentation = true
     }
     

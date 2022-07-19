@@ -43,6 +43,7 @@ final class HomeSearchViewController: UIViewController {
         setUI()
         setCollectionView()
         setSearchBarDelegate()
+        setKeyboardToolBar()
     }
     
     // MARK: - Function
@@ -51,10 +52,13 @@ final class HomeSearchViewController: UIViewController {
     }
     
     private func setSearchBarUI() {
+        searchBar.becomeFirstResponder()
         searchBar.layer.cornerRadius = 8
         searchBar.backgroundImage = UIImage()
         searchBar.setImage(UIImage(), for: .search, state: .normal)
         searchBar.searchTextField.font = .iosBody2
+        searchBar.backgroundColor = .grayGray10
+        searchBar.searchTextField.backgroundColor = .clear
     }
     
     private func setSearchBarDelegate() {
@@ -89,14 +93,38 @@ final class HomeSearchViewController: UIViewController {
         }
     }
     
-   
+    private func setKeyboardToolBar() {
+        let toolbar = UIToolbar()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let closeButton = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(self.closeKeyboard))
+        toolbar.sizeToFit()
+        toolbar.setItems([flexSpace, closeButton], animated: false)
+        searchBar.inputAccessoryView = toolbar
+    }
+    
+    func goToSearchResultViewController(tags: [Tag] = []) {
+        guard let resultViewController = UIStoryboard(name: Const.Storyboard.HomeResult, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.HomeResultViewController) as? HomeResultViewController else { return }
+        resultViewController.tags = tags
+        resultViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(resultViewController, animated: true)
+    }
+    
+    // MARK: - Objc Function
+    @objc private func closeKeyboard() {
+        searchBar.resignFirstResponder()
+    }
+    
+    // MARK: - IBAction
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 // 이후 삭제할 부분이라 아래에 바로 넣어놓음
 extension HomeSearchViewController {
     
     private func setDummy() {
-        inputTags = [Tag(title: "input"), Tag(title: "input"), Tag(title: "input"),Tag(title: "input")]
         recentTags = [Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent")]
         frequencyTags = [Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주")]
         relatedTags = [Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"),Tag(title: "연관")
