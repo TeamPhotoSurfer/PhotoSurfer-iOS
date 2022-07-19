@@ -30,6 +30,7 @@ final class SetAlarmViewController: UIViewController {
     var keyHeight: CGFloat?
     let bellAnimationView = AnimationView()
     let surfingAnimationView = AnimationView()
+    var keyboardShowedCount: Int = 0
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -87,22 +88,20 @@ final class SetAlarmViewController: UIViewController {
     
     // MARK: - Objc Function
     @objc func keyboardWillShow(_ sender: Notification) {
-        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            if self.view.window?.frame.origin.y != 0 {
-                self.view.window?.frame.origin.y = 0
-            }
-            else {
-                self.view.window?.frame.origin.y -= keyboardHeight - (datePickerView.isHidden ? 200 : 16)
+        keyboardShowedCount += 1
+        if keyboardShowedCount == 1 {
+            if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
+                self.view.window?.frame.origin.y -= keyboardHeight - (datePickerView.isHidden ? 100 : 16)
                 alarmSaveView.isHidden = true
             }
+            scrollView.scroll(to: .bottom)
         }
-        scrollView.scroll(to: .bottom)
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {
+        keyboardShowedCount = 0
         alarmSaveView.isHidden = false
         if self.view.window?.frame.origin.y != 0 {
             self.view.window?.frame.origin.y = 0
@@ -117,7 +116,6 @@ final class SetAlarmViewController: UIViewController {
         let date = dateformatter.string(from: datePicker.date)
         settingTimeButton.setTitle(date, for: .normal)
     }
-    
     
     // MARK: - IBAction
     @IBAction func showCommentTimeButtonDidTap(_ sender: UIButton) {
