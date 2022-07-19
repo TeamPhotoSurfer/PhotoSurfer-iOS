@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct NetworkConstant {
+    
+    static let noTokenHeader = ["Content-Type": "application/json"]
+    static var hasTokenHeader = ["Content-Type": "application/json",
+                                 "Authorization": NetworkConstant.accessToken]
+    
+    static var accessToken = ""
+    static var fcmToken = ""
+}

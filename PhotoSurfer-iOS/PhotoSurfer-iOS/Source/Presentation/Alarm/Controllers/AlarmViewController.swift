@@ -36,11 +36,20 @@ final class AlarmViewController: UIViewController {
                            forCellReuseIdentifier: Const.Identifier.AlarmListTableViewCell)
     }
     
-    // MARK: - IBAction
-    @IBAction func moreLastAlarmButtonDidTap(_ sender: Any) {
+    private func goToAlarmListViewController(mode: AlarmListViewController.ListMode) {
         guard let alarmListViewController = UIStoryboard(name: Const.Storyboard.AlarmList, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.AlarmListViewController) as? AlarmListViewController else { fatalError() }
+        alarmListViewController.mode = mode
         alarmListViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(alarmListViewController, animated: true)
+    }
+    
+    // MARK: - IBAction
+    @IBAction func moreLastAlarmButtonDidTap(_ sender: Any) {
+        goToAlarmListViewController(mode: .last)
+    }
+    
+    @IBAction func moreComingAlarmButtonDidTap(_ sender: Any) {
+        goToAlarmListViewController(mode: .coming)
     }
 }
