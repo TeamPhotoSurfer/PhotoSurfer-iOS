@@ -37,6 +37,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         tagDarkView.layer.cornerRadius = 8
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
         tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
+        NotificationCenter.default.addObserver(self, selector: #selector(closeMenu), name: Notification.Name("CellTouch"), object: nil)
     }
     
     func setMenuUI() {
@@ -70,6 +71,11 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         if let touch = touches.first , touch.view == self.superview {
             menuView.isHidden = true
         }
+    }
+    
+    // MARK: - Objc Function
+    @objc func closeMenu(notification: NSNotification) {
+        self.menuView.isHidden = true
     }
         
     // MARK: - IBAction

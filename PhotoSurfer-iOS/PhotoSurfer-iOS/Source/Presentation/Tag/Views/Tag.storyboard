@@ -117,7 +117,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icTagLine" width="24.5" height="24"/>
+        <image name="icTagLine" width="24.333333969116211" height="24"/>
         <image name="selectTag" width="72" height="40"/>
         <image name="wave" width="360" height="60"/>
         <namedColor name="grayGray30">
