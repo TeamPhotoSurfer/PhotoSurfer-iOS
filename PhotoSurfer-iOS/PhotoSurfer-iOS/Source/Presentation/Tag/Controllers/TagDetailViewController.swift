@@ -124,7 +124,7 @@ final class TagDetailViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func backButtonDidTap(_ sender: Any) {
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func selectButtonDidTap(_ sender: Any) {
         toggleMultiSelectedUI(isSelectable: true)
