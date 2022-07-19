@@ -36,7 +36,15 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setUI()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        removeObserver()
+    }
+    
     // MARK: - Function
+    private func removeObserver() {
+        NotificationCenter.default.removeObserver(Notification.Name("TagDetailPresent"))
+    }
+    
     private func setUI() {
         editTagTextField.layer.backgroundColor = UIColor.grayWhite.cgColor
         editTagTextField.layer.cornerRadius = editTagTextField.bounds.height * 0.5
@@ -197,9 +205,10 @@ extension Album {
 
 extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
         tagDetailViewController.modalPresentationStyle = .fullScreen
         self.present(tagDetailViewController, animated: true)
+        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
     }
 }

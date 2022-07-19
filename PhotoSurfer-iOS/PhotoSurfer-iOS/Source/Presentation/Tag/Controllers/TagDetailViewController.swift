@@ -32,8 +32,13 @@ final class TagDetailViewController: UIViewController, UICollectionViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
         setDummy()
         setCollectionView()
+    }
+    
+    private func setUI() {
+        NotificationCenter.default.addObserver(self, selector: #selector(setTagName), name: Notification.Name("TagDetailPresent"), object: nil)
     }
     
     private func setCollectionView() {
@@ -109,6 +114,12 @@ final class TagDetailViewController: UIViewController, UICollectionViewDelegate 
     
     private func setCollectionViewDelegate() {
         photoCollectionView.delegate = self
+    }
+    
+    // MARK: - Objc Function
+    @objc func setTagName(notification: NSNotification) {
+        guard let object = notification.object else { return }
+        tagNameLabel.text = object as? String
     }
     
     // MARK: - IBAction
