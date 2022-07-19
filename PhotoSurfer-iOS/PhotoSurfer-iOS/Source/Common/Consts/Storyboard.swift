@@ -22,5 +22,6 @@ extension Const {
         static let AlarmList = "AlarmList"
         static let Picture = "Picture"
         static let AlarmDetail = "AlarmDetail"
+        static let HomeResult = "HomeResult"
     }
 }

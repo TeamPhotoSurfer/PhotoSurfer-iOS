@@ -22,5 +22,6 @@ extension Const {
         static let AlarmListViewController = "AlarmListViewController"
         static let PictureViewController = "PictureViewController"
         static let AlarmDetailViewController = "AlarmDetailViewController"
+        static let HomeResultViewController = "HomeResultViewController"
     }
 }
