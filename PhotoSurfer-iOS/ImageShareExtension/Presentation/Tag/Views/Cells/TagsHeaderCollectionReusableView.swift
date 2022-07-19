@@ -16,9 +16,6 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var underSixLabel: UILabel!
     @IBOutlet weak var platformDescriptionLabel: UILabel!
-    @IBOutlet weak var relatedTagInputView: UIView!
-    @IBOutlet weak var relatedTagInputViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var platformCheckButton: UIButton!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -29,12 +26,6 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     
     // MARK: - Function
     private func setUI() {
-        self.frame.size.height = 200
-        platformCheckButton.setImage(Const.Image.icCheckCircleFillCheckboxGray40, for: .normal)
-        platformCheckButton.setImage(Const.Image.icCheckCircleFillCheckboxMain, for: .selected)
-        platformCheckButton.setTitleColor(.grayGray40, for: .normal)
-        platformCheckButton.setTitleColor(.pointMain, for: .selected)
-        platformCheckButton.setTitle("플랫폼", for: .normal)
     }
     
     func setData(value: String) {
@@ -49,15 +40,5 @@ final class TagsHeaderCollectionReusableView: UICollectionReusableView {
     func setInputTagHeader() {
         self.underSixLabel.isHidden = false
         self.headerLabel.font = UIFont.iosSubtitle1
-    }
-    
-    func setRelatedTagInputView(isRelatedTag: Bool) {
-        self.relatedTagInputView.isHidden = !isRelatedTag
-        self.relatedTagInputViewHeightConstraint.constant = isRelatedTag ? 34 : 0
-    }
-    
-    // MARK: - IBAction
-    @IBAction func platformButtonDidTap(_ sender: UIButton) {
-        sender.isSelected.toggle()
     }
 }

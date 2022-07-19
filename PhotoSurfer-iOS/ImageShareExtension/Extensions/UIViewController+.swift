@@ -17,7 +17,9 @@ extension UIViewController {
     }
     
     @objc func dismissKeyboard() {
-        view.endEditing(true)
+        UIView.animate(withDuration: 0.2) {
+            self.view.endEditing(true)
+        }
     }
     
     func showAlert(message: String) {

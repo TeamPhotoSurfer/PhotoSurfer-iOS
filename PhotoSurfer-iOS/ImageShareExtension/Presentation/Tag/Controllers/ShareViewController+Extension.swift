@@ -10,7 +10,7 @@ import UIKit
 extension ShareViewController {
     
     // MARK: - Function
-    private func createLayout() -> UICollectionViewLayout {
+    func createLayout(isSearching: Bool) -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { selectedSection, env in
             let groupSizeWidth: NSCollectionLayoutDimension = (selectedSection == 0) ? .estimated(1.0) : .fractionalWidth(1.0)
             let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(1),
@@ -37,8 +37,9 @@ extension ShareViewController {
             group.interItemSpacing = .fixed(12)
             
             /// header
+            let headerSize: NSCollectionLayoutDimension = .absolute(selectedSection == 3 ? 60 : 36)
             let headerFooterSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                          heightDimension: .estimated(44))
+                                                          heightDimension: (self.dataSource.snapshot().numberOfSections > 3) ? headerSize : .absolute(36))
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: headerFooterSize,
                 elementKind: UICollectionView.elementKindSectionHeader,
@@ -46,7 +47,7 @@ extension ShareViewController {
             let section = NSCollectionLayoutSection(group: group)
             let groupMargin: CGFloat =  12.0
             section.interGroupSpacing = groupMargin
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 60, trailing: 0)
+            section.contentInsets = NSDirectionalEdgeInsets(top: (self.dataSource.snapshot().numberOfSections > 3) ? 4 : 12, leading: 0, bottom: (self.dataSource.snapshot().numberOfSections > 3) ? 20 : 45, trailing: 0)
             section.boundarySupplementaryItems = [sectionHeader]
             section.orthogonalScrollingBehavior = (selectedSection == 0) ? .continuous : .none
             return section
@@ -54,8 +55,8 @@ extension ShareViewController {
         return layout
     }
         
-    func setHierarchy() {
-        addedTagCollectionView.setCollectionViewLayout(createLayout(), animated: true)
+    func setHierarchy(isSearching: Bool) {
+        addedTagCollectionView.setCollectionViewLayout(createLayout(isSearching: isSearching), animated: true)
     }
     
     func setDataSource() -> UICollectionViewDiffableDataSource<Section, Tag> {
@@ -67,7 +68,8 @@ extension ShareViewController {
                                                                 for: indexPath) as? TagCollectionViewCell else {
                 fatalError("err")
             }
-            cell.setUI(isAddedTag: indexPath.section == 0, value: identifier.title)
+            cell.setUI(isAddedTag: indexPath.section == 0)
+            cell.setData(value: "\(identifier.title)")
             return cell
         }
         return dataSource
@@ -90,7 +92,7 @@ extension ShareViewController {
             else {
                 header.underSixLabel.isHidden = false
             }
-            header.setRelatedTagInputView(isRelatedTag: false)
+            
             header.platformDescriptionLabel.isHidden = (indexPath.section != 3)
             header.setData(value: headerTitle)
             return header
@@ -109,12 +111,10 @@ extension ShareViewController {
             }
             if indexPath.section == 0 {
                 header.setInputTagHeader()
-                header.setRelatedTagInputView(isRelatedTag: false)
                 headerTitle = self.searchHeaderTitleArray[0]
             }
             else {
                 header.setNotInputTagHeader()
-                header.setRelatedTagInputView(isRelatedTag: true)
                 headerTitle = self.searchHeaderTitleArray[1]
                 if self.isTyping {
                     if self.typingTextCount == 0 {
@@ -126,7 +126,6 @@ extension ShareViewController {
             header.setData(value: headerTitle)
             return header
         }
-        print("🤥 \(typingText)")
         applyChangedDataSource(inputText: typingText)
     }
     
@@ -150,7 +149,7 @@ extension ShareViewController {
     }
 }
 
-extension ShareViewController: UISearchBarDelegate {
+extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         typingButton.setTitle(searchText, for: .normal)
@@ -169,7 +168,7 @@ extension ShareViewController: UISearchBarDelegate {
             isTyping = true
         }
         applyChangedDataSource(inputText: inputText)
-        //4setSearchSupplementaryViewProvider(dataSource: setDataSource())
+        //setSearchSupplementaryViewProvider(dataSource: setDataSource())
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {

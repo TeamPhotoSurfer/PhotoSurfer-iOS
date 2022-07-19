@@ -91,7 +91,7 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLj-WK-Fxb">
-                                <rect key="frame" x="20" y="281" width="374" height="74"/>
+                                <rect key="frame" x="20" y="261" width="374" height="74"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추가하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YT7-Nl-hhC">
                                         <rect key="frame" x="0.0" y="49.5" width="42" height="14.5"/>
@@ -99,8 +99,8 @@
                                         <color key="textColor" name="grayGray60"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연관태그" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4e-J1-U7M">
-                                        <rect key="frame" x="0.0" y="9.5" width="48.5" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연관 태그" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4e-J1-U7M">
+                                        <rect key="frame" x="0.0" y="9.5" width="53" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <color key="textColor" name="grayGray90"/>
                                         <nil key="highlightedColor"/>
@@ -136,7 +136,7 @@
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="9v1-di-q75" secondAttribute="trailing" id="1UD-ef-7ZI"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="trailing" secondItem="ZLj-WK-Fxb" secondAttribute="trailing" constant="20" id="3MK-qv-YFo"/>
                             <constraint firstItem="ym1-YB-0us" firstAttribute="leading" secondItem="1Xd-am-t49" secondAttribute="leading" constant="20" id="PBy-h5-7Bp"/>
-                            <constraint firstItem="ym1-YB-0us" firstAttribute="top" secondItem="ZLj-WK-Fxb" secondAttribute="bottom" constant="-184" id="QhV-NM-DfH"/>
+                            <constraint firstItem="ym1-YB-0us" firstAttribute="top" secondItem="ZLj-WK-Fxb" secondAttribute="top" constant="-90" id="QhV-NM-DfH"/>
                             <constraint firstItem="1Xd-am-t49" firstAttribute="bottom" secondItem="ym1-YB-0us" secondAttribute="bottom" id="SIZ-fT-jGa"/>
                             <constraint firstItem="ym1-YB-0us" firstAttribute="top" secondItem="jhz-iw-P4t" secondAttribute="bottom" id="cbh-VB-eP9"/>
                             <constraint firstItem="jhz-iw-P4t" firstAttribute="top" secondItem="9v1-di-q75" secondAttribute="bottom" id="r4Y-AD-kMS"/>
@@ -154,7 +154,7 @@
                         <outlet property="searchBar" destination="jhz-iw-P4t" id="09L-bE-lvG"/>
                         <outlet property="typingButton" destination="G7r-r1-AQM" id="RJe-na-mel"/>
                         <outlet property="typingView" destination="ZLj-WK-Fxb" id="0BC-Ct-cnE"/>
-                        <outlet property="typingViewTopConstraint" destination="QhV-NM-DfH" id="sJg-As-G0a"/>
+                        <outlet property="typingViewTopConstraint" destination="QhV-NM-DfH" id="rmC-Q4-JgM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -23,9 +23,7 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
-    /// 오류
     private func addSelectedTags(indexPath: IndexPath, cell: RepresentTagTableViewCell) {
-        
         
         if selectedTags.count >= 3 {
             if selectedTags.contains(tags[indexPath.item]) {
@@ -46,12 +44,12 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
         else {
             addSelectedTag(indexPath: indexPath, cell: cell)
         }
-        
     }
     
     private func addSelectedTag(indexPath: IndexPath, cell: RepresentTagTableViewCell) {
         cell.checkButton.isSelected = true
         selectedTags.append(tags[indexPath.item])
+        saveButton.isEnabled = !selectedTags.isEmpty
     }
     
     private func removeSelectedTag(indexPath: IndexPath, cell: RepresentTagTableViewCell) {
@@ -62,6 +60,7 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
                 break
             }
         }
+        saveButton.isEnabled = !selectedTags.isEmpty
     }
     
     // MARK: - Objc Function

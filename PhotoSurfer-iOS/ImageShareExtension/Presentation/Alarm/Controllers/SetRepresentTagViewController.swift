@@ -16,6 +16,7 @@ final class SetRepresentTagViewController: UIViewController {
     
     // MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var saveButton: UIButton!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ final class SetRepresentTagViewController: UIViewController {
         setDummy()
         setCollectionView()
         registerXib()
+        setUI()
     }
     
     // MARK: - Function
@@ -39,6 +41,11 @@ final class SetRepresentTagViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 8.0
         
+    }
+    
+    private func setUI() {
+        saveButton.setTitleColor(.grayGray60, for: .disabled)
+        saveButton.setTitleColor(.pointMain, for: .normal)
     }
     
     // MARK: - IBAction
