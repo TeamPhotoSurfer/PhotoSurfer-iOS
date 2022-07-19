@@ -36,7 +36,15 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setUI()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        removeObserver()
+    }
+    
     // MARK: - Function
+    private func removeObserver() {
+        NotificationCenter.default.removeObserver(Notification.Name("TagDetailPresent"))
+    }
+    
     private func setUI() {
         editTagTextField.layer.backgroundColor = UIColor.grayWhite.cgColor
         editTagTextField.layer.cornerRadius = editTagTextField.bounds.height * 0.5
@@ -46,6 +54,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setCollectionView()
         setEditToolbar()
         editTagTextField.delegate = self
+        albumCollectionView.delegate = self
     }
     
     private func setEditToolbar() {
@@ -159,11 +168,11 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - IBAction
-    @IBAction func viewDidTap(_ sender: Any) {
-        NotificationCenter.default.post(name: Notification.Name("CellTouch"), object: nil)
-//        editToolBarView.isHidden.toggle()
-        print("🚨resign", editTagTextField.resignFirstResponder())
-    }
+//    @IBAction func viewDidTap(_ sender: Any) {
+//        NotificationCenter.default.post(name: Notification.Name("CellTouch"), object: nil)
+////        editToolBarView.isHidden.toggle()
+//        print("🚨resign", editTagTextField.resignFirstResponder())
+//    }
 }
 
 extension Album {
@@ -192,4 +201,25 @@ extension Album {
         Album(isMarked: false, isPlatform: false, name: "tag12"),
     ]
     static var totalList = markList + list
+}
+
+extension TagViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
+//        print(cell.platformMenuView.isHidden)
+//        print(cell.menuView.isHidden)
+        // TODO: 메뉴 닫는 로직에 좀 더 고민 필요....
+        if cell.menuView.isHidden && cell.platformMenuView.isHidden {
+//            print("메뉴 닫힘 -> 화면 전환")
+            let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
+            tagDetailViewController.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(tagDetailViewController, animated: true)
+            NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
+        } else {
+//            print("메뉴 열림 -> 메뉴 숨김")
+            cell.menuView.isHidden = true
+            cell.platformMenuView.isHidden = true
+        }
+    }
 }

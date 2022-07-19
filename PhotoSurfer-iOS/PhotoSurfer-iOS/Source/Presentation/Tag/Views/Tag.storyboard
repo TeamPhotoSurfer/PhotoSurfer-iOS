@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1GT-zO-sjb">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -18,21 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저장된 태그" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aES-Ml-0ca">
-                                <rect key="frame" x="150.66666666666666" y="60" width="74" height="20"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7N-Zg-Q6U">
-                                <rect key="frame" x="0.0" y="95" width="375" height="2"/>
-                                <color key="backgroundColor" name="grayGray30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ef-Pb-ysI">
+                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저장된 태그" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aES-Ml-0ca">
+                                        <rect key="frame" x="20" y="16" width="91" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="GWb-Bh-Ixv"/>
+                                    <constraint firstAttribute="height" constant="56" id="Qeo-ZJ-xEZ"/>
+                                    <constraint firstItem="aES-Ml-0ca" firstAttribute="leading" secondItem="2ef-Pb-ysI" secondAttribute="leading" constant="20" id="Uyh-i9-GFc"/>
+                                    <constraint firstItem="aES-Ml-0ca" firstAttribute="centerY" secondItem="2ef-Pb-ysI" secondAttribute="centerY" id="XC7-eQ-m7y"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sGk-2j-PuJ">
-                                <rect key="frame" x="0.0" y="97" width="375" height="632"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="629"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZIs-go-Piu">
                                     <size key="itemSize" width="128" height="128"/>
@@ -85,21 +89,16 @@
                             <constraint firstItem="sGk-2j-PuJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6Lb-3r-vhq"/>
                             <constraint firstItem="zgr-7d-qTg" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="BkV-O4-BSt"/>
                             <constraint firstAttribute="trailing" secondItem="zgr-7d-qTg" secondAttribute="trailing" id="FfX-GE-zmf"/>
-                            <constraint firstItem="M7N-Zg-Q6U" firstAttribute="top" secondItem="aES-Ml-0ca" secondAttribute="bottom" constant="15" id="J2X-fi-ZZJ"/>
-                            <constraint firstItem="sGk-2j-PuJ" firstAttribute="top" secondItem="M7N-Zg-Q6U" secondAttribute="bottom" id="JKo-h4-mtf"/>
-                            <constraint firstItem="M7N-Zg-Q6U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KSc-li-DMC"/>
+                            <constraint firstItem="2ef-Pb-ysI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="QpA-Vj-vDb"/>
                             <constraint firstAttribute="bottom" secondItem="zgr-7d-qTg" secondAttribute="bottom" id="R0h-UB-gtV"/>
+                            <constraint firstItem="sGk-2j-PuJ" firstAttribute="top" secondItem="2ef-Pb-ysI" secondAttribute="bottom" id="TNr-Qk-Twf"/>
+                            <constraint firstItem="2ef-Pb-ysI" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="eI2-WV-YnT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="sGk-2j-PuJ" secondAttribute="trailing" id="fbG-6j-5I0"/>
-                            <constraint firstItem="aES-Ml-0ca" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="jU2-Jz-4Cl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="sGk-2j-PuJ" secondAttribute="bottom" id="our-Aj-RyS"/>
-                            <constraint firstItem="aES-Ml-0ca" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="s1o-DN-qBw"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="M7N-Zg-Q6U" secondAttribute="trailing" id="uvF-CJ-G7L"/>
+                            <constraint firstItem="2ef-Pb-ysI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="tYb-3c-V4w"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="QA9-eA-G4t" appends="YES" id="Pn0-YE-hbq"/>
-                        </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="icTagLine" selectedImage="selectTag" id="Z05-Az-a76"/>
+                    <navigationItem key="navigationItem" id="RvW-3h-WSQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="albumCollectionView" destination="sGk-2j-PuJ" id="PI6-KS-4uZ"/>
@@ -108,11 +107,25 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="QA9-eA-G4t">
+                <tapGestureRecognizer id="QA9-eA-G4t"/>
+            </objects>
+            <point key="canvasLocation" x="919.20000000000005" y="118.22660098522168"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="10n-6M-C1d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="1GT-zO-sjb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="icTagLine" selectedImage="selectTag" id="Z05-Az-a76"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SR5-0e-aul">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <action selector="viewDidTap:" destination="Y6W-OH-hqX" id="ecE-HW-l4N"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="MGb-1M-lZg"/>
                     </connections>
-                </tapGestureRecognizer>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7YN-gE-ykf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-23.199999999999999" y="118.22660098522168"/>
         </scene>
@@ -121,9 +134,6 @@
         <image name="icTagLine" width="24.333333969116211" height="24"/>
         <image name="selectTag" width="72" height="40"/>
         <image name="wave" width="360" height="60"/>
-        <namedColor name="grayGray30">
-            <color red="0.81999999284744263" green="0.83899998664855957" blue="0.85900002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="grayGray950">
             <color red="0.097999997437000275" green="0.12200000137090683" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
