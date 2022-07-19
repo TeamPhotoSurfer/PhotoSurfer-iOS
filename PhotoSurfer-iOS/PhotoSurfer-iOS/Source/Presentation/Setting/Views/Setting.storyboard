@@ -75,7 +75,7 @@
                                                 <color key="textColor" name="grayGray90"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqX-PX-yHK">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqX-PX-yHK">
                                                 <rect key="frame" x="323" y="0.0" width="48" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="vqX-PX-yHK" secondAttribute="height" multiplier="1:1" id="0dt-zl-0n7"/>
@@ -145,7 +145,7 @@
                                                 <color key="textColor" name="grayGray90"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OS-Bz-nd6">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OS-Bz-nd6">
                                                 <rect key="frame" x="323" y="0.0" width="48" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="9OS-Bz-nd6" secondAttribute="height" multiplier="1:1" id="tAW-DA-ML9"/>
