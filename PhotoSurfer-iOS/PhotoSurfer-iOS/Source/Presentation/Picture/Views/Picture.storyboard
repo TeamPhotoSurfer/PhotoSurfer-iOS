@@ -120,7 +120,7 @@
                                     <constraint firstItem="dh6-kI-LDT" firstAttribute="top" secondItem="lR5-8r-y9c" secondAttribute="top" id="yyU-Ks-dab"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jub-5d-gYG">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jub-5d-gYG">
                                 <rect key="frame" x="0.0" y="771" width="414" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="lDT-uy-T4O"/>

@@ -22,7 +22,7 @@ final class PictureViewController: UIViewController {
     let photo = Const.Image.imgSea
     var type: ViewType = .alarmSelected
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
-    var tags = [Tag(title: "tag1"), Tag(title: "tag1"), Tag(title: "tag1"), Tag(title: "tag1")]
+    var tags = [Tag(title: "tag1ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"), Tag(title: "tag1"), Tag(title: "tag1"), Tag(title: "tag1")]
     
     // MARK: - IBOutlet
     @IBOutlet weak var navigationPictureButtonContainerStackView: UIStackView!
