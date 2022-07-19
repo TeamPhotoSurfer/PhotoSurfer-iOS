@@ -58,6 +58,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func setCollectionView() {
+        collectionView.delegate = self
         registerXib()
         collectionView.setCollectionViewLayout(createLayout(), animated: true)
         setDataSource()
@@ -84,11 +85,16 @@ final class HomeViewController: UIViewController {
         dataSource.apply(snapshot)
     }
     
-    // MARK: - IBAction
-    @IBAction func tagInputButtonDidTap(_ sender: Any) {
+    func goToHomeSearchViewController(inputTags: [Tag] = []) {
         guard let homeSearchViewController = UIStoryboard(name: Const.Storyboard.HomeSearch, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.HomeSearchViewController) as? HomeSearchViewController else { return }
         homeSearchViewController.hidesBottomBarWhenPushed = true
+        homeSearchViewController.inputTags = inputTags
         self.navigationController?.pushViewController(homeSearchViewController, animated: true)
+    }
+    
+    // MARK: - IBAction
+    @IBAction func tagInputButtonDidTap(_ sender: Any) {
+        goToHomeSearchViewController()
     }
 }
