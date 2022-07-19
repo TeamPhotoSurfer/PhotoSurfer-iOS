@@ -52,7 +52,7 @@
                                 </cells>
                             </collectionView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgr-7d-qTg">
-                                <rect key="frame" x="0.0" y="666.66666666666663" width="375" height="62.333333333333371"/>
+                                <rect key="frame" x="0.0" y="749.66666666666663" width="375" height="62.333333333333371"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wave" translatesAutoresizingMaskIntoConstraints="NO" id="cdV-GQ-0Kt">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="62.333333333333336"/>
@@ -83,12 +83,12 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="sGk-2j-PuJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6Lb-3r-vhq"/>
-                            <constraint firstItem="zgr-7d-qTg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="BkV-O4-BSt"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zgr-7d-qTg" secondAttribute="trailing" id="FfX-GE-zmf"/>
+                            <constraint firstItem="zgr-7d-qTg" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="BkV-O4-BSt"/>
+                            <constraint firstAttribute="trailing" secondItem="zgr-7d-qTg" secondAttribute="trailing" id="FfX-GE-zmf"/>
                             <constraint firstItem="M7N-Zg-Q6U" firstAttribute="top" secondItem="aES-Ml-0ca" secondAttribute="bottom" constant="15" id="J2X-fi-ZZJ"/>
                             <constraint firstItem="sGk-2j-PuJ" firstAttribute="top" secondItem="M7N-Zg-Q6U" secondAttribute="bottom" id="JKo-h4-mtf"/>
                             <constraint firstItem="M7N-Zg-Q6U" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="KSc-li-DMC"/>
-                            <constraint firstItem="zgr-7d-qTg" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="dhz-aj-9TO"/>
+                            <constraint firstAttribute="bottom" secondItem="zgr-7d-qTg" secondAttribute="bottom" id="R0h-UB-gtV"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="sGk-2j-PuJ" secondAttribute="trailing" id="fbG-6j-5I0"/>
                             <constraint firstItem="aES-Ml-0ca" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="jU2-Jz-4Cl"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="sGk-2j-PuJ" secondAttribute="bottom" id="our-Aj-RyS"/>

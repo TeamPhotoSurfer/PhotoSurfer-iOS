@@ -40,14 +40,13 @@ final class TagViewController: UIViewController {
         editTagTextField.layer.backgroundColor = UIColor.grayWhite.cgColor
         editTagTextField.layer.cornerRadius = editTagTextField.bounds.height * 0.5
         editTagTextField.addPadding(padding: 16)
-        editTagTextField.layer.sublayerTransform = CATransform3DMakeTranslation(-4, 0, 0)
         editTagTextField.clearButtonMode = .always
         setCollectionView()
         setEditToolbar()
     }
     
     private func setEditToolbar() {
-        keyboardHandleTextField.inputAccessoryView = editToolBarView
+        editTagTextField.inputAccessoryView = editToolBarView
     }
     
     private func applySnapshot() {
