@@ -7,12 +7,6 @@
 
 import UIKit
 
-struct Tag: Hashable {
-    // 추후 없앨예정
-    let uuid = UUID()
-    let title: String
-}
-
 final class HomeSearchViewController: UIViewController {
     
     enum Section: Int {
@@ -85,7 +79,7 @@ final class HomeSearchViewController: UIViewController {
     private func setDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            tagCell.setData(title: itemIdentifier.title, type: indexPath.section == 0 ? .deleteEnableBlueTag : .defaultSkyblueTag)
+            tagCell.setData(title: itemIdentifier.name, type: indexPath.section == 0 ? .deleteEnableBlueTag : .defaultSkyblueTag)
             return tagCell
         })
         dataSource.supplementaryViewProvider = {(collectionView, kind, indexPath) -> UICollectionReusableView in
@@ -127,10 +121,10 @@ final class HomeSearchViewController: UIViewController {
 extension HomeSearchViewController {
     
     private func setDummy() {
-        recentTags = [Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent")]
-        frequencyTags = [Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주")]
-        platformTags = [Tag(title: "인스타그램"), Tag(title: "카카오톡"), Tag(title: "페이스북")]
-        relatedTags = [Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"),Tag(title: "연관")
+        recentTags = [Tag(name: "recent"), Tag(name: "recent"), Tag(name: "recent"), Tag(name: "recent"), Tag(name: "recent")]
+        frequencyTags = [Tag(name: "자주"), Tag(name: "자주"), Tag(name: "자주"), Tag(name: "자주")]
+        platformTags = [Tag(name: "인스타그램"), Tag(name: "카카오톡"), Tag(name: "페이스북")]
+        relatedTags = [Tag(name: "연관"), Tag(name: "연관"), Tag(name: "연관"), Tag(name: "연관"),Tag(name: "연관")
         ]
     }
 }

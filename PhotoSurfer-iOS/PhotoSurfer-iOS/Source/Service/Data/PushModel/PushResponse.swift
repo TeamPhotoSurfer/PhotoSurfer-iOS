@@ -14,6 +14,7 @@ struct PushResponse: Codable {
 
 // MARK: - Push
 struct Push: Codable {
+    let uuid = UUID()
     let id: Int
     let pushDate: String
     let imageURL: String

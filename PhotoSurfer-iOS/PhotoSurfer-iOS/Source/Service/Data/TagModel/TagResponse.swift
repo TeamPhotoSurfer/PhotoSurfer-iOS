@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+
+struct TagResponse: Codable {
+    let tags: [Tag]
+}
+
+// MARK: - Tag
+struct Tag: Codable, Hashable {
+    let uuid = UUID()
+    var id: Int? = 0
+    let name: String
+}
