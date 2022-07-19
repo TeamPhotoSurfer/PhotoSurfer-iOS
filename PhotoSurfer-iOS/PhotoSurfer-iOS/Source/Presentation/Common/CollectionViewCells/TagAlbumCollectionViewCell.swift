@@ -86,6 +86,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         
     // MARK: - IBAction
     @IBAction func menuButtonDidTap(_ sender: Any) {
+        // TODO: [FIX] 여기가 문제 같은데 플랫폼 삭제하고 그 자리에 올라온 일반 태그 수정하면 플랫폼 메뉴가 깜빡거림
         if tagEditButton.isHidden {
             platformMenuView.isHidden.toggle()
         } else {
