@@ -40,6 +40,7 @@ final class AlarmViewController: UIViewController {
     @IBAction func moreLastAlarmButtonDidTap(_ sender: Any) {
         guard let alarmListViewController = UIStoryboard(name: Const.Storyboard.AlarmList, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.AlarmListViewController) as? AlarmListViewController else { fatalError() }
+        alarmListViewController.mode = .last
         alarmListViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(alarmListViewController, animated: true)
     }
