@@ -10,7 +10,7 @@ import Foundation
 struct URLConstant {
     
     // MARK: - Base
-    static let baseURL = ""
+    static let baseURL = "http://52.78.96.21:8000"
     
     // MARK: - Auth
     static let authLogin = "/auth/login"
