@@ -29,13 +29,4 @@ final class RepresentTagTableViewCell: UITableViewCell {
         checkButton.setBackgroundImage(Const.Image.icCircleLine, for: .normal)
         checkButton.setBackgroundImage(Const.Image.icCheckCircleFill, for: .selected)
     }
-    
-    func setCheckButton(count: Int) {
-        if count <= 3 {
-            checkButton.isSelected.toggle()
-        }
-        else {
-            checkButton.isSelected = false
-        }
-    }
 }

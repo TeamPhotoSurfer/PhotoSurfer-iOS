@@ -73,6 +73,14 @@
 		1584E76E2883AD3F000FA459 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1584E76D2883AD3F000FA459 /* GoogleService-Info.plist */; };
 		15A7788E2885A8FA00672CAE /* AlarmDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A7788D2885A8FA00672CAE /* AlarmDetail.storyboard */; };
 		15A778902885A90700672CAE /* AlarmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A7788F2885A90700672CAE /* AlarmDetailViewController.swift */; };
+		15A778972885F96500672CAE /* PushRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778962885F96500672CAE /* PushRouter.swift */; };
+		15A778992885F97C00672CAE /* PhotoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778982885F97C00672CAE /* PhotoRouter.swift */; };
+		15A7789B2885F98600672CAE /* TagRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A7789A2885F98600672CAE /* TagRouter.swift */; };
+		15A7789D2885F98D00672CAE /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A7789C2885F98D00672CAE /* AuthRouter.swift */; };
+		15A7789F2885F99400672CAE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A7789E2885F99400672CAE /* AuthService.swift */; };
+		15A778A12885F99C00672CAE /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A02885F99C00672CAE /* TagService.swift */; };
+		15A778A32885F9A300672CAE /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A22885F9A300672CAE /* PhotoService.swift */; };
+		15A778A52885F9AA00672CAE /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A778A42885F9AA00672CAE /* PushService.swift */; };
 		15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */; };
 		15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCF28842F5D0099CA8D /* URLConstant.swift */; };
 		15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */; };
@@ -193,6 +201,14 @@
 		1584E76D2883AD3F000FA459 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		15A7788D2885A8FA00672CAE /* AlarmDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmDetail.storyboard; sourceTree = "<group>"; };
 		15A7788F2885A90700672CAE /* AlarmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailViewController.swift; sourceTree = "<group>"; };
+		15A778962885F96500672CAE /* PushRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushRouter.swift; sourceTree = "<group>"; };
+		15A778982885F97C00672CAE /* PhotoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRouter.swift; sourceTree = "<group>"; };
+		15A7789A2885F98600672CAE /* TagRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRouter.swift; sourceTree = "<group>"; };
+		15A7789C2885F98D00672CAE /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		15A7789E2885F99400672CAE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		15A778A02885F99C00672CAE /* TagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagService.swift; sourceTree = "<group>"; };
+		15A778A22885F9A300672CAE /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		15A778A42885F9AA00672CAE /* PushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		15C4BFCF28842F5D0099CA8D /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
@@ -396,6 +412,7 @@
 		086F17E6287AA2B40061422F /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				15A778912885F90C00672CAE /* NetworkAPI */,
 				086F17E7287AA2BB0061422F /* Data */,
 				086F17E8287AA2BF0061422F /* Network */,
 			);
@@ -435,12 +452,8 @@
 		086F17F0287ADDB10061422F /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				086F17F7287ADE650061422F /* Setting.storyboard */,
-				DDB71E292882982D00CF5036 /* SettingUser.storyboard */,
-				DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */,
-				086F17F9287ADE7D0061422F /* SettingViewController.swift */,
-				DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */,
-				DDB71E332882A7EF00CF5036 /* SettingPolicyViewController.swift */,
+				DD602B3128863C91004F546B /* Controllers */,
+				DD602B3028863C81004F546B /* Views */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -724,6 +737,53 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		15A778912885F90C00672CAE /* NetworkAPI */ = {
+			isa = PBXGroup;
+			children = (
+				15A778922885F92C00672CAE /* AuthAPI */,
+				15A778952885F94400672CAE /* TagAPI */,
+				15A778942885F93B00672CAE /* PhotoAPI */,
+				15A778932885F93400672CAE /* PushAPI */,
+			);
+			path = NetworkAPI;
+			sourceTree = "<group>";
+		};
+		15A778922885F92C00672CAE /* AuthAPI */ = {
+			isa = PBXGroup;
+			children = (
+				15A7789C2885F98D00672CAE /* AuthRouter.swift */,
+				15A7789E2885F99400672CAE /* AuthService.swift */,
+			);
+			path = AuthAPI;
+			sourceTree = "<group>";
+		};
+		15A778932885F93400672CAE /* PushAPI */ = {
+			isa = PBXGroup;
+			children = (
+				15A778962885F96500672CAE /* PushRouter.swift */,
+				15A778A42885F9AA00672CAE /* PushService.swift */,
+			);
+			path = PushAPI;
+			sourceTree = "<group>";
+		};
+		15A778942885F93B00672CAE /* PhotoAPI */ = {
+			isa = PBXGroup;
+			children = (
+				15A778982885F97C00672CAE /* PhotoRouter.swift */,
+				15A778A22885F9A300672CAE /* PhotoService.swift */,
+			);
+			path = PhotoAPI;
+			sourceTree = "<group>";
+		};
+		15A778952885F94400672CAE /* TagAPI */ = {
+			isa = PBXGroup;
+			children = (
+				15A7789A2885F98600672CAE /* TagRouter.swift */,
+				15A778A02885F99C00672CAE /* TagService.swift */,
+			);
+			path = TagAPI;
+			sourceTree = "<group>";
+		};
 		15C4BFD7288477E10099CA8D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -801,6 +861,26 @@
 				6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD602B3028863C81004F546B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				086F17F7287ADE650061422F /* Setting.storyboard */,
+				DDB71E292882982D00CF5036 /* SettingUser.storyboard */,
+				DDB71E2B2882986600CF5036 /* SettingPolicy.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DD602B3128863C91004F546B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				086F17F9287ADE7D0061422F /* SettingViewController.swift */,
+				DDB71E312882A7E600CF5036 /* SettingUserViewController.swift */,
+				DDB71E332882A7EF00CF5036 /* SettingPolicyViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		DD82D7C22884A0C200A56F6C /* Splash */ = {
@@ -1097,6 +1177,8 @@
 				1584E751288060D9000FA459 /* HomeViewController+Extension.swift in Sources */,
 				DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */,
 				15D1DEEB2875BE0900852617 /* AppDelegate.swift in Sources */,
+				15A7789F2885F99400672CAE /* AuthService.swift in Sources */,
+				15A778992885F97C00672CAE /* PhotoRouter.swift in Sources */,
 				15C4BFDF288478BB0099CA8D /* AlarmViewController+Extension.swift in Sources */,
 				1584E75F2882A505000FA459 /* HomeResultViewController.swift in Sources */,
 				DDB71E322882A7E600CF5036 /* SettingUserViewController.swift in Sources */,
@@ -1104,13 +1186,16 @@
 				15A778902885A90700672CAE /* AlarmDetailViewController.swift in Sources */,
 				151F95CE288563D10089FE9E /* AlarmListViewController.swift in Sources */,
 				15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */,
+				15A778A52885F9AA00672CAE /* PushService.swift in Sources */,
 				1553B71C287C8A0000137E6C /* Storyboard.swift in Sources */,
 				086F17EC287ADCF30061422F /* File.swift in Sources */,
 				086F17EE287ADD710061422F /* MainTabBarController.swift in Sources */,
 				DDDA8117287E9DBA0051338D /* Image.swift in Sources */,
 				15C4BFD428842FF70099CA8D /* NetworkBase.swift in Sources */,
 				086F180E287AF99E0061422F /* NetworkResult.swift in Sources */,
+				15A778972885F96500672CAE /* PushRouter.swift in Sources */,
 				086F1800287ADF2E0061422F /* TagViewController.swift in Sources */,
+				15A7789B2885F98600672CAE /* TagRouter.swift in Sources */,
 				DDB71E342882A7EF00CF5036 /* SettingPolicyViewController.swift in Sources */,
 				DDAEDF44288411F600909129 /* UITextField+.swift in Sources */,
 				1553B71E287C8A3500137E6C /* ViewController.swift in Sources */,
@@ -1118,10 +1203,12 @@
 				1553B720287C8A3A00137E6C /* Identifier.swift in Sources */,
 				15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */,
 				151F95D0288563DB0089FE9E /* AlarmListViewController+Extension.swift in Sources */,
+				15A778A32885F9A300672CAE /* PhotoService.swift in Sources */,
 				15C4BFDC2884788E0099CA8D /* AlarmListTableViewCell.swift in Sources */,
 				15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */,
 				1553B71A287C88B400137E6C /* HomeSearchViewController.swift in Sources */,
 				1584E76C2882E74C000FA459 /* PictureViewController.swift in Sources */,
+				15A7789D2885F98D00672CAE /* AuthRouter.swift in Sources */,
 				1553B724287D12BA00137E6C /* TagCollectionViewCell.swift in Sources */,
 				15D1DEED2875BE0900852617 /* SceneDelegate.swift in Sources */,
 				1584E75728807A08000FA459 /* HomeSearchHeaderCollectionReusableView.swift in Sources */,
@@ -1132,6 +1219,7 @@
 				1584E7612882A524000FA459 /* HomeResultViewController+Extension.swift in Sources */,
 				1553B729287D14CA00137E6C /* HomeSearchViewController+Extension.swift in Sources */,
 				08AA45212884909D00E961C4 /* UIScrollView+.swift in Sources */,
+				15A778A12885F99C00672CAE /* TagService.swift in Sources */,
 				086F1806287AE14B0061422F /* Const.swift in Sources */,
 				151F95C7288552230089FE9E /* AlarmListSectionHeaderView.swift in Sources */,
 				086F1808287AE1740061422F /* UIColor+.swift in Sources */,

@@ -98,7 +98,7 @@ final class PictureViewController: UIViewController {
     private func setDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            cell.setData(title: itemIdentifier.title, isInputTag: true)
+            cell.setData(title: itemIdentifier.title, type: .defaultBlueTag)
             return cell
         })
     }
@@ -108,5 +108,13 @@ final class PictureViewController: UIViewController {
         snapshot.appendSections([.tag])
         snapshot.appendItems(tags, toSection: .tag)
         dataSource.apply(snapshot)
+    }
+    
+    // MARK: - IBAction
+    @IBAction func alarmDetailButtonDidTap(_ sender: Any) {
+        guard let alarmDetailViewController = UIStoryboard(name: Const.Storyboard.AlarmDetail, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.AlarmDetailViewController) as? AlarmDetailViewController else { return }
+        alarmDetailViewController.modalPresentationStyle = .fullScreen
+        self.present(alarmDetailViewController, animated: true, completion: nil)
     }
 }

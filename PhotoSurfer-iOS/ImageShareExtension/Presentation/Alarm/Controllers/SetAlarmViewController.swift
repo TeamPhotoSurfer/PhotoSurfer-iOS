@@ -99,6 +99,7 @@ final class SetAlarmViewController: UIViewController {
         guard let setRepresentTagViewController = storyboard.instantiateViewController(withIdentifier: "SetRepresentTagViewController") as? SetRepresentTagViewController else {
             return
         }
+        setRepresentTagViewController.delegate = self
         self.navigationController?.pushViewController(setRepresentTagViewController, animated: true)
     }
     

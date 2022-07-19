@@ -7,23 +7,34 @@
 
 import UIKit
 
-class AlarmDetailViewController: UIViewController {
+final class AlarmDetailViewController: UIViewController {
 
+    // MARK: - IBOutlet
+    @IBOutlet weak var dateButton: UIButton!
+    @IBOutlet weak var memoTextView: UITextView!
+    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
+    
+    // MARK: - LifeCyele
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Function
+    private func setUI() {
+        dateButton.layer.cornerRadius = 8
+        completeButton.layer.cornerRadius = 8
+        memoTextView.layer.cornerRadius = 8
+        memoTextView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
     }
-    */
-
+    
+    // MARK: - IBAction
+    @IBAction func dismissButtonDidTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func completeButtonDidTap(_ sender: Any) {
+    }
 }
