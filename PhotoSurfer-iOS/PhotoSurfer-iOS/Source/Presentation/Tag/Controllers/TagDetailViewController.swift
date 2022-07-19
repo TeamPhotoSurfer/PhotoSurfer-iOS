@@ -12,7 +12,7 @@ struct TagPhoto: Hashable {
     let image: UIImage
 }
 
-final class TagDetailViewController: UIViewController, UICollectionViewDelegate {
+final class TagDetailViewController: UIViewController {
     
     enum Section {
         case photo
@@ -133,3 +133,15 @@ final class TagDetailViewController: UIViewController, UICollectionViewDelegate 
         toggleMultiSelectedUI(isSelectable: false)
     }
 }
+
+extension TagDetailViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("cell 선택")
+        guard let pictureViewController = UIStoryboard(name: Const.Storyboard.Picture, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
+        pictureViewController.type = .picture
+        self.navigationController?.pushViewController(pictureViewController, animated: true)
+    }
+}
+

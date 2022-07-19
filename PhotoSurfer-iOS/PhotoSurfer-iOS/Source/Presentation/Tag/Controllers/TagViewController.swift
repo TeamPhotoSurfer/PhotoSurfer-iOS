@@ -206,9 +206,20 @@ extension Album {
 extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
-        tagDetailViewController.modalPresentationStyle = .fullScreen
-        self.present(tagDetailViewController, animated: true)
-        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
+        print(cell.platformMenuView.isHidden)
+        print(cell.menuView.isHidden)
+        // TODO: 메뉴 닫는 로직에 좀 더 고민 필요....
+        if cell.menuView.isHidden && cell.platformMenuView.isHidden {
+            print("메뉴 닫힘 -> 화면 전환")
+            let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
+            tagDetailViewController.modalPresentationStyle = .fullScreen
+            self.present(tagDetailViewController, animated: true)
+            NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
+        } else {
+            print("메뉴 열림 -> 메뉴 숨김")
+            cell.menuView.isHidden = true
+            cell.platformMenuView.isHidden = true
+        }
     }
 }
