@@ -21,12 +21,15 @@ final class SetAlarmViewController: UIViewController {
     @IBOutlet weak var datePickerView: UIView!
     @IBOutlet weak var setRepresentTagButton: UIButton!
     @IBOutlet weak var alarmSaveView: UIView!
-    @IBOutlet weak var lottieView: UIView!
+    @IBOutlet weak var bellView: UIView!
+    @IBOutlet weak var surfingView: UIView!
+    @IBOutlet weak var loadingView: UIView!
     
     // MARK: - Property
     let textViewPlaceHolder: String = "50자 이내로 알림메모를 작성해보세요."
     var keyHeight: CGFloat?
-    let animationView = AnimationView()
+    let bellAnimationView = AnimationView()
+    let surfingAnimationView = AnimationView()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -64,12 +67,22 @@ final class SetAlarmViewController: UIViewController {
     }
     
     private func setLottie() {
-        animationView.frame = view.bounds
-        animationView.animation = Animation.named("bell")
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
-        animationView.play()
-        lottieView = animationView
+        bellAnimationView.frame = bellView.bounds
+        bellAnimationView.animation = Animation.named("bell")
+        bellAnimationView.loopMode = .loop
+        bellAnimationView.play()
+        bellView.addSubview(bellAnimationView)
+        
+        surfingAnimationView.frame = surfingView.bounds
+        surfingAnimationView.animation = Animation.named("surfing")
+        surfingAnimationView.loopMode = .loop
+        surfingAnimationView.play()
+        surfingView.addSubview(surfingAnimationView)
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.surfingAnimationView.stop()
+            self.loadingView.isHidden = true
+        }
     }
     
     // MARK: - Objc Function

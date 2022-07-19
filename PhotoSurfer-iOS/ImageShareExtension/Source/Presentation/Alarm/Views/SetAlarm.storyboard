@@ -143,7 +143,7 @@
                                                                 </constraints>
                                                                 <color key="textColor" name="grayGray50"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                             </textView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -160,7 +160,6 @@
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTh-Zb-ZQy">
                                                 <rect key="frame" x="140.5" y="86" width="134" height="134"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="134" id="tOA-MZ-cWL"/>
                                                     <constraint firstAttribute="height" constant="134" id="znW-pM-d0a"/>
@@ -260,6 +259,35 @@
                                     <constraint firstAttribute="height" constant="59" id="SR9-bB-jKp"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdh-qf-iht">
+                                <rect key="frame" x="0.0" y="44" width="415" height="720"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="xAU-o6-nG8">
+                                        <rect key="frame" x="140.5" y="278" width="134" height="164.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07y-In-8xQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="134" height="134"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="134" id="FUK-UN-wkM"/>
+                                                    <constraint firstAttribute="height" constant="134" id="Fwi-S7-5da"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="태그 저장 중..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7kF-JH-M9T">
+                                                <rect key="frame" x="0.0" y="145" width="134" height="19.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="xAU-o6-nG8" firstAttribute="centerX" secondItem="gdh-qf-iht" secondAttribute="centerX" id="9Fc-DO-NQ1"/>
+                                    <constraint firstItem="xAU-o6-nG8" firstAttribute="centerY" secondItem="gdh-qf-iht" secondAttribute="centerY" id="qwJ-DW-qII"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -267,12 +295,16 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="f61-ES-FpP" secondAttribute="trailing" constant="1" id="1Da-yj-HM4"/>
                             <constraint firstItem="JDA-Qi-e7h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2T1-Or-IKi"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="cNE-7E-bbo" secondAttribute="bottom" id="5lq-pL-4Ru"/>
+                            <constraint firstItem="gdh-qf-iht" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="9Dq-Uz-hhS"/>
                             <constraint firstItem="f61-ES-FpP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ELH-zm-KiQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="JDA-Qi-e7h" secondAttribute="bottom" id="EVI-JI-fgp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gdh-qf-iht" secondAttribute="trailing" id="J2b-zM-hcI"/>
                             <constraint firstItem="cNE-7E-bbo" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="TbW-oQ-nF8"/>
                             <constraint firstItem="cNE-7E-bbo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="VbM-KE-rT2"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JDA-Qi-e7h" secondAttribute="trailing" id="Xhd-xP-kGp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="gdh-qf-iht" secondAttribute="bottom" id="fiC-tP-kNa"/>
                             <constraint firstItem="f61-ES-FpP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hBf-l6-Zmg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="gdh-qf-iht" secondAttribute="top" id="krE-0J-rxy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cNE-7E-bbo" secondAttribute="trailing" id="uxo-jy-Jrq"/>
                         </constraints>
                     </view>
@@ -280,15 +312,17 @@
                     <size key="freeformSize" width="415" height="798"/>
                     <connections>
                         <outlet property="alarmSaveView" destination="JDA-Qi-e7h" id="Avt-ey-6ee"/>
+                        <outlet property="bellView" destination="TTh-Zb-ZQy" id="SfG-MU-8mG"/>
                         <outlet property="commentTimeView" destination="R7F-e2-hJB" id="f6l-A1-mfA"/>
                         <outlet property="datePicker" destination="HUo-Pc-bjc" id="5eg-iX-Xng"/>
                         <outlet property="datePickerView" destination="Wch-MV-Gvo" id="6Qh-rW-FEE"/>
-                        <outlet property="lottieView" destination="TTh-Zb-ZQy" id="YLx-Nz-QQM"/>
+                        <outlet property="loadingView" destination="gdh-qf-iht" id="ZHl-gR-Kly"/>
                         <outlet property="memoTextView" destination="0Oj-G4-Jgq" id="Nlt-Ma-t8G"/>
                         <outlet property="scrollView" destination="cNE-7E-bbo" id="xa5-Hw-voh"/>
                         <outlet property="setAlarmButton" destination="cyB-Ex-Prg" id="d7r-j5-rat"/>
                         <outlet property="setRepresentTagButton" destination="s21-9n-djb" id="d3O-aW-dAg"/>
                         <outlet property="settingTimeButton" destination="FEe-CN-919" id="sDv-W1-8xw"/>
+                        <outlet property="surfingView" destination="07y-In-8xQ" id="TcC-c7-um7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
