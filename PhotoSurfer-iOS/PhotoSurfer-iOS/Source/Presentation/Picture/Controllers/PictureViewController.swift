@@ -61,6 +61,7 @@ final class PictureViewController: UIViewController {
         setMoreButtonMenu()
         addKeyboardObserver()
         setKeyboardManagerEnable(false)
+        setTextFieldDelegate()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,6 +73,10 @@ final class PictureViewController: UIViewController {
     // MARK: - Function
     private func setKeyboardManagerEnable(_ isEnabled: Bool) {
         IQKeyboardManager.shared.enable = isEnabled
+    }
+    
+    private func setTextFieldDelegate() {
+        keyboardTopTextField.delegate = self
     }
     
     private func setViewType(type: ViewType) {
@@ -151,7 +156,7 @@ final class PictureViewController: UIViewController {
         })
     }
     
-    private func applyTagsSnapshot() {
+    func applyTagsSnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         snapshot.appendSections([.tag])
         snapshot.appendItems(tags, toSection: .tag)
