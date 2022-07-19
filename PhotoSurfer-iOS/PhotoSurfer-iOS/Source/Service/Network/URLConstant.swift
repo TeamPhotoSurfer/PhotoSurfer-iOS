@@ -28,7 +28,7 @@ struct URLConstant {
     
     // MARK: - Push
     static let push = "/push"
-    static let pushLast = "/push/last"
-    static let pushCome = "/push/come"
-    static let pushToday = "/push/today"
+    static let pushListLast = "/push/list/last"
+    static let pushListCome = "/push/list/come"
+    static let pushListToday = "/push/list/today"
 }
