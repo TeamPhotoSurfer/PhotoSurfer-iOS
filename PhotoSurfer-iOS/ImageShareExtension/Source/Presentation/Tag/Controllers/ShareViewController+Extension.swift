@@ -47,7 +47,22 @@ extension ShareViewController {
             let section = NSCollectionLayoutSection(group: group)
             let groupMargin: CGFloat =  12.0
             section.interGroupSpacing = groupMargin
-            section.contentInsets = NSDirectionalEdgeInsets(top: (self.dataSource.snapshot().numberOfSections > 3) ? 4 : 12, leading: 0, bottom: (self.dataSource.snapshot().numberOfSections > 3) ? 20 : 45, trailing: 0)
+            
+            var sectionContentInset = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            if self.dataSource.snapshot().numberOfSections > 3 {
+                sectionContentInset.bottom = 20
+                sectionContentInset.top = 4
+            }
+            else {
+                sectionContentInset.bottom = 20
+                if selectedSection == 1 {
+                    sectionContentInset.top = 34
+                }
+                else {
+                    sectionContentInset.top = 4
+                }
+            }
+            section.contentInsets = sectionContentInset
             section.boundarySupplementaryItems = [sectionHeader]
             section.orthogonalScrollingBehavior = (selectedSection == 0) ? .continuous : .none
             return section

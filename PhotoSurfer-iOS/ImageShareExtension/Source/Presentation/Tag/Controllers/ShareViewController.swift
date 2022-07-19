@@ -25,7 +25,7 @@ final class ShareViewController: UIViewController {
     var relatedTagsFetched: [Tag] = []
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>! = nil
     let headerTitleArray: [String] = ["추가한 태그", "최근 추가한 태그", "자주 추가한 태그", "플랫폼 유형", "연관 태그"]
-    let searchHeaderTitleArray: [String] = ["추가한 태그", "연관 태그"]
+    let searchHeaderTitleArray: [String] = ["추가한 태그", ""]
     var typingText: String = ""
     var isTyping: Bool = false
     var typingTextCount: Int = 0
@@ -38,7 +38,7 @@ final class ShareViewController: UIViewController {
     }
     let underSixTagMessage: String = "태그는 최대 6개까지만 추가할 수 있어요."
     let alreadyAddedMessage: String = "이미 같은 태그를 추가했어요."
-    let typingButtonTopConstValue: CGFloat = -90
+    let typingButtonTopConstValue: CGFloat = -95
     
     // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!
