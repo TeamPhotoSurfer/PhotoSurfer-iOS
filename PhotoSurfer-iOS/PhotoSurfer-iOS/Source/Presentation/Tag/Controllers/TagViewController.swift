@@ -21,10 +21,11 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         case tag
     }
     var dataSource: UICollectionViewDiffableDataSource<Section, Album>!
-    var albumList: [Album] = Album.totalList
+    var albumList: [Album] = []
     var indexpath: IndexPath = IndexPath.init()
     
     // MARK: - IBOutlet
+    @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBOutlet weak var editTagTextField: UITextField!
     @IBOutlet weak var editToolBarView: UIView!
@@ -55,6 +56,14 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setEditToolbar()
         editTagTextField.delegate = self
         albumCollectionView.delegate = self
+        setEmptyView()
+    }
+    
+    private func setEmptyView() {
+        print(albumList.count)
+        if albumList.count == 0 {
+            self.emptyView.isHidden = false
+        }
     }
     
     private func setEditToolbar() {
@@ -168,11 +177,10 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - IBAction
-//    @IBAction func viewDidTap(_ sender: Any) {
-//        NotificationCenter.default.post(name: Notification.Name("CellTouch"), object: nil)
-////        editToolBarView.isHidden.toggle()
-//        print("🚨resign", editTagTextField.resignFirstResponder())
-//    }
+    @IBAction func onboardingButtonDidTap(_ sender: Any) {
+        let onboardingViewController = UIStoryboard(name: Const.Storyboard.Onboarding, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.OnboardingViewController)
+        self.present(onboardingViewController, animated: true)
+    }
 }
 
 extension Album {
