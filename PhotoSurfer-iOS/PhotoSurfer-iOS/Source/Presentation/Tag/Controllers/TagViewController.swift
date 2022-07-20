@@ -48,7 +48,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setEditToolbar()
         editTagTextField.delegate = self
         albumCollectionView.delegate = self
-        //setEmptyView()
     }
     
     private func setEditTagTextField() {
@@ -60,13 +59,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setEmptyView() {
-        let cellCount = (bookmarkedList + notBookmarkedList).count
-        print("✨cellCount", cellCount)
-        if (bookmarkedList + notBookmarkedList).count == 0 {
-            self.emptyView.isHidden = false
-        } else {
-            self.emptyView.isHidden = true
-        }
+        self.emptyView.isHidden = (bookmarkedList + notBookmarkedList).count != 0
     }
     
     private func setEditToolbar() {
@@ -77,10 +70,10 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     private func applySnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         snapshot.appendSections([.tag])
-        print("✨bookmarkedList", self.bookmarkedList)
         snapshot.appendItems(bookmarkedList, toSection: .tag)
         snapshot.appendItems(notBookmarkedList, toSection: .tag)
         dataSource.apply(snapshot, animatingDifferences: true)
+        setEmptyView()
     }
     
     private func setCollectionView() {
@@ -117,9 +110,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         TagService.shared.getTag { [weak self] response in
             switch response {
             case .success(let data):
-                print("✨before data", data)
                 guard let data = data as? TagBookmarkResponse else { return }
-//                print("✨data", data)
                 self?.bookmarkedList = data.bookmarked.tags
                 self?.notBookmarkedList = data.notBookmarked.tags
                 self?.applySnapshot()
@@ -133,6 +124,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
                 print("networkFail")
             }
         }
+        print("✨notBookmarkedList in getTag", self.notBookmarkedList)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -140,7 +132,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("🚨resign", editTagTextField.resignFirstResponder())
+        print("✨resign", editTagTextField.resignFirstResponder())
         return true
     }
     
@@ -172,7 +164,7 @@ extension TagViewController: UICollectionViewDelegate {
 
 extension TagViewController: MenuHandleDelegate {
     func deleteButtonDidTap(button: UIButton) {
-        print("삭제하기 클릭")
+        print("✨삭제하기 클릭")
         var superview = button.superview
         while superview != nil {
             if let cell = superview as? UICollectionViewCell {
@@ -188,18 +180,17 @@ extension TagViewController: MenuHandleDelegate {
     }
     
     func editButtonDidTap(button: UIButton) {
-        print("수정하기 클릭")
         var superview = button.superview
         while superview != nil {
             if let cell = superview as? TagAlbumCollectionViewCell {
                 guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
-                print("셀을 찾았다")
+                print("✨셀을 찾았다")
                 indexpath = indexPath
                 editToolBarView.isHidden = false
                 print("✨can?", editTagTextField.canBecomeFirstResponder)
                 DispatchQueue.global(qos: .background).async {
                     DispatchQueue.main.async {
-                        print("🧤become", self.editTagTextField.becomeFirstResponder())
+                        print("✨become", self.editTagTextField.becomeFirstResponder())
                     }
                 }
                 editTagTextField.text = cell.tagNameButton.titleLabel?.text

@@ -47,15 +47,9 @@ public class TagService {
         tagProvider.request(.getTag) { result in
             switch result {
             case .success(let response):
-             //   print("✨response", response)
                 let statusCode = response.statusCode
                 let data = response.data
-           //     print("✨response.data", data)
-           //     if let reString = String(bytes: response.data, encoding: String.Encoding.utf8) {
-            //        print("✨reString", reString)
-           //     }
                 let networkResult = NetworkBase.judgeStatus(by: statusCode, data, TagBookmarkResponse.self)
-          //      print("✨networkResult", networkResult)
                 completion(networkResult)
             case .failure(let err):
                 print(err)

@@ -13,7 +13,6 @@ struct NetworkBase {
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GeneralResponse<T>.self, from: data)
         else { return .pathErr }
-        print("✨decodedData", decodedData)
         switch statusCode {
         case 200:
             return .success(decodedData.data)
