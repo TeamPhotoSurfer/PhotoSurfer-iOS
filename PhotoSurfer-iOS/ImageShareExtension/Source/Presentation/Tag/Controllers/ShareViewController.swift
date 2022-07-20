@@ -8,12 +8,6 @@
 import UIKit
 import Social
 
-struct Tag: Hashable {
-    // 추후 없앨예정
-    let uuid = UUID()
-    let title: String
-}
-
 final class ShareViewController: UIViewController {
     
     // MARK: - Property
@@ -53,7 +47,6 @@ final class ShareViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
-        setDummy()
         setKeyboard()
         bindData()
         setCollectionView()
@@ -149,17 +142,5 @@ final class ShareViewController: UIViewController {
             return
         }
         self.present(setAlarmViewController, animated: true)
-    }
-}
-
-// 이후 삭제할 부분이라 아래에 바로 넣어놓음
-extension ShareViewController {
-    private func setDummy() {
-        addedTags = [Tag(title: "a"), Tag(title: "b"), Tag(title: "c"),Tag(title: "d")]
-        recentTags = [Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk"), Tag(title: "kkkkkk"), Tag(title: "kkkkkkk"), Tag(title: "kkkkkkkk")]
-        oftenTags = [Tag(title: "좋은노래"), Tag(title: "솝트"), Tag(title: "전시회"), Tag(title: "그래픽디자인"), Tag(title: "포토서퍼")]
-        platformTags = [Tag(title: "포토서퍼"), Tag(title: "카페"), Tag(title: "위시리스트"), Tag(title: "휴학계획"), Tag(title: "여행")]
-        relatedTags = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss")]
-        relatedTagsFetched = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss"), Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk"), Tag(title: "kkkkkk"), Tag(title: "kkkkkkk"), Tag(title: "kkkkkkkk")]
     }
 }

@@ -22,7 +22,6 @@ final class SetRepresentTagViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setDummy()
         setCollectionView()
         registerXib()
         setUI()
@@ -56,12 +55,5 @@ final class SetRepresentTagViewController: UIViewController {
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
         delegate?.sendSelectedRepresentTag(tags: selectedTags)
         self.navigationController?.popViewController(animated: true)
-    }
-}
-
-// 이후 삭제할 부분이라 아래에 바로 넣어놓음
-extension SetRepresentTagViewController {
-    private func setDummy() {
-        tags = [Tag(title: "휴학계획"), Tag(title: "인턴"), Tag(title: "블로그"), Tag(title: "취준"), Tag(title: "채용공고"), Tag(title: "스펙")]
     }
 }
