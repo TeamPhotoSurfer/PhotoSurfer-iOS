@@ -84,9 +84,10 @@ final class HomeResultViewController: UIViewController {
         photoDataSource.apply(snapshot)
     }
     
-    func goToPictureViewController() {
+    func goToPictureViewController(photoId: Int) {
         guard let pictureViewController = UIStoryboard(name: Const.Storyboard.Picture, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
+        pictureViewController.photoID = photoId
         pictureViewController.type = .picture
         self.navigationController?.pushViewController(pictureViewController, animated: true)
     }

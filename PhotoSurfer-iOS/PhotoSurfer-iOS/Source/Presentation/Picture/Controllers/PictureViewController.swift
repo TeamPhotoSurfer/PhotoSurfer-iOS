@@ -28,11 +28,12 @@ final class PictureViewController: UIViewController {
     }
     
     // MARK: - Property
-    let photo = Const.Image.imgSea
+    var photoID: Int?
+    var photo = Const.Image.imgSea
     var type: ViewType = .alarmSelected
     var editMode: PictureEditMode = .none
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
-    var tags = [Tag(name: "tag1ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"), Tag(name: "tag1"), Tag(name: "tag1"), Tag(name: "tag1")]
+    var tags: [Tag] = []
     
     // MARK: - IBOutlet
     @IBOutlet weak var navigationPictureButtonContainerStackView: UIStackView!
@@ -55,6 +56,7 @@ final class PictureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getPhotoDetail()
         setViewType(type: type)
         setUI(editMode: editMode)
         setImageData()
@@ -210,6 +212,29 @@ final class PictureViewController: UIViewController {
     private func removeKeyboardObserver() {
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+    }
+    
+    private func getPhotoDetail() {
+        guard let photoID = photoID else {
+            return
+        }
+        PhotoService.shared.getPhotoDetail(id: photoID) { response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? Photo else { return }
+                self.imageView.setImage(with: data.imageURL)
+                self.tags = data.tags ?? []
+                self.applyTagsSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     // MARK: - Objc Function
