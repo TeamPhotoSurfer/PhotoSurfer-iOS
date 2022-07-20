@@ -48,7 +48,7 @@ extension HomeResultViewController: UICollectionViewDelegate {
             applyTagSnapshot()
         }
         else {
-            goToPictureViewController()
+            goToPictureViewController(photoId: photos[indexPath.item].id)
         }
     }
 }

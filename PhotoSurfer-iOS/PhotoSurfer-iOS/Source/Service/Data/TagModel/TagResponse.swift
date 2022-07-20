@@ -48,5 +48,4 @@ struct TagInfo: Codable {
 enum TagType: String, Codable {
     case general = "general"
     case platform = "platform"
-    case tagTypeGENERAL = "GENERAL"
 }
