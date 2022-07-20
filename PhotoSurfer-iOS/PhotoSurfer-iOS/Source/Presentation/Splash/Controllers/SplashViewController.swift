@@ -43,10 +43,45 @@ final class SplashViewController: UIViewController {
     func finishLottie(name: String, animationView: AnimationView) {
         animationView.play { (finish) in
             animationView.removeFromSuperview()
-            guard let loginViewController = UIStoryboard(name: Const.Storyboard.Login, bundle: nil)
-                .instantiateViewController(withIdentifier: Const.ViewController.LoginViewController) as? LoginViewController else { fatalError() }
+            guard let onboardingViewController = UIStoryboard(name: Const.Storyboard.Onboarding, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.OnboardingViewController) as? OnboardingViewController else { fatalError() }
             guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
-            delegate.window?.rootViewController = loginViewController
+            delegate.window?.rootViewController = onboardingViewController
+        }
+    }
+}
+
+extension SceneDelegate {
+    func isFirstTime() -> Bool {
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: "isFirstTime") == nil {
+            defaults.set("No", forKey:"isFirstTime")
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func setRootViewController(_ scene: UIScene){
+        if isFirstTime() {
+            setRootViewController(scene, name: Const.Storyboard.Onboarding,
+                                  identifier: Const.ViewController.OnboardingViewController)
+        }
+        // TODO: 여기 로그인 여부로 또 분기처리 해야하나? 로그인 했으면 Main으로 넘기기 이런식으로..
+        else {
+            setRootViewController(scene, name: Const.Storyboard.Login,
+                                  identifier: Const.ViewController.LoginViewController)
+        }
+    }
+    
+    private func setRootViewController(_ scene: UIScene, name: String, identifier: String) {
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            let storyboard = UIStoryboard(name: name, bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
+            window.rootViewController = viewController
+            self.window = window
+            window.makeKeyAndVisible()
         }
     }
 }
