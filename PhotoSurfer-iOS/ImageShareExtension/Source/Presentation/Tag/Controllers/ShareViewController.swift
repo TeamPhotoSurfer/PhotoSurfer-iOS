@@ -14,7 +14,7 @@ final class ShareViewController: UIViewController {
     var addedTags: [Tag] = []
     var recentTags: [Tag] = []
     var oftenTags: [Tag] = []
-    var platformTags: [Tag] = []
+    var platformTags: [Tag] = [Tag(name: "카카오톡"), Tag(name: "유튜브"), Tag(name: "인스타그램"), Tag(name: "쇼핑몰"), Tag(name: "커뮤니티"), Tag(name: "기타")]
     var relatedTags: [Tag] = []
     var relatedTagsFetched: [Tag] = []
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>! = nil
@@ -111,6 +111,10 @@ final class ShareViewController: UIViewController {
             case .success(let data):
                 guard let data = data as? TagMainResponse else { return }
                 self.recentTags = data.recent.tags
+                self.relatedTagsFetched += data.recent.tags
+                self.oftenTags = data.often.tags
+                self.relatedTagsFetched += data.often.tags
+                self.relatedTagsFetched += self.platformTags
                 self.applyInitialDataSource()
             case .requestErr(_):
                 print("requestErr")
