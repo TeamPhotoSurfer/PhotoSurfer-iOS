@@ -202,10 +202,10 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
                 var isAddedTagContainItem = false
                 var isRelatedContainItem = false
                 for index in 0..<addedTags.count {
-                    isAddedTagContainItem = (addedTags[index].title == typingText)
+                    isAddedTagContainItem = (addedTags[index].name == typingText)
                 }
                 if !isAddedTagContainItem {
-                    addedTags.append(Tag(title: typingText))
+                    addedTags.append(Tag(name: typingText))
                 }
                 else {
                     showAlert(message: alreadyAddedMessage)
@@ -216,10 +216,10 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
                     }
                 }
                 for index in 0..<relatedTags.count {
-                    isRelatedContainItem = (relatedTags[index].title == typingText)
+                    isRelatedContainItem = (relatedTags[index].name == typingText)
                 }
                 if !isRelatedContainItem {
-                    relatedTags.append(Tag(title: typingText))
+                    relatedTags.append(Tag(name: typingText))
                 }
                 applyChangedDataSource(inputText: typingText)
             }
