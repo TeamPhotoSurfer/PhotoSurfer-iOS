@@ -59,6 +59,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="dateLabel" destination="P0M-9C-E9s" id="vxn-Sb-vNo"/>
+                <outlet property="memoLabel" destination="hZE-aV-a34" id="LOY-S9-CpG"/>
                 <outlet property="photoImageView" destination="aSv-Bl-IIc" id="zoE-Vr-GCf"/>
                 <outlet property="tagLabel" destination="Jlx-em-Nop" id="wrA-We-PmC"/>
             </connections>
@@ -66,7 +68,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="imgAlarm" width="405" height="264"/>
+        <image name="imgAlarm" width="375" height="264"/>
         <namedColor name="grayGray50">
             <color red="0.54500001668930054" green="0.58399999141693115" blue="0.63099998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -10,7 +10,7 @@ import Foundation
 struct URLConstant {
     
     // MARK: - Base
-    static let baseURL = ""
+    static let baseURL = "http://52.78.96.21:8000"
     
     // MARK: - Auth
     static let authLogin = "/auth/login"
@@ -28,7 +28,7 @@ struct URLConstant {
     
     // MARK: - Push
     static let push = "/push"
-    static let pushLast = "/push/last"
-    static let pushCome = "/push/come"
-    static let pushToday = "/push/today"
+    static let pushListLast = "/push/list/last"
+    static let pushListCome = "/push/list/come"
+    static let pushListToday = "/push/list/today"
 }

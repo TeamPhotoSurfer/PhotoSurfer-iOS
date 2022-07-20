@@ -16,6 +16,7 @@ extension Const {
         static let Home = "Home"
         static let HomeSearch = "HomeSearch"
         static let Tag = "Tag"
+        static let TagDetail = "TagDetail"
         static let Setting = "Setting"
         static let SettingUser = "SettingUser"
         static let SettingPolicy = "SettingPolicy"

@@ -37,9 +37,9 @@ extension SetAlarmViewController: SetSelectedRepresentTag {
         for index in 0..<tags.count {
             switch index {
             case tags.count-1:
-                selectedTag += "#\(tags[index].title)"
+                selectedTag += "#\(tags[index].name)"
             default:
-                selectedTag += "#\(tags[index].title), "
+                selectedTag += "#\(tags[index].name), "
             }
         }
         setRepresentTagButton.setTitle(selectedTag, for: .normal)

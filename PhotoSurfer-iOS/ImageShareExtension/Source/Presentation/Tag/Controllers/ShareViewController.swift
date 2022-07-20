@@ -8,12 +8,6 @@
 import UIKit
 import Social
 
-struct Tag: Hashable {
-    // 추후 없앨예정
-    let uuid = UUID()
-    let title: String
-}
-
 final class ShareViewController: UIViewController {
     
     // MARK: - Property
@@ -25,7 +19,7 @@ final class ShareViewController: UIViewController {
     var relatedTagsFetched: [Tag] = []
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>! = nil
     let headerTitleArray: [String] = ["추가한 태그", "최근 추가한 태그", "자주 추가한 태그", "플랫폼 유형", "연관 태그"]
-    let searchHeaderTitleArray: [String] = ["추가한 태그", "연관 태그"]
+    let searchHeaderTitleArray: [String] = ["추가한 태그", ""]
     var typingText: String = ""
     var isTyping: Bool = false
     var typingTextCount: Int = 0
@@ -38,7 +32,7 @@ final class ShareViewController: UIViewController {
     }
     let underSixTagMessage: String = "태그는 최대 6개까지만 추가할 수 있어요."
     let alreadyAddedMessage: String = "이미 같은 태그를 추가했어요."
-    let typingButtonTopConstValue: CGFloat = -90
+    let typingButtonTopConstValue: CGFloat = -95
     
     // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!
@@ -48,13 +42,11 @@ final class ShareViewController: UIViewController {
     @IBOutlet weak var collectionViewBottonConstraint: NSLayoutConstraint!
     @IBOutlet weak var typingView: UIView!
     
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
-        setDummy()
         setKeyboard()
         bindData()
         setCollectionView()
@@ -150,17 +142,5 @@ final class ShareViewController: UIViewController {
             return
         }
         self.present(setAlarmViewController, animated: true)
-    }
-}
-
-// 이후 삭제할 부분이라 아래에 바로 넣어놓음
-extension ShareViewController {
-    private func setDummy() {
-        addedTags = [Tag(title: "a"), Tag(title: "b"), Tag(title: "c"),Tag(title: "d")]
-        recentTags = [Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk"), Tag(title: "kkkkkk"), Tag(title: "kkkkkkk"), Tag(title: "kkkkkkkk")]
-        oftenTags = [Tag(title: "좋은노래"), Tag(title: "솝트"), Tag(title: "전시회"), Tag(title: "그래픽디자인"), Tag(title: "포토서퍼")]
-        platformTags = [Tag(title: "포토서퍼"), Tag(title: "카페"), Tag(title: "위시리스트"), Tag(title: "휴학계획"), Tag(title: "여행")]
-        relatedTags = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss")]
-        relatedTagsFetched = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss"), Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk"), Tag(title: "kkkkkk"), Tag(title: "kkkkkkk"), Tag(title: "kkkkkkkk")]
     }
 }

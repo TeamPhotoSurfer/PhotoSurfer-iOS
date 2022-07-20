@@ -47,7 +47,22 @@ extension ShareViewController {
             let section = NSCollectionLayoutSection(group: group)
             let groupMargin: CGFloat =  12.0
             section.interGroupSpacing = groupMargin
-            section.contentInsets = NSDirectionalEdgeInsets(top: (self.dataSource.snapshot().numberOfSections > 3) ? 4 : 12, leading: 0, bottom: (self.dataSource.snapshot().numberOfSections > 3) ? 20 : 45, trailing: 0)
+            
+            var sectionContentInset = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+            if self.dataSource.snapshot().numberOfSections > 3 {
+                sectionContentInset.bottom = 20
+                sectionContentInset.top = 4
+            }
+            else {
+                sectionContentInset.bottom = 20
+                if selectedSection == 1 {
+                    sectionContentInset.top = 34 + 12
+                }
+                else {
+                    sectionContentInset.top = 4
+                }
+            }
+            section.contentInsets = sectionContentInset
             section.boundarySupplementaryItems = [sectionHeader]
             section.orthogonalScrollingBehavior = (selectedSection == 0) ? .continuous : .none
             return section
@@ -69,7 +84,7 @@ extension ShareViewController {
                 fatalError("err")
             }
             cell.setUI(isAddedTag: indexPath.section == 0)
-            cell.setData(value: "\(identifier.title)")
+            cell.setData(value: "\(identifier.name)")
             return cell
         }
         return dataSource
@@ -141,7 +156,7 @@ extension ShareViewController {
     
     private func applyChangedDataSource(inputText: String) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
-        relatedTags = relatedTags.filter({ $0.title.contains(inputText) })
+        relatedTags = relatedTags.filter({ $0.name.contains(inputText) })
         snapshot.appendSections([.addedTag , .relatedTag])
         snapshot.appendItems(addedTags, toSection: .addedTag)
         snapshot.appendItems(relatedTags, toSection: .relatedTag)
@@ -155,9 +170,9 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
         typingButton.setTitle(searchText, for: .normal)
         typingText = searchText
         typingTextCount = searchText.count
-        relatedTags = relatedTagsFetched.filter({ $0.title.contains(searchText) })
+        relatedTags = relatedTagsFetched.filter({ $0.name.contains(searchText) })
         guard let inputText = searchBar.text, !inputText.isEmpty else {
-            setSupplementaryViewProvider(dataSource: setDataSource())
+            applyInitialDataSource()
             relatedTags = relatedTagsFetched
             isTyping = false
             typingView.isHidden = true
@@ -168,7 +183,6 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
             isTyping = true
         }
         applyChangedDataSource(inputText: inputText)
-        //setSearchSupplementaryViewProvider(dataSource: setDataSource())
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -180,18 +194,33 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
             typingView.isHidden = true
             return
         }
-        if !addedTags.contains(Tag(title: typingText)) {
+        if !addedTags.contains(Tag(name: typingText)) {
             if addedTags.count >= 6 {
                 showAlert(message: self.underSixTagMessage)
             }
             else {
-                addedTags.append(Tag(title: typingText))
-                if addedTags.count <= 0 {
+                var isAddedTagContainItem = false
+                var isRelatedContainItem = false
+                for index in 0..<addedTags.count {
+                    isAddedTagContainItem = (addedTags[index].name == typingText)
+                }
+                if !isAddedTagContainItem {
+                    addedTags.append(Tag(name: typingText))
+                }
+                else {
+                    showAlert(message: alreadyAddedMessage)
+                }
+                if addedTags.count > 0 {
                     UIView.animate(withDuration: 0.5) {
                         self.typingViewTopConstraint.constant = self.typingButtonTopConstValue
                     }
                 }
-                relatedTags.append(Tag(title: typingText))
+                for index in 0..<relatedTags.count {
+                    isRelatedContainItem = (relatedTags[index].name == typingText)
+                }
+                if !isRelatedContainItem {
+                    relatedTags.append(Tag(name: typingText))
+                }
                 applyChangedDataSource(inputText: typingText)
             }
         }
@@ -251,14 +280,14 @@ extension ShareViewController: UICollectionViewDelegate {
     private func addTag(indexPath: IndexPath, tagType: [Tag], collectionView: UICollectionView) {
         var isAddedTagContainItem: Bool = false
         for i in 0..<addedTags.count {
-            isAddedTagContainItem = (addedTags[i].title == tagType[indexPath.item].title)
+            isAddedTagContainItem = (addedTags[i].name == tagType[indexPath.item].name)
         }
         if !isAddedTagContainItem {
             if addedTags.count >= 6 {
                 showAlert(message: underSixTagMessage)
             }
             else {
-                addedTags.append(Tag(title: tagType[indexPath.item].title))
+                addedTags.append(Tag(name: tagType[indexPath.item].name))
                 setTagUI(indexPath: indexPath, collectionView: collectionView, isAdded: true)
                 if addedTags.count <= 0 {
                     UIView.animate(withDuration: 0.5) {
@@ -288,7 +317,7 @@ extension ShareViewController: UICollectionViewDelegate {
         
         for tags in allTags {
             for index in 0..<tags.count {
-                if tags[index].title == selectedTagText {
+                if tags[index].name == selectedTagText {
                     switch tags {
                     case recentTags:
                         setTagUI(indexPath: IndexPath(item: index, section: 1), collectionView: collectionView, isAdded: false)
