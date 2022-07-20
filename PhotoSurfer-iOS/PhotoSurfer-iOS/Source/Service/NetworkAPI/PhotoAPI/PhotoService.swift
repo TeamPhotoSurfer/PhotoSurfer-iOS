@@ -42,4 +42,18 @@ public class PhotoService {
             }
         }
     }
+    
+    func postPhoto(photoInfo: PhotoRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
+        photoProvider.request(.postPhoto(param: photoInfo)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, PhotoSearchResponse.self)
+                completion(networkResult)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
 }

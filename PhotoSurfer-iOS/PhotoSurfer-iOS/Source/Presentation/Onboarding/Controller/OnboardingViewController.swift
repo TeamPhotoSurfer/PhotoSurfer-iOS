@@ -13,6 +13,7 @@ class OnboardingViewController: UIViewController {
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
     let onboardingContent: [UIImage] = [Const.Image.onboardingShare, Const.Image.onboardingSearch, Const.Image.onboardingPushalarm]
+    let alarmOnboardingContent: [UIImage] = [Const.Image.onboardingShare, Const.Image.onboardingSearch, Const.Image.onboardingPushalarm]
     
 
     // MARK: - IBOutlet
