@@ -19,6 +19,7 @@ final class HomeSearchViewController: UIViewController {
     
     // MARK: - Property
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
+    var allTags: [Tag] = []
     var inputTags: [Tag] = []
     var recentTags: [Tag] = []
     var frequencyTags: [Tag] = []
@@ -132,7 +133,8 @@ final class HomeSearchViewController: UIViewController {
         PhotoService.shared.getPhotoTag { response in
             switch response {
             case .success(let data):
-                print(data)
+                guard let data = data as? [Tag] else { return }
+                self.allTags = data
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:

@@ -111,6 +111,15 @@ extension HomeSearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchText.isEmpty ? applyInitialDataSource() : applyRelatedTagSnapshot()
+        relatedTags = []
+        if searchText.isEmpty {
+            applyInitialDataSource()
+        }
+        else {
+            for tag in allTags where tag.name.lowercased().contains(searchText.lowercased()) {
+                relatedTags.append(Tag(id: tag.id, name: tag.name))
+            }
+            applyRelatedTagSnapshot()
+        }
     }
 }
