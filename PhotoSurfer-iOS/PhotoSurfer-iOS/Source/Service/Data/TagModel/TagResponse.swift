@@ -14,6 +14,11 @@ struct TagMainResponse: Codable {
     var platform: TagResponse?
 }
 
+struct TagBookmarkResponse: Codable {
+    var bookmarked: TagResponse?
+    var notBookmarked: TagResponse?
+}
+
 struct TagResponse: Codable {
     let tags: [Tag]
 }
