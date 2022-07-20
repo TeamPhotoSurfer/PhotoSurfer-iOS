@@ -30,6 +30,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         setUI()
+        getTag()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -81,7 +82,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         registerXib()
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
             guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as? TagAlbumCollectionViewCell else { fatalError() }
-            albumCell.setDummy(album: item)
+            albumCell.setData(tag: item)
             albumCell.tag = indexPath.row
             albumCell.delegate = self
             return albumCell
@@ -105,6 +106,29 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         section.contentInsets = NSDirectionalEdgeInsets(top:  10, leading: 15, bottom: 10, trailing: 15)
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
+    }
+    
+    private func getTag() {
+        TagService.shared.getTag { [weak self] response in
+            switch response {
+            case .success(let data):
+                print("✨before data", data)
+                guard let data = data as? TagBookmarkResponse else { return }
+                print("✨data", data)
+                self?.bookmarkedList = data.bookmarked.tags ?? []
+//                print(self?.bookmarkedList)
+                self?.notBookmarkedList = data.notBookmarked.tags ?? []
+                self?.applySnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
