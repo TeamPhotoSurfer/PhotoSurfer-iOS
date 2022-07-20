@@ -18,7 +18,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     var delegate: MenuHandleDelegate?
     var menuItems: [UIAction] {
         return [
-            UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { [self] _ in
+            UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), handler: { [self] _ in
                 print("태그 삭제")
                 self.delegate?.deleteButtonDidTap(button: tagMenuButton)
                 

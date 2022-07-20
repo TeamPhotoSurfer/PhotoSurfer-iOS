@@ -109,44 +109,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Objc Function
-    @objc func deleteButtonDidTap(sender: UIButton) {
-        var superview = sender.superview
-        while superview != nil {
-            if let cell = superview as? UICollectionViewCell {
-                guard let indexPath = albumCollectionView.indexPath(for: cell),
-                      let objectIClickedOnto = dataSource.itemIdentifier(for: indexPath) else { return }
-                var snapshot = dataSource.snapshot()
-                snapshot.deleteItems([objectIClickedOnto])
-                dataSource.apply(snapshot)
-                break
-            }
-            superview = superview?.superview
-        }
-    }
-    
-    // TODO: 여기 indexpath가 문제인가??
-    @objc func editButtonDidTap(sender: UIButton) {
-        print("수정하기 클릭")
-        var superview = sender.superview
-        while superview != nil {
-            if let cell = superview as? TagAlbumCollectionViewCell {
-                guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
-                print("셀을 찾았다")
-                indexpath = indexPath
-                editToolBarView.isHidden = false
-                print("✨can?", editTagTextField.canBecomeFirstResponder)
-                DispatchQueue.global(qos: .background).async {
-                    DispatchQueue.main.async {
-                        print("🧤become", self.editTagTextField.becomeFirstResponder())
-                    }
-                }
-                editTagTextField.text = cell.tagNameButton.titleLabel?.text
-                break
-            }
-            superview = superview?.superview
-        }
-    }
-    
     @objc func editTagTextFieldDidChange(_ sender: Any?) {
         guard let tagName = self.editTagTextField?.text else { return }
         guard let selectedItem = dataSource.itemIdentifier(for: indexpath) else { return }
@@ -159,13 +121,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         newSnapshot.deleteItems([selectedItem])
         dataSource.apply(newSnapshot, animatingDifferences: false, completion: nil)
     }
-    
-    // MARK: - IBAction
-//    @IBAction func viewDidTap(_ sender: Any) {
-//        NotificationCenter.default.post(name: Notification.Name("CellTouch"), object: nil)
-////        editToolBarView.isHidden.toggle()
-//        print("🚨resign", editTagTextField.resignFirstResponder())
-//    }
 }
 
 extension TagViewController: UICollectionViewDelegate {
