@@ -1,25 +1,22 @@
 //
-//  OnboardingViewController.swift
+//  AlarmOnboardingViewController.swift
 //  PhotoSurfer-iOS
 //
-//  Created by 정연 on 2022/07/19.
+//  Created by 정연 on 2022/07/20.
 //
 
 import UIKit
 
-class OnboardingViewController: UIViewController {
+class AlarmOnboardingViewController: UIViewController {
     
     // MARK: - Property
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
-    let onboardingContent: [UIImage] = [Const.Image.onboardingShare, Const.Image.onboardingSearch, Const.Image.onboardingPushalarm]
-    let alarmOnboardingContent: [UIImage] = [Const.Image.onboardingShare, Const.Image.onboardingSearch, Const.Image.onboardingPushalarm]
-    
+    let onboardingContent: [UIImage] = [Const.Image.onboardingAlarmShare, Const.Image.onboardingAlarmTag, Const.Image.onboardingAlarmAlarm]
 
     // MARK: - IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var nextButton: UIButton!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -36,17 +33,7 @@ class OnboardingViewController: UIViewController {
         let panGestureRecongnizer = UIPanGestureRecognizer(target: self, action: #selector(panAction(_ :)))
         panGestureRecongnizer.delegate = self
         self.view.addGestureRecognizer(panGestureRecongnizer)
-        setNextButton()
     }
-    
-    func setNextButton() {
-        if self.presentingViewController != nil {
-            self.nextButton.isHidden = true
-        } else {
-            self.nextButton.isHidden = false
-        }
-    }
-    
     private func setPageView() {
         scrollView.frame.size.width = screenWidth
         scrollView.frame.size.height = screenHeight
@@ -80,32 +67,20 @@ class OnboardingViewController: UIViewController {
         pageControl.currentPage = currentPage
     }
     
-    func setRootViewController(name: String, identifier: String) {
-        let viewController = UIStoryboard(name: name, bundle: nil)
-            .instantiateViewController(withIdentifier: identifier)
-        guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
-        delegate.window?.rootViewController = viewController
-    }
-    
     // MARK: - Objc Function
     @objc func panAction (_ sender : UIPanGestureRecognizer){
         let velocity = sender.velocity(in: scrollView)
         if pageControl.currentPage == 2 {
             if abs(velocity.x) > abs(velocity.y) {
                 if velocity.x < 0 {
-                    setRootViewController(name: Const.Storyboard.Login, identifier: Const.ViewController.LoginViewController)
+                    self.dismiss(animated: true)
                 }
             }
         }
     }
-    
-    // MARK: - IBAction
-    @IBAction func nextButtonDidTap(_ sender: Any) {
-        setRootViewController(name: Const.Storyboard.Login, identifier: Const.ViewController.LoginViewController)
-    }
 }
 
-extension OnboardingViewController: UIScrollViewDelegate, UIGestureRecognizerDelegate {
+extension AlarmOnboardingViewController: UIScrollViewDelegate, UIGestureRecognizerDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let value = scrollView.contentOffset.x/scrollView.frame.size.width
                 setPageControlSelectedPage(currentPage: Int(round(value)))

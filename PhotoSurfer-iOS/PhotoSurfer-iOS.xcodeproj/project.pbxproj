@@ -129,6 +129,8 @@
 		15D1DEF42875BE0C00852617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF52875BE0C00852617 /* LaunchScreen.storyboard */; };
 		8BD253CFC87C17C8EE4EDC06 /* Pods_PhotoSurfer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */; };
+		DD0C047F28883A6E00C58A93 /* AlarmOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0C047E28883A6E00C58A93 /* AlarmOnboarding.storyboard */; };
+		DD0C048128883A7800C58A93 /* AlarmOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C048028883A7800C58A93 /* AlarmOnboardingViewController.swift */; };
 		DD594E0D287F3BA800069B43 /* TagAlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */; };
 		DD594E0E287F3BA800069B43 /* TagAlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */; };
 		DD602B3328868FD7004F546B /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD602B3228868FD7004F546B /* UIButton+.swift */; };
@@ -281,6 +283,8 @@
 		6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoSurfer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FDA0FD6F56221DEF453008 /* Pods-ImageShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.release.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.release.xcconfig"; sourceTree = "<group>"; };
 		DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSurfer-iOS.release.xcconfig"; path = "Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		DD0C047E28883A6E00C58A93 /* AlarmOnboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmOnboarding.storyboard; sourceTree = "<group>"; };
+		DD0C048028883A7800C58A93 /* AlarmOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmOnboardingViewController.swift; sourceTree = "<group>"; };
 		DD594E0B287F3BA800069B43 /* TagAlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagAlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD594E0C287F3BA800069B43 /* TagAlbumCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagAlbumCollectionViewCell.xib; sourceTree = "<group>"; };
 		DD602B3228868FD7004F546B /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
@@ -1092,6 +1096,7 @@
 			isa = PBXGroup;
 			children = (
 				DDABCF092886F567009232DD /* Onboarding.storyboard */,
+				DD0C047E28883A6E00C58A93 /* AlarmOnboarding.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1100,6 +1105,7 @@
 			isa = PBXGroup;
 			children = (
 				DDABCF0B2886F572009232DD /* OnboardingViewController.swift */,
+				DD0C048028883A7800C58A93 /* AlarmOnboardingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1211,6 +1217,7 @@
 				086F1802287ADF410061422F /* Tag.storyboard in Resources */,
 				151F95CC288563C10089FE9E /* AlarmList.storyboard in Resources */,
 				DDB71E2A2882982D00CF5036 /* SettingUser.storyboard in Resources */,
+				DD0C047F28883A6E00C58A93 /* AlarmOnboarding.storyboard in Resources */,
 				086F17F4287ADE0D0061422F /* Home.storyboard in Resources */,
 				086F17D3287A9F620061422F /* Colors.xcassets in Resources */,
 				DDA6AD8828855C0700902F5A /* Login.storyboard in Resources */,
@@ -1371,6 +1378,7 @@
 				086F17FC287ADF070061422F /* AlarmViewController.swift in Sources */,
 				15A778902885A90700672CAE /* AlarmDetailViewController.swift in Sources */,
 				151F95CE288563D10089FE9E /* AlarmListViewController.swift in Sources */,
+				DD0C048128883A7800C58A93 /* AlarmOnboardingViewController.swift in Sources */,
 				15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */,
 				15BE00202886EB3F008C80B2 /* PictureViewController+Extension.swift in Sources */,
 				15A778A52885F9AA00672CAE /* PushService.swift in Sources */,
