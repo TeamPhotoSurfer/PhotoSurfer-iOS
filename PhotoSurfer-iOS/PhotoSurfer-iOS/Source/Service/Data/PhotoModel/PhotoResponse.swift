@@ -13,7 +13,7 @@ struct PhotoSearchResponse: Codable {
 }
 
 // MARK: - Photo
-struct Photo: Codable {
+struct Photo: Codable, Hashable {
     let id: Int
     let imageURL: String
 

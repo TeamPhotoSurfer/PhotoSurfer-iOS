@@ -16,12 +16,8 @@ enum PhotoRouter {
 extension PhotoRouter: BaseTargetType {
     var path: String {
         switch self {
-        case .getPhotoSearch(let ids):
-            var idText = ""
-            for id in ids {
-                idText += "?id=\(id)&"
-            }
-            return "\(URLConstant.photoSearch)/\(idText)"
+        case .getPhotoSearch(_):
+            return "\(URLConstant.photoSearch)/"
         }
     }
     
@@ -34,8 +30,8 @@ extension PhotoRouter: BaseTargetType {
     
     var task: Task {
         switch self {
-        case .getPhotoSearch:
-            return .requestPlain
+        case .getPhotoSearch(let ids):
+            return .requestParameters(parameters: ["id": ids], encoding: URLEncoding.default)
         }
     }
     
