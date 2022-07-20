@@ -46,11 +46,11 @@ final class ShareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getFrequencyTag()
         setUI()
         setKeyboard()
-        bindData()
         setCollectionView()
-        getFrequencyTag()
+        bindData()
     }
     
     // MARK: - Function
@@ -106,11 +106,11 @@ final class ShareViewController: UIViewController {
     }
     
     private func getFrequencyTag() {
-        TagService.shared.getTagSearch { result in
+        TagService.shared.getTagMain { result in
             switch result {
             case .success(let data):
                 guard let data = data as? TagMainResponse else { return }
-                self.recentTags = data.recent
+                self.recentTags = data.recent.tags
                 self.applyInitialDataSource()
             case .requestErr(_):
                 print("requestErr")
