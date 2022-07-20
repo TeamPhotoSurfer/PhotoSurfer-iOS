@@ -130,7 +130,7 @@ final class PictureViewController: UIViewController {
     private func setCollectionView() {
         registerXib()
         collectionView.setCollectionViewLayout(createLayout(), animated: true)
-        setDataSource(isDeletable: editMode == .delete)
+        setDataSource(isDeletable: editMode == .delete, editIdx: nil)
         applyTagsSnapshot()
         collectionView.delegate = self
     }
@@ -159,10 +159,16 @@ final class PictureViewController: UIViewController {
         return layout
     }
     
-    private func setDataSource(isDeletable: Bool) {
+    func setDataSource(isDeletable: Bool, editIdx: Int?) {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            cell.setData(title: itemIdentifier.name, type: isDeletable ? .deleteEnableBlueTag : .defaultBlueTag)
+            if let editIdx = editIdx {
+                cell.setData(title: itemIdentifier.name,
+                             type: self.tags[indexPath.item].uuid == self.tags[editIdx].uuid ? .defaultSkyblueTag : .defaultBlueTag)
+            } else {
+                cell.setData(title: itemIdentifier.name,
+                             type: isDeletable ? .deleteEnableBlueTag : .defaultBlueTag)
+            }
             return cell
         })
     }
@@ -218,6 +224,10 @@ final class PictureViewController: UIViewController {
     @objc private func keyboardWillHide(_ notification: Notification) {
         waveViewBottomConstraint.constant = 0
         keyboardTopTextField.isHidden = true
+        if editMode == .edit {
+            setDataSource(isDeletable: false, editIdx: nil)
+            applyTagsSnapshot()
+        }
     }
     
     // MARK: - IBAction
