@@ -7,7 +7,28 @@
 
 import UIKit
 
+protocol MenuHandleDelegate {
+    func deleteButtonDidTap(button: UIButton)
+    func editButtonDidTap(button: UIButton)
+}
+
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: - Property
+    var delegate: MenuHandleDelegate?
+    var menuItems: [UIAction] {
+        return [
+            UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), handler: { [self] _ in
+                print("태그 삭제")
+                self.delegate?.deleteButtonDidTap(button: tagMenuButton)
+                
+            }),
+            UIAction(title: "태그 수정", image: UIImage(systemName: "pencil"), handler: { [self] _ in
+                print("태그 수정")
+                self.delegate?.editButtonDidTap(button: tagMenuButton)
+            })
+        ]
+    }
     
     // MARK: - IBOutlet
     @IBOutlet weak var tagBackgroundImageView: UIImageView!
@@ -15,12 +36,6 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tagNameButton: UIButton!
     @IBOutlet weak var tagStarButton: UIButton!
     @IBOutlet weak var tagMenuButton: UIButton!
-    @IBOutlet weak var menuView: UIView!
-    @IBOutlet weak var tagDeleteButton: UIButton!
-    @IBOutlet weak var tagEditButton: UIButton!
-    @IBOutlet weak var menuDividerView: UIView!
-    @IBOutlet weak var platformMenuView: UIView!
-    @IBOutlet weak var platformTagDeleteButton: UIButton!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -32,8 +47,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     // MARK: - Function
     private func setUI() {
         setCellUI()
-        setMenuUI(view: menuView)
-        setMenuUI(view: platformMenuView)
+//        setMoreButton()
     }
     
     private func setCellUI() {
@@ -41,23 +55,31 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         tagDarkView.layer.cornerRadius = 8
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
         tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
-        NotificationCenter.default.addObserver(self, selector: #selector(closeMenu), name: Notification.Name("CellTouch"), object: nil)
     }
     
-    func setMenuUI(view: UIView) {
-        view.layer.cornerRadius = 4
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.12
-        view.layer.shadowRadius = 4
-        view.layer.shadowOffset = CGSize(width: 0, height: 4)
-        view.layer.shadowPath = nil
+    func setMoreButton() {
+        tagMenuButton.menu = UIMenu(
+            title: "",
+            options: [],
+            children: menuItems)
+        tagMenuButton.showsMenuAsPrimaryAction = true
     }
     
     func setDummy(album: Album) {
         tagStarButton.isSelected = album.isMarked
         tagNameButton.setTagName(name: album.name)
-        if (album.isPlatform) {
-            setPlatformMenu()
+        if album.isPlatform {
+            tagMenuButton.menu = UIMenu(
+                title: "",
+                options: [],
+                children: [menuItems[0]])
+            tagMenuButton.showsMenuAsPrimaryAction = true
+        } else {
+            tagMenuButton.menu = UIMenu(
+                title: "",
+                options: [],
+                children: menuItems)
+            tagMenuButton.showsMenuAsPrimaryAction = true
         }
     }
     
@@ -72,26 +94,10 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         button.setAttributedTitle(attributedString, for: .normal)
         tagNameButton.titleLabel?.textAlignment = NSTextAlignment.center
     }
-    
-    func setPlatformMenu() {
-        self.tagEditButton.isHidden = true
-        self.menuDividerView.isHidden = true
-    }
-    
-    // MARK: - Objc Function
-    @objc func closeMenu(notification: NSNotification) {
-        self.menuView.isHidden = true
-        self.platformMenuView.isHidden = true
-    }
         
     // MARK: - IBAction
     @IBAction func menuButtonDidTap(_ sender: Any) {
-        // TODO: [FIX] 여기가 문제 같은데 플랫폼 삭제하고 그 자리에 올라온 일반 태그 수정하면 플랫폼 메뉴가 깜빡거림
-        if tagEditButton.isHidden {
-            platformMenuView.isHidden.toggle()
-        } else {
-            menuView.isHidden.toggle()
-        }
+        
     }
     
     @IBAction func starButtonDidTap(_ sender: Any) {
