@@ -42,4 +42,18 @@ public class PushService {
             }
         }
     }
+    
+    func getPushListToday(completion: @escaping (NetworkResult<Any>) -> Void) {
+        pushProvider.request(.getPushListToday) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, PushTodayResponse.self)
+                completion(networkResult)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
 }

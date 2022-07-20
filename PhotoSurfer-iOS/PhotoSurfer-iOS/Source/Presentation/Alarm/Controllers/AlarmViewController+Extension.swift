@@ -31,11 +31,19 @@ extension AlarmViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        switch section {
+        case 0:
+            return todayAlarms.count
+        case 1:
+            return tomorrowAlarms.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Const.Identifier.AlarmListTableViewCell, for: indexPath) as? AlarmListTableViewCell else { fatalError() }
+        cell.setData(push: indexPath.section == 0 ? todayAlarms[indexPath.row] : tomorrowAlarms[indexPath.row])
         return cell
     }
     

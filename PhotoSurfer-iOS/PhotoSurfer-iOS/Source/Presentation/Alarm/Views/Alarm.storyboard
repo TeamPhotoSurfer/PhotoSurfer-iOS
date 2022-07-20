@@ -204,10 +204,13 @@
                     <navigationItem key="navigationItem" id="Kzm-C7-hvQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="commingAlarmCountLabel" destination="yuL-kx-jRk" id="3OV-oL-54S"/>
                         <outlet property="headerImageView" destination="vXE-yI-MmN" id="1IK-df-gAk"/>
+                        <outlet property="lastAlarmCountLabel" destination="m5z-k5-N5s" id="btm-Ny-6Sj"/>
                         <outlet property="statusBarBackgroundView" destination="jcr-Gs-CNG" id="3Rj-hU-o7Y"/>
                         <outlet property="tableHeaderView" destination="3CP-iO-l8P" id="lh8-Eq-6sx"/>
                         <outlet property="tableView" destination="Hd0-Lq-zgN" id="N7l-Uu-XRL"/>
+                        <outlet property="todayAlarmCountLabel" destination="QQH-d5-OX5" id="ecC-Kc-ga8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

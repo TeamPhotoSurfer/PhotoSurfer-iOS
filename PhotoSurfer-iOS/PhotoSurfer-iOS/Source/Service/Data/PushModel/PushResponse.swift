@@ -12,6 +12,17 @@ struct PushResponse: Codable {
     let totalCount: Int
 }
 
+// MARK: - PushTodayResponse
+struct PushTodayResponse: Codable {
+    let today, tomorrow: Day
+    let todayTomorrowCount, lastCount, comingCount: Int
+}
+
+// MARK: - Day
+struct Day: Codable {
+    let push: [Push]
+}
+
 // MARK: - Push
 struct Push: Codable {
     let uuid = UUID()
