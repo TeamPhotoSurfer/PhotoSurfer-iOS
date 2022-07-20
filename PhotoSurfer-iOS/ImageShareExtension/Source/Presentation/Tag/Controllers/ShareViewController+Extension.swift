@@ -144,7 +144,7 @@ extension ShareViewController {
         applyChangedDataSource(inputText: typingText)
     }
     
-    private func applyInitialDataSource() {
+    func applyInitialDataSource() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         snapshot.appendSections([.addedTag, .recentTag, .oftenTag, .platformTag])
         snapshot.appendItems(addedTags, toSection: .addedTag)

@@ -14,7 +14,8 @@ final class ShareViewController: UIViewController {
     var addedTags: [Tag] = []
     var recentTags: [Tag] = []
     var oftenTags: [Tag] = []
-    var platformTags: [Tag] = []
+    var platformTags: [Tag] = [Tag(name: "카카오톡"), Tag(name: "유튜브"), Tag(name: "인스타그램"), Tag(name: "쇼핑몰"), Tag(name: "커뮤니티"), Tag(name: "기타")]
+    var platformTagsFetched: [Tag] = []
     var relatedTags: [Tag] = []
     var relatedTagsFetched: [Tag] = []
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>! = nil
@@ -46,10 +47,12 @@ final class ShareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getFrequencyTag()
+        setPlatformTags()
         setUI()
         setKeyboard()
-        bindData()
         setCollectionView()
+        bindData()
     }
     
     // MARK: - Function
@@ -74,6 +77,19 @@ final class ShareViewController: UIViewController {
     
     private func bindData() {
         setSupplementaryViewProvider(dataSource: setDataSource())
+    }
+    
+    private func setPlatformTags() {
+        if !platformTagsFetched.isEmpty {
+            for platformTagsIndex in 0..<platformTags.count {
+                for platformTagsFetchedIndex in 0..<platformTagsFetched.count {
+                    if platformTags[platformTagsIndex].name == platformTagsFetched[platformTagsFetchedIndex].name {
+                        platformTags[platformTagsIndex] = platformTagsFetched[platformTagsFetchedIndex]
+                    }
+                }
+            }
+        }
+        self.relatedTagsFetched += self.platformTags
     }
     
     private func setKeyboard() {
@@ -102,6 +118,31 @@ final class ShareViewController: UIViewController {
         let doneButton = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(self.doneButtonDidTap))
         toolBarKeyboard.items = [flexibleSpaceButton, doneButton]
         return toolBarKeyboard
+    }
+    
+    private func getFrequencyTag() {
+        TagService.shared.getTagMain { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? TagMainResponse else { return }
+                self.recentTags = data.recent.tags
+                self.relatedTagsFetched += data.recent.tags
+                self.oftenTags = data.often.tags
+                self.relatedTagsFetched += data.often.tags
+                if let platformTagsData = data.platform {
+                    self.platformTagsFetched = platformTagsData.tags
+                }
+                self.applyInitialDataSource()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     // MARK: - Objc Function
