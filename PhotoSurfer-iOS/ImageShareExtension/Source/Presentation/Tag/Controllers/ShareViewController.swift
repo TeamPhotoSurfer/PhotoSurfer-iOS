@@ -8,6 +8,8 @@
 import UIKit
 import Social
 
+import MobileCoreServices
+
 final class ShareViewController: UIViewController {
     
     // MARK: - Property
@@ -16,7 +18,6 @@ final class ShareViewController: UIViewController {
     var oftenTags: [Tag] = []
     var platformTags: [Tag] = []
     let platform = ["카카오톡", "유튜브", "인스타그램", "쇼핑몰", "커뮤니티", "기타"]
-    var platformTagsFetched: [Tag] = []
     var relatedTags: [Tag] = []
     var relatedTagsFetched: [Tag] = []
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>! = nil
@@ -35,6 +36,7 @@ final class ShareViewController: UIViewController {
     let underSixTagMessage: String = "태그는 최대 6개까지만 추가할 수 있어요."
     let alreadyAddedMessage: String = "이미 같은 태그를 추가했어요."
     let typingButtonTopConstValue: CGFloat = -95
+    var image = UIImage()
     
     // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!
@@ -53,6 +55,7 @@ final class ShareViewController: UIViewController {
         setKeyboard()
         setCollectionView()
         bindData()
+        getSelectedImage()
     }
     
     // MARK: - Function
@@ -116,8 +119,9 @@ final class ShareViewController: UIViewController {
                 self.relatedTagsFetched += data.recent.tags
                 self.oftenTags = data.often.tags
                 self.relatedTagsFetched += data.often.tags
-                if let platformTagsData = data.platform {
-                    self.platformTagsFetched = platformTagsData.tags
+                if let platform = data.platform {
+                    self.platformTags = platform.tags
+                    self.relatedTagsFetched += platform.tags
                 }
                 self.applyInitialDataSource()
             case .requestErr(_):
@@ -128,6 +132,28 @@ final class ShareViewController: UIViewController {
                 print("serverErr")
             case .networkFail:
                 print("networkFail")
+            }
+        }
+    }
+    
+    private func getSelectedImage() {
+        let extensionItems = extensionContext?.inputItems as! [NSExtensionItem]
+        for items in extensionItems {
+            if let itemProviders = items.attachments {
+                for itemProvider in itemProviders {
+                    if itemProvider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
+                        itemProvider.loadItem(forTypeIdentifier: kUTTypeImage as String, options: nil, completionHandler: { result, error in
+                            if let url = result as? URL,
+                               let data = try? Data(contentsOf: url) {
+                                DispatchQueue.main.async {
+                                    self.image = UIImage(data: data)!
+                                }
+                            } else {
+                                fatalError("Impossible to save image")
+                            }
+                        })
+                    }
+                }
             }
         }
     }
@@ -166,9 +192,13 @@ final class ShareViewController: UIViewController {
     
     @IBAction func saveButtonDidTap(_ sender: UIButton) {
         let storyboard: UIStoryboard = UIStoryboard(name: "SetAlarm", bundle: nil)
-        guard let setAlarmViewController = storyboard.instantiateViewController(withIdentifier: "navigation") as? UINavigationController else {
+        guard let setAlarmNavigationController = storyboard.instantiateViewController(withIdentifier: "navigation") as? UINavigationController, let setAlarmViewController =  setAlarmNavigationController.topViewController as? SetAlarmViewController else {
             return
         }
-        self.present(setAlarmViewController, animated: true)
+        setAlarmViewController.tags = addedTags
+        setAlarmViewController.image = image
+        print("tags \(addedTags)")
+        print("image \(image)")
+        self.present(setAlarmNavigationController, animated: true)
     }
 }

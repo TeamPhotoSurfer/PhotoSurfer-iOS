@@ -31,6 +31,8 @@ final class SetAlarmViewController: UIViewController {
     let bellAnimationView = AnimationView()
     let surfingAnimationView = AnimationView()
     var keyboardShowedCount: Int = 0
+    var tags: [Tag] = []
+    var image: UIImage = UIImage()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -38,6 +40,7 @@ final class SetAlarmViewController: UIViewController {
 
         setUI()
         setKeyboard()
+        postImageNTags(imagefile: image, tags: tags)
     }
     
     // MARK: - Function
@@ -83,6 +86,25 @@ final class SetAlarmViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.surfingAnimationView.stop()
             self.loadingView.isHidden = true
+        }
+    }
+    
+    private func postImageNTags(imagefile: UIImage, tags: [Tag]) {
+        let photoRequest: PhotoRequest = PhotoRequest(file: imagefile, tags: tags)
+        PhotoService.shared.postPhoto(photoInfo: photoRequest) { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? PhotoResponse else { return }
+                print("success")
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
     }
     
