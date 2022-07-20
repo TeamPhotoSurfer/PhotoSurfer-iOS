@@ -76,15 +76,21 @@ extension HomeSearchViewController: UICollectionViewDelegate {
             inputTags.remove(at: indexPath.item)
         case 1:
             if inputTags.count < 6 {
-                inputTags.append(Tag(name: isShownRelated ? relatedTags[indexPath.item].name : recentTags[indexPath.item].name))
+                if isShownRelated {
+                    inputTags.append(Tag(id: relatedTags[indexPath.item].id,
+                                         name: relatedTags[indexPath.item].name))
+                } else {
+                    inputTags.append(Tag(id: recentTags[indexPath.item].id,
+                                         name: recentTags[indexPath.item].name))
+                }
             }
         case 2:
             if inputTags.count < 6 {
-                inputTags.append(Tag(name: frequencyTags[indexPath.item].name))
+                inputTags.append(Tag(id: frequencyTags[indexPath.item].id, name: frequencyTags[indexPath.item].name))
             }
         case 3:
             if inputTags.count < 6 {
-                inputTags.append(Tag(name: platformTags[indexPath.item].name))
+                inputTags.append(Tag(id: platformTags[indexPath.item].id, name: platformTags[indexPath.item].name))
             }
         default:
             print("none")
