@@ -59,6 +59,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     func setData(tag: Tag) {
         tagStarButton.isSelected = tag.bookmarkStatus ?? false
         tagNameButton.setTagName(name: tag.name)
+        tagBackgroundImageView.setImage(with: tag.imageURL ?? "")
         if (tag.tagType == TagType.platform) {
             tagMenuButton.menu = UIMenu(
                 title: "",
