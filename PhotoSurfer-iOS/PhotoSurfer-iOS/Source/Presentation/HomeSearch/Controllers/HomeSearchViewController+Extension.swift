@@ -78,7 +78,7 @@ extension HomeSearchViewController: UICollectionViewDelegate {
             if inputTags.count < 6 {
                 if isShownRelated {
                     inputTags.append(Tag(id: relatedTags[indexPath.item].id,
-                                         name: relatedTags[indexPath.item].name))
+                                         name: relatedTags[indexPath.item].name, imageURL: nil))
                 } else {
                     inputTags.append(Tag(id: recentTags[indexPath.item].id,
                                          name: recentTags[indexPath.item].name))
