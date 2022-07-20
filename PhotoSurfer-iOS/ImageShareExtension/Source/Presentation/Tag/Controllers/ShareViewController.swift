@@ -50,6 +50,7 @@ final class ShareViewController: UIViewController {
         setKeyboard()
         bindData()
         setCollectionView()
+        getFrequencyTag()
     }
     
     // MARK: - Function
@@ -102,6 +103,25 @@ final class ShareViewController: UIViewController {
         let doneButton = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(self.doneButtonDidTap))
         toolBarKeyboard.items = [flexibleSpaceButton, doneButton]
         return toolBarKeyboard
+    }
+    
+    private func getFrequencyTag() {
+        TagService.shared.getTagSearch { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? TagMainResponse else { return }
+                self.recentTags = data.recent
+                self.applyInitialDataSource()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     // MARK: - Objc Function
