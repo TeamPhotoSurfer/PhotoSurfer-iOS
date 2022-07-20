@@ -28,11 +28,12 @@ final class PictureViewController: UIViewController {
     }
     
     // MARK: - Property
-    let photo = Const.Image.imgSea
+    var photoID: Int?
+    var photo = Const.Image.imgSea
     var type: ViewType = .alarmSelected
     var editMode: PictureEditMode = .none
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
-    var tags = [Tag(title: "tag1ㅋㅋㅋㅋㅋㅋㅋㅋㅋ"), Tag(title: "tag1"), Tag(title: "tag1"), Tag(title: "tag1")]
+    var tags: [Tag] = []
     
     // MARK: - IBOutlet
     @IBOutlet weak var navigationPictureButtonContainerStackView: UIStackView!
@@ -55,6 +56,7 @@ final class PictureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getPhotoDetail()
         setViewType(type: type)
         setUI(editMode: editMode)
         setImageData()
@@ -130,7 +132,7 @@ final class PictureViewController: UIViewController {
     private func setCollectionView() {
         registerXib()
         collectionView.setCollectionViewLayout(createLayout(), animated: true)
-        setDataSource(isDeletable: editMode == .delete)
+        setDataSource(isDeletable: editMode == .delete, editIdx: nil)
         applyTagsSnapshot()
         collectionView.delegate = self
     }
@@ -159,10 +161,16 @@ final class PictureViewController: UIViewController {
         return layout
     }
     
-    private func setDataSource(isDeletable: Bool) {
+    func setDataSource(isDeletable: Bool, editIdx: Int?) {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            cell.setData(title: itemIdentifier.title, type: isDeletable ? .deleteEnableBlueTag : .defaultBlueTag)
+            if let editIdx = editIdx {
+                cell.setData(title: itemIdentifier.name,
+                             type: self.tags[indexPath.item].uuid == self.tags[editIdx].uuid ? .defaultSkyblueTag : .defaultBlueTag)
+            } else {
+                cell.setData(title: itemIdentifier.name,
+                             type: isDeletable ? .deleteEnableBlueTag : .defaultBlueTag)
+            }
             return cell
         })
     }
@@ -206,6 +214,29 @@ final class PictureViewController: UIViewController {
         NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
     }
     
+    private func getPhotoDetail() {
+        guard let photoID = photoID else {
+            return
+        }
+        PhotoService.shared.getPhotoDetail(id: photoID) { response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? Photo else { return }
+                self.imageView.setImage(with: data.imageURL)
+                self.tags = data.tags ?? []
+                self.applyTagsSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     // MARK: - Objc Function
     @objc private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -218,6 +249,10 @@ final class PictureViewController: UIViewController {
     @objc private func keyboardWillHide(_ notification: Notification) {
         waveViewBottomConstraint.constant = 0
         keyboardTopTextField.isHidden = true
+        if editMode == .edit {
+            setDataSource(isDeletable: false, editIdx: nil)
+            applyTagsSnapshot()
+        }
     }
     
     // MARK: - IBAction

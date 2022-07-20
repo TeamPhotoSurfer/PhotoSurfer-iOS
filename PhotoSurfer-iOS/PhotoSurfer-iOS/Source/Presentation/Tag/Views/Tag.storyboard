@@ -81,21 +81,63 @@
                                     <constraint firstItem="O6J-D7-Dic" firstAttribute="top" secondItem="zgr-7d-qTg" secondAttribute="top" constant="13" id="znZ-hJ-uC0"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dav-90-SK3">
+                                <rect key="frame" x="0.0" y="100" width="375" height="629"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="center" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="t1Y-Ff-Sib">
+                                        <rect key="frame" x="113.66666666666669" y="272.66666666666669" width="148" height="84"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 태그가 없어요" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrM-p0-qgN">
+                                                <rect key="frame" x="0.0" y="0.0" width="148" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s2-1A-I9L">
+                                                <rect key="frame" x="4" y="44" width="140" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="0w0-jd-DwD"/>
+                                                    <constraint firstAttribute="width" constant="140" id="2rs-Lw-k3i"/>
+                                                </constraints>
+                                                <color key="tintColor" name="pointMain"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="태그추가 알아보기">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                                    <color key="baseForegroundColor" name="pointMain"/>
+                                                    <color key="baseBackgroundColor" name="pointSub"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onboardingButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Acs-e5-EBW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="t1Y-Ff-Sib" firstAttribute="centerY" secondItem="Dav-90-SK3" secondAttribute="centerY" id="VTJ-e7-zJH"/>
+                                    <constraint firstItem="t1Y-Ff-Sib" firstAttribute="centerX" secondItem="Dav-90-SK3" secondAttribute="centerX" id="tWb-MK-Hhm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Dav-90-SK3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2S9-pt-sGT"/>
                             <constraint firstItem="sGk-2j-PuJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6Lb-3r-vhq"/>
                             <constraint firstItem="zgr-7d-qTg" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="BkV-O4-BSt"/>
                             <constraint firstAttribute="trailing" secondItem="zgr-7d-qTg" secondAttribute="trailing" id="FfX-GE-zmf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Dav-90-SK3" secondAttribute="trailing" id="NqZ-dE-urx"/>
                             <constraint firstItem="2ef-Pb-ysI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="QpA-Vj-vDb"/>
                             <constraint firstAttribute="bottom" secondItem="zgr-7d-qTg" secondAttribute="bottom" id="R0h-UB-gtV"/>
                             <constraint firstItem="sGk-2j-PuJ" firstAttribute="top" secondItem="2ef-Pb-ysI" secondAttribute="bottom" id="TNr-Qk-Twf"/>
                             <constraint firstItem="2ef-Pb-ysI" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="eI2-WV-YnT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="sGk-2j-PuJ" secondAttribute="trailing" id="fbG-6j-5I0"/>
+                            <constraint firstItem="Dav-90-SK3" firstAttribute="top" secondItem="2ef-Pb-ysI" secondAttribute="bottom" id="nRw-Dl-Ws9"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="sGk-2j-PuJ" secondAttribute="bottom" id="our-Aj-RyS"/>
                             <constraint firstItem="2ef-Pb-ysI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="tYb-3c-V4w"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Dav-90-SK3" secondAttribute="bottom" id="trn-fM-13H"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RvW-3h-WSQ"/>
@@ -104,6 +146,7 @@
                         <outlet property="albumCollectionView" destination="sGk-2j-PuJ" id="PI6-KS-4uZ"/>
                         <outlet property="editTagTextField" destination="O6J-D7-Dic" id="Fxz-eE-fTg"/>
                         <outlet property="editToolBarView" destination="zgr-7d-qTg" id="Xhw-xC-M99"/>
+                        <outlet property="emptyView" destination="Dav-90-SK3" id="Dwa-pR-KqZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -136,6 +179,12 @@
         <image name="wave" width="360" height="60"/>
         <namedColor name="grayGray950">
             <color red="0.097999997437000275" green="0.12200000137090683" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pointMain">
+            <color red="0.20800000429153442" green="0.4779999852180481" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pointSub">
+            <color red="0.90600001811981201" green="0.93300002813339233" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

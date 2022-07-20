@@ -8,12 +8,6 @@
 import UIKit
 import Social
 
-struct Tag: Hashable {
-    // 추후 없앨예정
-    let uuid = UUID()
-    let title: String
-}
-
 final class ShareViewController: UIViewController {
     
     // MARK: - Property
@@ -21,6 +15,8 @@ final class ShareViewController: UIViewController {
     var recentTags: [Tag] = []
     var oftenTags: [Tag] = []
     var platformTags: [Tag] = []
+    let platform = ["카카오톡", "유튜브", "인스타그램", "쇼핑몰", "커뮤니티", "기타"]
+    var platformTagsFetched: [Tag] = []
     var relatedTags: [Tag] = []
     var relatedTagsFetched: [Tag] = []
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>! = nil
@@ -52,11 +48,11 @@ final class ShareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getFrequencyTag()
         setUI()
-        setDummy()
         setKeyboard()
-        bindData()
         setCollectionView()
+        bindData()
     }
     
     // MARK: - Function
@@ -111,6 +107,31 @@ final class ShareViewController: UIViewController {
         return toolBarKeyboard
     }
     
+    private func getFrequencyTag() {
+        TagService.shared.getTagMain { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? TagMainResponse else { return }
+                self.recentTags = data.recent.tags
+                self.relatedTagsFetched += data.recent.tags
+                self.oftenTags = data.often.tags
+                self.relatedTagsFetched += data.often.tags
+                if let platformTagsData = data.platform {
+                    self.platformTagsFetched = platformTagsData.tags
+                }
+                self.applyInitialDataSource()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     // MARK: - Objc Function
     @objc private func doneButtonDidTap() {
         dismissKeyboard()
@@ -149,17 +170,5 @@ final class ShareViewController: UIViewController {
             return
         }
         self.present(setAlarmViewController, animated: true)
-    }
-}
-
-// 이후 삭제할 부분이라 아래에 바로 넣어놓음
-extension ShareViewController {
-    private func setDummy() {
-        addedTags = [Tag(title: "a"), Tag(title: "b"), Tag(title: "c"),Tag(title: "d")]
-        recentTags = [Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk"), Tag(title: "kkkkkk"), Tag(title: "kkkkkkk"), Tag(title: "kkkkkkkk")]
-        oftenTags = [Tag(title: "좋은노래"), Tag(title: "솝트"), Tag(title: "전시회"), Tag(title: "그래픽디자인"), Tag(title: "포토서퍼")]
-        platformTags = [Tag(title: "포토서퍼"), Tag(title: "카페"), Tag(title: "위시리스트"), Tag(title: "휴학계획"), Tag(title: "여행")]
-        relatedTags = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss")]
-        relatedTagsFetched = [Tag(title: "avdsdaf"), Tag(title: "sdfds"), Tag(title: "fdsds"), Tag(title: "ssss"), Tag(title: "k"), Tag(title: "kk"), Tag(title: "kkk"), Tag(title: "kkkk"), Tag(title: "kkkkk"), Tag(title: "kkkkkk"), Tag(title: "kkkkkkk"), Tag(title: "kkkkkkkk")]
     }
 }

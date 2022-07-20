@@ -21,10 +21,11 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         case tag
     }
     var dataSource: UICollectionViewDiffableDataSource<Section, Album>!
-    var albumList: [Album] = Album.totalList
+    var albumList: [Album] = []
     var indexpath: IndexPath = IndexPath.init()
     
     // MARK: - IBOutlet
+    @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var albumCollectionView: UICollectionView!
     @IBOutlet weak var editTagTextField: UITextField!
     @IBOutlet weak var editToolBarView: UIView!
@@ -55,6 +56,14 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setEditToolbar()
         editTagTextField.delegate = self
         albumCollectionView.delegate = self
+        setEmptyView()
+    }
+    
+    private func setEmptyView() {
+        print(albumList.count)
+        if albumList.count == 0 {
+            self.emptyView.isHidden = false
+        }
     }
     
     private func setEditToolbar() {
@@ -173,6 +182,24 @@ extension TagViewController: MenuHandleDelegate {
         }
     }
     
+    @objc func editTagTextFieldDidChange(_ sender: Any?) {
+        guard let tagName = self.editTagTextField?.text else { return }
+        guard let selectedItem = dataSource.itemIdentifier(for: indexpath) else { return }
+        var updatedSelectedItem = selectedItem
+        updatedSelectedItem.name = tagName
+        var newSnapshot = dataSource.snapshot()
+//        newSnapshot.reloadItems([selectedItem])
+//        newSnapshot.reconfigureItems([selectedItem])
+        newSnapshot.insertItems([updatedSelectedItem], beforeItem: selectedItem)
+        newSnapshot.deleteItems([selectedItem])
+        dataSource.apply(newSnapshot, animatingDifferences: false, completion: nil)
+    }
+    
+    // MARK: - IBAction
+    @IBAction func onboardingButtonDidTap(_ sender: Any) {
+        let onboardingViewController = UIStoryboard(name: Const.Storyboard.Onboarding, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.OnboardingViewController)
+        self.present(onboardingViewController, animated: true)
+    }
 }
 
 extension Album {

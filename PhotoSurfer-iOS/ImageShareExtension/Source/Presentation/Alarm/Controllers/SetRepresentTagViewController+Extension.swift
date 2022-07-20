@@ -17,7 +17,7 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RepresentTagTableViewCell.identifier) as? RepresentTagTableViewCell else {
             return UITableViewCell()
         }
-        cell.tagButton.setTitle(tags[indexPath.row].title, for: .normal)
+        cell.tagButton.setTitle(tags[indexPath.row].name, for: .normal)
         cell.selectButton.addTarget(self, action: #selector(self.selectButtonDidTap),
                                     for: .touchUpInside)
         return cell

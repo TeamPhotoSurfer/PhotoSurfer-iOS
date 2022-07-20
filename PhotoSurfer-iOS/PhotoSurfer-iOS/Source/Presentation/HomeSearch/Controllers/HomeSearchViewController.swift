@@ -7,12 +7,6 @@
 
 import UIKit
 
-struct Tag: Hashable {
-    // 추후 없앨예정
-    let uuid = UUID()
-    let title: String
-}
-
 final class HomeSearchViewController: UIViewController {
     
     enum Section: Int {
@@ -41,11 +35,12 @@ final class HomeSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setDummy()
+        getTagMain()
         setUI()
         setCollectionView()
         setSearchBarDelegate()
         setKeyboardToolBar()
+        getTagAll()
     }
     
     // MARK: - Function
@@ -85,7 +80,7 @@ final class HomeSearchViewController: UIViewController {
     private func setDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            tagCell.setData(title: itemIdentifier.title, type: indexPath.section == 0 ? .deleteEnableBlueTag : .defaultSkyblueTag)
+            tagCell.setData(title: itemIdentifier.name, type: indexPath.section == 0 ? .deleteEnableBlueTag : .defaultSkyblueTag)
             return tagCell
         })
         dataSource.supplementaryViewProvider = {(collectionView, kind, indexPath) -> UICollectionReusableView in
@@ -112,6 +107,44 @@ final class HomeSearchViewController: UIViewController {
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
+    private func getTagMain() {
+        TagService.shared.getTagMain { [weak self] response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? TagMainResponse else { return }
+                self?.recentTags = data.recent.tags
+                self?.frequencyTags = data.often.tags
+                self?.platformTags = data.platform?.tags ?? []
+                self?.applyInitialDataSource()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    private func getTagAll() {
+        PhotoService.shared.getPhotoTag { response in
+            switch response {
+            case .success(let data):
+                print(data)
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     // MARK: - Objc Function
     @objc private func closeKeyboard() {
         searchBar.resignFirstResponder()
@@ -120,17 +153,5 @@ final class HomeSearchViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-    }
-}
-
-// 이후 삭제할 부분이라 아래에 바로 넣어놓음
-extension HomeSearchViewController {
-    
-    private func setDummy() {
-        recentTags = [Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent"), Tag(title: "recent")]
-        frequencyTags = [Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주"), Tag(title: "자주")]
-        platformTags = [Tag(title: "인스타그램"), Tag(title: "카카오톡"), Tag(title: "페이스북")]
-        relatedTags = [Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"), Tag(title: "연관"),Tag(title: "연관")
-        ]
     }
 }

@@ -37,16 +37,46 @@ final class SplashViewController: UIViewController {
         animationView.frame = self.view.bounds
         animationView.center = self.view.center
         animationView.contentMode = .scaleAspectFill
-        finishLottie(name: name, animationView: animationView)
+        if name == "Bubble" {
+            finishLottie(name: name, animationView: animationView)
+        } else {
+            animationView.play()
+        }
     }
     
     func finishLottie(name: String, animationView: AnimationView) {
         animationView.play { (finish) in
             animationView.removeFromSuperview()
-            guard let loginViewController = UIStoryboard(name: Const.Storyboard.Login, bundle: nil)
-                .instantiateViewController(withIdentifier: Const.ViewController.LoginViewController) as? LoginViewController else { fatalError() }
-            guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
-            delegate.window?.rootViewController = loginViewController
+            self.setRoot()
         }
+    }
+    
+    func isFirstTime() -> Bool {
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: "isFirstTime") == nil {
+            defaults.set("No", forKey:"isFirstTime")
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func setRoot() {
+        if isFirstTime() {
+            setRootViewController(name: Const.Storyboard.Onboarding,
+                                  identifier: Const.ViewController.OnboardingViewController)
+        }
+        // TODO: 여기 로그인 여부로 또 분기처리 해야하나? 로그인 했으면 Main으로 넘기기 이런식으로..
+        else {
+            setRootViewController(name: Const.Storyboard.Login,
+                                  identifier: Const.ViewController.LoginViewController)
+        }
+    }
+    
+    func setRootViewController(name: String, identifier: String) {
+        let viewController = UIStoryboard(name: name, bundle: nil)
+            .instantiateViewController(withIdentifier: identifier)
+        guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        delegate.window?.rootViewController = viewController
     }
 }
