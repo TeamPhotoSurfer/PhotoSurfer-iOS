@@ -26,6 +26,7 @@ struct URLConstant {
     static let photoTag = "/photo/tag"
     static let photoPush = "/photo/push"
     static let photoSearch = "/photo/search"
+    static let photoDetail = "/photo/detail"
     
     // MARK: - Push
     static let push = "/push"

@@ -20,4 +20,8 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
     func setData(image: UIImage) {
         imageView.image = image
     }
+    
+    func setServerData(imageURL: String) {
+        imageView.setImage(with: imageURL)
+    }
 }

@@ -11,37 +11,38 @@ import Moya
 
 enum PhotoRouter {
     case getPhotoSearch(ids: [Int])
+    case getPhotoDetail(photoID: Int)
 }
 
 extension PhotoRouter: BaseTargetType {
     var path: String {
         switch self {
-        case .getPhotoSearch(let ids):
-            var idText = ""
-            for id in ids {
-                idText += "?id=\(id)&"
-            }
-            return "\(URLConstant.photoSearch)/\(idText)"
+        case .getPhotoSearch(_):
+            return "\(URLConstant.photoSearch)/"
+        case .getPhotoDetail(let id):
+            return "\(URLConstant.photoDetail)/\(id)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getPhotoSearch:
+        case .getPhotoSearch, .getPhotoDetail:
             return .get
         }
     }
     
     var task: Task {
         switch self {
-        case .getPhotoSearch:
+        case .getPhotoSearch(let ids):
+            return .requestParameters(parameters: ["id": ids], encoding: URLEncoding.default)
+        case .getPhotoDetail:
             return .requestPlain
         }
     }
     
     var headers: [String : String]? {
         switch self {
-        case .getPhotoSearch:
+        case .getPhotoSearch, .getPhotoDetail:
             return NetworkConstant.hasTokenHeader
         }
     }

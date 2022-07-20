@@ -13,12 +13,16 @@ struct PhotoSearchResponse: Codable {
 }
 
 // MARK: - Photo
-struct Photo: Codable {
+struct Photo: Codable, Hashable {
     let id: Int
     let imageURL: String
+    let tags: [Tag]?
+    let push: Int?
 
     enum CodingKeys: String, CodingKey {
         case id
         case imageURL = "imageUrl"
+        case tags
+        case push
     }
 }

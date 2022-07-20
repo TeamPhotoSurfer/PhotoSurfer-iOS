@@ -7,12 +7,6 @@
 
 import UIKit
 
-struct CapturePhoto: Hashable {
-    // 이후 삭제
-    let uuid = UUID()
-    let image: UIImage
-}
-
 final class HomeResultViewController: UIViewController {
     
     enum Section {
@@ -21,9 +15,9 @@ final class HomeResultViewController: UIViewController {
     
     // MARK: - Property
     var tagDataSource: UICollectionViewDiffableDataSource<Section, Tag>!
-    var photoDataSource: UICollectionViewDiffableDataSource<Section, CapturePhoto>!
+    var photoDataSource: UICollectionViewDiffableDataSource<Section, Photo>!
     var tags: [Tag] = []
-    var photos: [CapturePhoto] = []
+    var photos: [Photo] = []
     
     // MARK: - IBOutlet
     @IBOutlet weak var tagCollectionView: UICollectionView!
@@ -36,7 +30,8 @@ final class HomeResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setDummy()
+        print(tags.map({ $0.id }))
+        getPhotoSearch()
         setCollectionView()
     }
     
@@ -68,9 +63,9 @@ final class HomeResultViewController: UIViewController {
             cell.setData(title: itemIdentifier.name, type: .deleteEnableBlueTag)
             return cell
         })
-        photoDataSource = UICollectionViewDiffableDataSource<Section, CapturePhoto>(collectionView: photoCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        photoDataSource = UICollectionViewDiffableDataSource<Section, Photo>(collectionView: photoCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.PhotoCollectionViewCell, for: indexPath) as? PhotoCollectionViewCell else { fatalError() }
-            cell.setData(image: itemIdentifier.image)
+            cell.setServerData(imageURL: itemIdentifier.imageURL)
             return cell
         })
     }
@@ -83,7 +78,7 @@ final class HomeResultViewController: UIViewController {
     }
     
     func applyPhotoSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, CapturePhoto>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
         snapshot.appendSections([.main])
         snapshot.appendItems(photos, toSection: .main)
         photoDataSource.apply(snapshot)
@@ -102,15 +97,25 @@ final class HomeResultViewController: UIViewController {
         selectButton.isHidden = isSelectable
     }
     
-    private func setDummy() {
-        photos = [CapturePhoto(image: Const.Image.imgSea),
-                  CapturePhoto(image: Const.Image.imgSea),
-                  CapturePhoto(image: Const.Image.imgSea),
-                  CapturePhoto(image: Const.Image.imgSea),
-                  CapturePhoto(image: Const.Image.imgSea),
-                  CapturePhoto(image: Const.Image.imgSea),
-                  CapturePhoto(image: Const.Image.imgSea),
-                  CapturePhoto(image: Const.Image.imgSea)]
+    private func getPhotoSearch() {
+        print("tags", tags)
+        let tagIds: [Int] = tags.map({ $0.id ?? 0 })
+        PhotoService.shared.getPhotoSearch(ids: tagIds) { response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? PhotoSearchResponse else { return }
+                self.photos = data.photos
+                self.applyPhotoSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     // MARK: - IBAction
