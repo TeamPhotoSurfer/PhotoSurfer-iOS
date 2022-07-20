@@ -182,19 +182,6 @@ extension TagViewController: MenuHandleDelegate {
         }
     }
     
-    @objc func editTagTextFieldDidChange(_ sender: Any?) {
-        guard let tagName = self.editTagTextField?.text else { return }
-        guard let selectedItem = dataSource.itemIdentifier(for: indexpath) else { return }
-        var updatedSelectedItem = selectedItem
-        updatedSelectedItem.name = tagName
-        var newSnapshot = dataSource.snapshot()
-//        newSnapshot.reloadItems([selectedItem])
-//        newSnapshot.reconfigureItems([selectedItem])
-        newSnapshot.insertItems([updatedSelectedItem], beforeItem: selectedItem)
-        newSnapshot.deleteItems([selectedItem])
-        dataSource.apply(newSnapshot, animatingDifferences: false, completion: nil)
-    }
-    
     // MARK: - IBAction
     @IBAction func onboardingButtonDidTap(_ sender: Any) {
         let onboardingViewController = UIStoryboard(name: Const.Storyboard.Onboarding, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.OnboardingViewController)
