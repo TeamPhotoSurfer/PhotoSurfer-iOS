@@ -18,6 +18,7 @@ class OnboardingViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var nextButton: UIButton!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {

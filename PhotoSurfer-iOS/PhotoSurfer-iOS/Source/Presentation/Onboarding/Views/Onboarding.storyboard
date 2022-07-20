@@ -52,6 +52,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nextButton" destination="Z3A-2h-mgr" id="EBX-we-04m"/>
                         <outlet property="pageControl" destination="FbM-5h-NH5" id="Ng5-Pq-cb5"/>
                         <outlet property="scrollView" destination="Qa5-MT-xYP" id="4Wu-VL-ouP"/>
                     </connections>
