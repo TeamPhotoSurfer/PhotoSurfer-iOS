@@ -26,7 +26,7 @@ struct TagResponse: Codable {
 struct Tag: Codable, Hashable {
     let uuid = UUID()
     var id: Int? = 0
-    let name: String
+    var name: String
     var bookmarkStatus: Bool? = nil
     var imageURL: String? = nil
     var tagType: TagType? = nil
