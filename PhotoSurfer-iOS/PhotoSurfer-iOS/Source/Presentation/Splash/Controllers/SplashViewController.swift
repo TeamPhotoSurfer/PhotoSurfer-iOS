@@ -55,10 +55,8 @@ final class SplashViewController: UIViewController {
         let defaults = UserDefaults.standard
         if defaults.object(forKey: "isFirstTime") == nil {
             defaults.set("No", forKey:"isFirstTime")
-            print("isFirst == true")
             return true
         } else {
-            print("isFirst == false")
             return false
         }
     }
