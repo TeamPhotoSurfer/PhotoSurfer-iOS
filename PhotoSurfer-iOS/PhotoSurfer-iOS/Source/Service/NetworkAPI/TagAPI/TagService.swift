@@ -42,4 +42,18 @@ public class TagService {
             }
         }
     }
+    
+    func getTag(completion: @escaping (NetworkResult<Any>) -> Void) {
+        tagProvider.request(.getTag) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, TagBookmarkResponse.self)
+                completion(networkResult)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
 }

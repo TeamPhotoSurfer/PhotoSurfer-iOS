@@ -47,7 +47,6 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     // MARK: - Function
     private func setUI() {
         setCellUI()
-//        setMoreButton()
     }
     
     private func setCellUI() {
@@ -57,18 +56,11 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         tagStarButton.setImage(Const.Image.leftStarIconWhiteButton, for: .normal)
     }
     
-    func setMoreButton() {
-        tagMenuButton.menu = UIMenu(
-            title: "",
-            options: [],
-            children: menuItems)
-        tagMenuButton.showsMenuAsPrimaryAction = true
-    }
-    
-    func setDummy(album: Album) {
-        tagStarButton.isSelected = album.isMarked
-        tagNameButton.setTagName(name: album.name)
-        if album.isPlatform {
+    func setData(tag: Tag) {
+        tagStarButton.isSelected = tag.bookmarkStatus ?? false
+        tagNameButton.setTagName(name: tag.name)
+        tagBackgroundImageView.setImage(with: tag.imageURL ?? "")
+        if (tag.tagType == TagType.platform) {
             tagMenuButton.menu = UIMenu(
                 title: "",
                 options: [],
