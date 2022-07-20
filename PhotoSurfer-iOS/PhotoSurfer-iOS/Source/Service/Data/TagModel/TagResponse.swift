@@ -15,8 +15,8 @@ struct TagMainResponse: Codable {
 }
 
 struct TagBookmarkResponse: Codable {
-    let bookmarked, notBookmarked: [Tag]
-    
+    let bookmarked: TagResponse
+    let notBookmarked: TagResponse
 }
 
 struct TagResponse: Codable {

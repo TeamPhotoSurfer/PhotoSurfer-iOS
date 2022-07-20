@@ -30,7 +30,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         setUI()
-        getTag()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -43,12 +42,13 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setUI() {
+        getTag()
         setEditTagTextField()
         setCollectionView()
         setEditToolbar()
         editTagTextField.delegate = self
         albumCollectionView.delegate = self
-        setEmptyView()
+        //setEmptyView()
     }
     
     private func setEditTagTextField() {
@@ -60,8 +60,12 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setEmptyView() {
+        let cellCount = (bookmarkedList + notBookmarkedList).count
+        print("✨cellCount", cellCount)
         if (bookmarkedList + notBookmarkedList).count == 0 {
             self.emptyView.isHidden = false
+        } else {
+            self.emptyView.isHidden = true
         }
     }
     
@@ -73,6 +77,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     private func applySnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         snapshot.appendSections([.tag])
+        print("✨bookmarkedList", self.bookmarkedList)
         snapshot.appendItems(bookmarkedList, toSection: .tag)
         snapshot.appendItems(notBookmarkedList, toSection: .tag)
         dataSource.apply(snapshot, animatingDifferences: true)
@@ -114,10 +119,9 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
             case .success(let data):
                 print("✨before data", data)
                 guard let data = data as? TagBookmarkResponse else { return }
-                print("✨data", data)
-                self?.bookmarkedList = data.bookmarked.tags ?? []
-//                print(self?.bookmarkedList)
-                self?.notBookmarkedList = data.notBookmarked.tags ?? []
+//                print("✨data", data)
+                self?.bookmarkedList = data.bookmarked.tags
+                self?.notBookmarkedList = data.notBookmarked.tags
                 self?.applySnapshot()
             case .requestErr(_):
                 print("requestErr")
