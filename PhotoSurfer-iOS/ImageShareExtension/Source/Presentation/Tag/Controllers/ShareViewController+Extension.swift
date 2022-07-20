@@ -194,7 +194,12 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
             typingView.isHidden = true
             return
         }
-        if !addedTags.contains(Tag(name: typingText)) {
+        var didAddedTag: Bool = false
+        
+        for i in 0..<addedTags.count {
+            didAddedTag = (addedTags[i].name == typingText)
+        }
+        if !didAddedTag {
             if addedTags.count >= 6 {
                 showAlert(message: self.underSixTagMessage)
             }
@@ -205,6 +210,7 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
                     isAddedTagContainItem = (addedTags[index].name == typingText)
                 }
                 if !isAddedTagContainItem {
+                    
                     addedTags.append(Tag(name: typingText))
                 }
                 else {
@@ -287,7 +293,7 @@ extension ShareViewController: UICollectionViewDelegate {
                 showAlert(message: underSixTagMessage)
             }
             else {
-                addedTags.append(Tag(name: tagType[indexPath.item].name))
+                addedTags.append(Tag(name: tagType[indexPath.item].name, bookmarkStatus: nil, imageURL: nil, tagType: nil))
                 setTagUI(indexPath: indexPath, collectionView: collectionView, isAdded: true)
                 if addedTags.count <= 0 {
                     UIView.animate(withDuration: 0.5) {

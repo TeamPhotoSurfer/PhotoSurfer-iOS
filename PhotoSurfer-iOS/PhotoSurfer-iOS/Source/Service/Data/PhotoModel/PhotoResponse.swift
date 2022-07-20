@@ -26,3 +26,9 @@ struct Photo: Codable, Hashable {
         case push
     }
 }
+
+struct PhotoResponse: Codable, Hashable {
+    let id: Int
+    let imageURL: String
+    let tag: [Tag]
+}

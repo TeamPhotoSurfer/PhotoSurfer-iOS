@@ -40,6 +40,7 @@ final class HomeSearchViewController: UIViewController {
         setCollectionView()
         setSearchBarDelegate()
         setKeyboardToolBar()
+        getTagAll()
     }
     
     // MARK: - Function
@@ -115,6 +116,23 @@ final class HomeSearchViewController: UIViewController {
                 self?.frequencyTags = data.often.tags
                 self?.platformTags = data.platform?.tags ?? []
                 self?.applyInitialDataSource()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    private func getTagAll() {
+        PhotoService.shared.getPhotoTag { response in
+            switch response {
+            case .success(let data):
+                print(data)
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:

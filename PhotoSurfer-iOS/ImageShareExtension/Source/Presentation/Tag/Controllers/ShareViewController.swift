@@ -14,7 +14,8 @@ final class ShareViewController: UIViewController {
     var addedTags: [Tag] = []
     var recentTags: [Tag] = []
     var oftenTags: [Tag] = []
-    var platformTags: [Tag] = [Tag(name: "카카오톡"), Tag(name: "유튜브"), Tag(name: "인스타그램"), Tag(name: "쇼핑몰"), Tag(name: "커뮤니티"), Tag(name: "기타")]
+    var platformTags: [Tag] = []
+    let platform = ["카카오톡", "유튜브", "인스타그램", "쇼핑몰", "커뮤니티", "기타"]
     var platformTagsFetched: [Tag] = []
     var relatedTags: [Tag] = []
     var relatedTagsFetched: [Tag] = []
@@ -48,7 +49,6 @@ final class ShareViewController: UIViewController {
         super.viewDidLoad()
         
         getFrequencyTag()
-        setPlatformTags()
         setUI()
         setKeyboard()
         setCollectionView()
@@ -77,19 +77,6 @@ final class ShareViewController: UIViewController {
     
     private func bindData() {
         setSupplementaryViewProvider(dataSource: setDataSource())
-    }
-    
-    private func setPlatformTags() {
-        if !platformTagsFetched.isEmpty {
-            for platformTagsIndex in 0..<platformTags.count {
-                for platformTagsFetchedIndex in 0..<platformTagsFetched.count {
-                    if platformTags[platformTagsIndex].name == platformTagsFetched[platformTagsFetchedIndex].name {
-                        platformTags[platformTagsIndex] = platformTagsFetched[platformTagsFetchedIndex]
-                    }
-                }
-            }
-        }
-        self.relatedTagsFetched += self.platformTags
     }
     
     private func setKeyboard() {

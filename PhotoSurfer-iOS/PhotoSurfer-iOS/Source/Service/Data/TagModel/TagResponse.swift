@@ -22,20 +22,9 @@ struct Tag: Codable, Hashable {
     let uuid = UUID()
     var id: Int? = 0
     let name: String
-}
-
-/// 태그명 조회
-struct TagBookMarkedReponse: Codable {
-    var bookmarked: [TagInfo]?
-    var notBookmarked: [TagInfo]
-}
-
-struct TagInfo: Codable {
-    let id: Int
-    let name: String
-    let bookmarkStatus: Bool
-    let imageURL: String
-    let tagType: TagType
+    var bookmarkStatus: Bool? = nil
+    var imageURL: String? = nil
+    var tagType: TagType? = nil
     
     enum CodingKeys: String, CodingKey {
         case id, name
