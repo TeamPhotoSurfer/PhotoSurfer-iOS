@@ -199,13 +199,28 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
                 showAlert(message: self.underSixTagMessage)
             }
             else {
-                addedTags.append(Tag(name: typingText))
-                if addedTags.count <= 0 {
+                var isAddedTagContainItem = false
+                var isRelatedContainItem = false
+                for index in 0..<addedTags.count {
+                    isAddedTagContainItem = (addedTags[index].title == typingText)
+                }
+                if !isAddedTagContainItem {
+                    addedTags.append(Tag(title: typingText))
+                }
+                else {
+                    showAlert(message: alreadyAddedMessage)
+                }
+                if addedTags.count > 0 {
                     UIView.animate(withDuration: 0.5) {
                         self.typingViewTopConstraint.constant = self.typingButtonTopConstValue
                     }
                 }
-                relatedTags.append(Tag(name: typingText))
+                for index in 0..<relatedTags.count {
+                    isRelatedContainItem = (relatedTags[index].title == typingText)
+                }
+                if !isRelatedContainItem {
+                    relatedTags.append(Tag(title: typingText))
+                }
                 applyChangedDataSource(inputText: typingText)
             }
         }
