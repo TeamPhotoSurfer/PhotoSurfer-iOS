@@ -7,21 +7,16 @@
 
 import UIKit
 
-struct Album: Hashable {
-    let uuid = UUID()
-    let isMarked: Bool
-    let isPlatform: Bool
-    var name: String
-}
-
 final class TagViewController: UIViewController, UITextFieldDelegate {
 
     // MARK: - Property
     enum Section {
         case tag
     }
-    var dataSource: UICollectionViewDiffableDataSource<Section, Album>!
-    var albumList: [Album] = []
+    
+    var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
+    var bookmarkedList: [Tag] = []
+    var notBookmarkedList: [Tag] = []
     var indexpath: IndexPath = IndexPath.init()
     
     // MARK: - IBOutlet
@@ -47,11 +42,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setUI() {
-        editTagTextField.layer.backgroundColor = UIColor.grayWhite.cgColor
-        editTagTextField.layer.cornerRadius = editTagTextField.bounds.height * 0.5
-        editTagTextField.addPadding(padding: 16)
-        editTagTextField.clearButtonMode = .always
-        editTagTextField.addTarget(self, action: #selector(self.editTagTextFieldDidChange(_:)), for: .editingChanged)
+        setEditTagTextField()
         setCollectionView()
         setEditToolbar()
         editTagTextField.delegate = self
@@ -59,9 +50,16 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setEmptyView()
     }
     
+    private func setEditTagTextField() {
+        editTagTextField.layer.backgroundColor = UIColor.grayWhite.cgColor
+        editTagTextField.layer.cornerRadius = editTagTextField.bounds.height * 0.5
+        editTagTextField.addPadding(padding: 16)
+        editTagTextField.clearButtonMode = .always
+        editTagTextField.addTarget(self, action: #selector(self.editTagTextFieldDidChange(_:)), for: .editingChanged)
+    }
+    
     private func setEmptyView() {
-        print(albumList.count)
-        if albumList.count == 0 {
+        if (bookmarkedList + notBookmarkedList).count == 0 {
             self.emptyView.isHidden = false
         }
     }
@@ -72,15 +70,16 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func applySnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Album>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         snapshot.appendSections([.tag])
-        snapshot.appendItems(albumList, toSection: .tag)
+        snapshot.appendItems(bookmarkedList, toSection: .tag)
+        snapshot.appendItems(notBookmarkedList, toSection: .tag)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     private func setCollectionView() {
         registerXib()
-        dataSource = UICollectionViewDiffableDataSource<Section, Album>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
+        dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
             guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as? TagAlbumCollectionViewCell else { fatalError() }
             albumCell.setDummy(album: item)
             albumCell.tag = indexPath.row
@@ -188,32 +187,3 @@ extension TagViewController: MenuHandleDelegate {
         self.present(onboardingViewController, animated: true)
     }
 }
-
-extension Album {
-    static var markList = [
-        Album(isMarked: true, isPlatform: true, name: "유튜브"),
-        Album(isMarked: true, isPlatform: true, name: "인스타그램"),
-        Album(isMarked: true, isPlatform: true, name: "카카오톡"),
-        Album(isMarked: true, isPlatform: false, name: "랄라"),
-        Album(isMarked: true, isPlatform: true, name: "쇼핑몰"),
-    ]
-    static var list = [
-        Album(isMarked: false, isPlatform: false, name: "cafe"),
-        Album(isMarked: false, isPlatform: false, name: "air"),
-        Album(isMarked: false, isPlatform: false, name: "tree"),
-        Album(isMarked: false, isPlatform: false, name: "tag1"),
-        Album(isMarked: false, isPlatform: false, name: "tag2"),
-        Album(isMarked: false, isPlatform: false, name: "tag3"),
-        Album(isMarked: false, isPlatform: false, name: "tag4"),
-        Album(isMarked: false, isPlatform: false, name: "tag5"),
-        Album(isMarked: false, isPlatform: false, name: "tag6"),
-        Album(isMarked: false, isPlatform: false, name: "tag7"),
-        Album(isMarked: false, isPlatform: false, name: "tag8"),
-        Album(isMarked: false, isPlatform: false, name: "tag9"),
-        Album(isMarked: false, isPlatform: false, name: "tag10"),
-        Album(isMarked: false, isPlatform: false, name: "tag11"),
-        Album(isMarked: false, isPlatform: false, name: "tag12"),
-    ]
-    static var totalList = markList + list
-}
-
