@@ -74,7 +74,7 @@ extension SceneDelegate {
         }
     }
     
-    private func setRootViewController(_ scene: UIScene, name: String, identifier: String) {
+    func setRootViewController(_ scene: UIScene, name: String, identifier: String) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             let storyboard = UIStoryboard(name: name, bundle: nil)

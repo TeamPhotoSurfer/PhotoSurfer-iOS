@@ -12,11 +12,12 @@ class OnboardingViewController: UIViewController {
     // MARK: - Property
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight = UIScreen.main.bounds.size.height
-    //let onboardingContent: [UIImage] = [Const.Image.onboardingShare]
     let onboardingContent: [UIImage] = [Const.Image.onboardingShare, Const.Image.onboardingSearch, Const.Image.onboardingPushalarm]
+    
 
     // MARK: - IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -28,7 +29,11 @@ class OnboardingViewController: UIViewController {
     // MARK: - Function
     private func setUI() {
         setPageView()
-//        scrollView.delegate = self
+        setPageControl()
+        scrollView.delegate = self
+        let panGestureRecongnizer = UIPanGestureRecognizer(target: self, action: #selector(panAction(_ :)))
+        panGestureRecongnizer.delegate = self
+        self.view.addGestureRecognizer(panGestureRecongnizer)
     }
     private func setPageView() {
         scrollView.frame.size.width = screenWidth
@@ -47,6 +52,11 @@ class OnboardingViewController: UIViewController {
         scrollView.contentSize = CGSize(width: scrollWidth * CGFloat(onboardingContent.count), height: scrollHeight)
     }
     
+    private func setPageControl() {
+        pageControl.numberOfPages = onboardingContent.count
+        
+    }
+    
     func OnBoardingPageView(frame: CGRect, index: Int) -> UIView {
         let container = UIImageView(image: onboardingContent[index])
         container.contentMode = .scaleAspectFill
@@ -54,36 +64,34 @@ class OnboardingViewController: UIViewController {
         return container
     }
     
+    private func setPageControlSelectedPage(currentPage:Int) {
+            pageControl.currentPage = currentPage
+        }
+    
+    @objc func panAction (_ sender : UIPanGestureRecognizer){
+        let velocity = sender.velocity(in: scrollView)
+        if pageControl.currentPage == 2 {
+            if abs(velocity.x) > abs(velocity.y) {
+                if velocity.x < 0 {
+                    print("마지막에서 오른쪽")
+                }
+            }
+        }
+    }
+    
     // MARK: - IBAction
     @IBAction func nextButtonDidTap(_ sender: Any) {
-        
+//        SplashViewController.setRootViewController(
+        SplashViewController.s
     }
 }
 
-//extension OnboardingViewController: UIScrollViewDelegate {
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let pageNumber = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
-//
-//        if viewModel.currentPage != pageNumber {
-//            self.pageControl.currentPage = pageNumber
-//            changePageStyleWithAnimation(prevPage: viewModel.currentPage, nextPage: pageNumber)
-//
-//            viewModel.currentPage = pageNumber
-//        }
-//    }
-//
-//    private func changePageStyleWithAnimation(prevPage: Int, nextPage: Int) {
-//        UIView.transition(with: buttonContainerView, duration: 0.3, options: [.transitionCrossDissolve], animations: {
-//            if nextPage == viewModel.lastPageIndex {
-//                self.skipButton.isHidden = true
-//                self.startButton.isHidden = false
-//                self.scrollView.backgroundColor = .white
-//            } else {
-//                self.skipButton.isHidden = false
-//                self.startButton.isHidden = true
-//                self.scrollView.backgroundColor = .gray
-//            }
-//        })
-//    }
-//}
+extension OnboardingViewController: UIScrollViewDelegate, UIGestureRecognizerDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let value = scrollView.contentOffset.x/scrollView.frame.size.width
+                setPageControlSelectedPage(currentPage: Int(round(value)))
+    }
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
