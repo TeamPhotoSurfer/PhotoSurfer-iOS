@@ -7,16 +7,15 @@
 
 import Foundation
 
+// MARK: - Tag
+struct TagMainResponse: Codable {
+    var recent: TagResponse
+    var often: TagResponse
+    var platform: TagResponse?
+}
 
 struct TagResponse: Codable {
     let tags: [Tag]
-}
-
-// MARK: - Tag
-struct TagMainResponse: Codable, Hashable {
-    var recent: [Tag]
-    var often: [Tag]
-    var platform: [Tag]
 }
 
 struct Tag: Codable, Hashable {
