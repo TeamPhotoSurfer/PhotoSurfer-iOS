@@ -98,23 +98,28 @@ final class HomeResultViewController: UIViewController {
         selectButton.isHidden = isSelectable
     }
     
-    private func getPhotoSearch() {
+    func getPhotoSearch() {
         print("tags", tags)
         let tagIds: [Int] = tags.map({ $0.id ?? 0 })
-        PhotoService.shared.getPhotoSearch(ids: tagIds) { response in
-            switch response {
-            case .success(let data):
-                guard let data = data as? PhotoSearchResponse else { return }
-                self.photos = data.photos
-                self.applyPhotoSnapshot()
-            case .requestErr(_):
-                print("requestErr")
-            case .pathErr:
-                print("pathErr")
-            case .serverErr:
-                print("serverErr")
-            case .networkFail:
-                print("networkFail")
+        if tagIds.count == 0 {
+            photos = []
+            applyPhotoSnapshot()
+        } else {
+            PhotoService.shared.getPhotoSearch(ids: tagIds) { response in
+                switch response {
+                case .success(let data):
+                    guard let data = data as? PhotoSearchResponse else { return }
+                    self.photos = data.photos
+                    self.applyPhotoSnapshot()
+                case .requestErr(_):
+                    print("requestErr")
+                case .pathErr:
+                    print("pathErr")
+                case .serverErr:
+                    print("serverErr")
+                case .networkFail:
+                    print("networkFail")
+                }
             }
         }
     }
