@@ -35,7 +35,7 @@ final class HomeSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setDummy()
+        getTagMain()
         setUI()
         setCollectionView()
         setSearchBarDelegate()
@@ -106,6 +106,27 @@ final class HomeSearchViewController: UIViewController {
         self.navigationController?.pushViewController(resultViewController, animated: true)
     }
     
+    private func getTagMain() {
+        TagService.shared.getTagMain { [weak self] response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? TagMainResponse else { return }
+                self?.recentTags = data.recent.tags
+                self?.frequencyTags = data.often.tags
+                self?.platformTags = data.platform?.tags ?? []
+                self?.applyInitialDataSource()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     // MARK: - Objc Function
     @objc private func closeKeyboard() {
         searchBar.resignFirstResponder()
@@ -114,17 +135,5 @@ final class HomeSearchViewController: UIViewController {
     // MARK: - IBAction
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-    }
-}
-
-// 이후 삭제할 부분이라 아래에 바로 넣어놓음
-extension HomeSearchViewController {
-    
-    private func setDummy() {
-        recentTags = [Tag(name: "recent"), Tag(name: "recent"), Tag(name: "recent"), Tag(name: "recent"), Tag(name: "recent")]
-        frequencyTags = [Tag(name: "자주"), Tag(name: "자주"), Tag(name: "자주"), Tag(name: "자주")]
-        platformTags = [Tag(name: "인스타그램"), Tag(name: "카카오톡"), Tag(name: "페이스북")]
-        relatedTags = [Tag(name: "연관"), Tag(name: "연관"), Tag(name: "연관"), Tag(name: "연관"),Tag(name: "연관")
-        ]
     }
 }
