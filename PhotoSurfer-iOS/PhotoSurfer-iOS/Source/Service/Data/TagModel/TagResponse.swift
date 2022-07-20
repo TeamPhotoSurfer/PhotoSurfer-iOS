@@ -13,6 +13,12 @@ struct TagResponse: Codable {
 }
 
 // MARK: - Tag
+struct TagMain: Codable, Hashable {
+    var recent: [Tag]
+    var often: [Tag]
+    var platform: [Tag]
+}
+
 struct Tag: Codable, Hashable {
     let uuid = UUID()
     var id: Int? = 0
