@@ -38,6 +38,9 @@ extension Const {
         static let onboardingShare = UIImage(named: "onboardingShare")!
         static let onboardingSearch = UIImage(named: "onboardingSearch")!
         static let onboardingPushalarm = UIImage(named: "onboardingPushalarm")!
+        static let onboardingAlarmAlarm = UIImage(named: "onboardingAlarmAlarm")!
+        static let onboardingAlarmShare = UIImage(named: "onboardingAlarmShare")!
+        static let onboardingAlarmTag = UIImage(named: "onboardingAlarmTag")!
         
         // MARK: - Bottom Bar
         /// icon
