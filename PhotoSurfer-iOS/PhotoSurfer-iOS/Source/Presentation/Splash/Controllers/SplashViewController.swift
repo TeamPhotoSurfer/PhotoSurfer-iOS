@@ -37,51 +37,48 @@ final class SplashViewController: UIViewController {
         animationView.frame = self.view.bounds
         animationView.center = self.view.center
         animationView.contentMode = .scaleAspectFill
-        finishLottie(name: name, animationView: animationView)
+        if name == "Bubble" {
+            finishLottie(name: name, animationView: animationView)
+        } else {
+            animationView.play()
+        }
     }
     
     func finishLottie(name: String, animationView: AnimationView) {
         animationView.play { (finish) in
             animationView.removeFromSuperview()
-            guard let onboardingViewController = UIStoryboard(name: Const.Storyboard.Onboarding, bundle: nil)
-                .instantiateViewController(withIdentifier: Const.ViewController.OnboardingViewController) as? OnboardingViewController else { fatalError() }
-            guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
-            delegate.window?.rootViewController = onboardingViewController
+            self.setRoot()
         }
     }
-}
-
-extension SceneDelegate {
+    
     func isFirstTime() -> Bool {
         let defaults = UserDefaults.standard
         if defaults.object(forKey: "isFirstTime") == nil {
             defaults.set("No", forKey:"isFirstTime")
+            print("isFirst == true")
             return true
         } else {
+            print("isFirst == false")
             return false
         }
     }
     
-    private func setRootViewController(_ scene: UIScene){
+    private func setRoot() {
         if isFirstTime() {
-            setRootViewController(scene, name: Const.Storyboard.Onboarding,
+            setRootViewController(name: Const.Storyboard.Onboarding,
                                   identifier: Const.ViewController.OnboardingViewController)
         }
         // TODO: 여기 로그인 여부로 또 분기처리 해야하나? 로그인 했으면 Main으로 넘기기 이런식으로..
         else {
-            setRootViewController(scene, name: Const.Storyboard.Login,
+            setRootViewController(name: Const.Storyboard.Login,
                                   identifier: Const.ViewController.LoginViewController)
         }
     }
     
-    func setRootViewController(_ scene: UIScene, name: String, identifier: String) {
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            let storyboard = UIStoryboard(name: name, bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
-            window.rootViewController = viewController
-            self.window = window
-            window.makeKeyAndVisible()
-        }
+    func setRootViewController(name: String, identifier: String) {
+        let viewController = UIStoryboard(name: name, bundle: nil)
+            .instantiateViewController(withIdentifier: identifier)
+        guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        delegate.window?.rootViewController = viewController
     }
 }

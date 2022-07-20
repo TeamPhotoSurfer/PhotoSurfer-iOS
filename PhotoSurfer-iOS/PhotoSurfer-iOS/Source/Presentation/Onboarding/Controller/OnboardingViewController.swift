@@ -65,15 +65,22 @@ class OnboardingViewController: UIViewController {
     }
     
     private func setPageControlSelectedPage(currentPage:Int) {
-            pageControl.currentPage = currentPage
-        }
+        pageControl.currentPage = currentPage
+    }
+    
+    func setRootViewController(name: String, identifier: String) {
+        let viewController = UIStoryboard(name: name, bundle: nil)
+            .instantiateViewController(withIdentifier: identifier)
+        guard let delegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+        delegate.window?.rootViewController = viewController
+    }
     
     @objc func panAction (_ sender : UIPanGestureRecognizer){
         let velocity = sender.velocity(in: scrollView)
         if pageControl.currentPage == 2 {
             if abs(velocity.x) > abs(velocity.y) {
                 if velocity.x < 0 {
-                    print("마지막에서 오른쪽")
+                    setRootViewController(name: Const.Storyboard.Login, identifier: Const.ViewController.LoginViewController)
                 }
             }
         }
@@ -81,8 +88,7 @@ class OnboardingViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func nextButtonDidTap(_ sender: Any) {
-//        SplashViewController.setRootViewController(
-        SplashViewController.s
+        setRootViewController(name: Const.Storyboard.Login, identifier: Const.ViewController.LoginViewController)
     }
 }
 
