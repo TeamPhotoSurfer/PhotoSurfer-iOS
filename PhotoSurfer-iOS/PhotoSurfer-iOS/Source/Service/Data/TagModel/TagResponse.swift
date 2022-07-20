@@ -13,7 +13,7 @@ struct TagResponse: Codable {
 }
 
 // MARK: - Tag
-struct TagMain: Codable, Hashable {
+struct TagMainResponse: Codable, Hashable {
     var recent: [Tag]
     var often: [Tag]
     var platform: [Tag]
