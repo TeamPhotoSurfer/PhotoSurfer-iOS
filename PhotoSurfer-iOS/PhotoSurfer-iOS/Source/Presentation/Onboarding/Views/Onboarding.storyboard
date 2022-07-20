@@ -24,7 +24,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="weH-cF-0V4"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="FbM-5h-NH5">
-                                <rect key="frame" x="149" y="806" width="116" height="26"/>
+                                <rect key="frame" x="149" y="826" width="116" height="26"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3A-2h-mgr">
                                 <rect key="frame" x="334" y="44" width="80" height="50"/>
@@ -48,7 +48,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Z3A-2h-mgr" secondAttribute="trailing" id="S3W-eR-0GA"/>
                             <constraint firstItem="FbM-5h-NH5" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="hWn-2n-zab"/>
                             <constraint firstItem="Z3A-2h-mgr" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hsn-ei-a26"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="FbM-5h-NH5" secondAttribute="bottom" constant="30" id="zT1-5E-wXx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="FbM-5h-NH5" secondAttribute="bottom" constant="10" id="zT1-5E-wXx"/>
                         </constraints>
                     </view>
                     <connections>

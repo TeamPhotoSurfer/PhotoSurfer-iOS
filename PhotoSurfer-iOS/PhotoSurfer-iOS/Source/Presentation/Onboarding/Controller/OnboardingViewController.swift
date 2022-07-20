@@ -36,7 +36,17 @@ class OnboardingViewController: UIViewController {
         let panGestureRecongnizer = UIPanGestureRecognizer(target: self, action: #selector(panAction(_ :)))
         panGestureRecongnizer.delegate = self
         self.view.addGestureRecognizer(panGestureRecongnizer)
+        setNextButton()
     }
+    
+    func setNextButton() {
+        if self.presentingViewController != nil {
+            self.nextButton.isHidden = true
+        } else {
+            self.nextButton.isHidden = false
+        }
+    }
+    
     private func setPageView() {
         scrollView.frame.size.width = screenWidth
         scrollView.frame.size.height = screenHeight
@@ -77,6 +87,7 @@ class OnboardingViewController: UIViewController {
         delegate.window?.rootViewController = viewController
     }
     
+    // MARK: - Objc Function
     @objc func panAction (_ sender : UIPanGestureRecognizer){
         let velocity = sender.velocity(in: scrollView)
         if pageControl.currentPage == 2 {
