@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,16 +16,56 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qa5-MT-xYP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="z4a-hu-mrD"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="weH-cF-0V4"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="FbM-5h-NH5">
+                                <rect key="frame" x="149" y="806" width="116" height="26"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3A-2h-mgr">
+                                <rect key="frame" x="334" y="44" width="80" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="N2Y-Wr-qEe"/>
+                                    <constraint firstAttribute="width" constant="80" id="fbF-dn-bVL"/>
+                                </constraints>
+                                <color key="tintColor" name="grayWhite"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="건너뛰기">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="nextButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CT2-fR-cVH"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Z3A-2h-mgr" secondAttribute="trailing" id="S3W-eR-0GA"/>
+                            <constraint firstItem="FbM-5h-NH5" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="hWn-2n-zab"/>
+                            <constraint firstItem="Z3A-2h-mgr" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="hsn-ei-a26"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="FbM-5h-NH5" secondAttribute="bottom" constant="30" id="zT1-5E-wXx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nextButton" destination="Z3A-2h-mgr" id="EBX-we-04m"/>
+                        <outlet property="pageControl" destination="FbM-5h-NH5" id="Ng5-Pq-cb5"/>
+                        <outlet property="scrollView" destination="Qa5-MT-xYP" id="4Wu-VL-ouP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-19" y="51"/>
+            <point key="canvasLocation" x="-20.289855072463769" y="50.892857142857139"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="grayWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
