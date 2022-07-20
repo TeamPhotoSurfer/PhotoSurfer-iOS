@@ -75,9 +75,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
             guard let albumCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell, for: indexPath) as? TagAlbumCollectionViewCell else { fatalError() }
             albumCell.setDummy(album: item)
             albumCell.tag = indexPath.row
-//            albumCell.tagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
-//            albumCell.platformTagDeleteButton.addTarget(self, action: #selector(self.deleteButtonDidTap), for: .touchUpInside)
-//            albumCell.tagEditButton.addTarget(self, action: #selector(self.editButtonDidTap), for: .touchUpInside)
+            albumCell.delegate = self
             return albumCell
         })
         applySnapshot()
@@ -100,10 +98,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.view.endEditing(true)
-//    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
@@ -174,6 +168,58 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
 //    }
 }
 
+extension TagViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+//        guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
+        let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
+        tagDetailViewController.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(tagDetailViewController, animated: true)
+        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
+    }
+}
+
+extension TagViewController: MenuHandleDelegate {
+    func deleteButtonDidTap(button: UIButton) {
+        print("삭제하기 클릭")
+        var superview = button.superview
+        while superview != nil {
+            if let cell = superview as? UICollectionViewCell {
+                guard let indexPath = albumCollectionView.indexPath(for: cell),
+                      let objectIClickedOnto = dataSource.itemIdentifier(for: indexPath) else { return }
+                var snapshot = dataSource.snapshot()
+                snapshot.deleteItems([objectIClickedOnto])
+                dataSource.apply(snapshot)
+                break
+            }
+            superview = superview?.superview
+        }
+    }
+    
+    func editButtonDidTap(button: UIButton) {
+        print("수정하기 클릭")
+        var superview = button.superview
+        while superview != nil {
+            if let cell = superview as? TagAlbumCollectionViewCell {
+                guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
+                print("셀을 찾았다")
+                indexpath = indexPath
+                editToolBarView.isHidden = false
+                print("✨can?", editTagTextField.canBecomeFirstResponder)
+                DispatchQueue.global(qos: .background).async {
+                    DispatchQueue.main.async {
+                        print("🧤become", self.editTagTextField.becomeFirstResponder())
+                    }
+                }
+                editTagTextField.text = cell.tagNameButton.titleLabel?.text
+                break
+            }
+            superview = superview?.superview
+        }
+    }
+    
+}
+
 extension Album {
     static var markList = [
         Album(isMarked: true, isPlatform: true, name: "유튜브"),
@@ -202,13 +248,3 @@ extension Album {
     static var totalList = markList + list
 }
 
-extension TagViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
-        let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
-        tagDetailViewController.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(tagDetailViewController, animated: true)
-        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
-    }
-}

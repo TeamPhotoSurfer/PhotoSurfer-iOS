@@ -7,16 +7,25 @@
 
 import UIKit
 
+protocol MenuHandleDelegate {
+    func deleteButtonDidTap(button: UIButton)
+    func editButtonDidTap(button: UIButton)
+}
+
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Property
+    var delegate: MenuHandleDelegate?
     var menuItems: [UIAction] {
         return [
-            UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { _ in
+            UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { [self] _ in
                 print("태그 삭제")
+                self.delegate?.deleteButtonDidTap(button: tagMenuButton)
+                
             }),
-            UIAction(title: "태그 수정", image: UIImage(systemName: "pencil"), handler: { _ in
+            UIAction(title: "태그 수정", image: UIImage(systemName: "pencil"), handler: { [self] _ in
                 print("태그 수정")
+                self.delegate?.editButtonDidTap(button: tagMenuButton)
             })
         ]
     }
@@ -59,11 +68,19 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     func setDummy(album: Album) {
         tagStarButton.isSelected = album.isMarked
         tagNameButton.setTagName(name: album.name)
-        tagMenuButton.menu = UIMenu(
-            title: "",
-            options: [],
-            children: menuItems)
-        tagMenuButton.showsMenuAsPrimaryAction = true
+        if album.isPlatform {
+            tagMenuButton.menu = UIMenu(
+                title: "",
+                options: [],
+                children: [menuItems[0]])
+            tagMenuButton.showsMenuAsPrimaryAction = true
+        } else {
+            tagMenuButton.menu = UIMenu(
+                title: "",
+                options: [],
+                children: menuItems)
+            tagMenuButton.showsMenuAsPrimaryAction = true
+        }
     }
     
     // TODO: UIButton extension으로 만들어줘도 좋을 것 같다
