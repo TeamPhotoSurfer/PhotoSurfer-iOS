@@ -316,6 +316,11 @@ final class PictureViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    @IBAction func bottomShareButtonDidTap(_ sender: Any) {
+        shareImage(shareObject: [imageView.image ?? UIImage()])
+    }
+    
     @IBAction func shareButtonDidTap(_ sender: Any) {
         shareImage(shareObject: [imageView.image ?? UIImage()])
     }
