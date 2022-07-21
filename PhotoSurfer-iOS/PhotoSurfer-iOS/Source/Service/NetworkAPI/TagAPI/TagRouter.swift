@@ -44,7 +44,7 @@ extension TagRouter: BaseTargetType {
         case .putTagBookmark:
             return .put
         case .delTagBookmark:
-            return .put
+            return .delete
         }
     }
     
