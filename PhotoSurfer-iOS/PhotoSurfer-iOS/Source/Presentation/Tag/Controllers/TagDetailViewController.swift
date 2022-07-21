@@ -21,6 +21,7 @@ final class TagDetailViewController: UIViewController {
     // MARK: - Property
     var photoDataSource: UICollectionViewDiffableDataSource<Section, Photo>!
     var photos: [Photo] = []
+    var tag: Tag?
     
     // MARK: - IBOutlet
     @IBOutlet weak var tagNameLabel: UILabel!
@@ -37,7 +38,8 @@ final class TagDetailViewController: UIViewController {
     }
     
     private func setUI() {
-        NotificationCenter.default.addObserver(self, selector: #selector(setPhotos), name: Notification.Name("TagDetailPresent"), object: nil)
+        setTitle()
+        
     }
     
     private func setCollectionView() {
@@ -99,11 +101,30 @@ final class TagDetailViewController: UIViewController {
         photoCollectionView.delegate = self
     }
     
-    // MARK: - Objc Function
-    @objc func setPhotos(notification: NSNotification) {
+    func setTitle() {
         print("setPhotos")
-        guard let tag = notification.object as? Tag else { return }
+        guard let tag = tag else { return }
         tagNameLabel.text = tag.name
+        getPhotoSearch(id: tag.id ?? 0)
+    }
+    
+    func getPhotoSearch(id: Int) {
+        PhotoService.shared.getPhotoSearch(ids: [id]) { response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? PhotoSearchResponse else { return }
+                self.photos = data.photos
+                self.applyPhotoSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     // MARK: - IBAction
