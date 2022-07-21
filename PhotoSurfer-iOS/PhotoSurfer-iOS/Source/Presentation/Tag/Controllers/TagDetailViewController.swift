@@ -19,8 +19,8 @@ final class TagDetailViewController: UIViewController {
     }
     
     // MARK: - Property
-    var photoDataSource: UICollectionViewDiffableDataSource<Section, TagPhoto>!
-    var photos: [TagPhoto] = []
+    var photoDataSource: UICollectionViewDiffableDataSource<Section, Photo>!
+    var photos: [Photo] = []
     
     // MARK: - IBOutlet
     @IBOutlet weak var tagNameLabel: UILabel!
@@ -33,12 +33,11 @@ final class TagDetailViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
-        setDummy()
         setCollectionView()
     }
     
     private func setUI() {
-        NotificationCenter.default.addObserver(self, selector: #selector(setTagName), name: Notification.Name("TagDetailPresent"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setPhotos), name: Notification.Name("TagDetailPresent"), object: nil)
     }
     
     private func setCollectionView() {
@@ -55,15 +54,15 @@ final class TagDetailViewController: UIViewController {
     }
     
     private func setDataSource() {
-        photoDataSource = UICollectionViewDiffableDataSource<Section, TagPhoto>(collectionView: photoCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        photoDataSource = UICollectionViewDiffableDataSource<Section, Photo>(collectionView: photoCollectionView, cellProvider: { collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.PhotoCollectionViewCell, for: indexPath) as? PhotoCollectionViewCell else { fatalError() }
-            cell.setData(image: itemIdentifier.image)
+            cell.imageView.setImage(with: item.imageURL)
             return cell
         })
     }
     
     func applyPhotoSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, TagPhoto>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
         snapshot.appendSections([.photo])
         snapshot.appendItems(photos, toSection: .photo)
         photoDataSource.apply(snapshot)
@@ -80,22 +79,6 @@ final class TagDetailViewController: UIViewController {
         bottomWaveView.isHidden = !isSelectable
         selectedNavigationStackView.isHidden = !isSelectable
         selectButton.isHidden = isSelectable
-    }
-    
-    private func setDummy() {
-        photos = [
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-        ]
     }
     
     func createPhotosLayout() -> UICollectionViewLayout {
@@ -117,9 +100,10 @@ final class TagDetailViewController: UIViewController {
     }
     
     // MARK: - Objc Function
-    @objc func setTagName(notification: NSNotification) {
-        guard let object = notification.object else { return }
-        tagNameLabel.text = object as? String
+    @objc func setPhotos(notification: NSNotification) {
+        print("setPhotos")
+        guard let tag = notification.object as? Tag else { return }
+        tagNameLabel.text = tag.name
     }
     
     // MARK: - IBAction

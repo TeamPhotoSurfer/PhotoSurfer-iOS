@@ -136,6 +136,25 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+//    func getPhotoSearch(id: Int) {
+//        PhotoService.shared.getPhotoSearch(ids: [id]) { response in
+//            switch response {
+//            case .success(let data):
+//                guard let data = data as? PhotoSearchResponse else { return }
+//                self.photos = data.photos
+//                self.applyPhotoSnapshot()
+//            case .requestErr(_):
+//                print("requestErr")
+//            case .pathErr:
+//                print("pathErr")
+//            case .serverErr:
+//                print("serverErr")
+//            case .networkFail:
+//                print("networkFail")
+//            }
+//        }
+//    }
+    
     // MARK: - Objc Function
     @objc func editTagTextFieldDidChange(_ sender: Any?) {
         guard let tagName = self.editTagTextField?.text else { return }
@@ -155,10 +174,10 @@ extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
 //        guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
+        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item)
         let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
         tagDetailViewController.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(tagDetailViewController, animated: true)
-        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
     }
 }
 
