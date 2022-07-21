@@ -41,3 +41,13 @@ struct Push: Codable {
         case tags
     }
 }
+
+struct PostPushResponse: Codable {
+    let pushDate: String
+    let memo: String
+    let tags: [PostPushTagResponse]
+}
+
+struct PostPushTagResponse: Codable {
+    let id: Int
+}

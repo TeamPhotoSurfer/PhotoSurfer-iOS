@@ -71,13 +71,13 @@ public class PushService {
         }
     }
     
-    func postPush(photoID: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
-        pushProvider.request(.postPush(photoID: photoID)) { result in
+    func postPush(photoID: Int, pushInfo: PushAlarmRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
+        pushProvider.request(.postPush(photoID: photoID, param: pushInfo)) { result in
             switch result {
             case .success(let response):
                 let statusCode = response.statusCode
                 let data = response.data
-                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, Push.self)
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, PostPushResponse.self)
                 completion(networkResult)
             case .failure(let err):
                 print(err)

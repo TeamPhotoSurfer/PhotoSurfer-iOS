@@ -27,4 +27,12 @@ extension UIViewController {
         sheet.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in }))
         present(sheet, animated: true)
     }
+    
+    func showDismissAlert(message: String) {
+        let sheet = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        sheet.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
+        }))
+        present(sheet, animated: true)
+    }
 }

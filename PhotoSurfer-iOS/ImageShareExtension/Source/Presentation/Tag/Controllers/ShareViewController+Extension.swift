@@ -167,7 +167,6 @@ extension ShareViewController {
 extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        saveButton.isEnabled = !addedTags.isEmpty
         typingButton.setTitle(searchText, for: .normal)
         typingText = searchText
         typingTextCount = searchText.count
@@ -233,14 +232,12 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
         else {
             showAlert(message: alreadyAddedMessage)
         }
-        saveButton.isEnabled = !addedTags.isEmpty
     }
 }
 
 extension ShareViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        saveButton.isEnabled = !addedTags.isEmpty
         if dataSource.snapshot().numberOfSections <= 2 {
             didSelectItemSearching(indexPath: indexPath, collectionView: collectionView)
         }
