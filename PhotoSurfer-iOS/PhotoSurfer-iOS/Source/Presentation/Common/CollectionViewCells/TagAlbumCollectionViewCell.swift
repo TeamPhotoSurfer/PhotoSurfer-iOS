@@ -53,6 +53,8 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     }
     
     private func setCellUI() {
+        let aspectRatio: CGFloat = 110 / 163
+        
         tagBackgroundImageView.layer.cornerRadius = 8
         tagDarkView.layer.cornerRadius = 8
         tagStarButton.setImage(Const.Image.leftStarIconYellowButton, for: .selected)
