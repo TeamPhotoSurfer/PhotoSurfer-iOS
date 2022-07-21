@@ -70,7 +70,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
             tagMenuButton.menu = UIMenu(
                 title: "",
                 options: [],
-                children: menuItems)
+                children: [menuItems[0]])
             tagMenuButton.showsMenuAsPrimaryAction = true
         }
     }
