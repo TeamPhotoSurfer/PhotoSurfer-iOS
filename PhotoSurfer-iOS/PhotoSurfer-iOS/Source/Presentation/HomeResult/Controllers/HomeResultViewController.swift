@@ -18,6 +18,8 @@ final class HomeResultViewController: UIViewController {
     var photoDataSource: UICollectionViewDiffableDataSource<Section, Photo>!
     var tags: [Tag] = []
     var photos: [Photo] = []
+    var selectedPhotos: [Photo] = []
+    var isMultiSelectMode: Bool = false
     
     // MARK: - IBOutlet
     @IBOutlet weak var tagCollectionView: UICollectionView!
@@ -63,7 +65,7 @@ final class HomeResultViewController: UIViewController {
                                      forCellWithReuseIdentifier: Const.Identifier.PhotoCollectionViewCell)
     }
     
-    private func setDataSource() {
+    func setDataSource() {
         tagDataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: tagCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
             cell.setData(title: itemIdentifier.name, type: .deleteEnableBlueTag)
@@ -71,7 +73,10 @@ final class HomeResultViewController: UIViewController {
         })
         photoDataSource = UICollectionViewDiffableDataSource<Section, Photo>(collectionView: photoCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.PhotoCollectionViewCell, for: indexPath) as? PhotoCollectionViewCell else { fatalError() }
-            cell.setServerData(imageURL: itemIdentifier.imageURL)
+            cell.setServerData(imageURL: itemIdentifier.imageURL,
+                               selected: self.selectedPhotos.contains(where: {
+                $0.id == itemIdentifier.id
+            }))
             return cell
         })
     }
@@ -136,10 +141,16 @@ final class HomeResultViewController: UIViewController {
     }
     
     @IBAction func selectButtonDidTap(_ sender: Any) {
+        isMultiSelectMode.toggle()
         toggleMultiSelectedUI(isSelectable: true)
     }
     
     @IBAction func cancelButtonDidTap(_ sender: Any) {
+        isMultiSelectMode.toggle()
+        selectedPhotos = []
+        setDataSource()
+        applyTagSnapshot()
+        applyPhotoSnapshot()
         toggleMultiSelectedUI(isSelectable: false)
     }
 }
