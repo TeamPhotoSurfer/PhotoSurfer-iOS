@@ -24,12 +24,10 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     var menuItems: [UIAction] {
         return [
             UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), handler: { [self] _ in
-                print("태그 삭제")
                 self.delegate?.deleteButtonDidTap(button: tagMenuButton)
                 
             }),
             UIAction(title: "태그 수정", image: UIImage(systemName: "pencil"), handler: { [self] _ in
-                print("태그 수정")
                 self.delegate?.editButtonDidTap(button: tagMenuButton)
             })
         ]

@@ -33,15 +33,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setUI()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        removeObserver()
-    }
-    
     // MARK: - Function
-    private func removeObserver() {
-        NotificationCenter.default.removeObserver(Notification.Name("TagDetailPresent"))
-    }
-    
     private func setUI() {
         getTag()
         setEditTagTextField()
@@ -97,6 +89,10 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
                                      forCellWithReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell)
     }
     
+    func setTotalList() {
+        totalList = bookmarkedList + notBookmarkedList
+    }
+    
     private func createLayout() -> UICollectionViewCompositionalLayout {
         let itemSize = NSCollectionLayoutSize( widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -130,12 +126,26 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func setTotalList() {
-        totalList = bookmarkedList + notBookmarkedList
-    }
-    
     func putTagBookmark(id: Int) {
         TagService.shared.putTagBookmark(id: id) { response in
+            switch response {
+            case .success(let data):
+                print("✨data",data)
+                self.getTag()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func delTagBookmark(id: Int) {
+        TagService.shared.delTagBookmark(id: id) { response in
             switch response {
             case .success(let data):
                 print(data)
@@ -179,8 +189,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
 extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
-//        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item)
         guard let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController) as? TagDetailViewController else { return }
         tagDetailViewController.modalPresentationStyle = .fullScreen
         tagDetailViewController.tag = item
@@ -190,10 +198,17 @@ extension TagViewController: UICollectionViewDelegate {
 
 extension TagViewController: StarHandleDelegate {
     func starButtonTapped(cell: TagAlbumCollectionViewCell) {
+        print("✨isSelected", cell.tagStarButton.isSelected)
         print("✨starButtonDidTap")
         guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
         guard let tag = totalList?[indexPath.item] else { return }
-        putTagBookmark(id: tag.id ?? 0)
+        if cell.tagStarButton.isSelected {
+            putTagBookmark(id: tag.id ?? 0)
+        } else {
+            delTagBookmark(id: tag.id ?? 0)
+        }
+        
+        
     }
 }
 
