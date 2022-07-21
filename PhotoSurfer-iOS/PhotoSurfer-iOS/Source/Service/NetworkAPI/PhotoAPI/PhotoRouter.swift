@@ -15,6 +15,7 @@ enum PhotoRouter {
     case postPhoto(param: PhotoRequest)
     case getPhotoTag
     case putPhoto(ids: [Int])
+    case deletePhotoMenuTag(tagId: Int, photoIds: [Int])
 }
 
 extension PhotoRouter: BaseTargetType {
@@ -30,6 +31,8 @@ extension PhotoRouter: BaseTargetType {
             return URLConstant.photoTag
         case .putPhoto:
             return URLConstant.photo
+        case .deletePhotoMenuTag(let tagId, _):
+            return "\(URLConstant.photoMenuTag)/\(tagId)"
         }
     }
     
@@ -41,6 +44,8 @@ extension PhotoRouter: BaseTargetType {
             return .post
         case .putPhoto:
             return .put
+        case .deletePhotoMenuTag:
+            return .delete
         }
     }
     
@@ -52,6 +57,9 @@ extension PhotoRouter: BaseTargetType {
             return .requestPlain
         case .postPhoto(let param):
             return .uploadMultipart(makeMultiPartData(parameter: param, image: param.file))
+        case .deletePhotoMenuTag(_, let photoIds):
+            return .requestParameters(parameters: ["photoIds": photoIds],
+                                      encoding: JSONEncoding.default)
         case .putPhoto(let ids):
             return .requestParameters(parameters: ["id": ids], encoding: URLEncoding.queryString)
         }
@@ -59,7 +67,7 @@ extension PhotoRouter: BaseTargetType {
     
     var headers: [String : String]? {
         switch self {
-        case .getPhotoSearch, .getPhotoDetail, .getPhotoTag, .putPhoto:
+        case .getPhotoSearch, .getPhotoDetail, .getPhotoTag, .putPhoto, .deletePhotoMenuTag:
             return NetworkConstant.hasTokenHeader
         case .postPhoto:
             return NetworkConstant.hasMultipartHeader
