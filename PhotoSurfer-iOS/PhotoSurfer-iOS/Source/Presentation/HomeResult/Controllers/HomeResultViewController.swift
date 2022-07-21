@@ -13,6 +13,13 @@ final class HomeResultViewController: UIViewController {
         case main
     }
     
+    enum HomeResultEditMode: String {
+        case none = "검색 결과"
+        case add = "공용 태그 추가"
+        case delete = "입력된 태그 삭제"
+        case edit = "입력된 태그 수정"
+    }
+    
     // MARK: - Property
     var tagDataSource: UICollectionViewDiffableDataSource<Section, Tag>!
     var photoDataSource: UICollectionViewDiffableDataSource<Section, Photo>!
@@ -20,6 +27,7 @@ final class HomeResultViewController: UIViewController {
     var photos: [Photo] = []
     var selectedPhotos: [Photo] = []
     var isMultiSelectMode: Bool = false
+    var editMode: HomeResultEditMode = .none
     
     // MARK: - IBOutlet
     @IBOutlet weak var tagCollectionView: UICollectionView!
@@ -27,20 +35,41 @@ final class HomeResultViewController: UIViewController {
     @IBOutlet weak var selectButton: UIButton!
     @IBOutlet weak var bottomWaveView: UIView!
     @IBOutlet weak var selectedNavigationStackView: UIStackView!
+    @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var navigationTitleLabel: UILabel!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(tags.map({ $0.id }))
-        
+        setUI(mode: editMode)
         setCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        getPhotoSearch()
+        if editMode == .none {
+            getPhotoSearch()
+        }
+    }
+    
+    private func setUI(mode: HomeResultEditMode) {
+        navigationTitleLabel.text = mode.rawValue
+        switch mode {
+        case .none:
+            print("none")
+        case .add:
+            print("add")
+            selectButton.isHidden = true
+        case .delete:
+            print("delete")
+            selectButton.isHidden = true
+        case .edit:
+            print("edit")
+            selectButton.isHidden = true
+        }
     }
     
     private func setCollectionView() {
@@ -103,6 +132,14 @@ final class HomeResultViewController: UIViewController {
         self.navigationController?.pushViewController(pictureViewController, animated: true)
     }
     
+    private func goToEditResultViewController(editMode: HomeResultEditMode) {
+        guard let editResultViewController = self.storyboard?.instantiateViewController(withIdentifier: Const.ViewController.HomeResultViewController) as? HomeResultViewController else { return }
+        editResultViewController.editMode = editMode
+        editResultViewController.photos = selectedPhotos
+        editResultViewController.tags = tags
+        self.navigationController?.pushViewController(editResultViewController, animated: true)
+    }
+    
     private func toggleMultiSelectedUI(isSelectable: Bool) {
         bottomWaveView.isHidden = !isSelectable
         selectedNavigationStackView.isHidden = !isSelectable
@@ -153,6 +190,20 @@ final class HomeResultViewController: UIViewController {
         }
     }
     
+    private func setMoreButtonMenu() {
+        let addTag = UIAction(title: "태그추가") { action in
+            self.goToEditResultViewController(editMode: .add)
+        }
+        let deleteTag = UIAction(title: "태그삭제") { action in
+            self.goToEditResultViewController(editMode: .delete)
+        }
+        let editTag = UIAction(title: "태그수정") { action in
+            self.goToEditResultViewController(editMode: .edit)
+        }
+        moreButton.menu = UIMenu(title: "", children: [addTag, deleteTag, editTag])
+        moreButton.showsMenuAsPrimaryAction = true
+    }
+    
     // MARK: - IBAction
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -174,5 +225,9 @@ final class HomeResultViewController: UIViewController {
     
     @IBAction func photosDeleteButtonDidTap(_ sender: Any) {
         deletePhotos()
+    }
+    
+    @IBAction func moreButtonDidTap(_ sender: Any) {
+        setMoreButtonMenu()
     }
 }

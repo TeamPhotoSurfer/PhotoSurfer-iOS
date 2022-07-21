@@ -74,6 +74,9 @@
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="icMenuVertical"/>
+                                                <connections>
+                                                    <action selector="moreButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="4SX-zN-Vb6"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -208,6 +211,8 @@
                     </view>
                     <connections>
                         <outlet property="bottomWaveView" destination="6N8-N4-BdM" id="SON-Zg-DnK"/>
+                        <outlet property="moreButton" destination="0BB-Fk-okZ" id="Kp4-dY-soX"/>
+                        <outlet property="navigationTitleLabel" destination="kMn-8E-u36" id="k2v-Vt-aZL"/>
                         <outlet property="photoCollectionView" destination="wdd-n0-n5V" id="OFj-ab-PXr"/>
                         <outlet property="selectButton" destination="Owd-Wp-YsY" id="Ptv-9t-EYN"/>
                         <outlet property="selectedNavigationStackView" destination="HM1-et-u6P" id="5LY-jS-YH2"/>
