@@ -58,7 +58,7 @@ final class PictureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getPhotoDetail()
+        
         setViewType(type: type)
         setUI(editMode: editMode)
         setImageData()
@@ -71,6 +71,7 @@ final class PictureViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        getPhotoDetail()
         setKeyboardManagerEnable(false)
     }
     
@@ -296,5 +297,9 @@ final class PictureViewController: UIViewController {
         self.makeRequestAlert(title: "", message: "사진을 삭제하시겠습니까?", okAction: { _ in 
             self.deletePhoto()
         }, cancelAction: nil, completion: nil)
+    }
+    
+    @IBAction func backButtonDidTap(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
