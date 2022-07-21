@@ -43,27 +43,59 @@ extension HomeResultViewController {
 extension HomeResultViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if isMultiSelectMode {
-            if selectedPhotos.contains(where: {$0.id == photos[indexPath.item].id }) {
-                selectedPhotos = selectedPhotos.filter {
-                    $0.id != photos[indexPath.item].id
+        if editMode == .none {
+            if isMultiSelectMode {
+                if collectionView === photoCollectionView {
+                    if selectedPhotos.contains(where: {$0.id == photos[indexPath.item].id }) {
+                        selectedPhotos = selectedPhotos.filter {
+                            $0.id != photos[indexPath.item].id
+                        }
+                    }
+                    else {
+                        selectedPhotos.append(photos[indexPath.item])
+                    }
+                    setDataSource()
+                    applyTagSnapshot()
+                    applyPhotoSnapshot()
                 }
-                print(selectedPhotos)
+            } else {
+                if collectionView === tagCollectionView {
+                    tags.remove(at: indexPath.item)
+                    getPhotoSearch()
+                    applyTagSnapshot()
+                }
+                else {
+                    goToPictureViewController(photoId: photos[indexPath.item].id)
+                }
             }
-            else {
-                selectedPhotos.append(photos[indexPath.item])
-            }
-            setDataSource()
-            applyTagSnapshot()
-            applyPhotoSnapshot()
-        } else {
+        }
+        else if editMode == .delete {
             if collectionView === tagCollectionView {
-                tags.remove(at: indexPath.item)
-                getPhotoSearch()
-                applyTagSnapshot()
+                if let id = tags[indexPath.item].id {
+                    deleteMultiPhotoTag(deleteTagId: id)
+                    tags.remove(at: indexPath.item)
+                }
             }
-            else {
-                goToPictureViewController(photoId: photos[indexPath.item].id)
+        }
+    }
+}
+
+extension HomeResultViewController {
+    
+    func deleteMultiPhotoTag(deleteTagId: Int) {
+        PhotoService.shared.deletePhotoMenuTag(tagId: deleteTagId, photoIds: photos.map({ $0.id })) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.applyTagSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
             }
         }
     }
