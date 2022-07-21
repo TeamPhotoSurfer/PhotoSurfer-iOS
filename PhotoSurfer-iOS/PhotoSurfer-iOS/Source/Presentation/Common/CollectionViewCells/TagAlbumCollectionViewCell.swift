@@ -73,7 +73,7 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
             tagMenuButton.menu = UIMenu(
                 title: "",
                 options: [],
-                children: menuItems)
+                children: [menuItems[0]])
             tagMenuButton.showsMenuAsPrimaryAction = true
         }
     }
@@ -102,4 +102,9 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         print("✨cell", cell)
         self.starDelegate?.starButtonTapped(cell: cell)
     }
+}
+
+protocol TagAlbumCellDelegate: AnyObject {
+    // 위임해줄 기능
+    func deleteButtonDidTap()
 }

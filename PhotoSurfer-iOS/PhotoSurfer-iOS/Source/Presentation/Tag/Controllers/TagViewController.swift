@@ -70,6 +70,13 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setEmptyView()
     }
     
+    private func applySnapshotTotal(totalList: [Tag]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
+        snapshot.appendSections([.tag])
+        snapshot.appendItems(totalList, toSection: .tag)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
     private func setCollectionView() {
         registerXib()
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: albumCollectionView, cellProvider: { collectionView, indexPath, item in
@@ -80,7 +87,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
             albumCell.starDelegate = self
             return albumCell
         })
-        applySnapshot()
         albumCollectionView.collectionViewLayout = createLayout()
     }
     
@@ -191,15 +197,18 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Objc Function
     @objc func editTagTextFieldDidChange(_ sender: Any?) {
         guard let tagName = self.editTagTextField?.text else { return }
-        guard let selectedItem = dataSource.itemIdentifier(for: indexpath) else { return }
-        var updatedSelectedItem = selectedItem
-        updatedSelectedItem.name = tagName
-        var newSnapshot = dataSource.snapshot()
-//        newSnapshot.reloadItems([selectedItem])
-//        newSnapshot.reconfigureItems([selectedItem])
-        newSnapshot.insertItems([updatedSelectedItem], beforeItem: selectedItem)
-        newSnapshot.deleteItems([selectedItem])
-        dataSource.apply(newSnapshot, animatingDifferences: false, completion: nil)
+        var totalList = bookmarkedList + notBookmarkedList
+        totalList[indexpath.item].name = tagName
+        applySnapshotTotal(totalList: totalList)
+//        guard let selectedItem = dataSource.itemIdentifier(for: indexpath) else { return }
+//        var updatedSelectedItem = selectedItem
+//        updatedSelectedItem.name = tagName
+//        var newSnapshot = dataSource.snapshot()
+////        newSnapshot.reloadItems([selectedItem])
+////        newSnapshot.reconfigureItems([selectedItem])
+//        newSnapshot.insertItems([updatedSelectedItem], beforeItem: selectedItem)
+//        newSnapshot.deleteItems([selectedItem])
+//        dataSource.apply(newSnapshot, animatingDifferences: false, completion: nil)
     }
 }
 
@@ -249,24 +258,29 @@ extension TagViewController: MenuHandleDelegate {
     }
     
     func editButtonDidTap(button: UIButton) {
+        print("✨editButtonDidTap")
         var superview = button.superview
-        while superview != nil {
-            if let cell = superview as? TagAlbumCollectionViewCell {
-                guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
-                print("✨셀을 찾았다")
-                indexpath = indexPath
-                editToolBarView.isHidden = false
-                print("✨can?", editTagTextField.canBecomeFirstResponder)
-                DispatchQueue.global(qos: .background).async {
-                    DispatchQueue.main.async {
-                        print("✨become", self.editTagTextField.becomeFirstResponder())
-                    }
-                }
-                editTagTextField.text = cell.tagNameButton.titleLabel?.text
-                break
-            }
-            superview = superview?.superview
-        }
+        guard let cell = superview as? TagAlbumCollectionViewCell else { return }
+        guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
+        print("✨셀을 찾았다")
+        indexpath = indexPath
+        editToolBarView.isHidden = false
+        print("✨can?", editTagTextField.canBecomeFirstResponder)
+        print("✨become", self.editTagTextField.becomeFirstResponder())
+        editTagTextField.text = cell.tagNameButton.titleLabel?.text
+//        while superview != nil {
+//            if let cell = superview as? TagAlbumCollectionViewCell {
+//                guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
+//                print("✨셀을 찾았다")
+//                indexpath = indexPath
+//                editToolBarView.isHidden = false
+//                print("✨can?", editTagTextField.canBecomeFirstResponder)
+//                print("✨become", self.editTagTextField.becomeFirstResponder())
+//                editTagTextField.text = cell.tagNameButton.titleLabel?.text
+//                break
+//            }
+//            superview = superview?.superview
+//        }
     }
     
     // MARK: - IBAction
