@@ -49,7 +49,7 @@ public class PhotoService {
             case .success(let response):
                 let statusCode = response.statusCode
                 let data = response.data
-                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, PhotoSearchResponse.self)
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, Photo.self)
                 completion(networkResult)
             case .failure(let err):
                 print(err)
