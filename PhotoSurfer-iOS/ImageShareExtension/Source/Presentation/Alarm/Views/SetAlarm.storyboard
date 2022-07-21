@@ -263,7 +263,7 @@
                                     <constraint firstAttribute="height" constant="59" id="SR9-bB-jKp"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdh-qf-iht">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdh-qf-iht">
                                 <rect key="frame" x="0.0" y="44" width="415" height="720"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="xAU-o6-nG8">
