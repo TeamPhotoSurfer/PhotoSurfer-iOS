@@ -26,12 +26,12 @@ struct Day: Codable {
 // MARK: - Push
 struct Push: Codable {
     let uuid = UUID()
-    let id: Int
+    let id: Int? = nil
     let pushDate: String
-    let imageURL: String
+    let imageURL: String? = nil
     let memo: String
-    let photoID: Int
-    let tags: [String]
+    let photoID: Int? = nil
+    let tags: [Tag]
 
     enum CodingKeys: String, CodingKey {
         case id, pushDate
