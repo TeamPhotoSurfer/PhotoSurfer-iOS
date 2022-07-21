@@ -31,6 +31,8 @@ final class SetAlarmViewController: UIViewController {
     let bellAnimationView = AnimationView()
     let surfingAnimationView = AnimationView()
     var keyboardShowedCount: Int = 0
+    var tags: [Tag] = []
+    var image: UIImage = UIImage()
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -38,6 +40,7 @@ final class SetAlarmViewController: UIViewController {
 
         setUI()
         setKeyboard()
+        postImageNTags(imagefile: image, tags: tags)
     }
     
     // MARK: - Function
@@ -45,9 +48,16 @@ final class SetAlarmViewController: UIViewController {
         setCommentTimeView()
         setTextView()
         setAlarmButton.layer.cornerRadius = 8
-        settingTimeButton.layer.cornerRadius = 8
+        setTimeButton()
         datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
         setLottie()
+        setRepresentTag()
+    }
+    
+    private func setTimeButton() {
+        settingTimeButton.layer.cornerRadius = 8
+        settingTimeButton.titleLabel?.numberOfLines = 1
+        settingTimeButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     private func setKeyboard() {
@@ -84,6 +94,40 @@ final class SetAlarmViewController: UIViewController {
             self.surfingAnimationView.stop()
             self.loadingView.isHidden = true
         }
+    }
+    
+    private func postImageNTags(imagefile: UIImage, tags: [Tag]) {
+        let photoRequest: PhotoRequest = PhotoRequest(file: imagefile, tags: tags)
+        PhotoService.shared.postPhoto(photoInfo: photoRequest) { result in
+            switch result {
+            case .success(let data):
+                print("successess")
+                guard let data = data as? Photo else { return }
+                print(data.imageURL)
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    private func setRepresentTag() {
+        var selectedTag: String = ""
+        var tagCount = (tags.count <= 3) ? tags.count : 3
+        for index in 0..<tagCount {
+            switch index {
+            case tags.count-1:
+                selectedTag += "#\(tags[index].name)"
+            default:
+                selectedTag += "#\(tags[index].name), "
+            }
+        }
+        setRepresentTagButton.setTitle(selectedTag, for: .normal)
     }
     
     // MARK: - Objc Function
@@ -128,6 +172,7 @@ final class SetAlarmViewController: UIViewController {
             return
         }
         setRepresentTagViewController.delegate = self
+        setRepresentTagViewController.tags = tags
         self.navigationController?.pushViewController(setRepresentTagViewController, animated: true)
     }
     
@@ -139,6 +184,9 @@ final class SetAlarmViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.datePickerView.isHidden.toggle()
         }
+    }
+    @IBAction func saveAlarmButton(_ sender: UIButton) {
+        
     }
 }
 

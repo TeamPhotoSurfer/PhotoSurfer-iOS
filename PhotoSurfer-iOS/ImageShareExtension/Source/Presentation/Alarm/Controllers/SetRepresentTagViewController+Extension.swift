@@ -10,6 +10,8 @@ import UIKit
 extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print(tags.count)
         return tags.count
     }
     
@@ -20,6 +22,9 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
         cell.tagButton.setTitle(tags[indexPath.row].name, for: .normal)
         cell.selectButton.addTarget(self, action: #selector(self.selectButtonDidTap),
                                     for: .touchUpInside)
+        if indexPath.row <= 2 {
+            cell.checkButton.isSelected = true
+        }
         return cell
     }
     
