@@ -178,6 +178,9 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
             typingView.isHidden = true
             return
         }
+        UIView.animate(withDuration: 0.5) {
+            self.typingViewTopConstraint.constant = self.typingButtonTopConstValue
+        }
         typingView.isHidden = false
         if searchText.count >= 1 {
             isTyping = true
@@ -211,6 +214,7 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
                 }
                 if !isAddedTagContainItem {
                     addedTags.append(Tag(name: typingText))
+                    searchBar.text = nil
                 }
                 else {
                     showAlert(message: alreadyAddedMessage)
@@ -267,7 +271,7 @@ extension ShareViewController: UICollectionViewDelegate {
         case 0:
             setDeselectedTagUI(indexPath: indexPath, collectionView: collectionView)
             addedTags.remove(at: indexPath.item)
-            if addedTags.count < 0 {
+            if addedTags.count <= 0 {
                 UIView.animate(withDuration: 0.5) {
                     self.typingViewTopConstraint.constant += 34
                 }
@@ -294,7 +298,7 @@ extension ShareViewController: UICollectionViewDelegate {
             else {
                 addedTags.append(Tag(name: tagType[indexPath.item].name, bookmarkStatus: nil, imageURL: nil, tagType: nil))
                 setTagUI(indexPath: indexPath, collectionView: collectionView, isAdded: true)
-                if addedTags.count < 0 {
+                if addedTags.count <= 0 {
                     UIView.animate(withDuration: 0.5) {
                         self.typingViewTopConstraint.constant = self.typingButtonTopConstValue
                     }
