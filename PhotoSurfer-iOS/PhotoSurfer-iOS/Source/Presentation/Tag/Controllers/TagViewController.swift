@@ -130,7 +130,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         TagService.shared.putTagBookmark(id: id) { response in
             switch response {
             case .success(let data):
-                print(data)
+                print("✨data",data)
                 self.getTag()
             case .requestErr(_):
                 print("requestErr")
@@ -198,10 +198,17 @@ extension TagViewController: UICollectionViewDelegate {
 
 extension TagViewController: StarHandleDelegate {
     func starButtonTapped(cell: TagAlbumCollectionViewCell) {
+        print("✨isSelected", cell.tagStarButton.isSelected)
         print("✨starButtonDidTap")
         guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
         guard let tag = totalList?[indexPath.item] else { return }
-        putTagBookmark(id: tag.id ?? 0)
+        if cell.tagStarButton.isSelected {
+            putTagBookmark(id: tag.id ?? 0)
+        } else {
+            delTagBookmark(id: tag.id ?? 0)
+        }
+        
+        
     }
 }
 
