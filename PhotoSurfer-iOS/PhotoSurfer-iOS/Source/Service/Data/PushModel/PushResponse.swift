@@ -31,7 +31,7 @@ struct Push: Codable {
     let imageURL: String
     let memo: String
     let photoID: Int
-    let tags: [String]
+    let tags: [Tag]
 
     enum CodingKeys: String, CodingKey {
         case id, pushDate
