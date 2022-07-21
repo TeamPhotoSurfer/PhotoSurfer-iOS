@@ -135,6 +135,24 @@ final class HomeResultViewController: UIViewController {
         }
     }
     
+    func deletePhotos() {
+        PhotoService.shared.putPhoto(ids: selectedPhotos.map({ $0.id })) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.getPhotoSearch()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     // MARK: - IBAction
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -152,5 +170,9 @@ final class HomeResultViewController: UIViewController {
         applyTagSnapshot()
         applyPhotoSnapshot()
         toggleMultiSelectedUI(isSelectable: false)
+    }
+    
+    @IBAction func photosDeleteButtonDidTap(_ sender: Any) {
+        deletePhotos()
     }
 }
