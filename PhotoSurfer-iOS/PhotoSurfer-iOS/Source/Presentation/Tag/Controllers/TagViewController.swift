@@ -162,6 +162,23 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func delTag(id: Int) {
+        TagService.shared.delTag(id: id) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
     }
@@ -220,6 +237,8 @@ extension TagViewController: MenuHandleDelegate {
             if let cell = superview as? UICollectionViewCell {
                 guard let indexPath = albumCollectionView.indexPath(for: cell),
                       let objectIClickedOnto = dataSource.itemIdentifier(for: indexPath) else { return }
+                guard let tag = totalList?[indexPath.item] else { return }
+                delTag(id: tag.id ?? 0)
                 var snapshot = dataSource.snapshot()
                 snapshot.deleteItems([objectIClickedOnto])
                 dataSource.apply(snapshot)
