@@ -17,6 +17,7 @@ enum PhotoRouter {
     case putPhoto(ids: [Int])
     case deletePhotoMenuTag(tagId: Int, photoIds: [Int])
     case postAddPhotoMenuTag(photoId: [Int], name: String, type: TagType)
+    case putPhotoMenuTag(tagId: Int, name: String, type: TagType, photoIds: [Int])
 }
 
 extension PhotoRouter: BaseTargetType {
@@ -36,6 +37,8 @@ extension PhotoRouter: BaseTargetType {
             return "\(URLConstant.photoMenuTag)/\(tagId)"
         case .postAddPhotoMenuTag:
             return URLConstant.photoMenuTag
+        case .putPhotoMenuTag(let tagId, _, _, _):
+            return "\(URLConstant.photoMenuTag)/\(tagId)"
         }
     }
     
@@ -45,7 +48,7 @@ extension PhotoRouter: BaseTargetType {
             return .get
         case .postPhoto, .postAddPhotoMenuTag:
             return .post
-        case .putPhoto:
+        case .putPhoto, .putPhotoMenuTag:
             return .put
         case .deletePhotoMenuTag:
             return .delete
@@ -70,12 +73,17 @@ extension PhotoRouter: BaseTargetType {
                                                    "name": name,
                                                    "type": type.rawValue],
                                       encoding: JSONEncoding.default)
+        case .putPhotoMenuTag(_, let name, let type, let photoIds):
+            return .requestParameters(parameters: ["name": name,
+                                                   "tagType": type.rawValue,
+                                                   "photoIds": photoIds],
+                                      encoding: JSONEncoding.default)
         }
     }
     
     var headers: [String : String]? {
         switch self {
-        case .getPhotoSearch, .getPhotoDetail, .getPhotoTag, .putPhoto, .deletePhotoMenuTag, .postAddPhotoMenuTag:
+        case .getPhotoSearch, .getPhotoDetail, .getPhotoTag, .putPhoto, .deletePhotoMenuTag, .postAddPhotoMenuTag, .putPhotoMenuTag:
             return NetworkConstant.hasTokenHeader
         case .postPhoto:
             return NetworkConstant.hasMultipartHeader

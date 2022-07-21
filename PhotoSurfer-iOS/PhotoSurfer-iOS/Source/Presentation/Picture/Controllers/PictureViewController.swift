@@ -35,6 +35,7 @@ final class PictureViewController: UIViewController {
     var editMode: PictureEditMode = .none
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
     var tags: [Tag] = []
+    var editIdx: Int?
     
     // MARK: - IBOutlet
     @IBOutlet weak var navigationPictureButtonContainerStackView: UIStackView!
