@@ -10,6 +10,7 @@ import Foundation
 import Moya
 
 enum PushRouter {
+    case getPush(id: Int)
     case getPushListLast
     case getPushListCome
     case getPushListToday
@@ -18,6 +19,8 @@ enum PushRouter {
 extension PushRouter: BaseTargetType {
     var path: String {
         switch self {
+        case .getPush(let id):
+            return "\(URLConstant.push)/\(id)"
         case .getPushListLast:
             return URLConstant.pushListLast
         case .getPushListCome:
@@ -29,21 +32,21 @@ extension PushRouter: BaseTargetType {
     
     var method: Moya.Method {
         switch self {
-        case .getPushListToday, .getPushListLast, .getPushListCome:
+        case .getPush, .getPushListToday, .getPushListLast, .getPushListCome:
             return .get
         }
     }
     
     var task: Task {
         switch self {
-        case .getPushListToday, .getPushListLast, .getPushListCome:
+        case .getPush, .getPushListToday, .getPushListLast, .getPushListCome:
             return .requestPlain
         }
     }
     
     var headers: [String : String]? {
         switch self {
-        case .getPushListToday, .getPushListLast, .getPushListCome:
+        case .getPush, .getPushListToday, .getPushListLast, .getPushListCome:
             return NetworkConstant.hasTokenHeader
         }
     }
