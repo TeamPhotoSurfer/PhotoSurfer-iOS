@@ -210,13 +210,17 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomWaveImageContainerView" destination="6N8-N4-BdM" id="8Nw-Mm-xWU"/>
                         <outlet property="bottomWaveView" destination="6N8-N4-BdM" id="SON-Zg-DnK"/>
+                        <outlet property="deleteButton" destination="2KO-nG-Egh" id="Gn5-gM-csW"/>
                         <outlet property="moreButton" destination="0BB-Fk-okZ" id="Kp4-dY-soX"/>
                         <outlet property="navigationTitleLabel" destination="kMn-8E-u36" id="k2v-Vt-aZL"/>
                         <outlet property="photoCollectionView" destination="wdd-n0-n5V" id="OFj-ab-PXr"/>
                         <outlet property="selectButton" destination="Owd-Wp-YsY" id="Ptv-9t-EYN"/>
                         <outlet property="selectedNavigationStackView" destination="HM1-et-u6P" id="5LY-jS-YH2"/>
+                        <outlet property="shareButton" destination="968-8H-L9B" id="XZA-cF-lUb"/>
                         <outlet property="tagCollectionView" destination="hBk-M8-NAk" id="RRk-yb-M9A"/>
+                        <outlet property="waveImageView" destination="aYW-A3-9BH" id="RDF-1V-SgT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

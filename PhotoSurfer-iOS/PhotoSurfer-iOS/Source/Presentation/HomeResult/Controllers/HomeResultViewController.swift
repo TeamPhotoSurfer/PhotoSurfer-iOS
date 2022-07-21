@@ -30,6 +30,8 @@ final class HomeResultViewController: UIViewController {
     var editMode: HomeResultEditMode = .none
     
     // MARK: - IBOutlet
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var tagCollectionView: UICollectionView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
     @IBOutlet weak var selectButton: UIButton!
@@ -37,6 +39,8 @@ final class HomeResultViewController: UIViewController {
     @IBOutlet weak var selectedNavigationStackView: UIStackView!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var navigationTitleLabel: UILabel!
+    @IBOutlet weak var waveImageView: UIImageView!
+    @IBOutlet weak var bottomWaveImageContainerView: UIView!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -62,14 +66,21 @@ final class HomeResultViewController: UIViewController {
             print("none")
         case .add:
             print("add")
-            selectButton.isHidden = true
+            setEditModeUI()
         case .delete:
             print("delete")
-            selectButton.isHidden = true
+            setEditModeUI()
         case .edit:
             print("edit")
-            selectButton.isHidden = true
+            setEditModeUI()
         }
+    }
+    
+    private func setEditModeUI() {
+        selectButton.isHidden = true
+        bottomWaveImageContainerView.isHidden = false
+        deleteButton.isHidden = true
+        shareButton.isHidden = true
     }
     
     private func setCollectionView() {
@@ -97,7 +108,7 @@ final class HomeResultViewController: UIViewController {
     func setDataSource() {
         tagDataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: tagCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            cell.setData(title: itemIdentifier.name, type: .deleteEnableBlueTag)
+            cell.setData(title: itemIdentifier.name, type: self.editMode == .none ? .deleteEnableBlueTag : .defaultBlueTag)
             return cell
         })
         photoDataSource = UICollectionViewDiffableDataSource<Section, Photo>(collectionView: photoCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
