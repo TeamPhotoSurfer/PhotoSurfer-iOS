@@ -258,8 +258,13 @@ final class SetAlarmViewController: UIViewController {
         if textViewPlaceHolder != memoTextView.text {
             memo = self.memoTextView.text
         }
-        let pushRequest = PushAlarmRequest(memo: memo, pushDate: date, tagIDs: tagIDs)
-        postPushAlarm(pushAlarm: pushRequest)
+        if setDateToString(date: datePicker.date) == setDateToString(date: Date()) {
+            showAlert(message: "푸시알림 설정 날짜는 오늘 날짜 이후여야 합니다.")
+        }
+        else {
+            let pushRequest = PushAlarmRequest(memo: memo, pushDate: date, tagIDs: tagIDs)
+            postPushAlarm(pushAlarm: pushRequest)
+        }
     }
 }
 
