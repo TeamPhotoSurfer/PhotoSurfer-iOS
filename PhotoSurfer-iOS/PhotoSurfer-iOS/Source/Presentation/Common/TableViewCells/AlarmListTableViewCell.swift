@@ -31,7 +31,7 @@ final class AlarmListTableViewCell: UITableViewCell {
         photoImageView.setImage(with: push.imageURL)
         var tagText = ""
         for tag in push.tags {
-            tagText += "#\(tag) "
+            tagText += "#\(tag.name) "
         }
         tagLabel.text = tagText
         dateLabel.text = push.pushDate
