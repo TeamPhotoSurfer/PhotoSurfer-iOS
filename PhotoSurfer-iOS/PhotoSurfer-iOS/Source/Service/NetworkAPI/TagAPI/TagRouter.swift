@@ -15,6 +15,7 @@ enum TagRouter {
     case getTag
     case putTagBookmark(tagId: Int)
     case delTagBookmark(tagId: Int)
+    case delTag(tagId: Int)
 }
 
 extension TagRouter: BaseTargetType {
@@ -30,6 +31,8 @@ extension TagRouter: BaseTargetType {
             return "\(URLConstant.tagBookmark)/\(id)"
         case .delTagBookmark(let id):
             return "\(URLConstant.tagBookmark)/\(id)"
+        case .delTag(let id):
+            return "\(URLConstant.tag)/\(id)"
         }
     }
     
@@ -44,6 +47,8 @@ extension TagRouter: BaseTargetType {
         case .putTagBookmark:
             return .put
         case .delTagBookmark:
+            return .delete
+        case .delTag:
             return .delete
         }
     }
@@ -60,6 +65,8 @@ extension TagRouter: BaseTargetType {
             return .requestPlain
         case .delTagBookmark:
             return .requestPlain
+        case .delTag:
+            return .requestPlain
         }
     }
     
@@ -74,6 +81,8 @@ extension TagRouter: BaseTargetType {
         case .putTagBookmark:
             return NetworkConstant.hasTokenHeader
         case .delTagBookmark:
+            return NetworkConstant.hasTokenHeader
+        case .delTag:
             return NetworkConstant.hasTokenHeader
         }
     }
