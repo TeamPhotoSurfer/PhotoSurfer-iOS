@@ -234,6 +234,7 @@
                         <outlet property="completeButton" destination="hKX-hV-Q1G" id="n79-Rh-LVF"/>
                         <outlet property="dateButton" destination="FRV-Ji-tdD" id="sJV-0h-rB2"/>
                         <outlet property="memoTextView" destination="sIT-Zi-nSX" id="ljq-jq-lno"/>
+                        <outlet property="tagLabel" destination="SxF-st-9Wf" id="J2t-L0-Bfd"/>
                         <outlet property="topViewHeightConstraint" destination="Koy-L5-zBD" id="Kd3-ff-zVW"/>
                     </connections>
                 </viewController>

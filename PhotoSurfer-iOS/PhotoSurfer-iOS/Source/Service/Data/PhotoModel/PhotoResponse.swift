@@ -26,3 +26,7 @@ struct Photo: Codable, Hashable {
         case push
     }
 }
+
+struct PhotoMenuTag: Codable, Hashable {
+    let countDeletedPhoto: Int
+}

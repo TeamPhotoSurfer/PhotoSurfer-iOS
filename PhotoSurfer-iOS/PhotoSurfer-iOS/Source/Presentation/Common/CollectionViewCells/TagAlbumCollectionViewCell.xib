@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="172" height="120"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shapeWhitelogo" translatesAutoresizingMaskIntoConstraints="NO" id="oUn-4v-pZB" userLabel="background">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tagBlankImage" translatesAutoresizingMaskIntoConstraints="NO" id="oUn-4v-pZB" userLabel="background">
                         <rect key="frame" x="5" y="5" width="162" height="110"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FP1-dg-bxG">
@@ -97,6 +97,6 @@
     <resources>
         <image name="leftStarIconWhiteButton" width="40" height="40"/>
         <image name="rightThreedotsIconWhiteButton" width="40" height="40"/>
-        <image name="shapeWhitelogo" width="1024" height="1024"/>
+        <image name="tagBlankImage" width="1202" height="816"/>
     </resources>
 </document>
