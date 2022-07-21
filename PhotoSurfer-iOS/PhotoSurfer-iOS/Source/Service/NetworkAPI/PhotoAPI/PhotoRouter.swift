@@ -45,8 +45,8 @@ extension PhotoRouter: BaseTargetType {
             return .requestParameters(parameters: ["id": ids], encoding: URLEncoding.default)
         case .getPhotoDetail, .getPhotoTag:
             return .requestPlain
-        case .postPhoto:
-            return .requestPlain
+        case .postPhoto(let param):
+            return .uploadMultipart(makeMultiPartData(parameter: param, image: param.file))
         }
     }
     
@@ -55,7 +55,28 @@ extension PhotoRouter: BaseTargetType {
         case .getPhotoSearch, .getPhotoDetail, .getPhotoTag:
             return NetworkConstant.hasTokenHeader
         case .postPhoto:
-            return NetworkConstant.hasTokenHeader
+            return NetworkConstant.hasMultipartHeader
         }
+    }
+}
+
+extension PhotoRouter {
+    func makeMultiPartData(parameter: PhotoRequest, image: UIImage?) -> [Moya.MultipartFormData] {
+        var multiPartData: [Moya.MultipartFormData] = []
+        if let imageData = image {
+            let imageFile = MultipartFormData(provider: .data(imageData.jpegData(compressionQuality: 1) ?? Data()),
+                                              name: "file",
+                                              fileName: "surfer.jpg",
+                                              mimeType: "image/jpeg")
+            multiPartData.append(imageFile)
+        }
+        for i in 0..<parameter.tags.count {
+            let name = parameter.tags[i].name.data(using: .utf8) ?? Data()
+            let type = parameter.tags[i].tagType?.rawValue.data(using: .utf8) ?? Data()
+            multiPartData.append(MultipartFormData(provider: .data(name), name: "tags[\(i)][name]"))
+            multiPartData.append(MultipartFormData(provider: .data(type), name: "tags[\(i)][type]"))
+        }
+        
+        return multiPartData
     }
 }
