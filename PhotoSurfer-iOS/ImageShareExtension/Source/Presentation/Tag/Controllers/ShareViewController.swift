@@ -13,7 +13,11 @@ import MobileCoreServices
 final class ShareViewController: UIViewController {
     
     // MARK: - Property
-    var addedTags: [Tag] = []
+    var addedTags: [Tag] = [] {
+        willSet {
+            saveButton.isEnabled = !newValue.isEmpty
+        }
+    }
     var recentTags: [Tag] = []
     var oftenTags: [Tag] = []
     var platformTags: [Tag] = []

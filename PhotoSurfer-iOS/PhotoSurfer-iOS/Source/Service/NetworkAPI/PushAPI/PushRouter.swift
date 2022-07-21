@@ -14,7 +14,7 @@ enum PushRouter {
     case getPushListLast
     case getPushListCome
     case getPushListToday
-    case postPush(photoID: Int)
+    case postPush(photoID: Int, param: PushAlarmRequest)
 }
 
 extension PushRouter: BaseTargetType {
@@ -28,7 +28,7 @@ extension PushRouter: BaseTargetType {
             return URLConstant.pushListCome
         case .getPushListToday:
             return URLConstant.pushListToday
-        case .postPush(let photoID):
+        case .postPush(let photoID, _):
             return "\(URLConstant.push)/\(photoID)"
         }
     }
@@ -46,8 +46,11 @@ extension PushRouter: BaseTargetType {
         switch self {
         case .getPush, .getPushListToday, .getPushListLast, .getPushListCome:
             return .requestPlain
-        case .postPush:
-            return .requestPlain
+        case .postPush(_, let param):
+            return .requestParameters(parameters: ["memo": param.memo,
+                                                   "pushDate": param.pushDate,
+                                                   "tagIds": param.tagIDs],
+                                      encoding: JSONEncoding.default)
         }
     }
     
