@@ -126,12 +126,26 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func setTotalList() {
-        totalList = bookmarkedList + notBookmarkedList
-    }
-    
     func putTagBookmark(id: Int) {
         TagService.shared.putTagBookmark(id: id) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.getTag()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func delTagBookmark(id: Int) {
+        TagService.shared.delTagBookmark(id: id) { response in
             switch response {
             case .success(let data):
                 print(data)
