@@ -78,7 +78,10 @@ class LoginViewController: UIViewController {
                     print("카카오톡 로그인 loginWithKakaoTalk() success.")
                     _ = oauthToken
                     if let accessToken = oauthToken?.accessToken {
-                        print(accessToken)
+                        print("✨accessToken", accessToken)
+                    }
+                    if let refreshToken = oauthToken?.refreshToken {
+                        print("✨refreshToken", refreshToken)
                     }
                     self.changeRootViewController()
                 }

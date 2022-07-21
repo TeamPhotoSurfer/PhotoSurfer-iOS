@@ -96,3 +96,8 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         tagStarButton.isSelected.toggle()
     }
 }
+
+protocol TagAlbumCellDelegate: AnyObject {
+    // 위임해줄 기능
+    func deleteButtonDidTap()
+}
