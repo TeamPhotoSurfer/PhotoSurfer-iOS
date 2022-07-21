@@ -115,6 +115,8 @@
 		15BE00362887442F008C80B2 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE00352887442F008C80B2 /* PhotoResponse.swift */; };
 		15BE00382887469A008C80B2 /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE00372887469A008C80B2 /* NetworkConstant.swift */; };
 		15BE003A28874B28008C80B2 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE003928874B28008C80B2 /* UIImageView+.swift */; };
+		15BE0042288A12E0008C80B2 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BE0041288A12E0008C80B2 /* NotificationService.swift */; };
+		15BE0046288A12E0008C80B2 /* NotificationPushExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 15BE003F288A12E0008C80B2 /* NotificationPushExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		15C4BFCE28842F3C0099CA8D /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */; };
 		15C4BFD028842F5D0099CA8D /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFCF28842F5D0099CA8D /* URLConstant.swift */; };
 		15C4BFD228842FAF0099CA8D /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */; };
@@ -128,6 +130,7 @@
 		15D1DEF22875BE0900852617 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF02875BE0900852617 /* Main.storyboard */; };
 		15D1DEF42875BE0C00852617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF32875BE0C00852617 /* Assets.xcassets */; };
 		15D1DEF72875BE0C00852617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1DEF52875BE0C00852617 /* LaunchScreen.storyboard */; };
+		7A03C7EBBA5E25F99B74D13F /* Pods_NotificationPushExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42548F93CE2FCC0FA54FEF18 /* Pods_NotificationPushExtension.framework */; };
 		8BD253CFC87C17C8EE4EDC06 /* Pods_PhotoSurfer_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */; };
 		DD0C047F28883A6E00C58A93 /* AlarmOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0C047E28883A6E00C58A93 /* AlarmOnboarding.storyboard */; };
 		DD0C048128883A7800C58A93 /* AlarmOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0C048028883A7800C58A93 /* AlarmOnboardingViewController.swift */; };
@@ -163,6 +166,13 @@
 			remoteGlobalIDString = 086F1822287BED350061422F;
 			remoteInfo = ImageShareExtension;
 		};
+		15BE0044288A12E0008C80B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15D1DEDF2875BE0900852617 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15BE003E288A12E0008C80B2;
+			remoteInfo = NotificationPushExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -173,6 +183,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				086F182D287BED350061422F /* ImageShareExtension.appex in Embed App Extensions */,
+				15BE0046288A12E0008C80B2 /* NotificationPushExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +274,9 @@
 		15BE00352887442F008C80B2 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
 		15BE00372887469A008C80B2 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
 		15BE003928874B28008C80B2 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		15BE003F288A12E0008C80B2 /* NotificationPushExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationPushExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		15BE0041288A12E0008C80B2 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		15BE0043288A12E0008C80B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15C4BFCD28842F3C0099CA8D /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		15C4BFCF28842F5D0099CA8D /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		15C4BFD128842FAF0099CA8D /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
@@ -279,9 +293,12 @@
 		15D1DEF62875BE0C00852617 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15D1DEF82875BE0C00852617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FC916B927CB096BE2F53174 /* Pods_ImageShareExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageShareExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42548F93CE2FCC0FA54FEF18 /* Pods_NotificationPushExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotificationPushExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69AE80DAAACCE71EE8AB7F58 /* Pods-PhotoSurfer-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSurfer-iOS.debug.xcconfig"; path = "Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoSurfer_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74FDA0FD6F56221DEF453008 /* Pods-ImageShareExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageShareExtension.release.xcconfig"; path = "Target Support Files/Pods-ImageShareExtension/Pods-ImageShareExtension.release.xcconfig"; sourceTree = "<group>"; };
+		A84E8144541C38D7A1CABA7E /* Pods-NotificationPushExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationPushExtension.debug.xcconfig"; path = "Target Support Files/Pods-NotificationPushExtension/Pods-NotificationPushExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		B73184103DED013C86F32517 /* Pods-NotificationPushExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationPushExtension.release.xcconfig"; path = "Target Support Files/Pods-NotificationPushExtension/Pods-NotificationPushExtension.release.xcconfig"; sourceTree = "<group>"; };
 		DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoSurfer-iOS.release.xcconfig"; path = "Target Support Files/Pods-PhotoSurfer-iOS/Pods-PhotoSurfer-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		DD0C047E28883A6E00C58A93 /* AlarmOnboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AlarmOnboarding.storyboard; sourceTree = "<group>"; };
 		DD0C048028883A7800C58A93 /* AlarmOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmOnboardingViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +332,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8D50F2B92EBE73B864A66DB /* Pods_ImageShareExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15BE003C288A12E0008C80B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A03C7EBBA5E25F99B74D13F /* Pods_NotificationPushExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -916,6 +941,15 @@
 			path = PhotoModel;
 			sourceTree = "<group>";
 		};
+		15BE0040288A12E0008C80B2 /* NotificationPushExtension */ = {
+			isa = PBXGroup;
+			children = (
+				15BE0041288A12E0008C80B2 /* NotificationService.swift */,
+				15BE0043288A12E0008C80B2 /* Info.plist */,
+			);
+			path = NotificationPushExtension;
+			sourceTree = "<group>";
+		};
 		15C4BFD7288477E10099CA8D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -948,6 +982,7 @@
 			children = (
 				15D1DEE92875BE0900852617 /* PhotoSurfer-iOS */,
 				086F1824287BED350061422F /* ImageShareExtension */,
+				15BE0040288A12E0008C80B2 /* NotificationPushExtension */,
 				15D1DEE82875BE0900852617 /* Products */,
 				A72973B735C5EECEE350F07C /* Pods */,
 				AD9D82EF8E0B682BCFDD041C /* Frameworks */,
@@ -959,6 +994,7 @@
 			children = (
 				15D1DEE72875BE0900852617 /* PhotoSurfer-iOS.app */,
 				086F1823287BED350061422F /* ImageShareExtension.appex */,
+				15BE003F288A12E0008C80B2 /* NotificationPushExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -982,6 +1018,8 @@
 				74FDA0FD6F56221DEF453008 /* Pods-ImageShareExtension.release.xcconfig */,
 				69AE80DAAACCE71EE8AB7F58 /* Pods-PhotoSurfer-iOS.debug.xcconfig */,
 				DA01E68971CF9CAC14438C77 /* Pods-PhotoSurfer-iOS.release.xcconfig */,
+				A84E8144541C38D7A1CABA7E /* Pods-NotificationPushExtension.debug.xcconfig */,
+				B73184103DED013C86F32517 /* Pods-NotificationPushExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -991,6 +1029,7 @@
 			children = (
 				3FC916B927CB096BE2F53174 /* Pods_ImageShareExtension.framework */,
 				6B72F2CFE0FA90653DD870C0 /* Pods_PhotoSurfer_iOS.framework */,
+				42548F93CE2FCC0FA54FEF18 /* Pods_NotificationPushExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1131,6 +1170,24 @@
 			productReference = 086F1823287BED350061422F /* ImageShareExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		15BE003E288A12E0008C80B2 /* NotificationPushExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15BE0049288A12E0008C80B2 /* Build configuration list for PBXNativeTarget "NotificationPushExtension" */;
+			buildPhases = (
+				851192AF4D869097146369FB /* [CP] Check Pods Manifest.lock */,
+				15BE003B288A12E0008C80B2 /* Sources */,
+				15BE003C288A12E0008C80B2 /* Frameworks */,
+				15BE003D288A12E0008C80B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationPushExtension;
+			productName = NotificationPushExtension;
+			productReference = 15BE003F288A12E0008C80B2 /* NotificationPushExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		15D1DEE62875BE0900852617 /* PhotoSurfer-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15D1DEFB2875BE0C00852617 /* Build configuration list for PBXNativeTarget "PhotoSurfer-iOS" */;
@@ -1146,6 +1203,7 @@
 			);
 			dependencies = (
 				086F182C287BED350061422F /* PBXTargetDependency */,
+				15BE0045288A12E0008C80B2 /* PBXTargetDependency */,
 			);
 			name = "PhotoSurfer-iOS";
 			productName = "PhotoSurfer-iOS";
@@ -1159,11 +1217,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					086F1822287BED350061422F = {
 						CreatedOnToolsVersion = 13.3.1;
+					};
+					15BE003E288A12E0008C80B2 = {
+						CreatedOnToolsVersion = 13.1;
 					};
 					15D1DEE62875BE0900852617 = {
 						CreatedOnToolsVersion = 13.1;
@@ -1185,6 +1246,7 @@
 			targets = (
 				15D1DEE62875BE0900852617 /* PhotoSurfer-iOS */,
 				086F1822287BED350061422F /* ImageShareExtension */,
+				15BE003E288A12E0008C80B2 /* NotificationPushExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1203,6 +1265,13 @@
 				08EA0A9528805BB800CC143C /* Assets.xcassets in Resources */,
 				0876FB89287D69C300391B07 /* TagsHeaderCollectionReusableView.xib in Resources */,
 				08D0657C2885282C007B6635 /* RepresentTagTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15BE003D288A12E0008C80B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1284,6 +1353,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		851192AF4D869097146369FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NotificationPushExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E4F32824A26F2D27DA1347A4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1350,6 +1441,14 @@
 				082BCD7B2887BE7900E5E984 /* PushRequest.swift in Sources */,
 				082BCD772887BE7900E5E984 /* AuthResponse.swift in Sources */,
 				082BCD742887BE4900E5E984 /* PushRouter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15BE003B288A12E0008C80B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15BE0042288A12E0008C80B2 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1436,6 +1535,11 @@
 			target = 086F1822287BED350061422F /* ImageShareExtension */;
 			targetProxy = 086F182B287BED350061422F /* PBXContainerItemProxy */;
 		};
+		15BE0045288A12E0008C80B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15BE003E288A12E0008C80B2 /* NotificationPushExtension */;
+			targetProxy = 15BE0044288A12E0008C80B2 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1519,6 +1623,60 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		15BE0047288A12E0008C80B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A84E8144541C38D7A1CABA7E /* Pods-NotificationPushExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MLFF8438BY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationPushExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationPushExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kimhyesu.PhotoSurfer.NotificationPushExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		15BE0048288A12E0008C80B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B73184103DED013C86F32517 /* Pods-NotificationPushExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MLFF8438BY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationPushExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationPushExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kimhyesu.PhotoSurfer.NotificationPushExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1716,6 +1874,15 @@
 			buildConfigurations = (
 				086F182F287BED350061422F /* Debug */,
 				086F1830287BED350061422F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15BE0049288A12E0008C80B2 /* Build configuration list for PBXNativeTarget "NotificationPushExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15BE0047288A12E0008C80B2 /* Debug */,
+				15BE0048288A12E0008C80B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
