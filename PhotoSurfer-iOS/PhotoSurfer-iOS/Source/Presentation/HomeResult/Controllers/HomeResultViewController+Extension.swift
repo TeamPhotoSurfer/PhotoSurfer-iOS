@@ -45,18 +45,19 @@ extension HomeResultViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if editMode == .none {
             if isMultiSelectMode {
-                if selectedPhotos.contains(where: {$0.id == photos[indexPath.item].id }) {
-                    selectedPhotos = selectedPhotos.filter {
-                        $0.id != photos[indexPath.item].id
+                if collectionView === photoCollectionView {
+                    if selectedPhotos.contains(where: {$0.id == photos[indexPath.item].id }) {
+                        selectedPhotos = selectedPhotos.filter {
+                            $0.id != photos[indexPath.item].id
+                        }
                     }
-                    print(selectedPhotos)
+                    else {
+                        selectedPhotos.append(photos[indexPath.item])
+                    }
+                    setDataSource()
+                    applyTagSnapshot()
+                    applyPhotoSnapshot()
                 }
-                else {
-                    selectedPhotos.append(photos[indexPath.item])
-                }
-                setDataSource()
-                applyTagSnapshot()
-                applyPhotoSnapshot()
             } else {
                 if collectionView === tagCollectionView {
                     tags.remove(at: indexPath.item)
@@ -66,6 +67,35 @@ extension HomeResultViewController: UICollectionViewDelegate {
                 else {
                     goToPictureViewController(photoId: photos[indexPath.item].id)
                 }
+            }
+        }
+        else if editMode == .delete {
+            if collectionView === tagCollectionView {
+                if let id = tags[indexPath.item].id {
+                    deleteMultiPhotoTag(deleteTagId: id)
+                    tags.remove(at: indexPath.item)
+                }
+            }
+        }
+    }
+}
+
+extension HomeResultViewController {
+    
+    func deleteMultiPhotoTag(deleteTagId: Int) {
+        PhotoService.shared.deletePhotoMenuTag(tagId: deleteTagId, photoIds: photos.map({ $0.id })) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.applyTagSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
             }
         }
     }
