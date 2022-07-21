@@ -45,6 +45,7 @@ final class ShareViewController: UIViewController {
     @IBOutlet weak var typingViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionViewBottonConstraint: NSLayoutConstraint!
     @IBOutlet weak var typingView: UIView!
+    @IBOutlet weak var saveButton: UIButton!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -62,6 +63,7 @@ final class ShareViewController: UIViewController {
     private func setUI() {
         setSearchBarUI()
         setSearchBar()
+        setSaveButton()
         registerXib()
         setHierarchy(isSearching: false)
         self.isModalInPresentation = true
@@ -108,6 +110,12 @@ final class ShareViewController: UIViewController {
         let doneButton = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(self.doneButtonDidTap))
         toolBarKeyboard.items = [flexibleSpaceButton, doneButton]
         return toolBarKeyboard
+    }
+    
+    private func setSaveButton() {
+        saveButton.setTitleColor(.pointMain, for: .normal)
+        saveButton.setTitleColor(.grayGray60, for: .disabled)
+        saveButton.isEnabled = true
     }
     
     private func getFrequencyTag() {
@@ -194,6 +202,14 @@ final class ShareViewController: UIViewController {
         let storyboard: UIStoryboard = UIStoryboard(name: "SetAlarm", bundle: nil)
         guard let setAlarmNavigationController = storyboard.instantiateViewController(withIdentifier: "navigation") as? UINavigationController, let setAlarmViewController =  setAlarmNavigationController.topViewController as? SetAlarmViewController else {
             return
+        }
+        for i in 0..<addedTags.count {
+            if platform.contains(addedTags[i].name) {
+                addedTags[i].tagType = .platform
+            }
+            else {
+                addedTags[i].tagType = .general
+            }
         }
         setAlarmViewController.tags = addedTags
         setAlarmViewController.image = image

@@ -25,6 +25,7 @@ final class SetRepresentTagViewController: UIViewController {
         setCollectionView()
         registerXib()
         setUI()
+        setRepresentTag()
     }
     
     // MARK: - Function
@@ -45,6 +46,10 @@ final class SetRepresentTagViewController: UIViewController {
     private func setUI() {
         saveButton.setTitleColor(.grayGray60, for: .disabled)
         saveButton.setTitleColor(.pointMain, for: .normal)
+    }
+    
+    private func setRepresentTag() {
+        selectedTags = tags
     }
     
     // MARK: - IBAction

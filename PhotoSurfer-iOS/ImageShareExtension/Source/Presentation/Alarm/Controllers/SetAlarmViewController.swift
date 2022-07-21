@@ -48,9 +48,16 @@ final class SetAlarmViewController: UIViewController {
         setCommentTimeView()
         setTextView()
         setAlarmButton.layer.cornerRadius = 8
-        settingTimeButton.layer.cornerRadius = 8
+        setTimeButton()
         datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
         setLottie()
+        setRepresentTag()
+    }
+    
+    private func setTimeButton() {
+        settingTimeButton.layer.cornerRadius = 8
+        settingTimeButton.titleLabel?.numberOfLines = 1
+        settingTimeButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     private func setKeyboard() {
@@ -94,8 +101,9 @@ final class SetAlarmViewController: UIViewController {
         PhotoService.shared.postPhoto(photoInfo: photoRequest) { result in
             switch result {
             case .success(let data):
-                guard let data = data as? PhotoResponse else { return }
-                print("success")
+                print("successess")
+                guard let data = data as? Photo else { return }
+                print(data.imageURL)
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
@@ -106,6 +114,20 @@ final class SetAlarmViewController: UIViewController {
                 print("networkFail")
             }
         }
+    }
+    
+    private func setRepresentTag() {
+        var selectedTag: String = ""
+        var tagCount = (tags.count <= 3) ? tags.count : 3
+        for index in 0..<tagCount {
+            switch index {
+            case tags.count-1:
+                selectedTag += "#\(tags[index].name)"
+            default:
+                selectedTag += "#\(tags[index].name), "
+            }
+        }
+        setRepresentTagButton.setTitle(selectedTag, for: .normal)
     }
     
     // MARK: - Objc Function
@@ -150,6 +172,7 @@ final class SetAlarmViewController: UIViewController {
             return
         }
         setRepresentTagViewController.delegate = self
+        setRepresentTagViewController.tags = tags
         self.navigationController?.pushViewController(setRepresentTagViewController, animated: true)
     }
     
@@ -161,6 +184,9 @@ final class SetAlarmViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.datePickerView.isHidden.toggle()
         }
+    }
+    @IBAction func saveAlarmButton(_ sender: UIButton) {
+        
     }
 }
 
