@@ -33,6 +33,7 @@ final class SetAlarmViewController: UIViewController {
     var keyboardShowedCount: Int = 0
     var tags: [Tag] = []
     var image: UIImage = UIImage()
+    var photoID: Int = 0
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -103,7 +104,7 @@ final class SetAlarmViewController: UIViewController {
             case .success(let data):
                 print("successess")
                 guard let data = data as? Photo else { return }
-                print(data.imageURL)
+                self.photoID = data.id
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
