@@ -93,7 +93,11 @@ class OnboardingViewController: UIViewController {
         if pageControl.currentPage == 2 {
             if abs(velocity.x) > abs(velocity.y) {
                 if velocity.x < 0 {
-                    setRootViewController(name: Const.Storyboard.Login, identifier: Const.ViewController.LoginViewController)
+                    if self.presentingViewController != nil {
+                        self.dismiss(animated: true)
+                    } else {
+                        setRootViewController(name: Const.Storyboard.Login, identifier: Const.ViewController.LoginViewController)
+                    }
                 }
             }
         }
