@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PushAlarmRequst {
+struct PushAlarmRequest {
     let memo: String
     let pushDate: String
     let tagIDs: [Int]
