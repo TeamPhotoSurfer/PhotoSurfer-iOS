@@ -17,6 +17,7 @@ final class AlarmDetailViewController: UIViewController {
     @IBOutlet weak var memoTextView: UITextView!
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tagLabel: UILabel!
     
     // MARK: - LifeCyele
     override func viewDidLoad() {
@@ -38,7 +39,14 @@ final class AlarmDetailViewController: UIViewController {
         PushService.shared.getPush(id: id) { response in
             switch response {
             case .success(let data):
-                print(data)
+                guard let data = data as? Push else { return }
+                self.dateButton.setTitle(data.pushDate, for: .normal)
+                self.memoTextView.text = data.memo
+                var tagText = ""
+                for tag in data.tags {
+                    tagText += "#\(tag.name) "
+                }
+                self.tagLabel.text = tagText
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:

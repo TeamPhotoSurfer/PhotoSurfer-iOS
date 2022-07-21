@@ -70,4 +70,18 @@ public class PushService {
             }
         }
     }
+    
+    func postPush(photoID: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+        pushProvider.request(.postPush(photoID: photoID)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, Push.self)
+                completion(networkResult)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
 }
