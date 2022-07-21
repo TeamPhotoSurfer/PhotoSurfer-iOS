@@ -113,4 +113,19 @@ public class PhotoService {
             }
         }
     }
+    
+    func putPhotoMenuTag(tagId: Int, name: String, type: TagType, photoIds: [Int],
+                             completion: @escaping (NetworkResult<Any>) -> Void) {
+        photoProvider.request(.putPhotoMenuTag(tagId: tagId, name: name, type: type, photoIds: photoIds)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, Tag.self)
+                completion(networkResult)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
 }

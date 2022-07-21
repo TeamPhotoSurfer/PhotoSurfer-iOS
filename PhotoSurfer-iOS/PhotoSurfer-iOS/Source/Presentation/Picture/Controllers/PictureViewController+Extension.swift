@@ -10,10 +10,19 @@ import UIKit
 extension PictureViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if !(textField.text?.isEmpty ?? true) && tags.count < 6 {
-            tags.insert(Tag(name: textField.text ?? ""), at: 0)
-            addPhotoTag(tagName: textField.text ?? "")
-            applyTagsSnapshot()
+        if editMode == .add {
+            if !(textField.text?.isEmpty ?? true) && tags.count < 6 {
+                tags.insert(Tag(name: textField.text ?? ""), at: 0)
+                addPhotoTag(tagName: textField.text ?? "")
+                applyTagsSnapshot()
+            }
+        }
+        else if editMode == .edit {
+            if !(textField.text?.isEmpty ?? true) {
+                if let editIdx = editIdx, let tagId = tags[editIdx].id {
+                    putPhotoTag(editIdx: editIdx, tagId: tagId, name: textField.text ?? "")
+                }
+            }
         }
         return true
     }
@@ -51,6 +60,7 @@ extension PictureViewController: UICollectionViewDelegate {
         }
         else if editMode == .edit {
             setDataSource(isDeletable: false, editIdx: indexPath.item)
+            editIdx = indexPath.item
             applyTagsSnapshot()
             keyboardTopTextField.becomeFirstResponder()
         }
@@ -83,6 +93,26 @@ extension PictureViewController {
             switch response {
             case .success(let data):
                 print(data)
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func putPhotoTag(editIdx: Int, tagId: Int, name: String) {
+        guard let photoID = photoID else { return }
+        PhotoService.shared.putPhotoMenuTag(tagId: tagId, name: name, type: .general, photoIds: [photoID]) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.tags[editIdx] = (Tag(name: name))
+                self.applyTagsSnapshot()
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
