@@ -185,6 +185,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="delete"/>
+                                        <connections>
+                                            <action selector="deleteButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fEB-mE-rln"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIM-3g-RB7">
                                         <rect key="frame" x="350" y="6" width="44" height="44"/>

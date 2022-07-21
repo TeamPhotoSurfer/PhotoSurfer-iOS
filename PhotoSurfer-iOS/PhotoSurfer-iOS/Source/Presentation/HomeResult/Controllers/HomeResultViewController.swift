@@ -31,8 +31,14 @@ final class HomeResultViewController: UIViewController {
         super.viewDidLoad()
         
         print(tags.map({ $0.id }))
-        getPhotoSearch()
+        
         setCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getPhotoSearch()
     }
     
     private func setCollectionView() {

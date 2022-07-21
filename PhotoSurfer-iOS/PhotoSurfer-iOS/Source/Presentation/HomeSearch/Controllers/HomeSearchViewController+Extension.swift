@@ -107,7 +107,9 @@ extension HomeSearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        goToSearchResultViewController(tags: inputTags)
+        if inputTags.count > 0 {
+            goToSearchResultViewController(tags: inputTags)
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

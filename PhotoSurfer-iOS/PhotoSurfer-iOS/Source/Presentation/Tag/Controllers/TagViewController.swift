@@ -155,10 +155,11 @@ extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
 //        guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
-        let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
+//        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item)
+        guard let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController) as? TagDetailViewController else { return }
         tagDetailViewController.modalPresentationStyle = .fullScreen
+        tagDetailViewController.tag = item
         self.navigationController?.pushViewController(tagDetailViewController, animated: true)
-        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
     }
 }
 
