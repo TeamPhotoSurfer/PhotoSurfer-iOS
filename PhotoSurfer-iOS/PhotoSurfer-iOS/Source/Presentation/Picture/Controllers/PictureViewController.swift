@@ -188,6 +188,7 @@ final class PictureViewController: UIViewController {
                 .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
         editPictureViewController.type = .picture
         editPictureViewController.editMode = editMode
+        editPictureViewController.photoID = photoID
         self.navigationController?.pushViewController(editPictureViewController, animated: true)
     }
     
