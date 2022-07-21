@@ -28,9 +28,9 @@ struct Push: Codable {
     let uuid = UUID()
     let id: Int? = nil
     let pushDate: String
-    let imageURL: String? = nil
+    let imageURL: String?
     let memo: String
-    let photoID: Int? = nil
+    let photoID: Int?
     let tags: [Tag]
 
     enum CodingKeys: String, CodingKey {

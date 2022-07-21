@@ -29,6 +29,7 @@ final class PictureViewController: UIViewController {
     
     // MARK: - Property
     var photoID: Int?
+    var pushID: Int? 
     var photo = Const.Image.imgSea
     var type: ViewType = .alarmSelected
     var editMode: PictureEditMode = .none
@@ -226,6 +227,7 @@ final class PictureViewController: UIViewController {
                 guard let data = data as? Photo else { return }
                 self.imageView.setImage(with: data.imageURL)
                 self.tags = data.tags ?? []
+                self.pushID = data.push
                 self.applyTagsSnapshot()
             case .requestErr(_):
                 print("requestErr")
@@ -243,8 +245,7 @@ final class PictureViewController: UIViewController {
         guard let photoID = photoID else { return }
         PhotoService.shared.putPhoto(ids: [photoID]) { response in
             switch response {
-            case .success(let data):
-                print(data)
+            case .success(_):
                 self.navigationController?.popViewController(animated: true)
             case .requestErr(_):
                 print("requestErr")
@@ -280,6 +281,9 @@ final class PictureViewController: UIViewController {
     @IBAction func alarmDetailButtonDidTap(_ sender: Any) {
         guard let alarmDetailViewController = UIStoryboard(name: Const.Storyboard.AlarmDetail, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.AlarmDetailViewController) as? AlarmDetailViewController else { return }
+        if let pushID = pushID {
+            alarmDetailViewController.pushID = pushID
+        }
         alarmDetailViewController.modalPresentationStyle = .fullScreen
         self.present(alarmDetailViewController, animated: true, completion: nil)
     }
