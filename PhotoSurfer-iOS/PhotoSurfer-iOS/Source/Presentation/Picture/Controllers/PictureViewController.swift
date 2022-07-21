@@ -51,6 +51,7 @@ final class PictureViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var bottomShareButton: UIButton!
     @IBOutlet weak var navigationTitleLabel: UILabel!
+    @IBOutlet weak var navigationAlarmButton: UIButton!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -92,7 +93,7 @@ final class PictureViewController: UIViewController {
         [alarmDetailButton, shareButton].forEach {
             $0?.isHidden = (type == .picture)
         }
-        [bottomWaveView, collectionView, navigationPictureButtonContainerStackView].forEach {
+        [bottomWaveView, collectionView, navigationAlarmButton, moreButton].forEach {
             $0?.isHidden = (type == .alarmSelected)
         }
     }

@@ -11,6 +11,14 @@ extension AlarmListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let alarmSelectedPictureViewController = UIStoryboard(name: Const.Storyboard.Picture, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
+        alarmSelectedPictureViewController.type = .alarmSelected
+        alarmSelectedPictureViewController.photoID = pushes[indexPath.item].photoID
+        self.navigationController?.pushViewController(alarmSelectedPictureViewController, animated: true)
+    }
 }
 
 extension AlarmListViewController: UITableViewDataSource {

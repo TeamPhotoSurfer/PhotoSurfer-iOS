@@ -78,7 +78,7 @@ extension HomeSearchViewController: UICollectionViewDelegate {
             if inputTags.count < 6 {
                 if isShownRelated {
                     inputTags.append(Tag(id: relatedTags[indexPath.item].id,
-                                         name: relatedTags[indexPath.item].name, imageURL: nil))
+                                         name: relatedTags[indexPath.item].name))
                 } else {
                     inputTags.append(Tag(id: recentTags[indexPath.item].id,
                                          name: recentTags[indexPath.item].name))
@@ -111,6 +111,15 @@ extension HomeSearchViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchText.isEmpty ? applyInitialDataSource() : applyRelatedTagSnapshot()
+        relatedTags = []
+        if searchText.isEmpty {
+            applyInitialDataSource()
+        }
+        else {
+            for tag in allTags where tag.name.lowercased().contains(searchText.lowercased()) {
+                relatedTags.append(Tag(id: tag.id, name: tag.name))
+            }
+            applyRelatedTagSnapshot()
+        }
     }
 }

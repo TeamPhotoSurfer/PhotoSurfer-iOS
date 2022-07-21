@@ -20,6 +20,7 @@ extension AlarmViewController: UITableViewDelegate {
         guard let alarmSelectedViewController = UIStoryboard(name: Const.Storyboard.Picture, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
         alarmSelectedViewController.type = .alarmSelected
+        alarmSelectedViewController.photoID = indexPath.section == 0 ? todayAlarms[indexPath.item].photoID : tomorrowAlarms[indexPath.item].photoID
         alarmSelectedViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(alarmSelectedViewController, animated: true)
     }

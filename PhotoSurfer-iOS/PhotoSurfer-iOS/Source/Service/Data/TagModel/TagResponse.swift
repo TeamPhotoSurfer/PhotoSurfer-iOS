@@ -14,6 +14,11 @@ struct TagMainResponse: Codable {
     var platform: TagResponse?
 }
 
+struct TagBookmarkResponse: Codable {
+    let bookmarked: TagResponse
+    let notBookmarked: TagResponse
+}
+
 struct TagResponse: Codable {
     let tags: [Tag]
 }
@@ -21,7 +26,7 @@ struct TagResponse: Codable {
 struct Tag: Codable, Hashable {
     let uuid = UUID()
     var id: Int? = 0
-    let name: String
+    var name: String
     var bookmarkStatus: Bool? = nil
     var imageURL: String? = nil
     var tagType: TagType? = nil

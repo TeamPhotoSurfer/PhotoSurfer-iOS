@@ -45,6 +45,7 @@ extension HomeResultViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView === tagCollectionView {
             tags.remove(at: indexPath.item)
+            getPhotoSearch()
             applyTagSnapshot()
         }
         else {
