@@ -29,7 +29,7 @@ final class PictureViewController: UIViewController {
     
     // MARK: - Property
     var photoID: Int?
-    var pushID: Int? 
+    var pushID: Int?
     var photo = Const.Image.imgSea
     var type: ViewType = .alarmSelected
     var editMode: PictureEditMode = .none
@@ -261,6 +261,18 @@ final class PictureViewController: UIViewController {
         }
     }
     
+    private func shareImage(shareObject: [UIImage]) {
+        let activityViewController = UIActivityViewController(activityItems: shareObject,
+                                                              applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
+            if success {
+                print("완료")
+            }
+        }
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    
     // MARK: - Objc Function
     @objc private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -295,12 +307,16 @@ final class PictureViewController: UIViewController {
     }
     
     @IBAction func deleteButtonDidTap(_ sender: Any) {
-        self.makeRequestAlert(title: "", message: "사진을 삭제하시겠습니까?", okAction: { _ in 
+        self.makeRequestAlert(title: "", message: "사진을 삭제하시겠습니까?", okAction: { _ in
             self.deletePhoto()
         }, cancelAction: nil, completion: nil)
     }
     
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func shareButtonDidTap(_ sender: Any) {
+        shareImage(shareObject: [imageView.image ?? UIImage()])
     }
 }

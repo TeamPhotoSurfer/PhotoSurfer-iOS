@@ -200,6 +200,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="share"/>
+                                        <connections>
+                                            <action selector="shareButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="52G-2K-3Lu"/>
+                                        </connections>
                                     </button>
                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="추가할 태그를 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTN-JW-3Rw">
                                         <rect key="frame" x="20" y="35" width="374" height="44"/>
