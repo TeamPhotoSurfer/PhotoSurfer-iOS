@@ -170,6 +170,7 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
         typingButton.setTitle(searchText, for: .normal)
         typingText = searchText
         typingTextCount = searchText.count
+        print("searchText \(searchText)")
         relatedTags = relatedTagsFetched.filter({ $0.name.contains(searchText) })
         guard let inputText = searchBar.text, !inputText.isEmpty else {
             applyInitialDataSource()
@@ -178,8 +179,13 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
             typingView.isHidden = true
             return
         }
-        UIView.animate(withDuration: 0.5) {
-            self.typingViewTopConstraint.constant = self.typingButtonTopConstValue
+        if addedTags.count > 0 {
+            UIView.animate(withDuration: 0.5) {
+                self.typingViewTopConstraint.constant = self.typingButtonTopConstValue
+            }
+        }
+        else {
+            self.typingViewTopConstraint.constant = typingButtonTopConstValue + 34
         }
         typingView.isHidden = false
         if searchText.count >= 1 {
@@ -193,10 +199,7 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let inputText = searchBar.text, !inputText.isEmpty else {
-            typingView.isHidden = true
-            return
-        }
+        typingView.isHidden = true
         var didAddedTag: Bool = false
         
         for i in 0..<addedTags.count {
@@ -230,7 +233,9 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
                 if !isRelatedContainItem {
                     relatedTags.append(Tag(name: typingText))
                 }
-                applyChangedDataSource(inputText: typingText)
+                
+                applyInitialDataSource()
+                searchBar.resignFirstResponder()
             }
         }
         else {
