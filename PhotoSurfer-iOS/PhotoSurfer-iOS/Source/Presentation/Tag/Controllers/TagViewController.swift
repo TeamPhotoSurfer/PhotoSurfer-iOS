@@ -33,15 +33,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setUI()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        removeObserver()
-    }
-    
     // MARK: - Function
-    private func removeObserver() {
-        NotificationCenter.default.removeObserver(Notification.Name("TagDetailPresent"))
-    }
-    
     private func setUI() {
         getTag()
         setEditTagTextField()
@@ -95,6 +87,10 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     private func registerXib() {
         albumCollectionView.register(UINib(nibName: Const.Identifier.TagAlbumCollectionViewCell, bundle: nil),
                                      forCellWithReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell)
+    }
+    
+    func setTotalList() {
+        totalList = bookmarkedList + notBookmarkedList
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
@@ -179,8 +175,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
 extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
-//        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item)
         guard let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController) as? TagDetailViewController else { return }
         tagDetailViewController.modalPresentationStyle = .fullScreen
         tagDetailViewController.tag = item
