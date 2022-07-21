@@ -189,20 +189,29 @@ extension TagViewController: MenuHandleDelegate {
     }
     
     func editButtonDidTap(button: UIButton) {
+        print("✨editButtonDidTap")
         var superview = button.superview
-        while superview != nil {
-            if let cell = superview as? TagAlbumCollectionViewCell {
-                guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
-                print("✨셀을 찾았다")
-                indexpath = indexPath
-                editToolBarView.isHidden = false
-                print("✨can?", editTagTextField.canBecomeFirstResponder)
-                print("✨become", self.editTagTextField.becomeFirstResponder())
-                editTagTextField.text = cell.tagNameButton.titleLabel?.text
-                break
-            }
-            superview = superview?.superview
-        }
+        guard let cell = superview as? TagAlbumCollectionViewCell else { return }
+        guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
+        print("✨셀을 찾았다")
+        indexpath = indexPath
+        editToolBarView.isHidden = false
+        print("✨can?", editTagTextField.canBecomeFirstResponder)
+        print("✨become", self.editTagTextField.becomeFirstResponder())
+        editTagTextField.text = cell.tagNameButton.titleLabel?.text
+//        while superview != nil {
+//            if let cell = superview as? TagAlbumCollectionViewCell {
+//                guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
+//                print("✨셀을 찾았다")
+//                indexpath = indexPath
+//                editToolBarView.isHidden = false
+//                print("✨can?", editTagTextField.canBecomeFirstResponder)
+//                print("✨become", self.editTagTextField.becomeFirstResponder())
+//                editTagTextField.text = cell.tagNameButton.titleLabel?.text
+//                break
+//            }
+//            superview = superview?.superview
+//        }
     }
     
     // MARK: - IBAction
