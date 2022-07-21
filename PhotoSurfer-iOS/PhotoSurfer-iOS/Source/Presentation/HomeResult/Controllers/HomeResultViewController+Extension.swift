@@ -80,10 +80,41 @@ extension HomeResultViewController: UICollectionViewDelegate {
     }
 }
 
+extension HomeResultViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if editMode == .add {
+            if !(textField.text?.isEmpty ?? true) && tags.count < 6 {
+                tags.insert(Tag(name: textField.text ?? ""), at: 0)
+                addMultiPhotoTag(tagName: textField.text ?? "")
+            }
+        }
+        return true
+    }
+}
+
 extension HomeResultViewController {
     
     func deleteMultiPhotoTag(deleteTagId: Int) {
         PhotoService.shared.deletePhotoMenuTag(tagId: deleteTagId, photoIds: photos.map({ $0.id })) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.applyTagSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func addMultiPhotoTag(tagName: String) {
+        PhotoService.shared.postAddPhotoMenuTag(photoIds: photos.map({ $0.id }),
+                                                name: tagName, type: .general) { response in
             switch response {
             case .success(let data):
                 print(data)

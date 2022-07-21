@@ -175,10 +175,22 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="share"/>
                                     </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="추가할 태그를 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JIP-W7-fub">
+                                        <rect key="frame" x="20" y="35" width="374" height="44"/>
+                                        <color key="backgroundColor" name="grayWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Z1O-kT-JML"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="91" id="D34-Kq-toK"/>
                                     <constraint firstAttribute="trailing" secondItem="968-8H-L9B" secondAttribute="trailing" constant="20" id="Hqd-Jn-pbg"/>
+                                    <constraint firstItem="JIP-W7-fub" firstAttribute="leading" secondItem="6N8-N4-BdM" secondAttribute="leading" constant="20" id="K4d-Ey-jbS"/>
+                                    <constraint firstAttribute="trailing" secondItem="JIP-W7-fub" secondAttribute="trailing" constant="20" id="X24-4g-62l"/>
+                                    <constraint firstAttribute="bottom" secondItem="JIP-W7-fub" secondAttribute="bottom" constant="12" id="eSF-ye-ogU"/>
                                     <constraint firstItem="968-8H-L9B" firstAttribute="centerY" secondItem="2KO-nG-Egh" secondAttribute="centerY" id="hF7-ty-bca"/>
                                     <constraint firstAttribute="trailing" secondItem="aYW-A3-9BH" secondAttribute="trailing" id="jOL-YG-peh"/>
                                     <constraint firstItem="aYW-A3-9BH" firstAttribute="leading" secondItem="6N8-N4-BdM" secondAttribute="leading" id="kqc-qO-Ae1"/>
@@ -213,6 +225,7 @@
                         <outlet property="bottomWaveImageContainerView" destination="6N8-N4-BdM" id="8Nw-Mm-xWU"/>
                         <outlet property="bottomWaveView" destination="6N8-N4-BdM" id="SON-Zg-DnK"/>
                         <outlet property="deleteButton" destination="2KO-nG-Egh" id="Gn5-gM-csW"/>
+                        <outlet property="keyboardTopTextField" destination="JIP-W7-fub" id="stE-6B-Q8D"/>
                         <outlet property="moreButton" destination="0BB-Fk-okZ" id="Kp4-dY-soX"/>
                         <outlet property="navigationTitleLabel" destination="kMn-8E-u36" id="k2v-Vt-aZL"/>
                         <outlet property="photoCollectionView" destination="wdd-n0-n5V" id="OFj-ab-PXr"/>
@@ -221,6 +234,7 @@
                         <outlet property="shareButton" destination="968-8H-L9B" id="XZA-cF-lUb"/>
                         <outlet property="tagCollectionView" destination="hBk-M8-NAk" id="RRk-yb-M9A"/>
                         <outlet property="waveImageView" destination="aYW-A3-9BH" id="RDF-1V-SgT"/>
+                        <outlet property="waveViewBottomConstraint" destination="scE-91-VTQ" id="r40-L2-7mT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -245,6 +259,9 @@
         </namedColor>
         <namedColor name="grayGray80">
             <color red="0.20000000298023224" green="0.23899999260902405" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grayWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
