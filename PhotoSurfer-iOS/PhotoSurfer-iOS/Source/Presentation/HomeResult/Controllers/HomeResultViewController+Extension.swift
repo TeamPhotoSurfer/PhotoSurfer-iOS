@@ -80,6 +80,7 @@ extension HomeResultViewController: UICollectionViewDelegate {
         else if editMode == .edit {
             if collectionView === tagCollectionView {
                 editSelectTag = tags[indexPath.item]
+                editIdx = indexPath.item
                 keyboardTopTextField.becomeFirstResponder()
                 setDataSource()
                 applyTagSnapshot()
@@ -95,6 +96,11 @@ extension HomeResultViewController: UITextFieldDelegate {
             if !(textField.text?.isEmpty ?? true) && tags.count < 6 {
                 tags.insert(Tag(name: textField.text ?? ""), at: 0)
                 addMultiPhotoTag(tagName: textField.text ?? "")
+            }
+        }
+        else if editMode == .edit {
+            if !(textField.text?.isEmpty ?? true), let editIdx = editIdx {
+                editMultiPhotoTag(editIdx: editIdx, newTagName: textField.text ?? "")
             }
         }
         return true
@@ -127,6 +133,28 @@ extension HomeResultViewController {
             switch response {
             case .success(let data):
                 print(data)
+                self.applyTagSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func editMultiPhotoTag(editIdx: Int, newTagName: String) {
+        guard let editTagId = editSelectTag?.id else { return }
+        PhotoService.shared.putPhotoMenuTag(tagId: editTagId,
+                                            name: newTagName, type: .general,
+                                            photoIds: photos.map({ $0.id })) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.tags[editIdx] = (Tag(name: newTagName))
                 self.applyTagSnapshot()
             case .requestErr(_):
                 print("requestErr")

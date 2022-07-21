@@ -31,6 +31,7 @@ final class HomeResultViewController: UIViewController {
     var isMultiSelectMode: Bool = false
     var editMode: HomeResultEditMode = .none
     var editSelectTag: Tag?
+    var editIdx: Int?
     
     // MARK: - IBOutlet
     @IBOutlet weak var deleteButton: UIButton!
