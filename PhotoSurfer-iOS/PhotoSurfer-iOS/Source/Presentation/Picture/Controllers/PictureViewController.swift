@@ -239,6 +239,25 @@ final class PictureViewController: UIViewController {
         }
     }
     
+    private func deletePhoto() {
+        guard let photoID = photoID else { return }
+        PhotoService.shared.putPhoto(ids: [photoID]) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.navigationController?.popViewController(animated: true)
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("pathErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     // MARK: - Objc Function
     @objc private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -267,5 +286,11 @@ final class PictureViewController: UIViewController {
     
     @IBAction func moreButtonDidTap(_ sender: Any) {
         keyboardTopTextField.resignFirstResponder()
+    }
+    
+    @IBAction func deleteButtonDidTap(_ sender: Any) {
+        self.makeRequestAlert(title: "", message: "사진을 삭제하시겠습니까?", okAction: { _ in 
+            self.deletePhoto()
+        }, cancelAction: nil, completion: nil)
     }
 }
