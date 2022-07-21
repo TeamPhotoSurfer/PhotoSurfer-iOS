@@ -30,6 +30,7 @@ final class HomeResultViewController: UIViewController {
     var selectedPhotos: [Photo] = []
     var isMultiSelectMode: Bool = false
     var editMode: HomeResultEditMode = .none
+    var editSelectTag: Tag?
     
     // MARK: - IBOutlet
     @IBOutlet weak var deleteButton: UIButton!
@@ -83,15 +84,20 @@ final class HomeResultViewController: UIViewController {
         switch mode {
         case .none:
             print("none")
+            keyboardTopTextField.isHidden = true
         case .add:
             print("add")
             keyboardTopTextField.becomeFirstResponder()
+            keyboardTopTextField.placeholder = "추가할 태그를 입력하세요"
             setEditModeUI()
         case .delete:
             print("delete")
+            keyboardTopTextField.isHidden = true
             setEditModeUI()
         case .edit:
             print("edit")
+            keyboardTopTextField.isHidden = true
+            keyboardTopTextField.placeholder = "수정할 태그를 입력하세요"
             setEditModeUI()
         }
     }
@@ -141,6 +147,13 @@ final class HomeResultViewController: UIViewController {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
             if (self.editMode == .none) || (self.editMode == .delete) {
                 cell.setData(title: itemIdentifier.name, type: .deleteEnableBlueTag)
+            } else if self.editMode == .edit {
+                if let tag = self.editSelectTag {
+                    cell.setData(title: itemIdentifier.name, type: (itemIdentifier.id == tag.id) ? .defaultSkyblueTag : .defaultBlueTag)
+                }
+                else {
+                    cell.setData(title: itemIdentifier.name, type: .defaultBlueTag)
+                }
             } else {
                 cell.setData(title: itemIdentifier.name, type: .defaultBlueTag)
             }

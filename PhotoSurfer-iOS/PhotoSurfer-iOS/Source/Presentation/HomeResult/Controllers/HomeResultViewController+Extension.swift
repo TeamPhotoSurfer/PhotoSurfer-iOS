@@ -77,6 +77,15 @@ extension HomeResultViewController: UICollectionViewDelegate {
                 }
             }
         }
+        else if editMode == .edit {
+            if collectionView === tagCollectionView {
+                editSelectTag = tags[indexPath.item]
+                keyboardTopTextField.becomeFirstResponder()
+                setDataSource()
+                applyTagSnapshot()
+                applyPhotoSnapshot()
+            }
+        }
     }
 }
 
