@@ -33,8 +33,9 @@ extension SetAlarmViewController: UITextViewDelegate {
 
 extension SetAlarmViewController: SetSelectedRepresentTag {
     func sendSelectedRepresentTag(tags: [Tag]) {
+        representTag = tags
         var selectedTag: String = ""
-        for index in 0..<tags.count {
+        for index in 0..<representTag.count {
             switch index {
             case tags.count-1:
                 selectedTag += "#\(tags[index].name)"
