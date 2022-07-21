@@ -11,6 +11,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
 
     // MARK: - IBOutlet
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var checkImageView: UIImageView!
     
     // MARK: - LifeCycle
     override func awakeFromNib() {
@@ -21,7 +22,8 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         imageView.image = image
     }
     
-    func setServerData(imageURL: String) {
+    func setServerData(imageURL: String, selected: Bool) {
         imageView.setImage(with: imageURL)
+        checkImageView.isHidden = !selected
     }
 }

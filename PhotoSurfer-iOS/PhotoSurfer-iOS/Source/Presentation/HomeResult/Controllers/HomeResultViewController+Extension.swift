@@ -43,13 +43,28 @@ extension HomeResultViewController {
 extension HomeResultViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView === tagCollectionView {
-            tags.remove(at: indexPath.item)
-            getPhotoSearch()
+        if isMultiSelectMode {
+            if selectedPhotos.contains(where: {$0.id == photos[indexPath.item].id }) {
+                selectedPhotos = selectedPhotos.filter {
+                    $0.id != photos[indexPath.item].id
+                }
+                print(selectedPhotos)
+            }
+            else {
+                selectedPhotos.append(photos[indexPath.item])
+            }
+            setDataSource()
             applyTagSnapshot()
-        }
-        else {
-            goToPictureViewController(photoId: photos[indexPath.item].id)
+            applyPhotoSnapshot()
+        } else {
+            if collectionView === tagCollectionView {
+                tags.remove(at: indexPath.item)
+                getPhotoSearch()
+                applyTagSnapshot()
+            }
+            else {
+                goToPictureViewController(photoId: photos[indexPath.item].id)
+            }
         }
     }
 }

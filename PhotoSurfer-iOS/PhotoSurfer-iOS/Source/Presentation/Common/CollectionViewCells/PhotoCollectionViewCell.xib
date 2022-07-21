@@ -19,6 +19,13 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wkf-h9-XLP">
                         <rect key="frame" x="0.0" y="0.0" width="205" height="180"/>
                     </imageView>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icCheckCircleFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRV-Ii-aAZ">
+                        <rect key="frame" x="181" y="156" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="cSm-Ty-o2e"/>
+                            <constraint firstAttribute="height" constant="24" id="tzd-mg-InB"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -26,13 +33,19 @@
                 <constraint firstAttribute="bottom" secondItem="wkf-h9-XLP" secondAttribute="bottom" id="0GJ-sz-quH"/>
                 <constraint firstAttribute="trailing" secondItem="wkf-h9-XLP" secondAttribute="trailing" id="3gd-RM-DdO"/>
                 <constraint firstItem="wkf-h9-XLP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QJt-51-aHM"/>
+                <constraint firstAttribute="trailing" secondItem="qRV-Ii-aAZ" secondAttribute="trailing" id="Ued-h6-dnW"/>
                 <constraint firstItem="wkf-h9-XLP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fI7-2L-CMe"/>
+                <constraint firstAttribute="bottom" secondItem="qRV-Ii-aAZ" secondAttribute="bottom" id="m1N-5g-jGi"/>
             </constraints>
             <size key="customSize" width="205" height="180"/>
             <connections>
+                <outlet property="checkImageView" destination="qRV-Ii-aAZ" id="dVg-6n-XN2"/>
                 <outlet property="imageView" destination="wkf-h9-XLP" id="0U5-mB-0R9"/>
             </connections>
             <point key="canvasLocation" x="250.00000000000003" y="169.41964285714286"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="icCheckCircleFill" width="24" height="24"/>
+    </resources>
 </document>
