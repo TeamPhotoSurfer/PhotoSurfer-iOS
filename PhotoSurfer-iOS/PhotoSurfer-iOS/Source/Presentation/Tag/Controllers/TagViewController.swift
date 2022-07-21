@@ -134,7 +134,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         totalList = bookmarkedList + notBookmarkedList
     }
     
-    func getTagBookmark(id: Int) {
+    func putTagBookmark(id: Int) {
         TagService.shared.putTagBookmark(id: id) { response in
             switch response {
             case .success(let data):
@@ -150,10 +150,6 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
                 print("networkFail")
             }
         }
-    }
-    
-    func setTotalList() {
-        totalList = bookmarkedList + notBookmarkedList
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -197,7 +193,7 @@ extension TagViewController: StarHandleDelegate {
         print("✨starButtonDidTap")
         guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
         guard let tag = totalList?[indexPath.item] else { return }
-        
+        putTagBookmark(id: tag.id ?? 0)
     }
 }
 
