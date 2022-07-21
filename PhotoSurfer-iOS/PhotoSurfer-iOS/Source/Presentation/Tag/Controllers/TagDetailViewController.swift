@@ -7,11 +7,6 @@
 
 import UIKit
 
-struct TagPhoto: Hashable {
-    let uuid = UUID()
-    let image: UIImage
-}
-
 final class TagDetailViewController: UIViewController {
     
     enum Section {
@@ -142,10 +137,11 @@ final class TagDetailViewController: UIViewController {
 extension TagDetailViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("cell 선택")
+        let photo = photos[indexPath.item]
         guard let pictureViewController = UIStoryboard(name: Const.Storyboard.Picture, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
         pictureViewController.type = .picture
+        pictureViewController.photoID = photo.id
         self.navigationController?.pushViewController(pictureViewController, animated: true)
     }
 }
