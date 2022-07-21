@@ -66,7 +66,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="저장">
-                                            <color key="titleColor" name="grayGray60"/>
+                                            <color key="titleColor" name="pointMain"/>
                                         </state>
                                         <connections>
                                             <action selector="saveButtonDidTap:" destination="j1y-V4-xli" eventType="touchUpInside" id="V9h-d1-ejk"/>
@@ -152,6 +152,7 @@
                     <connections>
                         <outlet property="addedTagCollectionView" destination="ym1-YB-0us" id="YVC-cZ-QXD"/>
                         <outlet property="collectionViewBottonConstraint" destination="SIZ-fT-jGa" id="Bbq-H7-sP5"/>
+                        <outlet property="saveButton" destination="vZE-6p-cbt" id="LYg-d5-kaK"/>
                         <outlet property="searchBar" destination="jhz-iw-P4t" id="09L-bE-lvG"/>
                         <outlet property="typingButton" destination="G7r-r1-AQM" id="RJe-na-mel"/>
                         <outlet property="typingView" destination="ZLj-WK-Fxb" id="0BC-Ct-cnE"/>
@@ -177,6 +178,9 @@
         </namedColor>
         <namedColor name="grayWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pointMain">
+            <color red="0.20800000429153442" green="0.4779999852180481" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

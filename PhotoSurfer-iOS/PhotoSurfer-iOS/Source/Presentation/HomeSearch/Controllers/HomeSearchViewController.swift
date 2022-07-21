@@ -66,7 +66,7 @@ final class HomeSearchViewController: UIViewController {
     private func setCollectionView() {
         registerXib()
         collectionView.setCollectionViewLayout(createLayout(), animated: true)
-        setDataSource()
+        setDataSource(isEnable: true)
         applyInitialDataSource()
         collectionView.delegate = self
     }
@@ -78,10 +78,17 @@ final class HomeSearchViewController: UIViewController {
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Const.Identifier.HomeSearchHeaderCollectionReusableView)
     }
     
-    private func setDataSource() {
+    private func setDataSource(isEnable: Bool) {
         dataSource = UICollectionViewDiffableDataSource<Section, Tag>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             guard let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.TagCollectionViewCell, for: indexPath) as? TagCollectionViewCell else { fatalError() }
-            tagCell.setData(title: itemIdentifier.name, type: indexPath.section == 0 ? .deleteEnableBlueTag : .defaultSkyblueTag)
+            switch indexPath.section {
+            case 0:
+                tagCell.setData(title: itemIdentifier.name,
+                                type: .deleteEnableBlueTag)
+            default:
+                tagCell.setData(title: itemIdentifier.name,
+                                type: isEnable ? .defaultSkyblueTag : .selectDisableGrayTag)
+            }
             return tagCell
         })
         dataSource.supplementaryViewProvider = {(collectionView, kind, indexPath) -> UICollectionReusableView in

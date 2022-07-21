@@ -29,6 +29,7 @@ final class PictureViewController: UIViewController {
     
     // MARK: - Property
     var photoID: Int?
+    var pushID: Int? 
     var photo = Const.Image.imgSea
     var type: ViewType = .alarmSelected
     var editMode: PictureEditMode = .none
@@ -51,6 +52,7 @@ final class PictureViewController: UIViewController {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var bottomShareButton: UIButton!
     @IBOutlet weak var navigationTitleLabel: UILabel!
+    @IBOutlet weak var navigationAlarmButton: UIButton!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -92,7 +94,7 @@ final class PictureViewController: UIViewController {
         [alarmDetailButton, shareButton].forEach {
             $0?.isHidden = (type == .picture)
         }
-        [bottomWaveView, collectionView, navigationPictureButtonContainerStackView].forEach {
+        [bottomWaveView, collectionView, navigationAlarmButton, moreButton].forEach {
             $0?.isHidden = (type == .alarmSelected)
         }
     }
@@ -187,6 +189,7 @@ final class PictureViewController: UIViewController {
                 .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
         editPictureViewController.type = .picture
         editPictureViewController.editMode = editMode
+        editPictureViewController.photoID = photoID
         self.navigationController?.pushViewController(editPictureViewController, animated: true)
     }
     
@@ -224,6 +227,7 @@ final class PictureViewController: UIViewController {
                 guard let data = data as? Photo else { return }
                 self.imageView.setImage(with: data.imageURL)
                 self.tags = data.tags ?? []
+                self.pushID = data.push
                 self.applyTagsSnapshot()
             case .requestErr(_):
                 print("requestErr")
@@ -231,6 +235,24 @@ final class PictureViewController: UIViewController {
                 print("pathErr")
             case .serverErr:
                 print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    private func deletePhoto() {
+        guard let photoID = photoID else { return }
+        PhotoService.shared.putPhoto(ids: [photoID]) { response in
+            switch response {
+            case .success(_):
+                self.navigationController?.popViewController(animated: true)
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("pathErr")
             case .networkFail:
                 print("networkFail")
             }
@@ -259,11 +281,20 @@ final class PictureViewController: UIViewController {
     @IBAction func alarmDetailButtonDidTap(_ sender: Any) {
         guard let alarmDetailViewController = UIStoryboard(name: Const.Storyboard.AlarmDetail, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.AlarmDetailViewController) as? AlarmDetailViewController else { return }
+        if let pushID = pushID {
+            alarmDetailViewController.pushID = pushID
+        }
         alarmDetailViewController.modalPresentationStyle = .fullScreen
         self.present(alarmDetailViewController, animated: true, completion: nil)
     }
     
     @IBAction func moreButtonDidTap(_ sender: Any) {
         keyboardTopTextField.resignFirstResponder()
+    }
+    
+    @IBAction func deleteButtonDidTap(_ sender: Any) {
+        self.makeRequestAlert(title: "", message: "사진을 삭제하시겠습니까?", okAction: { _ in 
+            self.deletePhoto()
+        }, cancelAction: nil, completion: nil)
     }
 }

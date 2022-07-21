@@ -27,8 +27,6 @@ struct Photo: Codable, Hashable {
     }
 }
 
-struct PhotoResponse: Codable, Hashable {
-    let id: Int
-    let imageURL: String
-    let tag: [Tag]
+struct PhotoMenuTag: Codable, Hashable {
+    let countDeletedPhoto: Int
 }

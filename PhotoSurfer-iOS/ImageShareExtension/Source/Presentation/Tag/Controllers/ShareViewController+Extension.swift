@@ -210,7 +210,6 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
                     isAddedTagContainItem = (addedTags[index].name == typingText)
                 }
                 if !isAddedTagContainItem {
-                    
                     addedTags.append(Tag(name: typingText))
                 }
                 else {

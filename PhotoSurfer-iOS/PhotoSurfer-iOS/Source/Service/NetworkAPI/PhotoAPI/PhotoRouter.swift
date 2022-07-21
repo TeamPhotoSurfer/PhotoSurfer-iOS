@@ -14,6 +14,8 @@ enum PhotoRouter {
     case getPhotoDetail(photoID: Int)
     case postPhoto(param: PhotoRequest)
     case getPhotoTag
+    case putPhoto(ids: [Int])
+    case deletePhotoMenuTag(tagId: Int, photoIds: [Int])
 }
 
 extension PhotoRouter: BaseTargetType {
@@ -27,6 +29,10 @@ extension PhotoRouter: BaseTargetType {
             return "\(URLConstant.photo)/"
         case .getPhotoTag:
             return URLConstant.photoTag
+        case .putPhoto:
+            return URLConstant.photo
+        case .deletePhotoMenuTag(let tagId, _):
+            return "\(URLConstant.photoMenuTag)/\(tagId)"
         }
     }
     
@@ -36,6 +42,10 @@ extension PhotoRouter: BaseTargetType {
             return .get
         case .postPhoto:
             return .post
+        case .putPhoto:
+            return .put
+        case .deletePhotoMenuTag:
+            return .delete
         }
     }
     
@@ -45,17 +55,43 @@ extension PhotoRouter: BaseTargetType {
             return .requestParameters(parameters: ["id": ids], encoding: URLEncoding.default)
         case .getPhotoDetail, .getPhotoTag:
             return .requestPlain
-        case .postPhoto:
-            return .requestPlain
+        case .postPhoto(let param):
+            return .uploadMultipart(makeMultiPartData(parameter: param, image: param.file))
+        case .deletePhotoMenuTag(_, let photoIds):
+            return .requestParameters(parameters: ["photoIds": photoIds],
+                                      encoding: JSONEncoding.default)
+        case .putPhoto(let ids):
+            return .requestParameters(parameters: ["id": ids], encoding: URLEncoding.queryString)
         }
     }
     
     var headers: [String : String]? {
         switch self {
-        case .getPhotoSearch, .getPhotoDetail, .getPhotoTag:
+        case .getPhotoSearch, .getPhotoDetail, .getPhotoTag, .putPhoto, .deletePhotoMenuTag:
             return NetworkConstant.hasTokenHeader
         case .postPhoto:
-            return NetworkConstant.hasTokenHeader
+            return NetworkConstant.hasMultipartHeader
         }
+    }
+}
+
+extension PhotoRouter {
+    func makeMultiPartData(parameter: PhotoRequest, image: UIImage?) -> [Moya.MultipartFormData] {
+        var multiPartData: [Moya.MultipartFormData] = []
+        if let imageData = image {
+            let imageFile = MultipartFormData(provider: .data(imageData.jpegData(compressionQuality: 1) ?? Data()),
+                                              name: "file",
+                                              fileName: "surfer.jpg",
+                                              mimeType: "image/jpeg")
+            multiPartData.append(imageFile)
+        }
+        for i in 0..<parameter.tags.count {
+            let name = parameter.tags[i].name.data(using: .utf8) ?? Data()
+            let type = parameter.tags[i].tagType?.rawValue.data(using: .utf8) ?? Data()
+            multiPartData.append(MultipartFormData(provider: .data(name), name: "tags[\(i)][name]"))
+            multiPartData.append(MultipartFormData(provider: .data(type), name: "tags[\(i)][type]"))
+        }
+        
+        return multiPartData
     }
 }

@@ -24,13 +24,21 @@ extension PictureViewController: UICollectionViewDelegate {
         if tags.count == 1 {
             self.makeRequestAlert(title: "\(tags[idx].name)태그를 삭제하시겠습니까?",
                                   message: "마지막 태그를 삭제하면 사진도 포토서퍼에서 지워집니다", okAction: { _ in
+                if let id = self.tags[idx].id {
+                    self.deletePhotoTag(tagId: id)
+                }
                 self.tags.remove(at: idx)
+                
                 self.navigationController?.popViewController(animated: true)
             }, completion: nil)
         } else {
             self.makeRequestAlert(title: "",
                                   message: "\(tags[idx].name)태그를 삭제하시겠습니까?", okAction: { _ in
+                if let id = self.tags[idx].id {
+                    self.deletePhotoTag(tagId: id)
+                }
                 self.tags.remove(at: idx)
+                
                 self.applyTagsSnapshot()
             }, completion: nil)
         }
@@ -44,6 +52,27 @@ extension PictureViewController: UICollectionViewDelegate {
             setDataSource(isDeletable: false, editIdx: indexPath.item)
             applyTagsSnapshot()
             keyboardTopTextField.becomeFirstResponder()
+        }
+    }
+}
+
+extension PictureViewController {
+    
+    func deletePhotoTag(tagId: Int) {
+        guard let photoID = photoID else { return }
+        PhotoService.shared.deletePhotoMenuTag(tagId: tagId, photoIds: [photoID]) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
         }
     }
 }

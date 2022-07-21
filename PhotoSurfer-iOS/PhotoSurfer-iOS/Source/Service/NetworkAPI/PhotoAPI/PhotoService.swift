@@ -49,7 +49,7 @@ public class PhotoService {
             case .success(let response):
                 let statusCode = response.statusCode
                 let data = response.data
-                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, PhotoSearchResponse.self)
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, Photo.self)
                 completion(networkResult)
             case .failure(let err):
                 print(err)
@@ -64,6 +64,34 @@ public class PhotoService {
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = NetworkBase.judgeStatus(by: statusCode, data, [Tag].self)
+                completion(networkResult)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
+    func putPhoto(ids: [Int], completion: @escaping (NetworkResult<Any>) -> Void) {
+        photoProvider.request(.putPhoto(ids: ids)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, Photo.self)
+                completion(networkResult)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
+    func deletePhotoMenuTag(tagId: Int, photoIds: [Int], completion: @escaping (NetworkResult<Any>) -> Void) {
+        photoProvider.request(.deletePhotoMenuTag(tagId: tagId, photoIds: photoIds)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, PhotoMenuTag.self)
                 completion(networkResult)
             case .failure(let err):
                 print(err)

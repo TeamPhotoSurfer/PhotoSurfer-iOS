@@ -46,7 +46,6 @@ extension HomeSearchViewController {
     }
     
     func applyInitialDataSource() {
-        isShownRelated = false
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         collectionViewHeaders = ["입력한 태그", "최근 추가한 태그", "자주 추가한 태그", "플랫폼 태그"]
         snapshot.appendSections([.inputTag, .recentAddTag, .frequencyAddTag, .platformTag])
@@ -58,7 +57,6 @@ extension HomeSearchViewController {
     }
     
     private func applyRelatedTagSnapshot() {
-        isShownRelated = true
         var snapshot = NSDiffableDataSourceSnapshot<Section, Tag>()
         collectionViewHeaders = ["입력 태그", "연관 태그"]
         snapshot.appendSections([.inputTag, .relatedTag])
@@ -77,25 +75,30 @@ extension HomeSearchViewController: UICollectionViewDelegate {
         case 1:
             if inputTags.count < 6 {
                 if isShownRelated {
-                    inputTags.append(Tag(id: relatedTags[indexPath.item].id,
-                                         name: relatedTags[indexPath.item].name))
+                    if !inputTags.contains(where: { $0.id == relatedTags[indexPath.item].id }) {
+                        inputTags.append(Tag(id: relatedTags[indexPath.item].id,
+                                             name: relatedTags[indexPath.item].name))
+                    }
                 } else {
-                    inputTags.append(Tag(id: recentTags[indexPath.item].id,
-                                         name: recentTags[indexPath.item].name))
+                    if !inputTags.contains(where: { $0.id == recentTags[indexPath.item].id }) {
+                        inputTags.append(Tag(id: recentTags[indexPath.item].id,
+                                             name: recentTags[indexPath.item].name))
+                    }
                 }
             }
         case 2:
-            if inputTags.count < 6 {
+            if inputTags.count < 6, !inputTags.contains(where: { $0.id == frequencyTags[indexPath.item].id }) {
                 inputTags.append(Tag(id: frequencyTags[indexPath.item].id, name: frequencyTags[indexPath.item].name))
             }
         case 3:
-            if inputTags.count < 6 {
+            if inputTags.count < 6, !inputTags.contains(where: { $0.id == platformTags[indexPath.item].id }) {
                 inputTags.append(Tag(id: platformTags[indexPath.item].id, name: platformTags[indexPath.item].name))
             }
         default:
             print("none")
         }
-        searchBar.text?.isEmpty ?? true ? applyInitialDataSource() : applyRelatedTagSnapshot()
+        
+        searchBar.text == "" ? applyInitialDataSource() : applyRelatedTagSnapshot()
     }
 }
 
@@ -107,10 +110,13 @@ extension HomeSearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        goToSearchResultViewController(tags: inputTags)
+        if inputTags.count > 0 {
+            goToSearchResultViewController(tags: inputTags)
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        isShownRelated = (searchBar.text != "")
         relatedTags = []
         if searchText.isEmpty {
             applyInitialDataSource()

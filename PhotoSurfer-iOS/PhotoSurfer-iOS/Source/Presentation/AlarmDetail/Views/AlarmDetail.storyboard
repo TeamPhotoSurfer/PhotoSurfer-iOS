@@ -88,6 +88,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="2022. 7. 9. (토)"/>
+                                                <connections>
+                                                    <action selector="setDateButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="oMY-jj-9U4"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -123,6 +126,9 @@
                                                 <color key="tintColor" name="grayGray40"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="icShortarrowLineRight"/>
+                                                <connections>
+                                                    <action selector="setMainTagButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="whN-nh-zAH"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -228,6 +234,7 @@
                         <outlet property="completeButton" destination="hKX-hV-Q1G" id="n79-Rh-LVF"/>
                         <outlet property="dateButton" destination="FRV-Ji-tdD" id="sJV-0h-rB2"/>
                         <outlet property="memoTextView" destination="sIT-Zi-nSX" id="ljq-jq-lno"/>
+                        <outlet property="tagLabel" destination="SxF-st-9Wf" id="J2t-L0-Bfd"/>
                         <outlet property="topViewHeightConstraint" destination="Koy-L5-zBD" id="Kd3-ff-zVW"/>
                     </connections>
                 </viewController>

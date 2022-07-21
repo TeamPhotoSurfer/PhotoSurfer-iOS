@@ -31,6 +31,11 @@ final class SetAlarmViewController: UIViewController {
     let bellAnimationView = AnimationView()
     let surfingAnimationView = AnimationView()
     var keyboardShowedCount: Int = 0
+    var tags: [Tag] = []
+    var image: UIImage = UIImage()
+    var photoID: Int = 0
+    var tagIDs: [Int] = []
+    var representTag: [Tag] = []
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -38,16 +43,31 @@ final class SetAlarmViewController: UIViewController {
 
         setUI()
         setKeyboard()
+        postImageNTags(imagefile: image, tags: tags)
     }
     
     // MARK: - Function
     private func setUI() {
         setCommentTimeView()
         setTextView()
+        setDatePicker()
         setAlarmButton.layer.cornerRadius = 8
-        settingTimeButton.layer.cornerRadius = 8
-        datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        setTimeButton()
         setLottie()
+        setRepresentTag()
+    }
+    
+    private func setDatePicker() {
+        datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        datePicker.minimumDate = Date()
+    }
+    
+    private func setTimeButton() {
+        settingTimeButton.layer.cornerRadius = 8
+        settingTimeButton.titleLabel?.numberOfLines = 1
+        settingTimeButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        settingTimeButton.setTitle(setDateToString(date: Date()), for: .normal)
+        settingTimeButton.setTitle(setDateToString(date: datePicker.date), for: .selected)
     }
     
     private func setKeyboard() {
@@ -84,6 +104,97 @@ final class SetAlarmViewController: UIViewController {
             self.surfingAnimationView.stop()
             self.loadingView.isHidden = true
         }
+    }
+    
+    private func postImageNTags(imagefile: UIImage, tags: [Tag]) {
+        let photoRequest: PhotoRequest = PhotoRequest(file: imagefile, tags: tags)
+        PhotoService.shared.postPhoto(photoInfo: photoRequest) { result in
+            switch result {
+            case .success(let data):
+                print("successess")
+                guard let data = data as? Photo else { return }
+                self.photoID = data.id
+                guard let fetchedTags = data.tags else { return }
+                for fetchedTag in fetchedTags {
+                    guard let id = fetchedTag.id else {
+                        return
+                    }
+                    self.tagIDs.append(id)
+                }
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    private func postPushAlarm(pushAlarm: PushAlarmRequest) {
+        let pushAlarmRequest: PushAlarmRequest = pushAlarm
+        PushService.shared.postPush(photoID: photoID, pushInfo: pushAlarmRequest) { result in
+            switch result {
+            case .success(let data):
+                guard let data = data as? PostPushResponse else { return }
+                print(data.memo)
+                self.showDismissAlert(message: "알림이 설정되었습니다.")
+            case .requestErr(let status):
+                if status as! Int ==  403 {
+                    self.showAlert(message: "푸시알림 설정 날짜는 오늘 날짜 이후여야 합니다.")
+                }
+                else if status as! Int == 409 {
+                    self.showAlert(message: "사진에 해당하는 푸시알림이 이미 존재합니다.")
+                }
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    private func setRepresentTag() {
+        if tags.count > 3 {
+            for index in 0..<3 {
+                representTag.append(tags[index])
+            }
+        }
+        else {
+            representTag = tags
+        }
+        
+        var selectedTagName: String = ""
+        for index in 0..<representTag.count {
+            switch index {
+            case tags.count-1:
+                selectedTagName += "#\(tags[index].name)"
+            default:
+                selectedTagName += "#\(tags[index].name), "
+            }
+        }
+        setRepresentTagButton.setTitle(selectedTagName, for: .normal)
+    }
+    
+    private func setDateToString(date: Date) -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy. M. dd (EEEEE)"
+        dateformatter.locale = Locale(identifier:"ko_KR")
+        let date = dateformatter.string(from: date)
+        return date
+    }
+    
+    private func setDateToString() -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "yyyy-M-dd"
+        dateformatter.locale = Locale(identifier:"ko_KR")
+        let date = dateformatter.string(from: datePicker.date)
+        return date
     }
     
     // MARK: - Objc Function
@@ -128,6 +239,7 @@ final class SetAlarmViewController: UIViewController {
             return
         }
         setRepresentTagViewController.delegate = self
+        setRepresentTagViewController.tags = tags
         self.navigationController?.pushViewController(setRepresentTagViewController, animated: true)
     }
     
@@ -139,6 +251,15 @@ final class SetAlarmViewController: UIViewController {
         UIView.animate(withDuration: 0.5) {
             self.datePickerView.isHidden.toggle()
         }
+    }
+    @IBAction func saveAlarmButton(_ sender: UIButton) {
+        let date = setDateToString()
+        var memo: String = ""
+        if textViewPlaceHolder != memoTextView.text {
+            memo = self.memoTextView.text
+        }
+        let pushRequest = PushAlarmRequest(memo: memo, pushDate: date, tagIDs: tagIDs)
+        postPushAlarm(pushAlarm: pushRequest)
     }
 }
 

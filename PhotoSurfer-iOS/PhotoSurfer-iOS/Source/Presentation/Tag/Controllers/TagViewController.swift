@@ -17,6 +17,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
     var bookmarkedList: [Tag] = []
     var notBookmarkedList: [Tag] = []
+    var totalList: [Tag]?
     var indexpath: IndexPath = IndexPath.init()
     
     // MARK: - IBOutlet
@@ -32,15 +33,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setUI()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        removeObserver()
-    }
-    
     // MARK: - Function
-    private func removeObserver() {
-        NotificationCenter.default.removeObserver(Notification.Name("TagDetailPresent"))
-    }
-    
     private func setUI() {
         getTag()
         setEditTagTextField()
@@ -48,6 +41,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setEditToolbar()
         editTagTextField.delegate = self
         albumCollectionView.delegate = self
+        
     }
     
     private func setEditTagTextField() {
@@ -90,6 +84,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
             albumCell.setData(tag: item)
             albumCell.tag = indexPath.row
             albumCell.delegate = self
+            albumCell.starDelegate = self
             return albumCell
         })
         albumCollectionView.collectionViewLayout = createLayout()
@@ -98,6 +93,10 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     private func registerXib() {
         albumCollectionView.register(UINib(nibName: Const.Identifier.TagAlbumCollectionViewCell, bundle: nil),
                                      forCellWithReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell)
+    }
+    
+    func setTotalList() {
+        totalList = bookmarkedList + notBookmarkedList
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout {
@@ -120,6 +119,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
                 self?.bookmarkedList = data.bookmarked.tags
                 self?.notBookmarkedList = data.notBookmarked.tags
                 self?.applySnapshot()
+                self?.setTotalList()
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
@@ -130,7 +130,59 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
                 print("networkFail")
             }
         }
-        print("✨notBookmarkedList in getTag", self.notBookmarkedList)
+    }
+    
+    func putTagBookmark(id: Int) {
+        TagService.shared.putTagBookmark(id: id) { response in
+            switch response {
+            case .success(let data):
+                print("✨data",data)
+                self.getTag()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func delTagBookmark(id: Int) {
+        TagService.shared.delTagBookmark(id: id) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.getTag()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func delTag(id: Int) {
+        TagService.shared.delTag(id: id) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -163,11 +215,26 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
 extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? TagAlbumCollectionViewCell else { return }
-        let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController)
+        guard let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController) as? TagDetailViewController else { return }
         tagDetailViewController.modalPresentationStyle = .fullScreen
+        tagDetailViewController.tag = item
         self.navigationController?.pushViewController(tagDetailViewController, animated: true)
-        NotificationCenter.default.post(name: Notification.Name("TagDetailPresent"), object: item.name)
+    }
+}
+
+extension TagViewController: StarHandleDelegate {
+    func starButtonTapped(cell: TagAlbumCollectionViewCell) {
+        print("✨isSelected", cell.tagStarButton.isSelected)
+        print("✨starButtonDidTap")
+        guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
+        guard let tag = totalList?[indexPath.item] else { return }
+        if cell.tagStarButton.isSelected {
+            putTagBookmark(id: tag.id ?? 0)
+        } else {
+            delTagBookmark(id: tag.id ?? 0)
+        }
+        
+        
     }
 }
 
@@ -177,11 +244,13 @@ extension TagViewController: MenuHandleDelegate {
         var superview = button.superview
         while superview != nil {
             if let cell = superview as? UICollectionViewCell {
-                print("✨cell", cell)
-                guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
-                var totalList = bookmarkedList + notBookmarkedList
-                totalList.remove(at: indexPath.item)
-                applySnapshotTotal(totalList: totalList)
+                guard let indexPath = albumCollectionView.indexPath(for: cell),
+                      let objectIClickedOnto = dataSource.itemIdentifier(for: indexPath) else { return }
+                guard let tag = totalList?[indexPath.item] else { return }
+                delTag(id: tag.id ?? 0)
+                var snapshot = dataSource.snapshot()
+                snapshot.deleteItems([objectIClickedOnto])
+                dataSource.apply(snapshot)
                 break
             }
             superview = superview?.superview

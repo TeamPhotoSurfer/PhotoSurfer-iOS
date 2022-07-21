@@ -15,6 +15,20 @@ public class PushService {
     
     public init() { }
     
+    func getPush(id: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+        pushProvider.request(.getPush(id: id)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, Push.self)
+                completion(networkResult)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
     func getPushListLast(completion: @escaping (NetworkResult<Any>) -> Void) {
         pushProvider.request(.getPushListLast) { result in
             switch result {
@@ -50,6 +64,20 @@ public class PushService {
                 let statusCode = response.statusCode
                 let data = response.data
                 let networkResult = NetworkBase.judgeStatus(by: statusCode, data, PushTodayResponse.self)
+                completion(networkResult)
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+    
+    func postPush(photoID: Int, pushInfo: PushAlarmRequest, completion: @escaping (NetworkResult<Any>) -> Void) {
+        pushProvider.request(.postPush(photoID: photoID, param: pushInfo)) { result in
+            switch result {
+            case .success(let response):
+                let statusCode = response.statusCode
+                let data = response.data
+                let networkResult = NetworkBase.judgeStatus(by: statusCode, data, PostPushResponse.self)
                 completion(networkResult)
             case .failure(let err):
                 print(err)

@@ -7,11 +7,6 @@
 
 import UIKit
 
-struct TagPhoto: Hashable {
-    let uuid = UUID()
-    let image: UIImage
-}
-
 final class TagDetailViewController: UIViewController {
     
     enum Section {
@@ -19,8 +14,9 @@ final class TagDetailViewController: UIViewController {
     }
     
     // MARK: - Property
-    var photoDataSource: UICollectionViewDiffableDataSource<Section, TagPhoto>!
-    var photos: [TagPhoto] = []
+    var photoDataSource: UICollectionViewDiffableDataSource<Section, Photo>!
+    var photos: [Photo] = []
+    var tag: Tag?
     
     // MARK: - IBOutlet
     @IBOutlet weak var tagNameLabel: UILabel!
@@ -33,12 +29,12 @@ final class TagDetailViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
-        setDummy()
         setCollectionView()
     }
     
     private func setUI() {
-        NotificationCenter.default.addObserver(self, selector: #selector(setTagName), name: Notification.Name("TagDetailPresent"), object: nil)
+        setTitle()
+        
     }
     
     private func setCollectionView() {
@@ -55,15 +51,15 @@ final class TagDetailViewController: UIViewController {
     }
     
     private func setDataSource() {
-        photoDataSource = UICollectionViewDiffableDataSource<Section, TagPhoto>(collectionView: photoCollectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+        photoDataSource = UICollectionViewDiffableDataSource<Section, Photo>(collectionView: photoCollectionView, cellProvider: { collectionView, indexPath, item in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Const.Identifier.PhotoCollectionViewCell, for: indexPath) as? PhotoCollectionViewCell else { fatalError() }
-            cell.setData(image: itemIdentifier.image)
+            cell.imageView.setImage(with: item.imageURL)
             return cell
         })
     }
     
     func applyPhotoSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, TagPhoto>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
         snapshot.appendSections([.photo])
         snapshot.appendItems(photos, toSection: .photo)
         photoDataSource.apply(snapshot)
@@ -80,22 +76,6 @@ final class TagDetailViewController: UIViewController {
         bottomWaveView.isHidden = !isSelectable
         selectedNavigationStackView.isHidden = !isSelectable
         selectButton.isHidden = isSelectable
-    }
-    
-    private func setDummy() {
-        photos = [
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-            TagPhoto(image: Const.Image.imgSea),
-        ]
     }
     
     func createPhotosLayout() -> UICollectionViewLayout {
@@ -116,10 +96,30 @@ final class TagDetailViewController: UIViewController {
         photoCollectionView.delegate = self
     }
     
-    // MARK: - Objc Function
-    @objc func setTagName(notification: NSNotification) {
-        guard let object = notification.object else { return }
-        tagNameLabel.text = object as? String
+    func setTitle() {
+        print("setPhotos")
+        guard let tag = tag else { return }
+        tagNameLabel.text = tag.name
+        getPhotoSearch(id: tag.id ?? 0)
+    }
+    
+    func getPhotoSearch(id: Int) {
+        PhotoService.shared.getPhotoSearch(ids: [id]) { response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? PhotoSearchResponse else { return }
+                self.photos = data.photos
+                self.applyPhotoSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
     }
     
     // MARK: - IBAction
@@ -137,10 +137,11 @@ final class TagDetailViewController: UIViewController {
 extension TagDetailViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("cell 선택")
+        let photo = photos[indexPath.item]
         guard let pictureViewController = UIStoryboard(name: Const.Storyboard.Picture, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.PictureViewController) as? PictureViewController else { return }
         pictureViewController.type = .picture
+        pictureViewController.photoID = photo.id
         self.navigationController?.pushViewController(pictureViewController, animated: true)
     }
 }

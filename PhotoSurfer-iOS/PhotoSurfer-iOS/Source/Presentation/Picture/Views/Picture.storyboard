@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -31,7 +31,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="leftBackIconButton"/>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="56K-Hg-bxd">
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="56K-Hg-bxd">
                                         <rect key="frame" x="331" y="18" width="63" height="24"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBD-BC-O3O">
@@ -185,6 +185,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="delete"/>
+                                        <connections>
+                                            <action selector="deleteButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fEB-mE-rln"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIM-3g-RB7">
                                         <rect key="frame" x="350" y="6" width="44" height="44"/>
@@ -255,6 +258,7 @@
                         <outlet property="imageView" destination="Un1-OY-IMz" id="IPy-yV-1de"/>
                         <outlet property="keyboardTopTextField" destination="jTN-JW-3Rw" id="h4F-Ub-VWu"/>
                         <outlet property="moreButton" destination="EI1-XH-izf" id="A1j-ya-Yyi"/>
+                        <outlet property="navigationAlarmButton" destination="JBD-BC-O3O" id="KLB-eT-3Ze"/>
                         <outlet property="navigationPictureButtonContainerStackView" destination="56K-Hg-bxd" id="RdW-i0-GRh"/>
                         <outlet property="navigationTitleLabel" destination="Bc8-7P-arr" id="Pxd-l9-ney"/>
                         <outlet property="scrollViewHeight" destination="m0v-EL-Bu3" id="yff-AQ-L7c"/>

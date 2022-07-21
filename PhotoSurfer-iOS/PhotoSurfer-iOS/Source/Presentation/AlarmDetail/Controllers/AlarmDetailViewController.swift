@@ -8,18 +8,23 @@
 import UIKit
 
 final class AlarmDetailViewController: UIViewController {
+    
+    // MARK: - Property
+    var pushID: Int = 1
 
     // MARK: - IBOutlet
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var memoTextView: UITextView!
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tagLabel: UILabel!
     
     // MARK: - LifeCyele
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
+        getPushDetail(id: pushID)
     }
     
     // MARK: - Function
@@ -30,11 +35,44 @@ final class AlarmDetailViewController: UIViewController {
         memoTextView.textContainerInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
     }
     
+    private func getPushDetail(id: Int) {
+        PushService.shared.getPush(id: id) { response in
+            switch response {
+            case .success(let data):
+                guard let data = data as? Push else { return }
+                self.dateButton.setTitle(data.pushDate, for: .normal)
+                self.memoTextView.text = data.memo
+                var tagText = ""
+                for tag in data.tags {
+                    tagText += "#\(tag.name) "
+                }
+                self.tagLabel.text = tagText
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     // MARK: - IBAction
     @IBAction func dismissButtonDidTap(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func setDateButtonDidTap(_ sender: Any) {
+        self.makeOKAlert(title: "", message: "서비스 준비중입니다.", okAction: nil, completion: nil)
+    }
+    
+    @IBAction func setMainTagButtonDidTap(_ sender: Any) {
+        self.makeOKAlert(title: "", message: "서비스 준비중입니다.", okAction: nil, completion: nil)
+    }
+    
     @IBAction func completeButtonDidTap(_ sender: Any) {
+        self.makeOKAlert(title: "", message: "서비스 준비중입니다.", okAction: nil, completion: nil)
     }
 }
