@@ -182,7 +182,12 @@ final class ShareViewController: UIViewController {
             let keyboardHeight = keyboardRectangle.height
             if collectionViewBottonConstraint.constant != 0 {
                 collectionViewBottonConstraint.constant = 0
-                typingViewTopConstraint.constant = typingButtonTopConstValue
+                if addedTags.isEmpty  {
+                    typingViewTopConstraint.constant += 34
+                }
+                else {
+                    typingViewTopConstraint.constant = typingButtonTopConstValue
+                }
             }
             else {
                 collectionViewBottonConstraint.constant += keyboardHeight
@@ -217,8 +222,6 @@ final class ShareViewController: UIViewController {
         }
         setAlarmViewController.tags = addedTags
         setAlarmViewController.image = image
-        print("tags \(addedTags)")
-        print("image \(image)")
         self.present(setAlarmNavigationController, animated: true)
     }
 }
