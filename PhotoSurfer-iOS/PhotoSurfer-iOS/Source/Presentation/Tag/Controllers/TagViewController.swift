@@ -17,6 +17,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
     var bookmarkedList: [Tag] = []
     var notBookmarkedList: [Tag] = []
+    var totalList: [Tag]?
     var indexpath: IndexPath = IndexPath.init()
     
     // MARK: - IBOutlet
@@ -48,6 +49,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setEditToolbar()
         editTagTextField.delegate = self
         albumCollectionView.delegate = self
+        
     }
     
     private func setEditTagTextField() {
@@ -83,6 +85,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
             albumCell.setData(tag: item)
             albumCell.tag = indexPath.row
             albumCell.delegate = self
+            albumCell.starDelegate = self
             return albumCell
         })
         applySnapshot()
@@ -114,6 +117,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
                 self?.bookmarkedList = data.bookmarked.tags
                 self?.notBookmarkedList = data.notBookmarked.tags
                 self?.applySnapshot()
+                self?.setTotalList()
             case .requestErr(_):
                 print("requestErr")
             case .pathErr:
@@ -124,7 +128,10 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
                 print("networkFail")
             }
         }
-        print("✨notBookmarkedList in getTag", self.notBookmarkedList)
+    }
+    
+    func setTotalList() {
+        totalList = bookmarkedList + notBookmarkedList
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -160,6 +167,15 @@ extension TagViewController: UICollectionViewDelegate {
         tagDetailViewController.modalPresentationStyle = .fullScreen
         tagDetailViewController.tag = item
         self.navigationController?.pushViewController(tagDetailViewController, animated: true)
+    }
+}
+
+extension TagViewController: StarHandleDelegate {
+    func starButtonTapped(cell: TagAlbumCollectionViewCell) {
+        print("✨starButtonDidTap")
+        guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
+        guard let tag = totalList?[indexPath.item] else { return }
+        
     }
 }
 
