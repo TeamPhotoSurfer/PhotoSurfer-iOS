@@ -7,6 +7,8 @@
 
 import UIKit
 
+import IQKeyboardManagerSwift
+
 final class HomeResultViewController: UIViewController {
     
     enum Section {
@@ -41,6 +43,8 @@ final class HomeResultViewController: UIViewController {
     @IBOutlet weak var navigationTitleLabel: UILabel!
     @IBOutlet weak var waveImageView: UIImageView!
     @IBOutlet weak var bottomWaveImageContainerView: UIView!
+    @IBOutlet weak var waveViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var keyboardTopTextField: UITextField!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -49,23 +53,39 @@ final class HomeResultViewController: UIViewController {
         print(tags.map({ $0.id }))
         setUI(mode: editMode)
         setCollectionView()
+        addKeyboardObserver()
+        setTextFieldDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        setKeyboardManagerEnable(false)
         if editMode == .none {
             getPhotoSearch()
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        setKeyboardManagerEnable(true)
+        removeKeyboardObserver()
+    }
+    
+    private func setKeyboardManagerEnable(_ isEnabled: Bool) {
+        IQKeyboardManager.shared.enable = isEnabled
+    }
+    
     private func setUI(mode: HomeResultEditMode) {
         navigationTitleLabel.text = mode.rawValue
+        setTextFieldUI()
         switch mode {
         case .none:
             print("none")
         case .add:
             print("add")
+            keyboardTopTextField.becomeFirstResponder()
             setEditModeUI()
         case .delete:
             print("delete")
@@ -76,11 +96,22 @@ final class HomeResultViewController: UIViewController {
         }
     }
     
+    private func setTextFieldUI() {
+        keyboardTopTextField.layer.cornerRadius = 22
+        keyboardTopTextField.layer.borderColor = UIColor.grayGray30.cgColor
+        keyboardTopTextField.layer.borderWidth = 1
+        keyboardTopTextField.addPadding(padding: 12)
+    }
+    
     private func setEditModeUI() {
         selectButton.isHidden = true
         bottomWaveImageContainerView.isHidden = false
         deleteButton.isHidden = true
         shareButton.isHidden = true
+    }
+    
+    private func setTextFieldDelegate() {
+        keyboardTopTextField.delegate = self
     }
     
     private func setCollectionView() {
@@ -218,6 +249,30 @@ final class HomeResultViewController: UIViewController {
         }
         moreButton.menu = UIMenu(title: "", children: [addTag, deleteTag, editTag])
         moreButton.showsMenuAsPrimaryAction = true
+    }
+    
+    private func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func removeKeyboardObserver() {
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+    }
+    
+    // MARK: - Objc Function
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            waveViewBottomConstraint.constant = keyboardHeight
+            keyboardTopTextField.isHidden = false
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        waveViewBottomConstraint.constant = 0
+        keyboardTopTextField.isHidden = true
     }
     
     // MARK: - IBAction
