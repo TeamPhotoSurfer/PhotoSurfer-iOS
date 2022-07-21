@@ -12,6 +12,7 @@ extension PictureViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if !(textField.text?.isEmpty ?? true) && tags.count < 6 {
             tags.insert(Tag(name: textField.text ?? ""), at: 0)
+            addPhotoTag(tagName: textField.text ?? "")
             applyTagsSnapshot()
         }
         return true
@@ -61,6 +62,24 @@ extension PictureViewController {
     func deletePhotoTag(tagId: Int) {
         guard let photoID = photoID else { return }
         PhotoService.shared.deletePhotoMenuTag(tagId: tagId, photoIds: [photoID]) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func addPhotoTag(tagName: String) {
+        guard let photoID = photoID else { return }
+        PhotoService.shared.postAddPhotoMenuTag(photoIds: [photoID], name: tagName, type: .general) { response in
             switch response {
             case .success(let data):
                 print(data)

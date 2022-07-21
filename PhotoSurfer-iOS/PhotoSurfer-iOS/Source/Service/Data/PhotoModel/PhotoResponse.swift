@@ -30,3 +30,8 @@ struct Photo: Codable, Hashable {
 struct PhotoMenuTag: Codable, Hashable {
     let countDeletedPhoto: Int
 }
+
+struct postAddPhotoMenuTagResponse: Codable, Hashable {
+    let tagId: Int
+    let name: String
+}
