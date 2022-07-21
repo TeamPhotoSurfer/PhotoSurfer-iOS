@@ -12,10 +12,15 @@ protocol MenuHandleDelegate {
     func editButtonDidTap(button: UIButton)
 }
 
+protocol StarHandleDelegate {
+    func starButtonTapped(cell: TagAlbumCollectionViewCell)
+}
+
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Property
     var delegate: MenuHandleDelegate?
+    var starDelegate: StarHandleDelegate?
     var menuItems: [UIAction] {
         return [
             UIAction(title: "태그 삭제", image: UIImage(systemName: "trash"), handler: { [self] _ in
@@ -92,7 +97,11 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
         
     }
     
-    @IBAction func starButtonDidTap(_ sender: Any) {
+    @IBAction func starButtonDidTap(_ sender: UIButton) {
+        print("✨별 클릭")
         tagStarButton.isSelected.toggle()
+        guard let cell = sender.superview?.superview?.superview as? TagAlbumCollectionViewCell else { return }
+        print("✨cell", cell)
+        self.starDelegate?.starButtonTapped(cell: cell)
     }
 }
