@@ -50,5 +50,6 @@ extension SetAlarmViewController: SetSelectedRepresentTag {
             }
         }
         setRepresentTagButton.setTitle(selectedTag, for: .normal)
+        postImageNTags(imagefile: image, tags: representTag)
     }
 }
