@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct AuthRequest {
+    let socialToken: String
+    let socialType: String = "kakao"
+    let fcm: String = "a"
+    
+    enum CodingKeys: String, CodingKey {
+        case socialToken
+        case socialType
+        case fcm
+    }
+}
