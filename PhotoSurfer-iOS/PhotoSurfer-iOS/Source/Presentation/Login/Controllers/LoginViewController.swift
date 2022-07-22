@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     
     // MARK: - Property
     var gradientLayer: CAGradientLayer!
+    var accessToken: String = ""
+    var refreshToken: String = ""
     
     // MARK: - IBOutlet
     @IBOutlet weak var backgroundView: UIView!
@@ -67,10 +69,28 @@ class LoginViewController: UIViewController {
         delegate.window?.rootViewController = mainTabBarController
     }
     
+    func postAuthLogin(authRequest: AuthRequest) {
+        let authRequest: AuthRequest = authRequest
+        AuthService.shared.postAuthLogin(authRequest: authRequest) { result in
+            switch result {
+            case .success(let data):
+                self.changeRootViewController()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
     // MARK: - Objc Function
     @objc func kakaoLoginImageViewDidTap(sender: UITapGestureRecognizer) {
         if (UserApi.isKakaoTalkLoginAvailable()) {
-            UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
+            UserApi.shared.loginWithKakaoTalk { [self](oauthToken, error) in
                 if let error = error {
                     print(error)
                 }
@@ -78,12 +98,15 @@ class LoginViewController: UIViewController {
                     print("카카오톡 로그인 loginWithKakaoTalk() success.")
                     _ = oauthToken
                     if let accessToken = oauthToken?.accessToken {
+                        self.accessToken = accessToken
                         print("✨accessToken", accessToken)
                     }
                     if let refreshToken = oauthToken?.refreshToken {
+                        self.refreshToken = refreshToken
                         print("✨refreshToken", refreshToken)
                     }
-                    self.changeRootViewController()
+                    let authRequest = AuthRequest(socialToken: self.accessToken, socialType: "kakao")
+                    postAuthLogin(authRequest: authRequest)
                 }
             }
         } else {
@@ -95,9 +118,15 @@ class LoginViewController: UIViewController {
                     print("카카오 계정 로그인 loginWithKakaoAccount() success.")
                     _ = oauthToken
                     if let accessToken = oauthToken?.accessToken {
-                        print(accessToken)
+                        self.accessToken = accessToken
+                        print("✨accessToken", accessToken)
                     }
-                    self.changeRootViewController()
+                    if let refreshToken = oauthToken?.refreshToken {
+                        self.refreshToken = refreshToken
+                        print("✨refreshToken", refreshToken)
+                    }
+                    let authRequest = AuthRequest(socialToken: self.accessToken, socialType: "kakao")
+                    self.postAuthLogin(authRequest: authRequest)
                 }
             }
         }

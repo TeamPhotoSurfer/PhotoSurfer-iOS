@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+struct AuthResponse: Codable {
+    let checkUser: CheckUser
+    let accesstoken: String
+}
+
+// MARK: - CheckUser
+struct CheckUser: Codable {
+    let id: Int
+    let updatedAt, createdAt, name: String?
+    let email, socialType, fcmToken: String
+    let push, isDeleted: Bool
+}
