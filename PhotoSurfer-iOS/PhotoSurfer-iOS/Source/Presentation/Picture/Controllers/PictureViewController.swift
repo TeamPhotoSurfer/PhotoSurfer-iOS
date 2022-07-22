@@ -29,13 +29,14 @@ final class PictureViewController: UIViewController {
     
     // MARK: - Property
     var photoID: Int?
-    var pushID: Int? 
+    var pushID: Int?
     var photo = Const.Image.imgSea
     var type: ViewType = .alarmSelected
     var editMode: PictureEditMode = .none
     var dataSource: UICollectionViewDiffableDataSource<Section, Tag>!
     var tags: [Tag] = []
     var editIdx: Int?
+    var addedTagName: String?
     
     // MARK: - IBOutlet
     @IBOutlet weak var navigationPictureButtonContainerStackView: UIStackView!
@@ -233,6 +234,7 @@ final class PictureViewController: UIViewController {
                 self.applyTagsSnapshot()
             case .requestErr(_):
                 print("requestErr")
+                self.navigationController?.popViewController(animated: true)
             case .pathErr:
                 print("pathErr")
             case .serverErr:
@@ -260,6 +262,18 @@ final class PictureViewController: UIViewController {
             }
         }
     }
+    
+    private func shareImage(shareObject: [UIImage]) {
+        let activityViewController = UIActivityViewController(activityItems: shareObject,
+                                                              applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = { (activity, success, items, error) in
+            if success {
+                print("완료")
+            }
+        }
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
     
     // MARK: - Objc Function
     @objc private func keyboardWillShow(_ notification: Notification) {
@@ -295,12 +309,21 @@ final class PictureViewController: UIViewController {
     }
     
     @IBAction func deleteButtonDidTap(_ sender: Any) {
-        self.makeRequestAlert(title: "", message: "사진을 삭제하시겠습니까?", okAction: { _ in 
+        self.makeRequestAlert(title: "", message: "사진을 삭제하시겠습니까?", okAction: { _ in
             self.deletePhoto()
         }, cancelAction: nil, completion: nil)
     }
     
     @IBAction func backButtonDidTap(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func bottomShareButtonDidTap(_ sender: Any) {
+        shareImage(shareObject: [imageView.image ?? UIImage()])
+    }
+    
+    @IBAction func shareButtonDidTap(_ sender: Any) {
+        shareImage(shareObject: [imageView.image ?? UIImage()])
     }
 }

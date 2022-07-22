@@ -16,11 +16,17 @@ extension SetAlarmViewController: UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let textRange = Range(range, in: currentText) else {
+            return false
+        }
+        let changedText = currentText.replacingCharacters(in: textRange, with: text)
+        
         if text == "\n" {
             textView.resignFirstResponder()
             return false
         }
-        return true
+        return changedText.count <= 50
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

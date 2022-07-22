@@ -97,7 +97,7 @@ extension HomeSearchViewController: UICollectionViewDelegate {
         default:
             print("none")
         }
-        
+        setDataSource()
         searchBar.text == "" ? applyInitialDataSource() : applyRelatedTagSnapshot()
     }
 }

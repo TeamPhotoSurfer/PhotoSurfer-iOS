@@ -66,6 +66,9 @@
                                         <rect key="frame" x="362" y="-2.5" width="48" height="56"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="rightShareIconButton"/>
+                                        <connections>
+                                            <action selector="shareButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hwq-if-Mqc"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc8-7P-arr">
                                         <rect key="frame" x="184" y="15" width="46" height="21.5"/>
@@ -200,6 +203,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="share"/>
+                                        <connections>
+                                            <action selector="bottomShareButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="XF9-jn-Mhq"/>
+                                        </connections>
                                     </button>
                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="추가할 태그를 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTN-JW-3Rw">
                                         <rect key="frame" x="20" y="35" width="374" height="44"/>

@@ -43,27 +43,127 @@ extension HomeResultViewController {
 extension HomeResultViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if isMultiSelectMode {
-            if selectedPhotos.contains(where: {$0.id == photos[indexPath.item].id }) {
-                selectedPhotos = selectedPhotos.filter {
-                    $0.id != photos[indexPath.item].id
+        if editMode == .none {
+            if isMultiSelectMode {
+                if collectionView === photoCollectionView {
+                    if selectedPhotos.contains(where: {$0.id == photos[indexPath.item].id }) {
+                        selectedPhotos = selectedPhotos.filter {
+                            $0.id != photos[indexPath.item].id
+                        }
+                    }
+                    else {
+                        selectedPhotos.append(photos[indexPath.item])
+                    }
+                    setDataSource()
+                    applyTagSnapshot()
+                    applyPhotoSnapshot()
                 }
-                print(selectedPhotos)
+            } else {
+                if collectionView === tagCollectionView {
+                    tags.remove(at: indexPath.item)
+                    getPhotoSearch()
+                    applyTagSnapshot()
+                }
+                else {
+                    goToPictureViewController(photoId: photos[indexPath.item].id)
+                }
             }
-            else {
-                selectedPhotos.append(photos[indexPath.item])
-            }
-            setDataSource()
-            applyTagSnapshot()
-            applyPhotoSnapshot()
-        } else {
+        }
+        else if editMode == .delete {
             if collectionView === tagCollectionView {
-                tags.remove(at: indexPath.item)
-                getPhotoSearch()
-                applyTagSnapshot()
+                if let id = tags[indexPath.item].id {
+                    deleteMultiPhotoTag(deleteTagId: id)
+                    tags.remove(at: indexPath.item)
+                }
             }
-            else {
-                goToPictureViewController(photoId: photos[indexPath.item].id)
+        }
+        else if editMode == .edit {
+            if collectionView === tagCollectionView {
+                editSelectTag = tags[indexPath.item]
+                editIdx = indexPath.item
+                keyboardTopTextField.becomeFirstResponder()
+                setDataSource()
+                applyTagSnapshot()
+                applyPhotoSnapshot()
+            }
+        }
+    }
+}
+
+extension HomeResultViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if editMode == .add {
+            if !(textField.text?.isEmpty ?? true) && tags.count < 6 {
+                tags.insert(Tag(name: textField.text ?? ""), at: 0)
+                addMultiPhotoTag(tagName: textField.text ?? "")
+            }
+        }
+        else if editMode == .edit {
+            if !(textField.text?.isEmpty ?? true), let editIdx = editIdx {
+                editMultiPhotoTag(editIdx: editIdx, newTagName: textField.text ?? "")
+            }
+        }
+        return true
+    }
+}
+
+extension HomeResultViewController {
+    
+    func deleteMultiPhotoTag(deleteTagId: Int) {
+        PhotoService.shared.deletePhotoMenuTag(tagId: deleteTagId, photoIds: photos.map({ $0.id })) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.applyTagSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func addMultiPhotoTag(tagName: String) {
+        PhotoService.shared.postAddPhotoMenuTag(photoIds: photos.map({ $0.id }),
+                                                name: tagName, type: .general) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.applyTagSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
+            }
+        }
+    }
+    
+    func editMultiPhotoTag(editIdx: Int, newTagName: String) {
+        guard let editTagId = editSelectTag?.id else { return }
+        PhotoService.shared.putPhotoMenuTag(tagId: editTagId,
+                                            name: newTagName, type: .general,
+                                            photoIds: photos.map({ $0.id })) { response in
+            switch response {
+            case .success(let data):
+                print(data)
+                self.tags[editIdx] = (Tag(name: newTagName))
+                self.applyTagSnapshot()
+            case .requestErr(_):
+                print("requestErr")
+            case .pathErr:
+                print("pathErr")
+            case .serverErr:
+                print("serverErr")
+            case .networkFail:
+                print("networkFail")
             }
         }
     }

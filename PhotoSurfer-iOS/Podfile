@@ -30,3 +30,11 @@ pod 'KakaoSDKAuth'  # 사용자 인증
 pod 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리
 
 end
+
+target 'NotificationPushExtension' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+pod 'Firebase/Messaging'
+end
+

@@ -100,7 +100,7 @@ final class SetAlarmViewController: UIViewController {
         surfingAnimationView.play()
         surfingView.addSubview(surfingAnimationView)
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
             self.surfingAnimationView.stop()
             self.loadingView.isHidden = true
         }
@@ -111,7 +111,6 @@ final class SetAlarmViewController: UIViewController {
         PhotoService.shared.postPhoto(photoInfo: photoRequest) { result in
             switch result {
             case .success(let data):
-                print("successess")
                 guard let data = data as? Photo else { return }
                 self.photoID = data.id
                 guard let fetchedTags = data.tags else { return }
@@ -143,7 +142,7 @@ final class SetAlarmViewController: UIViewController {
                 self.showDismissAlert(message: "알림이 설정되었습니다.")
             case .requestErr(let status):
                 if status as! Int ==  403 {
-                    self.showAlert(message: "푸시알림 설정 날짜는 오늘 날짜 이후여야 합니다.")
+                    self.showAlert(message: "알림은 내일부터 설정할 수 있어요.")
                 }
                 else if status as! Int == 409 {
                     self.showAlert(message: "사진에 해당하는 푸시알림이 이미 존재합니다.")
@@ -244,7 +243,7 @@ final class SetAlarmViewController: UIViewController {
     }
     
     @IBAction func backButtonDidTap(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        self.extensionContext!.completeRequest(returningItems: nil, completionHandler: nil)
     }
     
     @IBAction func showDatePickerButtonDidTap(_ sender: UIButton) {
