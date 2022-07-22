@@ -95,7 +95,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
                                      forCellWithReuseIdentifier: Const.Identifier.TagAlbumCollectionViewCell)
     }
     
-    func setTotalList() {
+    private func setTotalList() {
         totalList = bookmarkedList + notBookmarkedList
     }
     
@@ -132,7 +132,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func putTagBookmark(id: Int) {
+    private func putTagBookmark(id: Int) {
         TagService.shared.putTagBookmark(id: id) { response in
             switch response {
             case .success(let data):
@@ -150,7 +150,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func delTagBookmark(id: Int) {
+    private func delTagBookmark(id: Int) {
         TagService.shared.delTagBookmark(id: id) { response in
             switch response {
             case .success(let data):
@@ -168,7 +168,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func delTag(id: Int) {
+    private func delTag(id: Int) {
         TagService.shared.delTag(id: id) { response in
             switch response {
             case .success(let data):
@@ -184,17 +184,14 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-    }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("✨resign", editTagTextField.resignFirstResponder())
         return true
     }
     
     // MARK: - Objc Function
+    // TODO: 태그 앨범 edit 기능 수정
     @objc func editTagTextFieldDidChange(_ sender: Any?) {
         guard let tagName = self.editTagTextField?.text else { return }
         var totalList = bookmarkedList + notBookmarkedList
