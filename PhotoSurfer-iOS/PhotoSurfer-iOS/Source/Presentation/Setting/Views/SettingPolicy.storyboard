@@ -140,6 +140,10 @@
                             <constraint firstItem="frB-bT-Rlm" firstAttribute="top" secondItem="IZz-11-05z" secondAttribute="top" id="qx1-Jr-rzq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="licenseView" destination="6oh-Re-zU1" id="t8v-uD-fr7"/>
+                        <outlet property="policyView" destination="HIO-Zo-38S" id="wg9-Za-DpG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
