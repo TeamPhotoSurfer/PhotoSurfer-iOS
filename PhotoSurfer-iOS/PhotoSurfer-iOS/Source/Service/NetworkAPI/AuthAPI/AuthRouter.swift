@@ -31,7 +31,14 @@ extension AuthRouter: BaseTargetType {
     var task: Task {
         switch self {
         case .postAuthLogin(let param):
-            return .requestParameters(parameters: ["param": AuthResponse], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["socialToken": param.socialToken, "socialType": param.socialType], encoding: JSONEncoding.default)
+        }
+    }
+    
+    var headers: [String : String]? {
+        switch self {
+        case .postAuthLogin:
+            return NetworkConstant.hasTokenHeader
         }
     }
 }
