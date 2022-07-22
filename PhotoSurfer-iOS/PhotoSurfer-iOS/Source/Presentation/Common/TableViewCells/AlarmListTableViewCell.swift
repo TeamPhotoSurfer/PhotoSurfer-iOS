@@ -25,6 +25,7 @@ final class AlarmListTableViewCell: UITableViewCell {
     // MARK: - Function
     private func setUI() {
         photoImageView.layer.cornerRadius = 8
+        self.selectedBackgroundView = UIView()
     }
     
     func setData(push: Push) {
