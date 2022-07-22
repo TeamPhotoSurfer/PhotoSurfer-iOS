@@ -259,7 +259,7 @@ extension TagViewController: MenuHandleDelegate {
     
     func editButtonDidTap(button: UIButton) {
         print("✨editButtonDidTap")
-        var superview = button.superview
+        let superview = button.superview
         guard let cell = superview as? TagAlbumCollectionViewCell else { return }
         guard let indexPath = albumCollectionView.indexPath(for: cell) else { return }
         print("✨셀을 찾았다")
