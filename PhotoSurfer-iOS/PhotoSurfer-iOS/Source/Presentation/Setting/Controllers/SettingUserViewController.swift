@@ -46,7 +46,6 @@ class SettingUserViewController: UIViewController {
     
     // MARK: - Objc Function
     @objc func logoutButtonDidTap(sender: UITapGestureRecognizer) {
-//        self.makeOKAlert(title: nil, message: "로그아웃 합니다.")
         UserApi.shared.logout {(error) in
             if let error = error {
                 print(error)

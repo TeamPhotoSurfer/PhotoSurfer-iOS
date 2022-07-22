@@ -7,15 +7,6 @@
 
 import UIKit
 
-protocol MenuHandleDelegate {
-    func deleteButtonDidTap(button: UIButton)
-    func editButtonDidTap(button: UIButton)
-}
-
-protocol StarHandleDelegate {
-    func starButtonTapped(cell: TagAlbumCollectionViewCell)
-}
-
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Property
@@ -91,10 +82,6 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
     }
         
     // MARK: - IBAction
-    @IBAction func menuButtonDidTap(_ sender: Any) {
-        
-    }
-    
     @IBAction func starButtonDidTap(_ sender: UIButton) {
         print("✨별 클릭")
         tagStarButton.isSelected.toggle()
@@ -105,6 +92,14 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
 }
 
 protocol TagAlbumCellDelegate: AnyObject {
-    // 위임해줄 기능
     func deleteButtonDidTap()
+}
+
+protocol MenuHandleDelegate {
+    func deleteButtonDidTap(button: UIButton)
+    func editButtonDidTap(button: UIButton)
+}
+
+protocol StarHandleDelegate {
+    func starButtonTapped(cell: TagAlbumCollectionViewCell)
 }
