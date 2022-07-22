@@ -230,8 +230,6 @@ extension TagViewController: StarHandleDelegate {
         } else {
             delTagBookmark(id: tag.id ?? 0)
         }
-        
-        
     }
 }
 
