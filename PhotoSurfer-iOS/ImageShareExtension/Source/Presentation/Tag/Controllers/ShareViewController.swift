@@ -120,7 +120,7 @@ final class ShareViewController: UIViewController {
     private func setSaveButton() {
         saveButton.setTitleColor(.pointMain, for: .normal)
         saveButton.setTitleColor(.grayGray60, for: .disabled)
-        saveButton.isEnabled = true
+        saveButton.isEnabled = false
     }
     
     private func getFrequencyTag() {

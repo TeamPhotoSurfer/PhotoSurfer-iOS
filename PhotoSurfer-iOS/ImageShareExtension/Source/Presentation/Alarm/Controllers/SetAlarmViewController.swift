@@ -88,21 +88,23 @@ final class SetAlarmViewController: UIViewController {
     }
     
     private func setLottie() {
-        bellAnimationView.frame = bellView.bounds
-        bellAnimationView.animation = Animation.named("bell")
-        bellAnimationView.loopMode = .playOnce
-        bellAnimationView.play()
-        bellView.addSubview(bellAnimationView)
-        
         surfingAnimationView.frame = surfingView.bounds
         surfingAnimationView.animation = Animation.named("surfing")
         surfingAnimationView.loopMode = .loop
         surfingAnimationView.play()
         surfingView.addSubview(surfingAnimationView)
         
+        bellAnimationView.frame = bellView.bounds
+        bellAnimationView.animation = Animation.named("bell")
+        bellAnimationView.loopMode = .playOnce
+        bellView.addSubview(bellAnimationView)
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
             self.surfingAnimationView.stop()
             self.loadingView.isHidden = true
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+                self.bellAnimationView.play()
+            }
         }
     }
     
@@ -249,7 +251,7 @@ final class SetAlarmViewController: UIViewController {
     }
     
     @IBAction func showDatePickerButtonDidTap(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.3) {
             self.datePickerView.isHidden.toggle()
         }
     }

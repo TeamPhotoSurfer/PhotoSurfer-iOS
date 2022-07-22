@@ -167,6 +167,7 @@ extension ShareViewController {
 extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        checkMaxLength(textField: searchBar.searchTextField, maxLength: 20)
         typingButton.setTitle(searchText, for: .normal)
         typingText = searchText
         typingTextCount = searchText.count
@@ -194,6 +195,12 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
         applyChangedDataSource(inputText: inputText)
     }
     
+    func checkMaxLength(textField: UITextField!, maxLength: Int) {
+        if (textField.text?.count ?? 0) > maxLength {
+            textField.deleteBackward()
+        }
+    }
+
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         dismissKeyboard()
     }
