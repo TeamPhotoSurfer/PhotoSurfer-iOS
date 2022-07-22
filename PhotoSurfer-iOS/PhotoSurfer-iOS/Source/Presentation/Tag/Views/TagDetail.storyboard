@@ -13,7 +13,7 @@
         <!--Tag Detail View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="TagDetailViewController" id="Y6W-OH-hqX" customClass="TagDetailViewController" customModule="PhotoSurfer_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TagDetailViewController" hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="TagDetailViewController" customModule="PhotoSurfer_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
