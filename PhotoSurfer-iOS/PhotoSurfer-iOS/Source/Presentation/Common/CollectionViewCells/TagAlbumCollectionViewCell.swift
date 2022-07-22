@@ -7,15 +7,6 @@
 
 import UIKit
 
-protocol MenuHandleDelegate {
-    func deleteButtonDidTap(button: UIButton)
-    func editButtonDidTap(button: UIButton)
-}
-
-protocol StarHandleDelegate {
-    func starButtonTapped(cell: TagAlbumCollectionViewCell)
-}
-
 final class TagAlbumCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Property
@@ -107,4 +98,13 @@ final class TagAlbumCollectionViewCell: UICollectionViewCell {
 protocol TagAlbumCellDelegate: AnyObject {
     // 위임해줄 기능
     func deleteButtonDidTap()
+}
+
+protocol MenuHandleDelegate {
+    func deleteButtonDidTap(button: UIButton)
+    func editButtonDidTap(button: UIButton)
+}
+
+protocol StarHandleDelegate {
+    func starButtonTapped(cell: TagAlbumCollectionViewCell)
 }
