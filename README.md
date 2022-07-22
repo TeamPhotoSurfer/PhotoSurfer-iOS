@@ -107,3 +107,12 @@
 │   │        └── DTO // API별
 └───
 ```
+
+
+## 🏄‍♂️ 각자 맡은 기능 및 뷰
+
+[link!](https://kimseawater.notion.site/2242b381fef04fa1ac7ca54985221ce3)
+
+## 어려웠던 부분과 극복 방법
+[link!](https://kimseawater.notion.site/36b4bd3ad8704dec884f0c4ca12bd14a)
+
