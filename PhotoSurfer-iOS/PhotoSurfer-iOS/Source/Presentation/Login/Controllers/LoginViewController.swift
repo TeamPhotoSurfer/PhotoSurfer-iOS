@@ -118,9 +118,15 @@ class LoginViewController: UIViewController {
                     print("카카오 계정 로그인 loginWithKakaoAccount() success.")
                     _ = oauthToken
                     if let accessToken = oauthToken?.accessToken {
-                        print(accessToken)
+                        self.accessToken = accessToken
+                        print("✨accessToken", accessToken)
                     }
-                    self.changeRootViewController()
+                    if let refreshToken = oauthToken?.refreshToken {
+                        self.refreshToken = refreshToken
+                        print("✨refreshToken", refreshToken)
+                    }
+                    let authRequest = AuthRequest(socialToken: self.accessToken, socialType: "kakao")
+                    self.postAuthLogin(authRequest: authRequest)
                 }
             }
         }
