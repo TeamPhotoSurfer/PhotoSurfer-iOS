@@ -104,10 +104,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="799"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tba-it-jKc">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="799"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgSea" translatesAutoresizingMaskIntoConstraints="NO" id="Un1-OY-IMz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Un1-OY-IMz">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="799"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -283,7 +283,6 @@
     <resources>
         <image name="delete" width="44" height="44"/>
         <image name="icMenuVertical" width="24" height="24"/>
-        <image name="imgSea" width="360" height="340"/>
         <image name="leftBackIconButton" width="48" height="56"/>
         <image name="leftBellSettingIcon" width="20" height="20"/>
         <image name="rightShareIconButton" width="48" height="56"/>
