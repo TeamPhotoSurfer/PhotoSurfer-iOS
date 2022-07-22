@@ -108,11 +108,12 @@ final class SetAlarmViewController: UIViewController {
         }
     }
     
-    private func postImageNTags(imagefile: UIImage, tags: [Tag]) {
+    func postImageNTags(imagefile: UIImage, tags: [Tag]) {
         let photoRequest: PhotoRequest = PhotoRequest(file: imagefile, tags: tags)
         PhotoService.shared.postPhoto(photoInfo: photoRequest) { result in
             switch result {
             case .success(let data):
+                self.tagIDs.removeAll()
                 guard let data = data as? Photo else { return }
                 self.photoID = data.id
                 guard let fetchedTags = data.tags else { return }
