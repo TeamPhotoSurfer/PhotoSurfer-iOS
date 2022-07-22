@@ -35,11 +35,11 @@ extension UIViewController {
     }
     
     /// 확인 버튼만 뜨는 UIAlertController
-    func makeOKAlert(title: String,
+    func makeOKAlert(title: String?,
                      message: String,
                      okAction: ((UIAlertAction) -> Void)? = nil,
                      completion: (() -> Void)? = nil) {
-        let alertViewController = UIAlertController(title: title,
+        let alertViewController = UIAlertController(title: title ?? nil,
                                                     message: message,
                                                     preferredStyle: .alert)
         
