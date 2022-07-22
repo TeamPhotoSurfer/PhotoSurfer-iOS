@@ -90,7 +90,7 @@ final class SetAlarmViewController: UIViewController {
     private func setLottie() {
         bellAnimationView.frame = bellView.bounds
         bellAnimationView.animation = Animation.named("bell")
-        bellAnimationView.loopMode = .loop
+        bellAnimationView.loopMode = .playOnce
         bellAnimationView.play()
         bellView.addSubview(bellAnimationView)
         
@@ -239,6 +239,8 @@ final class SetAlarmViewController: UIViewController {
         }
         setRepresentTagViewController.delegate = self
         setRepresentTagViewController.tags = tags
+        setRepresentTagViewController.selectedTags = representTag
+        
         self.navigationController?.pushViewController(setRepresentTagViewController, animated: true)
     }
     

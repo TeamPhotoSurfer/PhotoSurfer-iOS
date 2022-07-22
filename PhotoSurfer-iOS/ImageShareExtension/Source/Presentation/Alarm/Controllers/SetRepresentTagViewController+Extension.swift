@@ -10,8 +10,6 @@ import UIKit
 extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        print(tags.count)
         return tags.count
     }
     
@@ -22,8 +20,17 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
         cell.tagButton.setTitle(tags[indexPath.row].name, for: .normal)
         cell.selectButton.addTarget(self, action: #selector(self.selectButtonDidTap),
                                     for: .touchUpInside)
-        if indexPath.row <= 2 {
-            cell.checkButton.isSelected = true
+        if selectedTags.isEmpty {
+            if indexPath.row <= 2 {
+                cell.checkButton.isSelected = true
+            }
+        }
+        else {
+            for selectedIndex in 0..<selectedTags.count {
+                if selectedTags[selectedIndex].name == tags[indexPath.row].name {
+                    cell.checkButton.isSelected = true
+                }
+            }
         }
         return cell
     }
@@ -84,4 +91,20 @@ extension SetRepresentTagViewController: UITableViewDelegate, UITableViewDataSou
 
 protocol SetSelectedRepresentTag {
     func sendSelectedRepresentTag(tags: [Tag])
+}
+
+
+extension UITextField {
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+        
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount,
+                                               height: self.frame.size.height))
+        self.rightView = paddingView
+        self.rightViewMode = .always
+    }
 }

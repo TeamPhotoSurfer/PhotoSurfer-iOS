@@ -12,18 +12,23 @@ final class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setUI()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setUI() {
+        setTabBar()
     }
-    */
-
+    
+    private func setTabBar() {
+        let appearance = UITabBarAppearance()
+        let tabBar = UITabBar()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.grayWhite
+        tabBar.standardAppearance = appearance
+        tabBar.layer.borderWidth = 0.33
+        tabBar.layer.borderColor = UIColor.grayGray40.cgColor
+        tabBar.clipsToBounds = false
+        
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+    }
 }
