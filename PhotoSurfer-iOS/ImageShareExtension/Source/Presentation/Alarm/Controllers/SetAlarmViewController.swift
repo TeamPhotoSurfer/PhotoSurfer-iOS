@@ -173,7 +173,7 @@ final class SetAlarmViewController: UIViewController {
         var selectedTagName: String = ""
         for index in 0..<representTag.count {
             switch index {
-            case tags.count-1:
+            case representTag.count-1:
                 selectedTagName += "#\(tags[index].name)"
             default:
                 selectedTagName += "#\(tags[index].name), "
