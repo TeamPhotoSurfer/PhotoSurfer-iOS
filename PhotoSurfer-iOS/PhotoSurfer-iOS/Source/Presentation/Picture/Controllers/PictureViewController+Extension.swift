@@ -12,9 +12,9 @@ extension PictureViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if editMode == .add {
             if !(textField.text?.isEmpty ?? true) && tags.count < 6 {
-                tags.insert(Tag(name: textField.text ?? ""), at: 0)
+               
+                addedTagName = textField.text ?? ""
                 addPhotoTag(tagName: textField.text ?? "")
-                applyTagsSnapshot()
             }
         }
         else if editMode == .edit {
@@ -93,8 +93,14 @@ extension PictureViewController {
             switch response {
             case .success(let data):
                 print(data)
+                if let tagName = self.addedTagName {
+                    self.tags.insert(Tag(name: tagName), at: 0)
+                    self.applyTagsSnapshot()
+                    self.makeOKAlert(title: "", message: "태그가 추가되었어요", okAction: nil, completion: nil)
+                }
             case .requestErr(_):
                 print("requestErr")
+                self.makeOKAlert(title: "", message: "이미 같은 태그를 추가했어요", okAction: nil, completion: nil)
             case .pathErr:
                 print("pathErr")
             case .serverErr:
