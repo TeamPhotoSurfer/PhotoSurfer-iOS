@@ -199,6 +199,48 @@
                                     <constraint firstAttribute="bottom" secondItem="aYW-A3-9BH" secondAttribute="bottom" id="xQm-kY-Dbe"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LuI-LY-YzI">
+                                <rect key="frame" x="0.0" y="146" width="414" height="659"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0f-dV-XGc">
+                                        <rect key="frame" x="136.5" y="389" width="141" height="41"/>
+                                        <color key="backgroundColor" name="pointSub"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="hF8-QZ-52x"/>
+                                            <constraint firstAttribute="width" constant="141" id="thL-Kt-ud3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="태그 추가 알아보기"/>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="KqM-lm-4w5">
+                                        <rect key="frame" x="99" y="290.5" width="216" height="78.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="태그에 대한 검색결과가 없어요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hLa-Zm-UUd">
+                                                <rect key="frame" x="0.0" y="0.0" width="216" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <color key="textColor" name="grayGray90"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4Q-HJ-ady">
+                                                <rect key="frame" x="18.5" y="42.5" width="179" height="36"/>
+                                                <string key="text">- 태그를 끊어서 입력해보세요.
+- 플랫폼명을 활용해 보세요.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" name="grayGray50"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="KqM-lm-4w5" firstAttribute="centerY" secondItem="LuI-LY-YzI" secondAttribute="centerY" id="7Cc-3Z-mZc"/>
+                                    <constraint firstItem="Y0f-dV-XGc" firstAttribute="centerX" secondItem="LuI-LY-YzI" secondAttribute="centerX" id="XhS-QM-v2n"/>
+                                    <constraint firstItem="Y0f-dV-XGc" firstAttribute="top" secondItem="KqM-lm-4w5" secondAttribute="bottom" constant="20" id="ale-56-k2q"/>
+                                    <constraint firstItem="KqM-lm-4w5" firstAttribute="centerX" secondItem="LuI-LY-YzI" secondAttribute="centerX" id="nez-f3-PwX"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -206,6 +248,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="pAe-UK-9fT" secondAttribute="trailing" id="36F-H6-EWC"/>
                             <constraint firstItem="hBk-M8-NAk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3lG-N8-5ba"/>
                             <constraint firstItem="pAe-UK-9fT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6mx-aQ-swS"/>
+                            <constraint firstItem="LuI-LY-YzI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="AfP-Ma-foN"/>
                             <constraint firstItem="6N8-N4-BdM" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="FdC-fH-QhC"/>
                             <constraint firstItem="pAe-UK-9fT" firstAttribute="top" secondItem="8xI-4Z-JZf" secondAttribute="bottom" id="Fhh-eb-e7l"/>
                             <constraint firstItem="wdd-n0-n5V" firstAttribute="top" secondItem="hBk-M8-NAk" secondAttribute="bottom" constant="10" id="Hx8-bG-X8h"/>
@@ -213,11 +256,14 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8xI-4Z-JZf" secondAttribute="trailing" id="NWY-Ps-ubB"/>
                             <constraint firstItem="hBk-M8-NAk" firstAttribute="top" secondItem="pAe-UK-9fT" secondAttribute="bottom" constant="15" id="Pu3-Cb-9HR"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wdd-n0-n5V" secondAttribute="trailing" id="Sjg-iH-cI2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LuI-LY-YzI" secondAttribute="trailing" id="asf-6a-YVg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wdd-n0-n5V" secondAttribute="bottom" id="grn-Vu-FZg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hBk-M8-NAk" secondAttribute="trailing" id="h27-c0-C1C"/>
                             <constraint firstItem="8xI-4Z-JZf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="k4W-qc-Oir"/>
                             <constraint firstAttribute="bottom" secondItem="6N8-N4-BdM" secondAttribute="bottom" id="scE-91-VTQ"/>
+                            <constraint firstItem="LuI-LY-YzI" firstAttribute="top" secondItem="hBk-M8-NAk" secondAttribute="bottom" id="tPO-t2-liF"/>
                             <constraint firstItem="wdd-n0-n5V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="u9Y-N1-ALC"/>
+                            <constraint firstItem="6N8-N4-BdM" firstAttribute="top" secondItem="LuI-LY-YzI" secondAttribute="bottom" id="yUG-EM-KPQ"/>
                             <constraint firstItem="8xI-4Z-JZf" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="zU1-Vg-IFf"/>
                         </constraints>
                     </view>
@@ -225,6 +271,7 @@
                         <outlet property="bottomWaveImageContainerView" destination="6N8-N4-BdM" id="8Nw-Mm-xWU"/>
                         <outlet property="bottomWaveView" destination="6N8-N4-BdM" id="SON-Zg-DnK"/>
                         <outlet property="deleteButton" destination="2KO-nG-Egh" id="Gn5-gM-csW"/>
+                        <outlet property="emptyView" destination="LuI-LY-YzI" id="A8x-qA-6eF"/>
                         <outlet property="keyboardTopTextField" destination="JIP-W7-fub" id="stE-6B-Q8D"/>
                         <outlet property="moreButton" destination="0BB-Fk-okZ" id="Kp4-dY-soX"/>
                         <outlet property="navigationTitleLabel" destination="kMn-8E-u36" id="k2v-Vt-aZL"/>
@@ -233,6 +280,7 @@
                         <outlet property="selectedNavigationStackView" destination="HM1-et-u6P" id="5LY-jS-YH2"/>
                         <outlet property="shareButton" destination="968-8H-L9B" id="XZA-cF-lUb"/>
                         <outlet property="tagCollectionView" destination="hBk-M8-NAk" id="RRk-yb-M9A"/>
+                        <outlet property="tagOnboardingButton" destination="Y0f-dV-XGc" id="uDM-sv-xxc"/>
                         <outlet property="waveImageView" destination="aYW-A3-9BH" id="RDF-1V-SgT"/>
                         <outlet property="waveViewBottomConstraint" destination="scE-91-VTQ" id="r40-L2-7mT"/>
                     </connections>
@@ -254,14 +302,23 @@
         <namedColor name="grayGray30">
             <color red="0.81999999284744263" green="0.83899998664855957" blue="0.85900002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="grayGray50">
+            <color red="0.54500001668930054" green="0.58399999141693115" blue="0.63099998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="grayGray70">
             <color red="0.3059999942779541" green="0.34900000691413879" blue="0.40799999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="grayGray80">
             <color red="0.20000000298023224" green="0.23899999260902405" blue="0.29399999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="grayGray90">
+            <color red="0.14900000393390656" green="0.18400000035762787" blue="0.23899999260902405" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="grayWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pointSub">
+            <color red="0.90600001811981201" green="0.93300002813339233" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -46,7 +46,9 @@ final class HomeResultViewController: UIViewController {
     @IBOutlet weak var waveImageView: UIImageView!
     @IBOutlet weak var bottomWaveImageContainerView: UIView!
     @IBOutlet weak var waveViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tagOnboardingButton: UIButton!
     @IBOutlet weak var keyboardTopTextField: UITextField!
+    @IBOutlet weak var emptyView: UIView!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -82,6 +84,7 @@ final class HomeResultViewController: UIViewController {
     private func setUI(mode: HomeResultEditMode) {
         navigationTitleLabel.text = mode.rawValue
         setTextFieldUI()
+        setButtonUI()
         switch mode {
         case .none:
             print("none")
@@ -108,6 +111,11 @@ final class HomeResultViewController: UIViewController {
         keyboardTopTextField.layer.borderColor = UIColor.grayGray30.cgColor
         keyboardTopTextField.layer.borderWidth = 1
         keyboardTopTextField.addPadding(padding: 12)
+    }
+    
+    private func setButtonUI() {
+        tagOnboardingButton.layer.cornerRadius = 8
+        
     }
     
     private func setEditModeUI() {
@@ -212,15 +220,18 @@ final class HomeResultViewController: UIViewController {
         let tagIds: [Int] = tags.map({ $0.id ?? 0 })
         if tagIds.count == 0 {
             photos = []
+            self.emptyView.isHidden = false
             applyPhotoSnapshot()
         } else {
             PhotoService.shared.getPhotoSearch(ids: tagIds) { response in
                 switch response {
                 case .success(let data):
+                    self.emptyView.isHidden = true
                     guard let data = data as? PhotoSearchResponse else { return }
                     self.photos = data.photos
                     self.applyPhotoSnapshot()
                 case .requestErr(_):
+                    self.emptyView.isHidden = false
                     print("requestErr")
                 case .pathErr:
                     print("pathErr")
