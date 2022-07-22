@@ -49,7 +49,9 @@ final class SetRepresentTagViewController: UIViewController {
     }
     
     private func setRepresentTag() {
-        selectedTags = tags
+        if selectedTags.isEmpty {
+            selectedTags = tags
+        }
     }
     
     // MARK: - IBAction

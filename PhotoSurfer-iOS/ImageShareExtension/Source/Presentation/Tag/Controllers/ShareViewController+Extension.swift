@@ -199,13 +199,13 @@ extension ShareViewController: UISearchBarDelegate, UITextFieldDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        typingView.isHidden = true
         var didAddedTag: Bool = false
         
         for i in 0..<addedTags.count {
             didAddedTag = (addedTags[i].name == typingText)
         }
         if !didAddedTag {
+            typingView.isHidden = true
             if addedTags.count >= 6 {
                 showAlert(message: self.underSixTagMessage)
             }
@@ -295,6 +295,11 @@ extension ShareViewController: UICollectionViewDelegate {
         var isAddedTagContainItem: Bool = false
         for i in 0..<addedTags.count {
             isAddedTagContainItem = (addedTags[i].name == tagType[indexPath.item].name)
+            if isAddedTagContainItem {
+                break
+            }
+            print("addedTags[i].name \(addedTags[i].name) \n")
+            print("tagType[indexPath.item].name \(tagType[indexPath.item].name) \n")
         }
         if !isAddedTagContainItem {
             if addedTags.count >= 6 {

@@ -71,6 +71,7 @@ final class ShareViewController: UIViewController {
         registerXib()
         setHierarchy(isSearching: false)
         self.isModalInPresentation = true
+        searchBar.searchTextField.setLeftPaddingPoints(16)
     }
     
     private func registerXib() {
