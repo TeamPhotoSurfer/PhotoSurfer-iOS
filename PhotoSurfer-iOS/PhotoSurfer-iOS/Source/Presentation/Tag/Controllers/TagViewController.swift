@@ -211,11 +211,20 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
 
 extension TagViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        /*
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         guard let tagDetailViewController = UIStoryboard(name: Const.Storyboard.TagDetail, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.TagDetailViewController) as? TagDetailViewController else { return }
         tagDetailViewController.modalPresentationStyle = .fullScreen
         tagDetailViewController.tag = item
         self.navigationController?.pushViewController(tagDetailViewController, animated: true)
+         */
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        guard let resultViewController = UIStoryboard(name: Const.Storyboard.HomeResult, bundle: nil)
+                .instantiateViewController(withIdentifier: Const.ViewController.HomeResultViewController) as? HomeResultViewController else { return }
+        resultViewController.tags.append(item)
+        resultViewController.isHiddenCollectionView = true
+        resultViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(resultViewController, animated: true)
     }
 }
 

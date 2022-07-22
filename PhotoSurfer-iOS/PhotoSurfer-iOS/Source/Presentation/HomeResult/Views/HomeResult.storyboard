@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -280,6 +280,7 @@
                         <outlet property="selectedNavigationStackView" destination="HM1-et-u6P" id="5LY-jS-YH2"/>
                         <outlet property="shareButton" destination="968-8H-L9B" id="XZA-cF-lUb"/>
                         <outlet property="tagCollectionView" destination="hBk-M8-NAk" id="RRk-yb-M9A"/>
+                        <outlet property="tagCollectionViewHeightConst" destination="Tkg-1J-g5b" id="J41-vy-Qsv"/>
                         <outlet property="tagOnboardingButton" destination="Y0f-dV-XGc" id="uDM-sv-xxc"/>
                         <outlet property="waveImageView" destination="aYW-A3-9BH" id="RDF-1V-SgT"/>
                         <outlet property="waveViewBottomConstraint" destination="scE-91-VTQ" id="r40-L2-7mT"/>
