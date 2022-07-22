@@ -43,7 +43,7 @@ extension SetAlarmViewController: SetSelectedRepresentTag {
         var selectedTag: String = ""
         for index in 0..<representTag.count {
             switch index {
-            case tags.count-1:
+            case representTag.count-1:
                 selectedTag += "#\(tags[index].name)"
             default:
                 selectedTag += "#\(tags[index].name), "
