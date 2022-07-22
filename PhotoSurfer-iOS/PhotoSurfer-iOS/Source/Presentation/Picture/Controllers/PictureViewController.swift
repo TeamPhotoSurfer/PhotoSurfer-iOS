@@ -234,6 +234,7 @@ final class PictureViewController: UIViewController {
                 self.applyTagsSnapshot()
             case .requestErr(_):
                 print("requestErr")
+                self.navigationController?.popViewController(animated: true)
             case .pathErr:
                 print("pathErr")
             case .serverErr:
