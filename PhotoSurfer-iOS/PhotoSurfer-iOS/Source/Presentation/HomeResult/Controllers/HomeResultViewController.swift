@@ -336,4 +336,8 @@ final class HomeResultViewController: UIViewController {
     @IBAction func moreButtonDidTap(_ sender: Any) {
         setMoreButtonMenu()
     }
+    @IBAction func tagOnboardingButtonDidTap(_ sender: Any) {
+        let onboardingViewController = UIStoryboard(name: Const.Storyboard.Onboarding, bundle: nil).instantiateViewController(withIdentifier: Const.ViewController.OnboardingViewController)
+        self.present(onboardingViewController, animated: true)
+    }
 }

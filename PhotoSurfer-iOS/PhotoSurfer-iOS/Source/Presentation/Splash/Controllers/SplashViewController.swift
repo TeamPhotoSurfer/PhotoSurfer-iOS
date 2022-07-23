@@ -68,8 +68,8 @@ final class SplashViewController: UIViewController {
         }
         // TODO: 여기 로그인 여부로 또 분기처리 해야하나? 로그인 했으면 Main으로 넘기기 이런식으로..
         else {
-            setRootViewController(name: Const.Storyboard.Login,
-                                  identifier: Const.ViewController.LoginViewController)
+            setRootViewController(name: Const.Storyboard.Main,
+                                  identifier: Const.ViewController.MainTabBarController)
         }
     }
     
