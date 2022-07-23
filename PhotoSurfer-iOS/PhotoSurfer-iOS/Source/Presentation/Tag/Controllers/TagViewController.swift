@@ -41,6 +41,7 @@ final class TagViewController: UIViewController, UITextFieldDelegate {
         setEditToolbar()
         editTagTextField.delegate = self
         albumCollectionView.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
     }
     

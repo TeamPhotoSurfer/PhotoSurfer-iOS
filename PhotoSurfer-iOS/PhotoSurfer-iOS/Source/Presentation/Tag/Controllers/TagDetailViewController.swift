@@ -34,7 +34,7 @@ final class TagDetailViewController: UIViewController {
     
     private func setUI() {
         setTitle()
-        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     private func setCollectionView() {
