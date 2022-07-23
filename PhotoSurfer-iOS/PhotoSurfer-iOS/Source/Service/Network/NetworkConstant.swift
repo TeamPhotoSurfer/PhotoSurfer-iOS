@@ -15,6 +15,6 @@ struct NetworkConstant {
     static var hasMultipartHeader = ["Content-Type": "multipart/form-data; boundary=<calculated when request is sent>",
                                  "Authorization": NetworkConstant.accessToken]
     
-    static var accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMH0sImlhdCI6MTY1ODI2Mzc1NCwiZXhwIjoxNjU4NjIzNzU0fQ.rreOmGvMU17avqe-Z0sxhm4n6-Utc3diFbyqeHDuDu4"
+    static var accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo1NH0sImlhdCI6MTY1ODUwMDM4NywiZXhwIjozNzY1ODUwMDM4N30.1ol1wposSyh2atwpFbDXm-ubnCbvJ4JFIFHgXfV38uc"
     static var fcmToken = ""
 }
