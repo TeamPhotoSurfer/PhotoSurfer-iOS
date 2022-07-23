@@ -221,7 +221,7 @@ extension TagViewController: UICollectionViewDelegate {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         guard let resultViewController = UIStoryboard(name: Const.Storyboard.HomeResult, bundle: nil)
                 .instantiateViewController(withIdentifier: Const.ViewController.HomeResultViewController) as? HomeResultViewController else { return }
-        resultViewController.tags.append(item)
+        resultViewController.tags = [item]
         resultViewController.isHiddenCollectionView = true
         resultViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(resultViewController, animated: true)
