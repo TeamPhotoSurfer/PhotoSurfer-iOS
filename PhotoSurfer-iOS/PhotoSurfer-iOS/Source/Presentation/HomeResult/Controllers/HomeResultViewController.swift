@@ -23,6 +23,7 @@ final class HomeResultViewController: UIViewController {
     }
     
     // MARK: - Property
+    var isHiddenCollectionView: Bool = false
     var tagDataSource: UICollectionViewDiffableDataSource<Section, Tag>!
     var photoDataSource: UICollectionViewDiffableDataSource<Section, Photo>!
     var tags: [Tag] = []
@@ -49,12 +50,17 @@ final class HomeResultViewController: UIViewController {
     @IBOutlet weak var tagOnboardingButton: UIButton!
     @IBOutlet weak var keyboardTopTextField: UITextField!
     @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var tagCollectionViewHeightConst: NSLayoutConstraint!
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(tags.map({ $0.id }))
+        tagCollectionView.isHidden = isHiddenCollectionView
+        if isHiddenCollectionView {
+            tagCollectionViewHeightConst.constant = 0
+        }
         setUI(mode: editMode)
         setCollectionView()
         addKeyboardObserver()
@@ -79,6 +85,10 @@ final class HomeResultViewController: UIViewController {
     
     private func setKeyboardManagerEnable(_ isEnabled: Bool) {
         IQKeyboardManager.shared.enable = isEnabled
+    }
+    
+    func hideTagCollectionView() {
+        tagCollectionView.isHidden = true
     }
     
     private func setUI(mode: HomeResultEditMode) {
