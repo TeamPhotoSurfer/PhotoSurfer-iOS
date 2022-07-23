@@ -151,19 +151,27 @@ final class ShareViewController: UIViewController {
     
     private func getSelectedImage() {
         let extensionItems = extensionContext?.inputItems as! [NSExtensionItem]
+        print(extensionItems)
         for items in extensionItems {
             if let itemProviders = items.attachments {
                 for itemProvider in itemProviders {
                     if itemProvider.hasItemConformingToTypeIdentifier(kUTTypeImage as String) {
                         itemProvider.loadItem(forTypeIdentifier: kUTTypeImage as String, options: nil, completionHandler: { result, error in
-                            if let url = result as? URL,
-                               let data = try? Data(contentsOf: url) {
-                                DispatchQueue.main.async {
-                                    self.image = UIImage(data: data)!
-                                }
-                            } else {
-                                fatalError("Impossible to save image")
+                            print("zz", result as? UIImage)
+                            guard let result = result as? UIImage else { return }
+                            DispatchQueue.main.async {
+                                self.image = result
                             }
+                            
+//                            if let url = result as? URL,
+//                               let data = try? Data(contentsOf: url) {
+//                                DispatchQueue.main.async {
+//                                    self.image = UIImage(data: data)!
+//                                }
+//                            } else {
+//
+//                                    fatalError("Impossible to save image")
+//                            }
                         })
                     }
                 }
